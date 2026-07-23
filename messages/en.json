@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "siteName": "Bilingual School Complex Les Génies d'Afrique",
+    "siteNameShort": "Les Génies d'Afrique",
+    "slogan": "Shaping today's leaders for tomorrow",
+    "description": "Private bilingual school from day care to primary, MINEDUB accredited, in Nkozoa, Yaoundé, Cameroon."
+  },
+  "nav": {
+    "home": "Home",
+    "school": "The School",
+    "programs": "Programs",
+    "admissions": "Admissions",
+    "life": "School Life",
+    "news": "News",
+    "contact": "Contact",
+    "enroll": "Enroll Now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Français"
+  },
+  "announcement": "📢 Enrollment is now open — Monday to Friday 8AM–1PM",
+  "hero": {
+    "badge": "Bilingual · MINEDUB Accredited · Nkozoa, Yaoundé",
+    "title": "Shaping today's leaders for tomorrow",
+    "subtitle": "A bilingual excellence environment for your child's total development — from day care to primary school.",
+    "ctaPrimary": "Enroll My Child",
+    "ctaSecondary": "Explore Our School",
+    "scrollHint": "Scroll"
+  },
+  "trustBar": {
+    "items": [
+      { "icon": "School",    "label": "MINEDUB Accredited 2025" },
+      { "icon": "BookOpen",  "label": "4 School Levels" },
+      { "icon": "Globe",     "label": "Bilingual FR / EN" },
+      { "icon": "Phone",     "label": "651 11 15 06" }
+    ]
+  },
+  "about": {
+    "badge": "Our Mission",
+    "title": "Bilingual Excellence at the Service of Every Child",
+    "body": "Founded in Nkozoa and accredited by the Ministry of Basic Education (MINEDUB), the Bilingual School Complex Les Génies d'Afrique welcomes children from 0 to 12 years in a bilingual, safe and stimulating environment. Our bilingual approach — French and English — prepares your children to succeed in a globalized world.",
+    "features": [
+      "Bilingual guidance from day care",
+      "Qualified and dedicated teaching staff",
+      "Innovative educational projects (farming, livestock)",
+      "Safety and well-being at the heart of our mission"
+    ],
+    "cta": "Learn More"
+  },
+  "stats": {
+    "title": "Les Génies d'Afrique by the Numbers",
+    "items": [
+      { "value": "4",    "label": "School levels" },
+      { "value": "2",    "label": "Primary sections" },
+      { "value": "FR+EN","label": "Full bilingualism" },
+      { "value": "2025", "label": "MINEDUB Accreditation" }
+    ]
+  },
+  "programs": {
+    "badge": "Programs",
+    "title": "A Complete Journey from 0 to 12 Years",
+    "subtitle": "Each cycle is designed to develop your child's cognitive, linguistic and social skills.",
+    "cta": "Explore",
+    "items": [
+      {
+        "id": "creche",
+        "badge": "0 – 2 years",
+        "title": "Day Care",
+        "body": "A safe and affectionate environment for toddlers. Sensory development, motor skills and first bilingual learning.",
+        "image": "/images/IMG-20260723-WA0004.jpg"
+      },
+      {
+        "id": "maternelle",
+        "badge": "2 – 5 years",
+        "title": "Nursery",
+        "body": "Pre-Nursery and Nursery to build the foundations of learning in a joyful and caring environment.",
+        "image": "/images/IMG-20260723-WA0005.jpg"
+      },
+      {
+        "id": "primaire-fr",
+        "badge": "6 – 12 years · French",
+        "title": "French Primary",
+        "body": "Official Cameroonian curriculum enhanced with progressive English immersion from Grade 1.",
+        "image": "/images/IMG-20260723-WA0007.jpg"
+      },
+      {
+        "id": "primaire-en",
+        "badge": "6 – 12 years · English",
+        "title": "English Primary",
+        "body": "Rigorous anglophone curriculum with French introduction, preparing students for the best secondary schools.",
+        "image": "/images/IMG-20260723-WA0012.jpg"
+      }
+    ]
+  },
+  "whyUs": {
+    "badge": "Our Strengths",
+    "title": "Why Choose Les Génies d'Afrique?",
+    "items": [
+      {
+        "icon": "Globe",
+        "title": "Bilingual from Day Care",
+        "body": "Full French–English bilingual immersion from age 0, for a natural mastery of both languages."
+      },
+      {
+        "icon": "Shield",
+        "title": "Official MINEDUB Accreditation",
+        "body": "National recognition, certified official curriculum, guaranteed teaching standards."
+      },
+      {
+        "icon": "Sprout",
+        "title": "Unique Educational Projects",
+        "body": "Farming, livestock, aquaculture, junior entrepreneurship: learning by doing from the earliest age."
+      },
+      {
+        "icon": "GraduationCap",
+        "title": "Qualified & Passionate Teachers",
+        "body": "Qualified teaching staff, ongoing professional development, attentive and personalised support."
+      },
+      {
+        "icon": "Heart",
+        "title": "Safety & Well-being",
+        "body": "Secured premises, permanent supervision, child protection charter, a caring environment."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Learning by Doing",
+        "body": "Active pedagogy, hands-on projects, developing the natural talent of every child."
+      }
+    ]
+  },
+  "gallery": {
+    "badge": "Gallery",
+    "title": "School Life in Pictures",
+    "subtitle": "An inspiring environment, thriving students.",
+    "cta": "View Full Gallery"
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What Parents Say",
+    "items": [
+      {
+        "name": "Mrs. Ngo Biyong",
+        "role": "Student's mother",
+        "text": "Since my son enrolled at Les Génies d'Afrique, I have noticed remarkable progress. He now speaks fluently in both English and French. The support is exceptional.",
+        "stars": 5
+      },
+      {
+        "name": "Mr. Atangana Biyick",
+        "role": "Student's father",
+        "text": "A school that combines academic rigour with personal development. My two children love coming to school every morning!",
+        "stars": 5
+      },
+      {
+        "name": "Mrs. Essomba",
+        "role": "Student's parent",
+        "text": "The farming and livestock projects truly surprised me. My daughter has developed a sense of responsibility and a love of work. Congratulations to the whole team!",
+        "stars": 5
+      }
+    ]
+  },
+  "admissionsCta": {
+    "badge": "Join Us",
+    "title": "Enrollment is Now Open",
+    "subtitle": "Join the Les Génies d'Afrique family. Limited places — act now.",
+    "schedule": "Monday to Friday, 8AM – 1PM",
+    "scheduleLabel": "Enrollment hours",
+    "address": "Nkozoa, behind Boulangerie Massa, Yaoundé",
+    "ctaPrimary": "Contact Us",
+    "ctaSecondary": "Download Application"
+  },
+  "news": {
+    "badge": "News",
+    "title": "School News",
+    "cta": "View All News"
+  },
+  "footer": {
+    "tagline": "Shaping today's leaders for tomorrow",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact",
+    "followUs": "Social Media",
+    "hours": "Hours",
+    "hoursValue": "Mon–Fri: 8AM–1PM",
+    "copyright": "All rights reserved.",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy"
+  },
+  "contact": {
+    "address": "Nkozoa, behind Boulangerie Massa\nYaoundé, Cameroon",
+    "phone1": "651 11 15 06",
+    "phone2": "656 66 38 48",
+    "email": "lesgeniesdafrique@836gmail.com",
+    "whatsappLabel": "Chat on WhatsApp",
+    "facebookLabel": "Facebook",
+    "tiktokLabel": "TikTok"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "download": "Download",
+    "send": "Send",
+    "loading": "Loading…",
+    "backToTop": "Back to top",
+    "close": "Close"
+  }
+}

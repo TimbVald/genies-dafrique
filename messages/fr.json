@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "siteName": "Complexe Scolaire Bilingue Les Génies d'Afrique",
+    "siteNameShort": "Les Génies d'Afrique",
+    "slogan": "Former aujourd'hui les leaders de demain",
+    "description": "École bilingue privée de la crèche au primaire, agréée MINEDUB, à Nkozoa, Yaoundé, Cameroun."
+  },
+  "nav": {
+    "home": "Accueil",
+    "school": "L'École",
+    "programs": "Programmes",
+    "admissions": "Admissions",
+    "life": "Vie Scolaire",
+    "news": "Actualités",
+    "contact": "Contact",
+    "enroll": "S'inscrire",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "language": "English"
+  },
+  "announcement": "📢 Les inscriptions sont ouvertes — Du lundi au vendredi 8h–13h",
+  "hero": {
+    "badge": "Bilingue · Agréé MINEDUB · Nkozoa, Yaoundé",
+    "title": "Former aujourd'hui les leaders de demain",
+    "subtitle": "Un cadre d'excellence bilingue pour l'épanouissement total de votre enfant — de la crèche au primaire.",
+    "ctaPrimary": "Inscrire mon enfant",
+    "ctaSecondary": "Découvrir l'école",
+    "scrollHint": "Défiler"
+  },
+  "trustBar": {
+    "items": [
+      { "icon": "School",    "label": "Agréé MINEDUB 2025" },
+      { "icon": "BookOpen",  "label": "4 Niveaux Scolaires" },
+      { "icon": "Globe",     "label": "Bilingue FR / EN" },
+      { "icon": "Phone",     "label": "651 11 15 06" }
+    ]
+  },
+  "about": {
+    "badge": "Notre Mission",
+    "title": "L'excellence bilingue au service de chaque enfant",
+    "body": "Fondé à Nkozoa et agréé par le Ministère de l'Éducation de Base (MINEDUB), le Complexe Scolaire Bilingue Les Génies d'Afrique accueille les enfants de 0 à 12 ans dans un cadre bilingue, sécurisé et stimulant. Notre approche pédagogique bilingue — français et anglais — prépare vos enfants à réussir dans un monde globalisé.",
+    "features": [
+      "Encadrement bilingue dès la crèche",
+      "Corps enseignant qualifié et passionné",
+      "Projets pédagogiques innovants (agriculture, élevage)",
+      "Sécurité et bien-être au cœur du projet éducatif"
+    ],
+    "cta": "En savoir plus"
+  },
+  "stats": {
+    "title": "Les Génies d'Afrique en chiffres",
+    "items": [
+      { "value": "4",    "label": "Niveaux scolaires" },
+      { "value": "2",    "label": "Sections primaires" },
+      { "value": "FR+EN","label": "Bilinguisme intégral" },
+      { "value": "2025", "label": "Agrément MINEDUB" }
+    ]
+  },
+  "programs": {
+    "badge": "Programmes",
+    "title": "Un parcours complet de 0 à 12 ans",
+    "subtitle": "Chaque cycle est conçu pour développer les compétences cognitives, linguistiques et sociales de votre enfant.",
+    "cta": "Découvrir",
+    "items": [
+      {
+        "id": "creche",
+        "badge": "0 – 2 ans",
+        "title": "Crèche",
+        "body": "Un environnement sécurisé et affectif pour les tout-petits. Éveil sensoriel, motricité et premiers apprentissages bilingues.",
+        "image": "/images/IMG-20260723-WA0004.jpg"
+      },
+      {
+        "id": "maternelle",
+        "badge": "2 – 5 ans",
+        "title": "Maternelle",
+        "body": "Pré-nursery et Nursery pour poser les bases de l'apprentissage dans un cadre joyeux et bienveillant.",
+        "image": "/images/IMG-20260723-WA0005.jpg"
+      },
+      {
+        "id": "primaire-fr",
+        "badge": "6 – 12 ans · Français",
+        "title": "Primaire Francophone",
+        "body": "Programme officiel camerounais enrichi, avec immersion progressive en anglais dès le CP.",
+        "image": "/images/IMG-20260723-WA0007.jpg"
+      },
+      {
+        "id": "primaire-en",
+        "badge": "6 – 12 ans · Anglais",
+        "title": "Primaire Anglophone",
+        "body": "Curriculum anglophone rigoureux avec initiation au français, préparant aux meilleurs établissements secondaires.",
+        "image": "/images/IMG-20260723-WA0012.jpg"
+      }
+    ]
+  },
+  "whyUs": {
+    "badge": "Nos Atouts",
+    "title": "Pourquoi choisir les Génies d'Afrique ?",
+    "items": [
+      {
+        "icon": "Globe",
+        "title": "Bilinguisme dès la crèche",
+        "body": "Immersion bilingue intégrale français–anglais dès 0 an, pour une maîtrise naturelle des deux langues."
+      },
+      {
+        "icon": "Shield",
+        "title": "Agrément officiel MINEDUB",
+        "body": "Reconnaissance nationale, curriculum officiel certifié, standards d'enseignement garantis."
+      },
+      {
+        "icon": "Sprout",
+        "title": "Projets pédagogiques uniques",
+        "body": "Agriculture, élevage, pisciculture, entrepreneuriat junior : apprendre par l'action dès le plus jeune âge."
+      },
+      {
+        "icon": "GraduationCap",
+        "title": "Enseignants qualifiés & passionnés",
+        "body": "Corps enseignant diplômé, formation continue, encadrement attentif et personnalisé pour chaque élève."
+      },
+      {
+        "icon": "Heart",
+        "title": "Sécurité & bien-être",
+        "body": "Enceinte sécurisée, surveillance permanente, charte de protection de l'enfance, environnement bienveillant."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Apprentissage par l'action",
+        "body": "Pédagogie active, projets concrets, développement du talent naturel de chaque enfant."
+      }
+    ]
+  },
+  "gallery": {
+    "badge": "Galerie",
+    "title": "La vie à l'école en images",
+    "subtitle": "Un cadre inspirant, des élèves épanouis.",
+    "cta": "Voir toute la galerie"
+  },
+  "testimonials": {
+    "badge": "Témoignages",
+    "title": "Ce que disent les parents",
+    "items": [
+      {
+        "name": "Mme Ngo Biyong",
+        "role": "Mère d'élève",
+        "text": "Depuis que mon fils est inscrit aux Génies d'Afrique, j'observe une évolution remarquable. Il parle maintenant couramment en anglais et en français. L'encadrement est exceptionnel.",
+        "stars": 5
+      },
+      {
+        "name": "M. Atangana Biyick",
+        "role": "Père d'élève",
+        "text": "Une école qui allie rigueur académique et épanouissement personnel. Mes deux enfants adorent venir à l'école chaque matin !",
+        "stars": 5
+      },
+      {
+        "name": "Mme Essomba",
+        "role": "Parent d'élève",
+        "text": "Les projets agricoles et d'élevage m'ont vraiment surpris. Ma fille a développé le sens des responsabilités et l'amour du travail. Bravo à toute l'équipe !",
+        "stars": 5
+      }
+    ]
+  },
+  "admissionsCta": {
+    "badge": "Rejoignez-nous",
+    "title": "Les inscriptions sont ouvertes",
+    "subtitle": "Rejoignez la famille des Génies d'Afrique. Places limitées — agissez maintenant.",
+    "schedule": "Lundi au Vendredi, 8h00 – 13h00",
+    "scheduleLabel": "Horaires d'inscription",
+    "address": "Nkozoa, derrière la Boulangerie Massa, Yaoundé",
+    "ctaPrimary": "Nous contacter",
+    "ctaSecondary": "Télécharger le dossier"
+  },
+  "news": {
+    "badge": "Actualités",
+    "title": "Actualités de l'école",
+    "cta": "Voir toutes les actualités"
+  },
+  "footer": {
+    "tagline": "Former aujourd'hui les leaders de demain",
+    "quickLinks": "Liens rapides",
+    "contactUs": "Contact",
+    "followUs": "Réseaux sociaux",
+    "hours": "Horaires",
+    "hoursValue": "Lun–Ven : 8h00–13h00",
+    "copyright": "Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité"
+  },
+  "contact": {
+    "address": "Nkozoa, derrière la Boulangerie Massa\nYaoundé, Cameroun",
+    "phone1": "651 11 15 06",
+    "phone2": "656 66 38 48",
+    "email": "lesgeniesdafrique@836gmail.com",
+    "whatsappLabel": "Écrire sur WhatsApp",
+    "facebookLabel": "Facebook",
+    "tiktokLabel": "TikTok"
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "readMore": "Lire la suite",
+    "download": "Télécharger",
+    "send": "Envoyer",
+    "loading": "Chargement…",
+    "backToTop": "Haut de page",
+    "close": "Fermer"
+  }
+}
