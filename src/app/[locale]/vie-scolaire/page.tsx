@@ -48,7 +48,7 @@ export default function VieScolairePage() {
       <PageHero
         title="Vie Scolaire / School Life"
         subtitle="Un cadre inspirant, des élèves épanouis"
-        image="/images/IMG-20260723-WA0051.jpg"
+        image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
           { label: "Accueil / Home", href: "/" },
           { label: "Vie Scolaire / School Life" },

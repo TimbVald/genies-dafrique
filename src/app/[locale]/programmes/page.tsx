@@ -18,7 +18,7 @@ const PROGRAMMES = [
     badgeEn: "0 – 2 years",
     titleFr: "Crèche",
     titleEn: "Day Care",
-    image: "/images/IMG-20260723-WA0004.jpg",
+    image: "/images/IMG-20260723-WA0024.jpg",
     descFr:
       "Un environnement sécurisé, chaleureux et affectif pour les tout-petits de 0 à 2 ans. Nos éducatrices diplômées proposent des activités d'éveil sensoriel, de motricité et de socialisation adaptées à chaque stade du développement. Les premiers mots en français et en anglais sont introduits naturellement dès cet âge.",
     descEn:
@@ -37,7 +37,7 @@ const PROGRAMMES = [
     badgeEn: "2 – 5 years",
     titleFr: "Maternelle",
     titleEn: "Nursery",
-    image: "/images/IMG-20260723-WA0005.jpg",
+    image: "/images/Generated_Image.png",
     descFr:
       "De 2 à 5 ans, la section maternelle (Pré-nursery et Nursery) offre à l'enfant un espace d'épanouissement complet. Jeux éducatifs, arts plastiques, éveil musical, initiation à la lecture et aux mathématiques, jardinage pédagogique : chaque journée est une aventure d'apprentissage. L'immersion bilingue est totale et naturelle.",
     descEn:
@@ -75,7 +75,7 @@ const PROGRAMMES = [
     badgeEn: "6 – 12 years · English",
     titleFr: "Primaire Anglophone",
     titleEn: "English Primary",
-    image: "/images/IMG-20260723-WA0012.jpg",
+    image: "/images/Generated_Image.png",
     descFr:
       "La section primaire anglophone propose un curriculum anglophone rigoureux, en conformité avec les directives du MINEDUB. L'enseignement se fait majoritairement en anglais, avec une place importante accordée au français comme langue seconde. Les élèves progressent vers les meilleures filières secondaires anglophones.",
     descEn:
@@ -105,7 +105,7 @@ export default function ProgrammesPage() {
       <PageHero
         title="Nos Programmes / Our Programs"
         subtitle="Un parcours complet de 0 à 12 ans"
-        image="/images/IMG-20260723-WA0008.jpg"
+        image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
           { label: "Accueil / Home", href: "/" },
           { label: "Programmes / Programs" },

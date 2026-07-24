@@ -11,31 +11,31 @@ import SectionBadge from "@/components/ui/SectionBadge";
 /* ── Photos de la galerie aperçu ─────────────────────────────── */
 const GALLERY_PHOTOS = [
   {
-    src: "/images/IMG-20260723-WA0017.jpg",
+    src: "/images/IMG-20260723-WA0024.jpg",
     altFr: "Élèves en activité pédagogique",
     altEn: "Students in learning activity",
     span: "lg:col-span-2 lg:row-span-2",
   },
   {
-    src: "/images/IMG-20260723-WA0013.jpg",
+    src: "/images/Generated_Image.png",
     altFr: "Atelier créatif à l'école",
     altEn: "Creative workshop at school",
     span: "",
   },
   {
-    src: "/images/IMG-20260723-WA0015.jpg",
+    src: "/images/pexels-ai25studioai-7342628.jpg",
     altFr: "Vie scolaire au quotidien",
     altEn: "Daily school life",
     span: "",
   },
   {
-    src: "/images/IMG-20260723-WA0022.jpg",
+    src: "/images/pexels-karola-g-7269671.jpg",
     altFr: "Activités extérieures des élèves",
     altEn: "Outdoor student activities",
     span: "",
   },
   {
-    src: "/images/IMG-20260723-WA0034.jpg",
+    src: "/images/pexels-ani-ani.jpg",
     altFr: "Groupe d'élèves heureux",
     altEn: "Group of happy students",
     span: "",

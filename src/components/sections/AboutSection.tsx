@@ -103,7 +103,7 @@ export default function AboutSection() {
               >
                 {/* Miniature */}
                 <Image
-                  src="/images/IMG-20260723-WA0006.jpg"
+                  src="/images/IMG-20260723-WA0024.jpg"
                   alt={t("playLabel")}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -177,9 +177,9 @@ export default function AboutSection() {
               {/* Bande décorative colorée sous la carte */}
               <div className="mt-10 grid grid-cols-3 gap-3">
                 {[
-                  { src: "/images/IMG-20260723-WA0007.jpg", alt: "Cours bilingue" },
-                  { src: "/images/IMG-20260723-WA0013.jpg", alt: "Activité créative" },
-                  { src: "/images/IMG-20260723-WA0022.jpg", alt: "Vie scolaire" },
+                  { src: "/images/pexels-ani-ani.jpg", alt: "Cours bilingue" },
+                  { src: "/images/IMG-20260723-WA0039.jpg", alt: "Activité créative" },
+                  { src: "/images/pexels-ai25studioai-7342628.jpg", alt: "Vie scolaire" },
                 ].map((img, i) => (
                   <div
                     key={i}

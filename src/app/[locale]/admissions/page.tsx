@@ -63,7 +63,7 @@ export default function AdmissionsPage() {
       <PageHero
         title="Admissions"
         subtitle="Rejoignez la famille des Génies d'Afrique / Join our family"
-        image="/images/IMG-20260723-WA0013.jpg"
+        image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
           { label: "Accueil / Home", href: "/" },
           { label: "Admissions" },

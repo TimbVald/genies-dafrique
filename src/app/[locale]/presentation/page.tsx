@@ -68,7 +68,7 @@ export default function PresentationPage() {
       <PageHero
         title="L'École / The School"
         subtitle="Notre mission, nos valeurs, notre histoire"
-        image="/images/IMG-20260723-WA0056.jpg"
+        image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
           { label: "Accueil / Home", href: "/" },
           { label: "L'École / The School" },
@@ -82,7 +82,7 @@ export default function PresentationPage() {
             <div className="relative">
               <div className="relative aspect-[3/4] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/IMG-20260723-WA0075.jpg"
+                  src="/images/IMG-20260723-WA0024.jpg"
                   alt="Le Directeur du Complexe Scolaire Bilingue Les Génies d'Afrique"
                   fill
                   className="object-cover object-top"
