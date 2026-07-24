@@ -12,46 +12,32 @@ import {
   type Variants,
   type Transition,
 } from "framer-motion";
-import { Play, X, ArrowRight } from "lucide-react";
+import { Play, X, ChevronDown, ArrowRight } from "lucide-react";
 
 /* ══════════════════════════════════════════════════════════════
-   SLIDES — médias plein écran (cinématographiques 16:9 / full)
+   3 SLIDES — images plein écran, aucun texte par-dessus
 ══════════════════════════════════════════════════════════════════ */
 const SLIDES = [
-  {
-    src: "/pexels-ai25studioai-7342628.jpg",
-    focus: "center 40%",
-  },
-  {
-    src: "/images/Generated_Image.png",
-    focus: "center center",
-  },
+  { src: "/images/IMG-20260723-WA0024.jpg", pos: "center 25%" },
+  { src: "/images/pexels-karola-g-7269671.jpg", pos: "center center" },
+  { src: "/images/Generated_Image.png", pos: "center center" },
 ] as const;
 
-const SLIDE_DURATION = 6000; // ms par slide
+const SLIDE_MS   = 6500;
+const TRANSITION = 1400;
 
-/* ── Transitions Framer Motion ────────────────────────────────── */
-const T_EASE: Transition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] };
+/* ── Variants ────────────────────────────────────────────────── */
+const TV: Transition = { duration: TRANSITION / 1000, ease: "easeInOut" };
 
-const SLIDE_VARIANTS: Variants = {
-  enter:  { opacity: 0, scale: 1.04 },
-  center: { opacity: 1, scale: 1,   transition: { duration: 1.4, ease: "easeInOut" } },
-  exit:   { opacity: 0, scale: 1.02, transition: { duration: 1.0, ease: "easeInOut" } },
+const SLIDE_V: Variants = {
+  enter:  { opacity: 0 },
+  center: { opacity: 1, transition: TV },
+  exit:   { opacity: 0, transition: { duration: (TRANSITION * 0.75) / 1000, ease: "easeInOut" } },
 };
 
-const TEXT_STAGGER: Variants = {
-  hidden: {},
-  show:   { transition: { staggerChildren: 0.16, delayChildren: 0.5 } },
-};
-
-const FADE_UP: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  show:   { opacity: 1, y: 0, transition: T_EASE },
-};
-
-const FADE_DOWN: Variants = {
-  hidden: { opacity: 0, y: -20, scale: 0.92 },
-  show:   { opacity: 1, y: 0,  scale: 1, transition: T_EASE },
+const CAP_V: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.6 } },
 };
 
 /* ══════════════════════════════════════════════════════════════ */
@@ -59,47 +45,43 @@ export default function HeroSection() {
   const t      = useTranslations("hero");
   const locale = useLocale();
 
-  const [current,    setCurrent]    = useState(0);
-  const [videoReady, setVideoReady] = useState(false);
-  const [showVideo,  setShowVideo]  = useState(false);
-  const [videoOpen,  setVideoOpen]  = useState(false);
-  const [paused,     setPaused]     = useState(false);
+  const [current,   setCurrent]   = useState(0);
+  const [paused,    setPaused]    = useState(false);
+  const [loaded,    setLoaded]    = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef   = useRef<HTMLVideoElement>(null);
 
   const videoSrc = locale === "en" ? "/videos/VID-EN.mp4" : "/videos/VID-FR.mp4";
 
-  /* ── Parallaxe ── */
+  /* ── Parallaxe scroll ── */
   const { scrollY } = useScroll({ target: sectionRef });
-  const bgY    = useTransform(scrollY, [0, 700], ["0%", "18%"]);
-  const textY  = useTransform(scrollY, [0, 700], ["0%", "-12%"]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const bgY = useTransform(scrollY, [0, 700], ["0%", "14%"]);
 
   /* ── Autoplay slides ── */
   const advance = useCallback(() => {
-    if (!paused && !videoReady) setCurrent((c) => (c + 1) % SLIDES.length);
-  }, [paused, videoReady]);
+    if (!paused) setCurrent((c) => (c + 1) % SLIDES.length);
+  }, [paused]);
 
   useEffect(() => {
-    const id = setInterval(advance, SLIDE_DURATION);
+    const id = setInterval(advance, SLIDE_MS);
     return () => clearInterval(id);
   }, [advance]);
 
-  /* ── Vidéo en différé ── */
+  /* ── Caption fade-in au montage ── */
   useEffect(() => {
-    const t = setTimeout(() => setShowVideo(true), 1800);
-    return () => clearTimeout(t);
+    const id = requestAnimationFrame(() => setLoaded(true));
+    return () => cancelAnimationFrame(id);
   }, []);
 
-  /* ── Lightbox escape ── */
+  /* ── Lightbox Escape ── */
   useEffect(() => {
     if (!videoOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setVideoOpen(false); };
-    document.addEventListener("keydown", onKey);
+    const fn = (e: KeyboardEvent) => { if (e.key === "Escape") setVideoOpen(false); };
+    document.addEventListener("keydown", fn);
     document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("keydown", fn);
       document.body.style.overflow = "";
     };
   }, [videoOpen]);
@@ -107,54 +89,30 @@ export default function HeroSection() {
   return (
     <>
       {/* ╔════════════════════════════════════════════════════╗
-          ║  HERO — PLEIN ÉCRAN CINÉMATOGRAPHIQUE              ║
+          ║  HERO — IMAGES PLEIN ÉCRAN (ISK-style)             ║
+          ║  Aucun texte sur les images.                       ║
           ╚════════════════════════════════════════════════════╝ */}
       <section
         ref={sectionRef}
-        className="relative w-full overflow-hidden"
-        style={{ height: "100svh", minHeight: 640, maxHeight: 1080 }}
+        className="relative w-full overflow-hidden bg-[#0D1F6B]"
+        style={{ height: "100svh", minHeight: 580, maxHeight: 1080 }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
-        aria-label={t("badge")}
+        aria-label={
+          locale === "fr"
+            ? "Bienvenue aux Génies d'Afrique"
+            : "Welcome to Les Génies d'Afrique"
+        }
       >
-
-        {/* ══ COUCHE 1 : MÉDIAS (priorité absolue) ══ */}
-
-        {/* Vidéo en arrière-plan (chargée après 1.8s) */}
-        {showVideo && (
-          <motion.div
-            className="absolute inset-0 z-0"
-            style={{ y: bgY }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: videoReady ? 1 : 0 }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
-          >
-            <video
-              ref={videoRef}
-              src={videoSrc}
-              autoPlay
-              muted
-              loop
-              playsInline
-              onCanPlay={() => setVideoReady(true)}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: "center 30%" }}
-              aria-hidden="true"
-            />
-          </motion.div>
-        )}
-
-        {/* Diaporama images (pendant chargement vidéo ou si pas de vidéo) */}
+        {/* ── Diaporama 3 images ── */}
         <motion.div
           className="absolute inset-0 z-0"
           style={{ y: bgY }}
-          animate={{ opacity: videoReady ? 0 : 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
         >
           <AnimatePresence mode="sync">
             <motion.div
               key={current}
-              variants={SLIDE_VARIANTS}
+              variants={SLIDE_V}
               initial="enter"
               animate="center"
               exit="exit"
@@ -165,7 +123,7 @@ export default function HeroSection() {
                 alt=""
                 fill
                 className="object-cover"
-                style={{ objectPosition: SLIDES[current].focus }}
+                style={{ objectPosition: SLIDES[current].pos }}
                 sizes="100vw"
                 priority={current === 0}
                 aria-hidden="true"
@@ -174,196 +132,160 @@ export default function HeroSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* ══ COUCHE 2 : OVERLAYS DÉGRADÉS (texte lisible, médias visibles) ══ */}
-
-        {/* Dégradé principal — bas lourd, haut léger */}
-        <div
-          className="absolute inset-0 z-10 pointer-events-none"
-          style={{
-            background: [
-              /* Haut : transparence totale → légère couche */
-              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.08) 25%,",
-              /* Milieu : transition douce */
-              "rgba(0,0,0,0.22) 50%,",
-              /* Bas : dégradé profond pour le texte */
-              "rgba(13,25,80,0.72) 78%, rgba(13,25,80,0.92) 100%)",
-            ].join(""),
-          }}
-        />
-
-        {/* Vignette subtile sur les côtés */}
+        {/* ── Vignette bords — profondeur uniquement ── */}
         <div
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(0,0,0,0.22) 100%)",
+              "radial-gradient(ellipse 110% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.18) 100%)",
           }}
+          aria-hidden="true"
         />
 
-        {/* ══ COUCHE 3 : CONTENU TEXTE (superposé, aéré) ══ */}
-        <motion.div
-          className="absolute inset-0 z-20 flex flex-col justify-end"
-          style={{ y: textY, opacity }}
+        {/* ── Fondu bas — pour les contrôles UI ── */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-36 z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(to top, rgba(0,0,0,0.26) 0%, transparent 100%)",
+          }}
+          aria-hidden="true"
+        />
+
+        {/* ── Dots navigation — coin bas droit ── */}
+        <div
+          className="absolute bottom-8 right-8 flex items-center gap-2 z-20"
+          role="tablist"
+          aria-label={locale === "fr" ? "Navigation diaporama" : "Slideshow navigation"}
         >
-          <div className="max-w-[1280px] mx-auto w-full px-8 lg:px-16 pb-20 lg:pb-28">
-            <motion.div
-              variants={TEXT_STAGGER}
-              initial="hidden"
-              animate="show"
-              className="max-w-3xl"
-            >
-              {/* Badge accréditation */}
-              <motion.div variants={FADE_DOWN} className="mb-6">
-                <span className="inline-flex items-center gap-2.5 px-4 py-1.5
-                  rounded-full bg-white/10 backdrop-blur-md border border-white/20
-                  text-white/90 text-xs font-bold uppercase tracking-[0.2em]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] animate-pulse" />
-                  {t("badge")}
-                </span>
-              </motion.div>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Slide ${i + 1}`}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-500 ${
+                i === current
+                  ? "w-7 h-[3px] bg-white"
+                  : "w-[3px] h-[3px] bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
+        </div>
 
-              {/* Titre H1 — grande taille, Satoshi Bold */}
-              <motion.h1
-                variants={FADE_UP}
-                className="font-display font-bold text-white leading-[1.05] mb-5
-                  drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
-                style={{ fontSize: "clamp(2.4rem, 6vw, 5.5rem)" }}
-              >
-                {t("title")}
-              </motion.h1>
-
-              {/* Sous-titre — plus léger */}
-              <motion.p
-                variants={FADE_UP}
-                className="text-white/75 leading-relaxed mb-10 max-w-xl"
-                style={{ fontSize: "clamp(1rem, 1.6vw, 1.15rem)" }}
-              >
-                {t("subtitle")}
-              </motion.p>
-
-              {/* CTA — horizontal, aéré */}
-              <motion.div
-                variants={FADE_UP}
-                className="flex flex-wrap items-center gap-4"
-              >
-                {/* Bouton primaire — rouge plein */}
-                <Link href="/admissions">
-                  <motion.span
-                    className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl
-                      bg-[#D32F2F] text-white font-bold text-sm tracking-wide
-                      shadow-[0_6px_32px_rgba(211,47,47,0.55)] cursor-pointer"
-                    whileHover={{ scale: 1.03, y: -3 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ type: "spring", stiffness: 360, damping: 22 }}
-                  >
-                    {t("ctaPrimary")}
-                    <ArrowRight size={16} />
-                  </motion.span>
-                </Link>
-
-                {/* Bouton secondaire — contour blanc */}
-                <Link href="/presentation">
-                  <motion.span
-                    className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl
-                      border-2 border-white/60 text-white font-semibold text-sm
-                      backdrop-blur-sm cursor-pointer"
-                    whileHover={{ scale: 1.03, y: -3, borderColor: "rgba(255,255,255,1)", backgroundColor: "rgba(255,255,255,0.1)" }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ type: "spring", stiffness: 360, damping: 22 }}
-                  >
-                    {t("ctaSecondary")}
-                  </motion.span>
-                </Link>
-
-                {/* Bouton vidéo — pill transparent */}
-                <motion.button
-                  onClick={() => setVideoOpen(true)}
-                  className="inline-flex items-center gap-3 text-white/80
-                    hover:text-white transition-colors duration-200 group"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 360, damping: 22 }}
-                  aria-label={locale === "fr" ? "Voir la vidéo de présentation" : "Watch our video"}
-                >
-                  <span className="relative flex items-center justify-center
-                    w-12 h-12 rounded-full border-2 border-white/50
-                    bg-white/10 group-hover:bg-white/20 group-hover:border-white
-                    transition-all duration-300">
-                    <Play size={14} fill="white" className="ml-0.5 text-white" />
-                    {/* Pulse ring */}
-                    <span className="absolute inset-0 rounded-full border-2
-                      border-white/30 animate-ping" />
-                  </span>
-                  <span className="text-sm font-medium">
-                    {locale === "fr" ? "Voir la vidéo" : "Watch Video"}
-                  </span>
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* ══ COUCHE 4 : ÉLÉMENTS BAS D'ÉCRAN ══ */}
-
-        {/* Dots slides (seulement sans vidéo) */}
-        {!videoReady && (
-          <div
-            className="absolute bottom-8 right-8 lg:right-16 flex gap-2 z-20"
-            role="tablist"
-            aria-label="Diaporama"
-          >
-            {SLIDES.map((_, i) => (
-              <button
-                key={i}
-                role="tab"
-                aria-selected={i === current}
-                aria-label={`Slide ${i + 1}`}
-                onClick={() => setCurrent(i)}
-                className={`rounded-full transition-all duration-500 ${
-                  i === current
-                    ? "w-8 h-2 bg-white"
-                    : "w-2 h-2 bg-white/30 hover:bg-white/60"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Indicateur de scroll — bas centre */}
+        {/* ── Scroll indicator — bas centre ── */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20
-            flex flex-col items-center gap-2 text-white/40"
+          className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 text-white/35"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 0.8 }}
+          transition={{ delay: 2.2, duration: 0.8 }}
+          aria-hidden="true"
         >
-          {/* Souris animée SVG */}
-          <div className="w-[22px] h-[34px] rounded-full border-[1.5px] border-white/35
-            flex justify-center pt-[6px]">
-            <motion.div
-              className="w-[4px] h-[6px] rounded-full bg-white/60"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
-          <span className="text-[9px] font-medium uppercase tracking-[0.22em] mt-0.5">
-            {t("scrollHint")}
-          </span>
+          <ChevronDown size={20} className="animate-bounce" strokeWidth={1.5} />
         </motion.div>
 
-        {/* Barre de progression slide */}
-        {!videoReady && (
-          <div className="absolute bottom-0 left-0 right-0 h-[2px] z-20 bg-white/8">
-            <motion.div
-              key={current}
-              className="h-full bg-white/40"
-              initial={{ scaleX: 0, originX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
-            />
-          </div>
-        )}
+        {/* ── Barre de progression slide ── */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[2px] z-20 bg-black/15"
+          aria-hidden="true"
+        >
+          <motion.div
+            key={current}
+            className="h-full bg-white/45"
+            initial={{ scaleX: 0, originX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
+          />
+        </div>
       </section>
+
+      {/* ╔════════════════════════════════════════════════════╗
+          ║  CAPTION BAND — sous le hero, fond bleu marine     ║
+          ║  Titre · Sous-titre · CTAs · Bouton vidéo          ║
+          ╚════════════════════════════════════════════════════╝ */}
+      <motion.div
+        className="bg-[#0D1F6B] text-white"
+        variants={CAP_V}
+        initial="hidden"
+        animate={loaded ? "show" : "hidden"}
+      >
+        <div className="max-w-[1280px] mx-auto px-8 lg:px-16 py-8 lg:py-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+
+            {/* Titre + sous-titre */}
+            <div className="flex-1 min-w-0">
+              <h1
+                className="font-display font-bold text-white leading-tight mb-2"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}
+              >
+                {t("title")}
+              </h1>
+              <p
+                className="text-white/60 leading-relaxed max-w-2xl"
+                style={{ fontSize: "clamp(0.875rem, 1.4vw, 1rem)" }}
+              >
+                {t("subtitle")}
+              </p>
+            </div>
+
+            {/* Actions droite */}
+            <div className="flex items-center gap-3 flex-shrink-0 flex-wrap">
+              {/* CTA principal */}
+              <Link href="/admissions">
+                <motion.span
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
+                    bg-[#D32F2F] text-white font-bold text-sm tracking-wide
+                    shadow-[0_4px_20px_rgba(211,47,47,0.45)] cursor-pointer whitespace-nowrap"
+                  whileHover={{ scale: 1.03, y: -1 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 24 }}
+                >
+                  {t("ctaPrimary")}
+                  <ArrowRight size={15} />
+                </motion.span>
+              </Link>
+
+              {/* CTA secondaire */}
+              <Link href="/presentation">
+                <motion.span
+                  className="inline-flex items-center px-6 py-3 rounded-lg
+                    border border-white/30 text-white/80 font-medium text-sm
+                    hover:border-white/60 hover:text-white cursor-pointer whitespace-nowrap
+                    transition-colors duration-200"
+                  whileHover={{ scale: 1.03, y: -1 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 24 }}
+                >
+                  {t("ctaSecondary")}
+                </motion.span>
+              </Link>
+
+              {/* Bouton Voir la vidéo — dans la caption band, pas sur le hero */}
+              <motion.button
+                onClick={() => setVideoOpen(true)}
+                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg
+                  bg-white/10 hover:bg-white/18 border border-white/20
+                  hover:border-white/40 text-white/75 hover:text-white
+                  font-medium text-sm transition-all duration-200 cursor-pointer
+                  whitespace-nowrap"
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 380, damping: 24 }}
+                aria-label={
+                  locale === "fr"
+                    ? "Voir la vidéo de présentation"
+                    : "Watch our presentation video"
+                }
+              >
+                <span className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                  <Play size={11} fill="white" className="text-white ml-0.5" />
+                </span>
+                {locale === "fr" ? "Voir la vidéo" : "Watch Video"}
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* ╔════════════════════════════════════════════════════╗
           ║  LIGHTBOX VIDÉO                                    ║
@@ -371,38 +293,43 @@ export default function HeroSection() {
       <AnimatePresence>
         {videoOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 bg-black/95 z-[100]
+              flex items-center justify-center p-4 sm:p-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             onClick={() => setVideoOpen(false)}
             role="dialog"
             aria-modal="true"
-            aria-label={locale === "fr" ? "Vidéo de présentation" : "Presentation video"}
+            aria-label={
+              locale === "fr" ? "Vidéo de présentation" : "Presentation video"
+            }
           >
             <motion.div
               className="relative w-full max-w-5xl aspect-video"
-              initial={{ scale: 0.92, opacity: 0 }}
+              initial={{ scale: 0.93, opacity: 0 }}
               animate={{ scale: 1,    opacity: 1 }}
-              exit={{ scale: 0.94,    opacity: 0 }}
-              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ scale: 0.95,    opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
               <video
                 src={videoSrc}
                 controls
                 autoPlay
-                className="w-full h-full rounded-2xl shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
+                className="w-full h-full rounded-2xl
+                  shadow-[0_40px_100px_rgba(0,0,0,0.7)]"
               />
             </motion.div>
 
             <button
               onClick={() => setVideoOpen(false)}
               aria-label={locale === "fr" ? "Fermer" : "Close"}
-              className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10
-                hover:bg-white/25 backdrop-blur-sm border border-white/20
-                flex items-center justify-center text-white transition-colors duration-200"
+              className="absolute top-5 right-5 w-11 h-11 rounded-full
+                bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20
+                flex items-center justify-center text-white
+                transition-colors duration-200"
             >
               <X size={18} />
             </button>
