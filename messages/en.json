@@ -94,38 +94,51 @@
     ]
   },
   "programs": {
-    "badge": "Programs",
-    "title": "A Complete Journey from 0 to 12 Years",
-    "subtitle": "Each cycle is designed to develop your child's cognitive, linguistic and social skills.",
-    "cta": "Explore",
-    "items": [
+    "badge": "Our Programs",
+    "title": "Two paths to excellence, one shared goal",
+    "subtitle": "A complete bilingual journey from day care to primary, in French and English, shaping tomorrow's leaders.",
+    "cta": "Learn More",
+    "ctaAdmissions": "Enroll Now",
+    "levels": "Levels",
+    "strengths": "Key Strengths",
+    "cards": [
       {
-        "id": "creche",
-        "badge": "0 – 2 years",
-        "title": "Day Care",
-        "body": "A safe and affectionate environment for toddlers. Sensory development, motor skills and first bilingual learning.",
-        "image": "/images/IMG-20260723-WA0004.jpg"
+        "id": "francophone",
+        "flag": "🇫🇷",
+        "lang": "Français",
+        "badge": "French Section",
+        "title": "Francophone Programme",
+        "subtitle": "From Day Care to CM2",
+        "description": "Our French section follows the official MINEDUB curriculum, enriched with complementary content and progressive English immersion. A rigorous, caring and stimulating environment for every student.",
+        "image": "/images/IMG-20260723-WA0007.jpg",
+        "levels": ["Day Care (0–2 yrs)", "Nursery (2–5 yrs)", "CP · CE1 · CE2", "CM1 · CM2"],
+        "strengths": [
+          "Enhanced official MINEDUB curriculum",
+          "Intensive English from Grade 1",
+          "Sciences, maths & expression",
+          "Farming projects & entrepreneurship"
+        ],
+        "href": "/programmes#primaire-fr",
+        "accentColor": "#1A3A8F"
       },
       {
-        "id": "maternelle",
-        "badge": "2 – 5 years",
-        "title": "Nursery",
-        "body": "Pre-Nursery and Nursery to build the foundations of learning in a joyful and caring environment.",
-        "image": "/images/IMG-20260723-WA0005.jpg"
-      },
-      {
-        "id": "primaire-fr",
-        "badge": "6 – 12 years · French",
-        "title": "French Primary",
-        "body": "Official Cameroonian curriculum enhanced with progressive English immersion from Grade 1.",
-        "image": "/images/IMG-20260723-WA0007.jpg"
-      },
-      {
-        "id": "primaire-en",
-        "badge": "6 – 12 years · English",
-        "title": "English Primary",
-        "body": "Rigorous anglophone curriculum with French introduction, preparing students for the best secondary schools.",
-        "image": "/images/IMG-20260723-WA0012.jpg"
+        "id": "anglophone",
+        "flag": "🇬🇧",
+        "lang": "English",
+        "badge": "Anglophone Section",
+        "title": "Anglophone Programme",
+        "subtitle": "From Nursery to Class 6",
+        "description": "Our anglophone section offers a rigorous curriculum fully aligned with MINEDUB guidelines. Teaching is conducted primarily in English, with French as a strong second language. Students are prepared for the best secondary schools.",
+        "image": "/images/IMG-20260723-WA0012.jpg",
+        "levels": ["Nursery (2–5 yrs)", "Class 1 · Class 2", "Class 3 · Class 4", "Class 5 · Class 6"],
+        "strengths": [
+          "Rigorous MINEDUB anglophone curriculum",
+          "French as a strong second language",
+          "English literacy & numeracy focus",
+          "Cultural openness & global outlook"
+        ],
+        "href": "/programmes#primaire-en",
+        "accentColor": "#D32F2F"
       }
     ]
   },

@@ -94,38 +94,51 @@
     ]
   },
   "programs": {
-    "badge": "Programmes",
-    "title": "Un parcours complet de 0 à 12 ans",
-    "subtitle": "Chaque cycle est conçu pour développer les compétences cognitives, linguistiques et sociales de votre enfant.",
-    "cta": "Découvrir",
-    "items": [
+    "badge": "Nos Programmes",
+    "title": "Deux voies d'excellence, un seul objectif",
+    "subtitle": "Un parcours bilingue complet de la crèche au CM2, en français et en anglais, pour former les leaders de demain.",
+    "cta": "En savoir plus",
+    "ctaAdmissions": "S'inscrire maintenant",
+    "levels": "Niveaux",
+    "strengths": "Points forts",
+    "cards": [
       {
-        "id": "creche",
-        "badge": "0 – 2 ans",
-        "title": "Crèche",
-        "body": "Un environnement sécurisé et affectif pour les tout-petits. Éveil sensoriel, motricité et premiers apprentissages bilingues.",
-        "image": "/images/IMG-20260723-WA0004.jpg"
+        "id": "francophone",
+        "flag": "🇫🇷",
+        "lang": "Français",
+        "badge": "Section Francophone",
+        "title": "Programme Francophone",
+        "subtitle": "De la Crèche au CM2",
+        "description": "Notre section francophone suit les programmes officiels du Ministère de l'Éducation de Base du Cameroun, enrichis de contenus pédagogiques complémentaires et d'une immersion progressive en anglais. Un cadre rigoureux, bienveillant et stimulant pour chaque élève.",
+        "image": "/images/IMG-20260723-WA0007.jpg",
+        "levels": ["Crèche (0–2 ans)", "Maternelle (2–5 ans)", "CP · CE1 · CE2", "CM1 · CM2"],
+        "strengths": [
+          "Programme officiel MINEDUB enrichi",
+          "Anglais intensif dès le CP",
+          "Sciences, mathématiques & expression",
+          "Projets agricoles & entrepreneuriat"
+        ],
+        "href": "/programmes#primaire-fr",
+        "accentColor": "#1A3A8F"
       },
       {
-        "id": "maternelle",
-        "badge": "2 – 5 ans",
-        "title": "Maternelle",
-        "body": "Pré-nursery et Nursery pour poser les bases de l'apprentissage dans un cadre joyeux et bienveillant.",
-        "image": "/images/IMG-20260723-WA0005.jpg"
-      },
-      {
-        "id": "primaire-fr",
-        "badge": "6 – 12 ans · Français",
-        "title": "Primaire Francophone",
-        "body": "Programme officiel camerounais enrichi, avec immersion progressive en anglais dès le CP.",
-        "image": "/images/IMG-20260723-WA0007.jpg"
-      },
-      {
-        "id": "primaire-en",
-        "badge": "6 – 12 ans · Anglais",
-        "title": "Primaire Anglophone",
-        "body": "Curriculum anglophone rigoureux avec initiation au français, préparant aux meilleurs établissements secondaires.",
-        "image": "/images/IMG-20260723-WA0012.jpg"
+        "id": "anglophone",
+        "flag": "🇬🇧",
+        "lang": "English",
+        "badge": "Anglophone Section",
+        "title": "Anglophone Programme",
+        "subtitle": "From Nursery to Class 6",
+        "description": "Our anglophone section offers a rigorous curriculum fully aligned with MINEDUB guidelines. Teaching is conducted primarily in English, with French as a strong second language. Students are prepared for the best anglophone secondary schools in Cameroon and beyond.",
+        "image": "/images/IMG-20260723-WA0012.jpg",
+        "levels": ["Nursery (2–5 yrs)", "Class 1 · Class 2", "Class 3 · Class 4", "Class 5 · Class 6"],
+        "strengths": [
+          "Rigorous MINEDUB anglophone curriculum",
+          "French as a strong second language",
+          "English literacy & numeracy focus",
+          "Cultural openness & global outlook"
+        ],
+        "href": "/programmes#primaire-en",
+        "accentColor": "#D32F2F"
       }
     ]
   },
