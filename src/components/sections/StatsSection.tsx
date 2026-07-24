@@ -14,8 +14,8 @@ function AnimatedStat({ value, label }: { value: string; label: string }) {
 
     const numeric = parseInt(value.replace(/\D/g, ""), 10);
     if (isNaN(numeric)) {
-      // Valeur non numérique (ex: "FR+EN") → afficher directement
-      setDisplay(value);
+      // Valeur non numérique (ex: "FR+EN") → afficher via RAF pour éviter setState direct dans effect
+      requestAnimationFrame(() => setDisplay(value));
       return;
     }
 

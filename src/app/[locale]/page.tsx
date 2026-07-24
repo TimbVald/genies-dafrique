@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import HeroSection          from "@/components/sections/HeroSection";
 import TrustBar             from "@/components/sections/TrustBar";
 import AboutSection         from "@/components/sections/AboutSection";

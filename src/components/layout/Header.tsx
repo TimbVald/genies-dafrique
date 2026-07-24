@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { key: "home",       href: "/" },
@@ -38,7 +38,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const altLocale = locale === "fr" ? "en" : "fr";
   const altHref   = locale === "fr" ? `/en` : `/`;
 
   return (

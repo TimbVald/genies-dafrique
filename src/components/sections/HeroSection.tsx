@@ -7,10 +7,10 @@ import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 
 const SLIDES = [
-  "/images/IMG-20260723-WA0006.jpg",
-  "/images/IMG-20260723-WA0039.jpg",
-  "/images/IMG-20260723-WA0012.jpg",
-  "/images/IMG-20260722-WA0048.jpg",
+  "/images/Generated_Image.png",
+  "/images/pexels-ai25studioai-7342628.jpg",
+  "/images/IMG-20260723-WA0024.jpg",
+  "/images/pexels-karola-g-7269671.jpg",
 ];
 
 export default function HeroSection() {
@@ -19,11 +19,15 @@ export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Déclencher l'animation d'entrée via RAF pour éviter setState direct dans effect
+    const raf = requestAnimationFrame(() => setMounted(true));
     const id = setInterval(() => {
       setCurrent((c) => (c + 1) % SLIDES.length);
     }, 5000);
-    return () => clearInterval(id);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(id);
+    };
   }, []);
 
   return (
