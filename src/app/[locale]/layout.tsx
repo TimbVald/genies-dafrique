@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Montserrat } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,25 +9,38 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFab from "@/components/ui/WhatsAppFab";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
+/* ── Polices ────────────────────────────────────────────────── */
+/*
+ * Satoshi Bold est chargée localement via @font-face dans globals.css
+ * (public/fonts/Satoshi-Bold.woff2) — pas besoin de next/font ici.
+ *
+ * Montserrat reste pour les corps de texte, navigation, boutons, labels.
+ */
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-montserrat",
   display: "swap",
+  preload: true,
 });
 
+/* ── Params statiques ───────────────────────────────────────── */
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+/* ── Viewport (séparé de metadata — Next.js 15+) ───────────── */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,        // Permet le zoom d'accessibilité
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#1A3A8F" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0D1F6B" },
+  ],
+};
+
+/* ── Metadata dynamique ────────────────────────────────────── */
 export async function generateMetadata({
   params,
 }: {
@@ -36,20 +49,59 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  const baseUrl = "https://lesgeniesdafrique.cm";
+
   return {
+    metadataBase: new URL(baseUrl),
     title: {
       default: t("siteName"),
       template: `%s | ${t("siteNameShort")}`,
     },
     description: t("description"),
+    keywords: [
+      "école bilingue Yaoundé",
+      "complexe scolaire Nkozoa",
+      "école maternelle Cameroun",
+      "école primaire bilingue",
+      "MINEDUB",
+      "bilingual school Yaoundé",
+    ],
+    authors: [{ name: "Les Génies d'Afrique" }],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
     openGraph: {
       siteName: t("siteName"),
       locale: locale === "fr" ? "fr_FR" : "en_US",
+      alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
       type: "website",
+      images: [
+        {
+          url: "/images/IMG-20260723-WA0006.jpg",
+          width: 1200,
+          height: 630,
+          alt: t("siteName"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("siteName"),
+      description: t("description"),
+    },
+    alternates: {
+      canonical: locale === "fr" ? baseUrl : `${baseUrl}/en`,
+      languages: {
+        "fr": baseUrl,
+        "en": `${baseUrl}/en`,
+      },
     },
   };
 }
 
+/* ── Layout ─────────────────────────────────────────────────── */
 export default async function LocaleLayout({
   children,
   params,
@@ -68,12 +120,22 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${playfair.variable} ${montserrat.variable}`}
+      className={montserrat.variable}
+      suppressHydrationWarning
     >
-      <body className="antialiased">
+      <body className="antialiased bg-white text-[#1A202C] overflow-x-hidden">
+        {/* ── Skip link accessibilité ── */}
+        <a href="#main-content" className="skip-link">
+          {locale === "fr" ? "Aller au contenu principal" : "Skip to main content"}
+        </a>
+
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main>{children}</main>
+
+          <main id="main-content" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+
           <Footer />
           <WhatsAppFab />
         </NextIntlClientProvider>

@@ -16,7 +16,11 @@
     "enroll": "S'inscrire",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "language": "English"
+    "language": "English",
+    "subMission": "Notre Mission",
+    "subHistory": "Notre Histoire",
+    "subValues": "Nos Valeurs",
+    "subTeam": "Notre Équipe"
   },
   "announcement": "📢 Les inscriptions sont ouvertes — Du lundi au vendredi 8h–13h",
   "hero": {

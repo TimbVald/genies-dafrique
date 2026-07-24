@@ -16,7 +16,11 @@
     "enroll": "Enroll Now",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Français"
+    "language": "Français",
+    "subMission": "Our Mission",
+    "subHistory": "Our History",
+    "subValues": "Our Values",
+    "subTeam": "Our Team"
   },
   "announcement": "📢 Enrollment is now open — Monday to Friday 8AM–1PM",
   "hero": {

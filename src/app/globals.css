@@ -1,92 +1,226 @@
 @import "tailwindcss";
 
-/* ── Design Tokens ─────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   POLICES LOCALES — SATOSHI (display / titres)
+══════════════════════════════════════════════════════════════════ */
+
+/* Satoshi Bold — titres principaux */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('/fonts/Satoshi-Bold.woff')  format('woff'),
+       url('/fonts/Satoshi-Bold.ttf')   format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Satoshi Bold Italic — citations, slogans */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Satoshi-BoldItalic.woff')  format('woff'),
+       url('/fonts/Satoshi-BoldItalic.ttf')   format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════════════════════════════════ */
 :root {
   /* Couleurs primaires */
-  --color-blue-primary: #1A3A8F;
-  --color-blue-dark:    #0D1F6B;
-  --color-blue-light:   #2D5BE3;
-  --color-red-primary:  #D32F2F;
-  --color-red-dark:     #B71C1C;
-  --color-white:        #FFFFFF;
-  --color-gold:         #F5A623;
+  --color-blue:        #1A3A8F;
+  --color-blue-dark:   #0D1F6B;
+  --color-blue-mid:    #0F2A7A;
+  --color-blue-light:  #2D5BE3;
+  --color-blue-pale:   #EEF2FF;
+  --color-red:         #D32F2F;
+  --color-red-dark:    #B71C1C;
+  --color-red-bg:      #FFF0F0;
+  --color-gold:        #F5A623;
+  --color-gold-bg:     #FFF8EE;
+  --color-white:       #FFFFFF;
+  --color-green:       #2E7D32;
 
-  /* Couleurs neutres */
-  --color-grey-bg:      #F7F9FC;
-  --color-grey-text:    #4A5568;
-  --color-grey-title:   #1A202C;
-  --color-grey-border:  #E2E8F0;
-  --color-green:        #2E7D32;
+  /* Neutres */
+  --color-grey-50:     #F7F9FC;
+  --color-grey-100:    #EDF2F7;
+  --color-grey-200:    #E2E8F0;
+  --color-grey-400:    #A0AEC0;
+  --color-grey-600:    #4A5568;
+  --color-grey-900:    #1A202C;
 
-  /* Polices */
-  --font-display: var(--font-playfair), Georgia, serif;
-  --font-body:    var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
+  /* Typographie
+     - Satoshi Bold  → display (titres H1–H3, badges, stats)
+     - Montserrat    → body (paragraphes, navigation, boutons, labels) */
+  --font-display: 'Satoshi', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    var(--font-montserrat), 'Helvetica Neue', Arial, sans-serif;
 
-  /* Rayons */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  /* Rayons harmonisés */
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  20px;
+  --r-2xl: 24px;
+  --r-3xl: 32px;
+  --r-full: 9999px;
 
-  /* Ombres */
-  --shadow-card:       0 4px 24px rgba(26,58,143,0.08);
-  --shadow-card-hover: 0 12px 40px rgba(26,58,143,0.15);
-  --shadow-btn-red:    0 4px 15px rgba(211,47,47,0.35);
-  --shadow-header:     0 2px 20px rgba(0,0,0,0.08);
+  /* Ombres cohérentes */
+  --shadow-xs:     0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:     0 4px 20px rgba(26,58,143,0.08);
+  --shadow-lg:     0 8px 32px rgba(26,58,143,0.12);
+  --shadow-xl:     0 16px 48px rgba(26,58,143,0.16);
+  --shadow-red:    0 4px 18px rgba(211,47,47,0.35);
+  --shadow-blue:   0 4px 18px rgba(26,58,143,0.30);
+  --shadow-header: 0 2px 20px rgba(0,0,0,0.08);
 
-  /* Transitions */
-  --transition-fast: 200ms ease;
-  --transition-base: 300ms cubic-bezier(0.4,0,0.2,1);
-  --transition-slow: 600ms ease;
+  /* Transitions uniformes */
+  --t-fast:   150ms ease;
+  --t-base:   250ms cubic-bezier(0.4,0,0.2,1);
+  --t-slow:   400ms cubic-bezier(0.4,0,0.2,1);
+  --t-spring: 500ms cubic-bezier(0.34,1.56,0.64,1);
+
+  /* Layout */
+  --header-h: 72px;
+  --max-w:    1280px;
+  --px-sm:    1.5rem;   /* 24px */
+  --px-md:    2.5rem;   /* 40px */
+  --px-lg:    5rem;     /* 80px */
 }
 
-/* ── Tailwind v4 theme extension ───────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   TAILWIND v4 — THEME EXTENSION
+══════════════════════════════════════════════════════════════════ */
 @theme inline {
-  --font-sans:    var(--font-body);
-  --font-display: var(--font-display);
+  --font-sans:          var(--font-body);
+  --font-display:       var(--font-display);
+  /* Satoshi disponible directement via class font-satoshi */
+  --font-satoshi:       'Satoshi', 'Helvetica Neue', Arial, sans-serif;
 
-  --color-brand-blue:       #1A3A8F;
-  --color-brand-blue-dark:  #0D1F6B;
-  --color-brand-blue-light: #2D5BE3;
-  --color-brand-red:        #D32F2F;
-  --color-brand-red-dark:   #B71C1C;
-  --color-brand-gold:       #F5A623;
-  --color-brand-grey-bg:    #F7F9FC;
-  --color-brand-grey-text:  #4A5568;
-  --color-brand-grey-title: #1A202C;
+  /* Couleurs brand */
+  --color-brand-blue:        #1A3A8F;
+  --color-brand-blue-dark:   #0D1F6B;
+  --color-brand-blue-light:  #2D5BE3;
+  --color-brand-blue-pale:   #EEF2FF;
+  --color-brand-red:         #D32F2F;
+  --color-brand-red-dark:    #B71C1C;
+  --color-brand-gold:        #F5A623;
+  --color-brand-grey-bg:     #F7F9FC;
+  --color-brand-grey-text:   #4A5568;
+  --color-brand-grey-title:  #1A202C;
+  --color-brand-grey-border: #E2E8F0;
 }
 
-/* ── Base styles ───────────────────────────────────────────── */
-* {
-  box-sizing: border-box;
-}
+/* ═══════════════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
+  /* Compenser le header sticky sur les ancres */
+  scroll-padding-top: calc(var(--header-h) + 24px);
+  /* Empêche le shift de scrollbar */
+  scrollbar-gutter: stable;
+  text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-grey-title);
+  color: var(--color-grey-900);
   background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  line-height: 1.2;
-}
-
-p {
+  overflow-x: hidden;
   line-height: 1.7;
 }
 
-/* ── Scroll animation classes ──────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Satoshi', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;  /* Légèrement resserré — caractéristique Satoshi */
+}
+
+/* Améliorer la lisibilité des paragraphes */
+p { line-height: 1.75; max-width: 75ch; }
+/* Retirer la contrainte sur les wrappers */
+.prose-container p, [data-section] p { max-width: none; }
+
+img, video { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOCUS VISIBLE — WCAG 2.1 AA
+══════════════════════════════════════════════════════════════════ */
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* Focus sur fond sombre */
+.focus-invert:focus-visible {
+  outline-color: var(--color-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SÉLECTION DE TEXTE
+══════════════════════════════════════════════════════════════════ */
+::selection {
+  background: #1A3A8F22;
+  color: var(--color-blue);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SKIP LINK (ACCESSIBILITÉ)
+══════════════════════════════════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-blue);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  transition: top var(--t-fast);
+}
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: 3px solid var(--color-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR PERSONNALISÉE
+══════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar              { width: 6px; height: 6px; }
+::-webkit-scrollbar-track        { background: var(--color-grey-50); }
+::-webkit-scrollbar-thumb        {
+  background: var(--color-blue);
+  border-radius: 3px;
+  transition: background var(--t-fast);
+}
+::-webkit-scrollbar-thumb:hover  { background: var(--color-blue-dark); }
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS DE DÉFILEMENT
+══════════════════════════════════════════════════════════════════ */
 .fade-in-up {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(28px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
 }
 .fade-in-up.visible {
   opacity: 1;
@@ -96,29 +230,148 @@ p {
 .fade-in {
   opacity: 0;
   transition: opacity 0.6s ease;
+  will-change: opacity;
 }
-.fade-in.visible {
-  opacity: 1;
-}
+.fade-in.visible { opacity: 1; }
 
-/* ── Custom scrollbar ──────────────────────────────────────── */
-::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: var(--color-grey-bg); }
-::-webkit-scrollbar-thumb  { background: var(--color-blue-primary); border-radius: 3px; }
+/* Délais staggered utilitaires */
+.delay-100 { transition-delay: 100ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
 
-/* ── WhatsApp FAB ──────────────────────────────────────────── */
-@keyframes pulse-green {
+/* ═══════════════════════════════════════════════════════════════
+   WHATSAPP FAB
+══════════════════════════════════════════════════════════════════ */
+@keyframes pulse-whatsapp {
   0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-  50%       { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  60%       { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
 }
-.whatsapp-fab { animation: pulse-green 2.5s infinite; }
+.whatsapp-fab { animation: pulse-whatsapp 3s infinite; }
 
-/* ── Respect reduced-motion preference ────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .fade-in-up, .fade-in {
-    opacity: 1;
-    transform: none;
-    transition: none;
+/* ═══════════════════════════════════════════════════════════════
+   COMPOSANTS GLOBAUX RÉUTILISABLES
+══════════════════════════════════════════════════════════════════ */
+
+/* Bouton primaire rouge */
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--r-lg);
+  background: var(--color-red);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-red);
+  transition: background var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+.btn-red:hover {
+  background: var(--color-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(211,47,47,0.45);
+}
+.btn-red:active { transform: translateY(0); }
+
+/* Bouton secondaire bleu contour */
+.btn-outline-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8125rem 1.875rem;
+  border-radius: var(--r-lg);
+  border: 2px solid var(--color-blue);
+  color: var(--color-blue);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  background: transparent;
+  transition: background var(--t-base), color var(--t-base), transform var(--t-base);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-outline-blue:hover {
+  background: var(--color-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Carte standard */
+.card {
+  background: white;
+  border-radius: var(--r-2xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-grey-200);
+  overflow: hidden;
+  transition: box-shadow var(--t-base), transform var(--t-base);
+}
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Section padding uniforme */
+.section-py  { padding-top: 6rem;  padding-bottom: 6rem; }
+.section-py-lg { padding-top: 8rem; padding-bottom: 8rem; }
+
+@media (max-width: 768px) {
+  .section-py    { padding-top: 4rem;  padding-bottom: 4rem; }
+  .section-py-lg { padding-top: 5rem;  padding-bottom: 5rem; }
+}
+
+/* Wrapper max-width centré */
+.container-main {
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--px-sm);
+  padding-right: var(--px-sm);
+}
+@media (min-width: 768px) {
+  .container-main {
+    padding-left: var(--px-md);
+    padding-right: var(--px-md);
   }
-  .whatsapp-fab { animation: none; }
+}
+@media (min-width: 1024px) {
+  .container-main {
+    padding-left: var(--px-lg);
+    padding-right: var(--px-lg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT
+══════════════════════════════════════════════════════════════════ */
+@media print {
+  .no-print, header, footer, .whatsapp-fab { display: none !important; }
+  body { font-size: 12pt; color: black; background: white; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 10pt; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fade-in-up, .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .whatsapp-fab { animation: none !important; }
 }
