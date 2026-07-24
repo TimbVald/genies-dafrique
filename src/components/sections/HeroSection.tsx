@@ -15,24 +15,44 @@ import {
 import { Play, X, ChevronDown, ArrowRight } from "lucide-react";
 
 /* ══════════════════════════════════════════════════════════════
-   3 SLIDES — images plein écran, aucun texte par-dessus
+   3 SLIDES — images portrait affichées en plein écran desktop
+   Chaque slide a : position sujet, zoom Ken Burns, durée
 ══════════════════════════════════════════════════════════════════ */
 const SLIDES = [
-  { src: "/images/IMG-20260723-WA0024.jpg", pos: "center 25%" },
-  { src: "/images/pexels-karola-g-7269671.jpg", pos: "center center" },
-  { src: "/images/Generated_Image.png", pos: "center center" },
+  {
+    src:      "/images/pexels-karola-g-7269671.jpg",
+    // Image portrait : enfant avec plante → sujet centré haut
+    pos:      "center 20%",
+    // Ken Burns : zoom légèrement vers le bas (suit le sujet)
+    kenFrom:  "scale(1.08) translateY(-2%)",
+    kenTo:    "scale(1.0)  translateY(2%)",
+  },
+  {
+    src:      "/images/pexels-ani-ani.jpg",
+    // Image portrait : enfant avec poissons → sujet haut-centre
+    pos:      "center 15%",
+    kenFrom:  "scale(1.06) translateY(-1%)",
+    kenTo:    "scale(1.0)  translateY(3%)",
+  },
+  {
+    src:      "/images/pexels-ai25studioai-7342628.jpg",
+    // Image portrait : enfant avec cubes → sujet centre
+    pos:      "center 30%",
+    kenFrom:  "scale(1.07) translateY(0%)",
+    kenTo:    "scale(1.0)  translateY(4%)",
+  },
 ] as const;
 
-const SLIDE_MS   = 6500;
-const TRANSITION = 1400;
+const SLIDE_MS   = 7000;
+const TRANSITION = 1600;
 
-/* ── Variants ────────────────────────────────────────────────── */
+/* ── Variants crossfade ──────────────────────────────────────── */
 const TV: Transition = { duration: TRANSITION / 1000, ease: "easeInOut" };
 
 const SLIDE_V: Variants = {
   enter:  { opacity: 0 },
   center: { opacity: 1, transition: TV },
-  exit:   { opacity: 0, transition: { duration: (TRANSITION * 0.75) / 1000, ease: "easeInOut" } },
+  exit:   { opacity: 0, transition: { duration: (TRANSITION * 0.7) / 1000, ease: "easeInOut" } },
 };
 
 const CAP_V: Variants = {
@@ -118,16 +138,24 @@ export default function HeroSection() {
               exit="exit"
               className="absolute inset-0"
             >
-              <Image
-                src={SLIDES[current].src}
-                alt=""
-                fill
-                className="object-cover"
-                style={{ objectPosition: SLIDES[current].pos }}
-                sizes="100vw"
-                priority={current === 0}
-                aria-hidden="true"
-              />
+              {/* Wrapper Ken Burns : zoom lent sur toute la durée du slide */}
+              <motion.div
+                className="absolute inset-0"
+                initial={{ transform: SLIDES[current].kenFrom }}
+                animate={{ transform: SLIDES[current].kenTo }}
+                transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
+              >
+                <Image
+                  src={SLIDES[current].src}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: SLIDES[current].pos }}
+                  sizes="100vw"
+                  priority={current === 0}
+                  aria-hidden="true"
+                />
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </motion.div>
