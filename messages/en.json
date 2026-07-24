@@ -52,12 +52,45 @@
     "since": "Founded in 2024"
   },
   "stats": {
-    "title": "Les Génies d'Afrique by the Numbers",
+    "badge": "Les Génies d'Afrique by the Numbers",
+    "title": "Numbers that speak for themselves",
+    "subtitle": "A school that grows, a community that commits.",
     "items": [
-      { "value": "4",    "label": "School levels" },
-      { "value": "2",    "label": "Primary sections" },
-      { "value": "FR+EN","label": "Full bilingualism" },
-      { "value": "2025", "label": "MINEDUB Accreditation" }
+      {
+        "value": "120",
+        "suffix": "+",
+        "label": "Enrolled students",
+        "sublabel": "Élèves inscrits",
+        "icon": "Users"
+      },
+      {
+        "value": "12",
+        "suffix": "",
+        "label": "Qualified teachers",
+        "sublabel": "Enseignants qualifiés",
+        "icon": "GraduationCap"
+      },
+      {
+        "value": "2",
+        "suffix": "",
+        "label": "Years of experience",
+        "sublabel": "Années d'expérience",
+        "icon": "Calendar"
+      },
+      {
+        "value": "6",
+        "suffix": "",
+        "label": "School clubs",
+        "sublabel": "Clubs scolaires",
+        "icon": "Star"
+      },
+      {
+        "value": "10",
+        "suffix": "+",
+        "label": "Extracurricular activities",
+        "sublabel": "Activités extrascolaires",
+        "icon": "Zap"
+      }
     ]
   },
   "programs": {

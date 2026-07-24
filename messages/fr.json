@@ -52,12 +52,45 @@
     "since": "Fondé en 2024"
   },
   "stats": {
-    "title": "Les Génies d'Afrique en chiffres",
+    "badge": "Les Génies d'Afrique en chiffres",
+    "title": "Des chiffres qui parlent d'eux-mêmes",
+    "subtitle": "Un établissement qui grandit, une communauté qui s'engage.",
     "items": [
-      { "value": "4",    "label": "Niveaux scolaires" },
-      { "value": "2",    "label": "Sections primaires" },
-      { "value": "FR+EN","label": "Bilinguisme intégral" },
-      { "value": "2025", "label": "Agrément MINEDUB" }
+      {
+        "value": "120",
+        "suffix": "+",
+        "label": "Élèves inscrits",
+        "sublabel": "Enrolled students",
+        "icon": "Users"
+      },
+      {
+        "value": "12",
+        "suffix": "",
+        "label": "Enseignants qualifiés",
+        "sublabel": "Qualified teachers",
+        "icon": "GraduationCap"
+      },
+      {
+        "value": "2",
+        "suffix": "",
+        "label": "Années d'expérience",
+        "sublabel": "Years of experience",
+        "icon": "Calendar"
+      },
+      {
+        "value": "6",
+        "suffix": "",
+        "label": "Clubs scolaires",
+        "sublabel": "School clubs",
+        "icon": "Star"
+      },
+      {
+        "value": "10",
+        "suffix": "+",
+        "label": "Activités extrascolaires",
+        "sublabel": "Extracurricular activities",
+        "icon": "Zap"
+      }
     ]
   },
   "programs": {
