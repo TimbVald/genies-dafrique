@@ -99,36 +99,47 @@
   "whyUs": {
     "badge": "Our Strengths",
     "title": "Why Choose Les Génies d'Afrique?",
+    "subtitle": "Strong values, an exceptional environment and an unwavering commitment to the development of every child.",
     "items": [
       {
         "icon": "Globe",
-        "title": "Bilingual from Day Care",
-        "body": "Full French–English bilingual immersion from age 0, for a natural mastery of both languages."
+        "title": "Bilingual education",
+        "body": "Full French–English immersion from day care. Two languages, two cultures, a passport to the world."
       },
       {
         "icon": "Shield",
-        "title": "Official MINEDUB Accreditation",
-        "body": "National recognition, certified official curriculum, guaranteed teaching standards."
+        "title": "Discipline & values",
+        "body": "A structured environment where integrity, respect and responsibility are cultivated daily."
       },
       {
-        "icon": "Sprout",
-        "title": "Unique Educational Projects",
-        "body": "Farming, livestock, aquaculture, junior entrepreneurship: learning by doing from the earliest age."
-      },
-      {
-        "icon": "GraduationCap",
-        "title": "Qualified & Passionate Teachers",
-        "body": "Qualified teaching staff, ongoing professional development, attentive and personalised support."
+        "icon": "Trophy",
+        "title": "Academic excellence",
+        "body": "Enhanced official programmes, qualified teaching staff, exceptional results. Always aiming for the best."
       },
       {
         "icon": "Heart",
-        "title": "Safety & Well-being",
-        "body": "Secured premises, permanent supervision, child protection charter, a caring environment."
+        "title": "Personalised support",
+        "body": "Small class sizes, individual monitoring, attention to every child. Because every genius is unique."
       },
       {
         "icon": "Lightbulb",
-        "title": "Learning by Doing",
-        "body": "Active pedagogy, hands-on projects, developing the natural talent of every child."
+        "title": "Educational innovation",
+        "body": "Farming, livestock, aquaculture, entrepreneurship: learning differently, creating, experimenting."
+      },
+      {
+        "icon": "Palette",
+        "title": "Creativity & expression",
+        "body": "Arts and crafts, theatre, music, dance. Developing artistic talents and self-confidence."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Enhanced security",
+        "body": "Secured premises, permanent supervision, strict child protection charter."
+      },
+      {
+        "icon": "Plane",
+        "title": "Global openness",
+        "body": "International projects, cultural exchanges, digital technologies. Preparing tomorrow's citizens."
       }
     ]
   },

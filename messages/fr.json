@@ -99,36 +99,47 @@
   "whyUs": {
     "badge": "Nos Atouts",
     "title": "Pourquoi choisir les Génies d'Afrique ?",
+    "subtitle": "Des valeurs fortes, un cadre exceptionnel et un engagement sans faille pour l'épanouissement de chaque enfant.",
     "items": [
       {
         "icon": "Globe",
-        "title": "Bilinguisme dès la crèche",
-        "body": "Immersion bilingue intégrale français–anglais dès 0 an, pour une maîtrise naturelle des deux langues."
+        "title": "Enseignement bilingue",
+        "body": "Immersion totale français–anglais dès la crèche. Deux langues, deux cultures, un passeport pour le monde."
       },
       {
         "icon": "Shield",
-        "title": "Agrément officiel MINEDUB",
-        "body": "Reconnaissance nationale, curriculum officiel certifié, standards d'enseignement garantis."
+        "title": "Discipline & valeurs",
+        "body": "Un cadre structuré où l'intégrité, le respect et la responsabilité sont cultivés au quotidien."
       },
       {
-        "icon": "Sprout",
-        "title": "Projets pédagogiques uniques",
-        "body": "Agriculture, élevage, pisciculture, entrepreneuriat junior : apprendre par l'action dès le plus jeune âge."
-      },
-      {
-        "icon": "GraduationCap",
-        "title": "Enseignants qualifiés & passionnés",
-        "body": "Corps enseignant diplômé, formation continue, encadrement attentif et personnalisé pour chaque élève."
+        "icon": "Trophy",
+        "title": "Excellence académique",
+        "body": "Programmes officiels enrichis, corps enseignant qualifié, résultats d'exception. Viser le meilleur, toujours."
       },
       {
         "icon": "Heart",
-        "title": "Sécurité & bien-être",
-        "body": "Enceinte sécurisée, surveillance permanente, charte de protection de l'enfance, environnement bienveillant."
+        "title": "Encadrement personnalisé",
+        "body": "Petits effectifs, suivi individualisé, attention portée à chaque enfant. Parce que chaque génie est unique."
       },
       {
         "icon": "Lightbulb",
-        "title": "Apprentissage par l'action",
-        "body": "Pédagogie active, projets concrets, développement du talent naturel de chaque enfant."
+        "title": "Innovation pédagogique",
+        "body": "Agriculture, élevage, pisciculture, entrepreneuriat : apprendre autrement, créer, expérimenter."
+      },
+      {
+        "icon": "Palette",
+        "title": "Créativité & expression",
+        "body": "Arts plastiques, théâtre, musique, danse. Développer les talents artistiques et la confiance en soi."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Sécurité renforcée",
+        "body": "Enceinte sécurisée, surveillance permanente, charte de protection de l'enfance stricte."
+      },
+      {
+        "icon": "Plane",
+        "title": "Ouverture sur le monde",
+        "body": "Projets internationaux, échanges culturels, technologies numériques. Préparer les citoyens de demain."
       }
     ]
   },
