@@ -36,16 +36,20 @@
     ]
   },
   "about": {
-    "badge": "Notre Mission",
-    "title": "L'excellence bilingue au service de chaque enfant",
-    "body": "Fondé à Nkozoa et agréé par le Ministère de l'Éducation de Base (MINEDUB), le Complexe Scolaire Bilingue Les Génies d'Afrique accueille les enfants de 0 à 12 ans dans un cadre bilingue, sécurisé et stimulant. Notre approche pédagogique bilingue — français et anglais — prépare vos enfants à réussir dans un monde globalisé.",
-    "features": [
-      "Encadrement bilingue dès la crèche",
-      "Corps enseignant qualifié et passionné",
-      "Projets pédagogiques innovants (agriculture, élevage)",
-      "Sécurité et bien-être au cœur du projet éducatif"
-    ],
-    "cta": "En savoir plus"
+    "badge": "À propos de nous",
+    "title": "Une école née pour révéler le génie de chaque enfant",
+    "slogan": "Travail – Discipline – Succès",
+    "mission": "Fondé à Nkozoa et agréé par le MINEDUB, le Complexe Scolaire Bilingue Les Génies d'Afrique est né d'une conviction profonde : chaque enfant porte en lui un potentiel exceptionnel. Notre mission est de le révéler, de le cultiver et de le préparer à exceller dans un monde globalisé.",
+    "vision": "Nous aspirons à devenir l'établissement bilingue de référence au Cameroun, reconnu pour la qualité de son encadrement, l'innovation de ses méthodes pédagogiques et l'épanouissement intégral de ses élèves.",
+    "values": "Excellence, intégrité, bilinguisme et bienveillance constituent le socle de notre projet éducatif. Chaque décision pédagogique est guidée par le bien-être et le progrès de chaque enfant confié à nos soins.",
+    "bilingual": "Notre approche bilingue intégrale — français et anglais dès la crèche — est bien plus qu'un atout : c'est une ouverture sur deux univers culturels, un tremplin vers les meilleures opportunités académiques et professionnelles.",
+    "excellence": "De l'agriculture scolaire à l'entrepreneuriat junior, nous allons au-delà des programmes officiels pour forger des individus complets, créatifs et responsables. Car les leaders de demain se forment aujourd'hui.",
+    "cta": "Découvrir notre histoire",
+    "directorName": "La Directrice",
+    "directorRole": "Directrice Générale — Complexe Scolaire Bilingue Les Génies d'Afrique",
+    "playLabel": "Voir la vidéo de présentation",
+    "accreditation": "Agréé MINEDUB 2025",
+    "since": "Fondé en 2024"
   },
   "stats": {
     "title": "Les Génies d'Afrique en chiffres",

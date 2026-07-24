@@ -36,16 +36,20 @@
     ]
   },
   "about": {
-    "badge": "Our Mission",
-    "title": "Bilingual Excellence at the Service of Every Child",
-    "body": "Founded in Nkozoa and accredited by the Ministry of Basic Education (MINEDUB), the Bilingual School Complex Les Génies d'Afrique welcomes children from 0 to 12 years in a bilingual, safe and stimulating environment. Our bilingual approach — French and English — prepares your children to succeed in a globalized world.",
-    "features": [
-      "Bilingual guidance from day care",
-      "Qualified and dedicated teaching staff",
-      "Innovative educational projects (farming, livestock)",
-      "Safety and well-being at the heart of our mission"
-    ],
-    "cta": "Learn More"
+    "badge": "About Us",
+    "title": "A School Born to Reveal Every Child's Genius",
+    "slogan": "Work – Discipline – Success",
+    "mission": "Founded in Nkozoa and accredited by MINEDUB, the Bilingual School Complex Les Génies d'Afrique was born from a deep conviction: every child carries exceptional potential. Our mission is to reveal it, nurture it and prepare them to excel in a globalised world.",
+    "vision": "We aspire to become the bilingual school of reference in Cameroon, recognised for the quality of our guidance, the innovation of our teaching methods and the holistic development of our students.",
+    "values": "Excellence, integrity, bilingualism and care form the foundation of our educational project. Every pedagogical decision is guided by the well-being and progress of each child entrusted to us.",
+    "bilingual": "Our fully bilingual approach — French and English from day care — is far more than an advantage: it is an opening to two cultural worlds, a springboard to the best academic and professional opportunities.",
+    "excellence": "From school farming to junior entrepreneurship, we go beyond official programmes to shape complete, creative and responsible individuals. Because tomorrow's leaders are shaped today.",
+    "cta": "Discover Our Story",
+    "directorName": "The Principal",
+    "directorRole": "General Director — Bilingual School Complex Les Génies d'Afrique",
+    "playLabel": "Watch our presentation video",
+    "accreditation": "MINEDUB Accredited 2025",
+    "since": "Founded in 2024"
   },
   "stats": {
     "title": "Les Génies d'Afrique by the Numbers",
