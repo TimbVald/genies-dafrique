@@ -1,112 +1,133 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { motion, useScroll, useTransform, AnimatePresence, type Variants, type Transition } from "framer-motion";
-import { Play, GraduationCap, Globe, Shield } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+  type Variants,
+  type Transition,
+} from "framer-motion";
+import { Play, X, ArrowRight } from "lucide-react";
 
-/* ── Slides (image fallback + vidéo) ─────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   SLIDES — médias plein écran (cinématographiques 16:9 / full)
+══════════════════════════════════════════════════════════════════ */
 const SLIDES = [
-  "/images/IMG-20260723-WA0006.jpg",
-  "/images/IMG-20260723-WA0039.jpg",
-  "/images/IMG-20260723-WA0012.jpg",
-  "/images/IMG-20260722-WA0048.jpg",
-];
-
-/* ── Transition spring partagée ──────────────────────────────── */
-const springTransition: Transition = { type: "spring", stiffness: 380, damping: 28 };
-const fadeTransition:   Transition = { duration: 0.7, ease: "easeOut" };
-
-/* ── Variants Framer Motion ───────────────────────────────────── */
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.3 },
+  {
+    src: "/pexels-ai25studioai-7342628.jpg",
+    focus: "center 40%",
   },
+  {
+    src: "/images/Generated_Image.png",
+    focus: "center center",
+  },
+] as const;
+
+const SLIDE_DURATION = 6000; // ms par slide
+
+/* ── Transitions Framer Motion ────────────────────────────────── */
+const T_EASE: Transition = { duration: 0.75, ease: [0.22, 1, 0.36, 1] };
+
+const SLIDE_VARIANTS: Variants = {
+  enter:  { opacity: 0, scale: 1.04 },
+  center: { opacity: 1, scale: 1,   transition: { duration: 1.4, ease: "easeInOut" } },
+  exit:   { opacity: 0, scale: 1.02, transition: { duration: 1.0, ease: "easeInOut" } },
 };
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show:   { opacity: 1, y: 0, transition: fadeTransition },
+const TEXT_STAGGER: Variants = {
+  hidden: {},
+  show:   { transition: { staggerChildren: 0.16, delayChildren: 0.5 } },
 };
 
-const badgeVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.88, y: -12 },
-  show:   { opacity: 1, scale: 1,    y: 0,  transition: fadeTransition },
+const FADE_UP: Variants = {
+  hidden: { opacity: 0, y: 32 },
+  show:   { opacity: 1, y: 0, transition: T_EASE },
 };
 
-const overlayVariants: Variants = {
-  enter:  { opacity: 0 },
-  center: { opacity: 1, transition: { duration: 1.2, ease: "easeInOut" } as Transition },
-  exit:   { opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } as Transition },
+const FADE_DOWN: Variants = {
+  hidden: { opacity: 0, y: -20, scale: 0.92 },
+  show:   { opacity: 1, y: 0,  scale: 1, transition: T_EASE },
 };
 
-/* ── Composant principal ─────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════ */
 export default function HeroSection() {
   const t      = useTranslations("hero");
   const locale = useLocale();
 
-  const [current,     setCurrent]     = useState(0);
-  const [videoReady,  setVideoReady]  = useState(false);
-  const [showVideo,   setShowVideo]   = useState(false);
-  const [videoOpen,   setVideoOpen]   = useState(false);
+  const [current,    setCurrent]    = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
+  const [showVideo,  setShowVideo]  = useState(false);
+  const [videoOpen,  setVideoOpen]  = useState(false);
+  const [paused,     setPaused]     = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef   = useRef<HTMLVideoElement>(null);
 
-  /* ── Parallaxe au scroll ── */
-  const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 600], ["0%", "22%"]);
-
-  /* ── Sélection vidéo selon locale ── */
   const videoSrc = locale === "en" ? "/videos/VID-EN.mp4" : "/videos/VID-FR.mp4";
 
-  /* ── Autoplay diaporama ── */
-  useEffect(() => {
-    const id = setInterval(() => {
-      if (!showVideo) setCurrent((c) => (c + 1) % SLIDES.length);
-    }, 5500);
-    return () => clearInterval(id);
-  }, [showVideo]);
+  /* ── Parallaxe ── */
+  const { scrollY } = useScroll({ target: sectionRef });
+  const bgY    = useTransform(scrollY, [0, 700], ["0%", "18%"]);
+  const textY  = useTransform(scrollY, [0, 700], ["0%", "-12%"]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  /* ── Charger la vidéo en différé (après 1.5s) ── */
+  /* ── Autoplay slides ── */
+  const advance = useCallback(() => {
+    if (!paused && !videoReady) setCurrent((c) => (c + 1) % SLIDES.length);
+  }, [paused, videoReady]);
+
   useEffect(() => {
-    const timer = setTimeout(() => setShowVideo(true), 1500);
-    return () => clearTimeout(timer);
+    const id = setInterval(advance, SLIDE_DURATION);
+    return () => clearInterval(id);
+  }, [advance]);
+
+  /* ── Vidéo en différé ── */
+  useEffect(() => {
+    const t = setTimeout(() => setShowVideo(true), 1800);
+    return () => clearTimeout(t);
   }, []);
 
-  /* ── Fermer lightbox avec Echap ── */
+  /* ── Lightbox escape ── */
   useEffect(() => {
+    if (!videoOpen) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setVideoOpen(false); };
-    if (videoOpen) {
-      document.addEventListener("keydown", onKey);
-      document.body.style.overflow = "hidden";
-    } else {
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-    }
-    return () => document.removeEventListener("keydown", onKey);
+    };
   }, [videoOpen]);
 
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/*  HERO SECTION                                          */}
-      {/* ═══════════════════════════════════════════════════════ */}
+      {/* ╔════════════════════════════════════════════════════╗
+          ║  HERO — PLEIN ÉCRAN CINÉMATOGRAPHIQUE              ║
+          ╚════════════════════════════════════════════════════╝ */}
       <section
         ref={sectionRef}
-        className="relative w-full overflow-hidden flex items-center justify-center"
-        style={{ height: "100svh", minHeight: 600, maxHeight: 960 }}
+        className="relative w-full overflow-hidden"
+        style={{ height: "100svh", minHeight: 640, maxHeight: 1080 }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        aria-label={t("badge")}
       >
-        {/* ── Fond vidéo (chargé en différé) ── */}
+
+        {/* ══ COUCHE 1 : MÉDIAS (priorité absolue) ══ */}
+
+        {/* Vidéo en arrière-plan (chargée après 1.8s) */}
         {showVideo && (
           <motion.div
             className="absolute inset-0 z-0"
             style={{ y: bgY }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
+            animate={{ opacity: videoReady ? 1 : 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
           >
             <video
               ref={videoRef}
@@ -116,33 +137,35 @@ export default function HeroSection() {
               loop
               playsInline
               onCanPlay={() => setVideoReady(true)}
-              className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: "center 30%" }}
               aria-hidden="true"
             />
           </motion.div>
         )}
 
-        {/* ── Diaporama images (affiché tant que vidéo non prête) ── */}
+        {/* Diaporama images (pendant chargement vidéo ou si pas de vidéo) */}
         <motion.div
           className="absolute inset-0 z-0"
           style={{ y: bgY }}
           animate={{ opacity: videoReady ? 0 : 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 2, ease: "easeInOut" }}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <motion.div
               key={current}
-              variants={overlayVariants}
+              variants={SLIDE_VARIANTS}
               initial="enter"
               animate="center"
               exit="exit"
               className="absolute inset-0"
             >
               <Image
-                src={SLIDES[current]}
+                src={SLIDES[current].src}
                 alt=""
                 fill
-                className="object-cover object-center scale-105"
+                className="object-cover"
+                style={{ objectPosition: SLIDES[current].focus }}
                 sizes="100vw"
                 priority={current === 0}
                 aria-hidden="true"
@@ -151,233 +174,238 @@ export default function HeroSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* ── Overlay multicouche ── */}
-        {/* Couche 1 : dégradé directionnel (gauche→droite bleu/rouge) */}
+        {/* ══ COUCHE 2 : OVERLAYS DÉGRADÉS (texte lisible, médias visibles) ══ */}
+
+        {/* Dégradé principal — bas lourd, haut léger */}
         <div
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 pointer-events-none"
           style={{
-            background:
-              "linear-gradient(120deg, rgba(13,31,107,0.88) 0%, rgba(13,31,107,0.65) 50%, rgba(183,28,28,0.45) 100%)",
-          }}
-        />
-        {/* Couche 2 : fondu bas (pour les éléments du bas) */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(13,31,107,0.75) 0%, transparent 45%)",
-          }}
-        />
-        {/* Couche 3 : grain subtil */}
-        <div
-          className="absolute inset-0 z-10 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            backgroundSize: "180px",
+            background: [
+              /* Haut : transparence totale → légère couche */
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.08) 25%,",
+              /* Milieu : transition douce */
+              "rgba(0,0,0,0.22) 50%,",
+              /* Bas : dégradé profond pour le texte */
+              "rgba(13,25,80,0.72) 78%, rgba(13,25,80,0.92) 100%)",
+            ].join(""),
           }}
         />
 
-        {/* ── Contenu principal (centré verticalement) ── */}
+        {/* Vignette subtile sur les côtés */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(0,0,0,0.22) 100%)",
+          }}
+        />
+
+        {/* ══ COUCHE 3 : CONTENU TEXTE (superposé, aéré) ══ */}
         <motion.div
-          className="relative z-20 text-center px-6 max-w-5xl mx-auto w-full"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
+          className="absolute inset-0 z-20 flex flex-col justify-end"
+          style={{ y: textY, opacity }}
         >
-          {/* Badge d'excellence */}
-          <motion.div variants={badgeVariants} className="flex justify-center mb-7">
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full
-              bg-white/12 backdrop-blur-md border border-white/25 text-white
-              text-xs font-bold uppercase tracking-[0.18em]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] animate-pulse flex-shrink-0" />
-              {t("badge")}
-            </span>
-          </motion.div>
-
-          {/* Titre H1 */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-display font-bold text-white leading-[1.1] mb-6"
-            style={{ fontSize: "clamp(2.2rem, 5.5vw, 5rem)" }}
-          >
-            {t("title")}
-          </motion.h1>
-
-          {/* Sous-titre */}
-          <motion.p
-            variants={itemVariants}
-            className="text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed"
-            style={{ fontSize: "clamp(1rem, 1.8vw, 1.2rem)" }}
-          >
-            {t("subtitle")}
-          </motion.p>
-
-          {/* Boutons CTA */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            {/* Bouton primaire */}
-            <Link href="/admissions">
-              <motion.span
-                className="inline-flex items-center justify-center px-8 py-4 rounded-xl
-                  bg-[#D32F2F] text-white font-bold text-base tracking-wide
-                  shadow-[0_6px_28px_rgba(211,47,47,0.50)] cursor-pointer select-none"
-                whileHover={{ scale: 1.04, y: -2, boxShadow: "0 10px 36px rgba(211,47,47,0.55)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={springTransition}
-              >
-                {t("ctaPrimary")}
-              </motion.span>
-            </Link>
-
-            {/* Bouton secondaire */}
-            <Link href="/presentation">
-              <motion.span
-                className="inline-flex items-center justify-center px-8 py-4 rounded-xl
-                  border-2 border-white/65 text-white font-semibold text-base
-                  backdrop-blur-sm cursor-pointer select-none"
-                whileHover={{ scale: 1.04, y: -2, backgroundColor: "rgba(255,255,255,0.12)", borderColor: "rgba(255,255,255,0.9)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={springTransition}
-              >
-                {t("ctaSecondary")}
-              </motion.span>
-            </Link>
-
-            {/* Bouton Watch Video */}
-            <motion.button
-              onClick={() => setVideoOpen(true)}
-              className="inline-flex items-center gap-2.5 text-white/80 font-medium text-sm
-                hover:text-white transition-colors duration-200 group"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={springTransition}
+          <div className="max-w-[1280px] mx-auto w-full px-8 lg:px-16 pb-20 lg:pb-28">
+            <motion.div
+              variants={TEXT_STAGGER}
+              initial="hidden"
+              animate="show"
+              className="max-w-3xl"
             >
-              <span className="w-10 h-10 rounded-full border-2 border-white/50 group-hover:border-white
-                flex items-center justify-center transition-colors duration-200 bg-white/10">
-                <Play size={14} className="ml-0.5" fill="white" />
-              </span>
-              {locale === "fr" ? "Voir la vidéo" : "Watch Video"}
-            </motion.button>
-          </motion.div>
+              {/* Badge accréditation */}
+              <motion.div variants={FADE_DOWN} className="mb-6">
+                <span className="inline-flex items-center gap-2.5 px-4 py-1.5
+                  rounded-full bg-white/10 backdrop-blur-md border border-white/20
+                  text-white/90 text-xs font-bold uppercase tracking-[0.2em]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] animate-pulse" />
+                  {t("badge")}
+                </span>
+              </motion.div>
 
-          {/* Badges de confiance */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-4 mt-12"
-          >
-            {[
-              { icon: Shield,        label: locale === "fr" ? "Agréé MINEDUB"     : "MINEDUB Accredited" },
-              { icon: Globe,         label: locale === "fr" ? "Bilingue FR / EN"  : "Bilingual FR / EN" },
-              { icon: GraduationCap, label: locale === "fr" ? "De la crèche au CM2" : "Day Care to Primary" },
-            ].map(({ icon: Icon, label }, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full
-                  bg-white/10 backdrop-blur-sm border border-white/15 text-white/85
-                  text-xs font-medium"
+              {/* Titre H1 — grande taille, Satoshi Bold */}
+              <motion.h1
+                variants={FADE_UP}
+                className="font-display font-bold text-white leading-[1.05] mb-5
+                  drop-shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+                style={{ fontSize: "clamp(2.4rem, 6vw, 5.5rem)" }}
               >
-                <Icon size={13} className="text-[#F5A623]" />
-                {label}
-              </span>
-            ))}
-          </motion.div>
+                {t("title")}
+              </motion.h1>
+
+              {/* Sous-titre — plus léger */}
+              <motion.p
+                variants={FADE_UP}
+                className="text-white/75 leading-relaxed mb-10 max-w-xl"
+                style={{ fontSize: "clamp(1rem, 1.6vw, 1.15rem)" }}
+              >
+                {t("subtitle")}
+              </motion.p>
+
+              {/* CTA — horizontal, aéré */}
+              <motion.div
+                variants={FADE_UP}
+                className="flex flex-wrap items-center gap-4"
+              >
+                {/* Bouton primaire — rouge plein */}
+                <Link href="/admissions">
+                  <motion.span
+                    className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl
+                      bg-[#D32F2F] text-white font-bold text-sm tracking-wide
+                      shadow-[0_6px_32px_rgba(211,47,47,0.55)] cursor-pointer"
+                    whileHover={{ scale: 1.03, y: -3 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 360, damping: 22 }}
+                  >
+                    {t("ctaPrimary")}
+                    <ArrowRight size={16} />
+                  </motion.span>
+                </Link>
+
+                {/* Bouton secondaire — contour blanc */}
+                <Link href="/presentation">
+                  <motion.span
+                    className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl
+                      border-2 border-white/60 text-white font-semibold text-sm
+                      backdrop-blur-sm cursor-pointer"
+                    whileHover={{ scale: 1.03, y: -3, borderColor: "rgba(255,255,255,1)", backgroundColor: "rgba(255,255,255,0.1)" }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 360, damping: 22 }}
+                  >
+                    {t("ctaSecondary")}
+                  </motion.span>
+                </Link>
+
+                {/* Bouton vidéo — pill transparent */}
+                <motion.button
+                  onClick={() => setVideoOpen(true)}
+                  className="inline-flex items-center gap-3 text-white/80
+                    hover:text-white transition-colors duration-200 group"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 360, damping: 22 }}
+                  aria-label={locale === "fr" ? "Voir la vidéo de présentation" : "Watch our video"}
+                >
+                  <span className="relative flex items-center justify-center
+                    w-12 h-12 rounded-full border-2 border-white/50
+                    bg-white/10 group-hover:bg-white/20 group-hover:border-white
+                    transition-all duration-300">
+                    <Play size={14} fill="white" className="ml-0.5 text-white" />
+                    {/* Pulse ring */}
+                    <span className="absolute inset-0 rounded-full border-2
+                      border-white/30 animate-ping" />
+                  </span>
+                  <span className="text-sm font-medium">
+                    {locale === "fr" ? "Voir la vidéo" : "Watch Video"}
+                  </span>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
 
-        {/* ── Dots diaporama (uniquement sans vidéo) ── */}
+        {/* ══ COUCHE 4 : ÉLÉMENTS BAS D'ÉCRAN ══ */}
+
+        {/* Dots slides (seulement sans vidéo) */}
         {!videoReady && (
-          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          <div
+            className="absolute bottom-8 right-8 lg:right-16 flex gap-2 z-20"
+            role="tablist"
+            aria-label="Diaporama"
+          >
             {SLIDES.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                role="tab"
+                aria-selected={i === current}
                 aria-label={`Slide ${i + 1}`}
-                className={`transition-all duration-400 rounded-full ${
+                onClick={() => setCurrent(i)}
+                className={`rounded-full transition-all duration-500 ${
                   i === current
                     ? "w-8 h-2 bg-white"
-                    : "w-2 h-2 bg-white/35 hover:bg-white/60"
+                    : "w-2 h-2 bg-white/30 hover:bg-white/60"
                 }`}
               />
             ))}
           </div>
         )}
 
-        {/* ── Scroll indicator ── */}
+        {/* Indicateur de scroll — bas centre */}
         <motion.div
-          className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20
-            flex flex-col items-center gap-1.5 text-white/50"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8, duration: 0.7 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20
+            flex flex-col items-center gap-2 text-white/40"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 0.8 }}
         >
-          <span className="text-[10px] font-medium uppercase tracking-[0.2em]">
-            {t("scrollHint")}
-          </span>
-          {/* Souris animée */}
-          <div className="w-5 h-8 rounded-full border-2 border-white/40 flex justify-center pt-1.5">
+          {/* Souris animée SVG */}
+          <div className="w-[22px] h-[34px] rounded-full border-[1.5px] border-white/35
+            flex justify-center pt-[6px]">
             <motion.div
-              className="w-1 h-1.5 rounded-full bg-white/70"
+              className="w-[4px] h-[6px] rounded-full bg-white/60"
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
+          <span className="text-[9px] font-medium uppercase tracking-[0.22em] mt-0.5">
+            {t("scrollHint")}
+          </span>
         </motion.div>
 
-        {/* ── Barre de progression slide (durée 5.5s) ── */}
+        {/* Barre de progression slide */}
         {!videoReady && (
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10 z-20">
+          <div className="absolute bottom-0 left-0 right-0 h-[2px] z-20 bg-white/8">
             <motion.div
               key={current}
-              className="h-full bg-[#F5A623]"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 5.5, ease: "linear" }}
+              className="h-full bg-white/40"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
             />
           </div>
         )}
       </section>
 
-      {/* ═══════════════════════════════════════════════════════ */}
-      {/*  LIGHTBOX VIDÉO                                        */}
-      {/* ═══════════════════════════════════════════════════════ */}
+      {/* ╔════════════════════════════════════════════════════╗
+          ║  LIGHTBOX VIDÉO                                    ║
+          ╚════════════════════════════════════════════════════╝ */}
       <AnimatePresence>
         {videoOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/92 z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 sm:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={() => setVideoOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={locale === "fr" ? "Vidéo de présentation" : "Presentation video"}
           >
             <motion.div
-              className="relative w-full max-w-4xl aspect-video"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1,   opacity: 1 }}
-              exit={{ scale: 0.9,    opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full max-w-5xl aspect-video"
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1,    opacity: 1 }}
+              exit={{ scale: 0.94,    opacity: 0 }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
               <video
                 src={videoSrc}
                 controls
                 autoPlay
-                className="w-full h-full rounded-2xl object-cover shadow-2xl"
+                className="w-full h-full rounded-2xl shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
               />
-
-              {/* Bouton fermer */}
-              <button
-                onClick={() => setVideoOpen(false)}
-                aria-label={locale === "fr" ? "Fermer la vidéo" : "Close video"}
-                className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-white/15
-                  hover:bg-white/30 flex items-center justify-center text-white
-                  transition-colors duration-200 backdrop-blur-sm border border-white/20"
-              >
-                ✕
-              </button>
             </motion.div>
+
+            <button
+              onClick={() => setVideoOpen(false)}
+              aria-label={locale === "fr" ? "Fermer" : "Close"}
+              className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10
+                hover:bg-white/25 backdrop-blur-sm border border-white/20
+                flex items-center justify-center text-white transition-colors duration-200"
+            >
+              <X size={18} />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

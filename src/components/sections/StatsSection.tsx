@@ -1,19 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { motion, useInView, type Variants, type Transition } from "framer-motion";
 import {
-  Users, GraduationCap, Calendar, Star, Zap,
-  type LucideIcon,
-} from "lucide-react";
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  type Variants,
+  type Transition,
+} from "framer-motion";
 
-/* ── Icônes disponibles ──────────────────────────────────────── */
-const ICON_MAP: Record<string, LucideIcon> = {
-  Users, GraduationCap, Calendar, Star, Zap,
-};
-
-/* ── Type d'une statistique ─────────────────────────────────── */
+/* ── Type statistique ────────────────────────────────────────── */
 interface StatItem {
   value: string;
   suffix: string;
@@ -22,266 +21,261 @@ interface StatItem {
   icon: string;
 }
 
-/* ── Animations ─────────────────────────────────────────────── */
-const ease: Transition  = { duration: 0.6, ease: "easeOut" };
+/* ── Animations ──────────────────────────────────────────────── */
+const T: Transition = { duration: 0.65, ease: "easeOut" };
 
 const headerAnim: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: ease },
+  show:   { opacity: 1, y: 0, transition: T },
 };
 
 const gridAnim: Variants = {
   hidden: {},
-  show:   { transition: { staggerChildren: 0.11, delayChildren: 0.15 } },
+  show:   { transition: { staggerChildren: 0.13, delayChildren: 0.2 } },
 };
 
-const cardAnim: Variants = {
-  hidden: { opacity: 0, y: 32, scale: 0.96 },
-  show:   { opacity: 1, y: 0,  scale: 1, transition: ease },
+const statAnim: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: T },
 };
 
-/* ── Hook compteur animé ─────────────────────────────────────── */
-function useCounter(target: number, duration = 1800) {
+/* ── Hook compteur easeOutQuart ──────────────────────────────── */
+function useCounter(target: number, duration = 2000) {
   const [count,     setCount]     = useState(0);
   const [triggered, setTriggered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Déclencher via IntersectionObserver
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setTriggered(true); },
-      { threshold: 0.4 }
+      ([e]) => { if (e.isIntersecting) setTriggered(true); },
+      { threshold: 0.3 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  // Animer le compteur quand déclenché
   useEffect(() => {
     if (!triggered || target === 0) return;
     const start = performance.now();
-
     const step = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      // easeOutQuart — courbe rapide puis ralentissement
-      const eased = 1 - Math.pow(1 - progress, 4);
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 4); // easeOutQuart
       setCount(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+      if (p < 1) requestAnimationFrame(step);
     };
-
     requestAnimationFrame(step);
   }, [triggered, target, duration]);
 
   return { count, ref };
 }
 
-/* ── Sous-composant : une carte statistique ─────────────────── */
-function StatCard({ item, index }: { item: StatItem; index: number }) {
-  const numeric = parseInt(item.value, 10);
+/* ── Compteur individuel ─────────────────────────────────────── */
+function StatCounter({
+  item,
+  index,
+  inView,
+}: {
+  item: StatItem;
+  index: number;
+  inView: boolean;
+}) {
+  const numeric   = parseInt(item.value, 10);
   const isNumeric = !isNaN(numeric);
-
-  const { count, ref } = useCounter(isNumeric ? numeric : 0);
-
-  const Icon = ICON_MAP[item.icon] ?? Users;
-
-  // Affichage : valeur numérique animée ou valeur brute
-  const displayValue = isNumeric ? count : item.value;
+  const { count, ref } = useCounter(isNumeric ? numeric : 0, 1800 + index * 120);
+  const display = isNumeric ? count : item.value;
 
   return (
     <motion.div
-      variants={cardAnim}
       ref={ref}
+      variants={statAnim}
       className="group relative flex flex-col items-center text-center
-        px-6 py-10 rounded-2xl overflow-hidden cursor-default"
+        py-10 px-6 lg:px-8"
     >
-      {/* ── Fond de la carte ── */}
-      {/* Séparateur vertical (affiché entre les cartes, pas à gauche de la 1ère) */}
+      {/* Séparateur vertical entre items (desktop) */}
       {index > 0 && (
-        <div className="absolute left-0 top-8 bottom-8 w-px bg-white/10" />
+        <div className="absolute left-0 top-1/4 bottom-1/4 w-px bg-white/15
+          hidden lg:block" />
       )}
 
-      {/* Halo d'icône centré en fond (décoratif) */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100
-          transition-opacity duration-500 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,166,35,0.12), transparent)",
-        }}
-      />
-
-      {/* ── Icône ── */}
-      <motion.div
-        className="relative w-14 h-14 rounded-2xl mb-5 flex items-center justify-center
-          bg-white/10 border border-white/15
-          group-hover:bg-[#F5A623]/20 group-hover:border-[#F5A623]/40
-          transition-all duration-300"
-        whileHover={{ rotate: 6, scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 350, damping: 20 }}
-      >
-        <Icon
-          size={24}
-          className="text-white/70 group-hover:text-[#F5A623] transition-colors duration-300"
-          strokeWidth={1.8}
-        />
-      </motion.div>
-
-      {/* ── Chiffre animé ── */}
-      <div className="flex items-end justify-center gap-0.5 mb-2">
+      {/* Chiffre — très grand, dominateur */}
+      <div className="flex items-baseline justify-center gap-1 mb-3">
         <span
-          className="font-display font-bold text-white leading-none tabular-nums"
-          style={{ fontSize: "clamp(2.8rem, 5vw, 4.2rem)" }}
+          className="font-display font-bold text-white leading-none tabular-nums
+            drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
+          style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)" }}
         >
-          {displayValue}
+          {display}
         </span>
         {item.suffix && (
           <span
-            className="font-display font-bold text-[#F5A623] pb-1"
-            style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.4rem)" }}
+            className="font-display font-bold text-[#F5A623] leading-none"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
           >
             {item.suffix}
           </span>
         )}
       </div>
 
-      {/* ── Ligne décorative ── */}
-      <div className="w-10 h-0.5 bg-[#F5A623]/50 rounded-full mb-3
-        group-hover:w-16 group-hover:bg-[#F5A623] transition-all duration-400" />
+      {/* Ligne décorative or */}
+      <motion.div
+        className="h-[2px] bg-[#F5A623] rounded-full mb-4"
+        initial={{ width: 0 }}
+        animate={inView ? { width: "2.5rem" } : { width: 0 }}
+        transition={{ delay: 0.4 + index * 0.1, duration: 0.5, ease: "easeOut" }}
+      />
 
-      {/* ── Label principal ── */}
-      <p className="text-white font-semibold text-base leading-tight mb-1">
+      {/* Label principal — blanc */}
+      <p className="text-white font-bold text-base lg:text-lg leading-tight mb-1.5">
         {item.label}
       </p>
 
-      {/* ── Sous-label (langue secondaire) ── */}
-      <p className="text-white/45 text-xs italic">
+      {/* Sous-label — langue secondaire, discret */}
+      <p className="text-white/45 text-xs italic tracking-wide">
         {item.sublabel}
       </p>
     </motion.div>
   );
 }
 
-/* ══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════
+   STATS SECTION — Grande image de fond + compteurs
+══════════════════════════════════════════════════════════════════ */
 export default function StatsSection() {
   const t     = useTranslations("stats");
   const items = t.raw("items") as StatItem[];
 
   const sectionRef = useRef<HTMLElement>(null);
-  const inView     = useInView(sectionRef, { once: true, margin: "-60px" });
+  const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  /* ── Parallaxe sur l'image de fond ── */
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 overflow-hidden"
+      className="relative overflow-hidden"
+      /* Proportion cinématographique : plus grand que les cartes ordinaires */
+      style={{ minHeight: "520px" }}
+      aria-label={t("title")}
     >
-      {/* ── Fond principal dégradé ── */}
+      {/* ══ COUCHE 1 : GRANDE IMAGE DE FOND ══ */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ y: bgY, scale: 1.08 }}
+      >
+        <Image
+          src="/images/pexels-ai25studioai-7342628.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      {/* ══ COUCHE 2 : OVERLAY DÉGRADÉ — bleu profond semi-transparent ══ */}
+      {/* L'image reste visible à travers l'overlay — c'est l'objectif */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(135deg, #1A3A8F 0%, #0F2A7A 40%, #0D1F6B 100%)",
+            "linear-gradient(135deg, rgba(13,25,80,0.88) 0%, rgba(13,31,107,0.82) 50%, rgba(13,25,80,0.90) 100%)",
         }}
+        aria-hidden="true"
       />
 
-      {/* ── Texture de fond : grille de points ── */}
+      {/* Texture très légère */}
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="absolute inset-0 z-10 pointer-events-none opacity-[0.025]"
         style={{
           backgroundImage:
             "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          backgroundSize: "36px 36px",
         }}
+        aria-hidden="true"
       />
 
-      {/* ── Demi-cercle décoratif gauche ── */}
-      <div
-        className="absolute -left-32 top-1/2 -translate-y-1/2
-          w-64 h-64 rounded-full border border-white/5 pointer-events-none"
-      />
-      <div
-        className="absolute -left-16 top-1/2 -translate-y-1/2
-          w-64 h-64 rounded-full border border-white/5 pointer-events-none"
-      />
+      {/* ══ COUCHE 3 : CONTENU ══ */}
+      <div className="relative z-20 py-20 lg:py-28 max-w-[1280px] mx-auto px-6 lg:px-10">
 
-      {/* ── Demi-cercle décoratif droit ── */}
-      <div
-        className="absolute -right-32 top-1/2 -translate-y-1/2
-          w-64 h-64 rounded-full border border-white/5 pointer-events-none"
-      />
-
-      {/* ── Accent rouge bas ── */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-1"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, #D32F2F 30%, #F5A623 50%, #D32F2F 70%, transparent 100%)",
-        }}
-      />
-
-      {/* ── Contenu ── */}
-      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10">
-
-        {/* En-tête */}
+        {/* En-tête centré — sobre */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-14 lg:mb-20"
           variants={headerAnim}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
         >
-          {/* Badge */}
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-            bg-white/10 border border-white/15 backdrop-blur-sm
-            text-white/80 text-xs font-bold uppercase tracking-[0.16em] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] animate-pulse" />
-            {t("badge")}
-          </span>
+          {/* Ligne décorative */}
+          <div className="flex items-center justify-center gap-4 mb-5">
+            <div className="h-px w-12 bg-[#F5A623]/60" />
+            <span className="text-[#F5A623] text-xs font-bold uppercase tracking-[0.22em]">
+              {t("badge")}
+            </span>
+            <div className="h-px w-12 bg-[#F5A623]/60" />
+          </div>
 
           <h2
-            className="font-display font-bold text-white mb-3 block"
-            style={{ fontSize: "clamp(1.6rem, 3vw, 2.5rem)" }}
+            className="font-display font-bold text-white leading-tight"
+            style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}
           >
             {t("title")}
           </h2>
-          <p className="text-white/55 text-base italic">
+
+          <p className="text-white/50 mt-3 text-sm italic">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        {/* Grille de statistiques */}
+        {/* Grille de statistiques — large, aérée, ISK-style */}
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-5 gap-2 relative"
+          className="grid grid-cols-2 lg:grid-cols-5 gap-0"
           variants={gridAnim}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
         >
-          {/* Fond commun pour la grille (effet glass card) */}
-          <div
-            className="absolute inset-0 rounded-3xl pointer-events-none"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              backdropFilter: "blur(4px)",
-            }}
-          />
-
-          {items.map((item, i) => (
-            <StatCard key={i} item={item} index={i} />
-          ))}
+          {/* Contenant glassmorphism unificateur */}
+          <div className="contents">
+            {items.map((item, i) => (
+              <StatCounter
+                key={i}
+                item={item}
+                index={i}
+                inView={inView}
+              />
+            ))}
+          </div>
         </motion.div>
 
-        {/* Mention éditoriale bas */}
-        <motion.p
-          className="text-center text-white/30 text-xs mt-10 italic"
+        {/* Ligne de bas */}
+        <motion.div
+          className="mt-14 lg:mt-20 flex items-center gap-4"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          * Données de l&apos;année scolaire 2025–2026 ·
-          Data from school year 2025–2026
-        </motion.p>
+          <div className="h-px flex-1 bg-white/12" />
+          <p className="text-white/30 text-xs italic text-center">
+            Données 2025–2026 · Data 2025–2026
+          </p>
+          <div className="h-px flex-1 bg-white/12" />
+        </motion.div>
       </div>
+
+      {/* ══ Accent rouge en bas de section ══ */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[3px] z-20"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, #D32F2F 25%, #F5A623 50%, #D32F2F 75%, transparent 100%)",
+        }}
+        aria-hidden="true"
+      />
     </section>
   );
 }
