@@ -20,7 +20,7 @@ import { Play, X, ChevronDown, ArrowRight } from "lucide-react";
 ══════════════════════════════════════════════════════════════════ */
 const SLIDES = [
   {
-    src:      "/images/pexels-karola-g-7269671.jpg",
+    src:      "/images/IMG-20260723-WA0024.jpg",
     // Image portrait : enfant avec plante → sujet centré haut
     pos:      "center 20%",
     // Ken Burns : zoom légèrement vers le bas (suit le sujet)
