@@ -7,20 +7,17 @@
   },
   "nav": {
     "home": "Home",
-    "school": "The School",
-    "programs": "Programs",
+    "about": "About Us",
+    "formations": "Programs",
     "admissions": "Admissions",
-    "life": "School Life",
     "news": "News",
+    "life": "School Life",
+    "gallery": "Gallery",
     "contact": "Contact",
     "enroll": "Enroll Now",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Français",
-    "subMission": "Our Mission",
-    "subHistory": "Our History",
-    "subValues": "Our Values",
-    "subTeam": "Our Team"
+    "language": "Français"
   },
   "announcement": "📢 Enrollment is now open — Monday to Friday 8AM–1PM",
   "hero": {
@@ -266,5 +263,720 @@
     "loading": "Loading…",
     "backToTop": "Back to top",
     "close": "Close"
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "About Les Génies d'Afrique",
+      "subtitle": "History, mission, vision, values and our pedagogical team"
+    },
+    "history": {
+      "badge": "Our History",
+      "title": "The Story of Les Génies d'Afrique",
+      "subtitle": "From a bold vision in 2024 to a bilingual school of excellence serving the community of Nkozoa.",
+      "timeline": [
+        {
+          "date": "2024",
+          "title": "The Founding Vision",
+          "description": "The Bilingual School Complex Les Génies d'Afrique is founded in Nkozoa, Yaoundé, with a clear vision: to reveal the genius within every child through bilingual, holistic education."
+        },
+        {
+          "date": "Feb 2025",
+          "title": "MINEDUB Accreditation",
+          "description": "The school receives official accreditation from the Ministry of Basic Education (MINEDUB), confirming compliance with Cameroonian educational standards."
+        },
+        {
+          "date": "Sept 2025",
+          "title": "Opening of Both Sections",
+          "description": "The French and English sections officially open their doors, welcoming the first cohort of students from Day Care through Primary, with innovative teaching methods."
+        },
+        {
+          "date": "2026",
+          "title": "Growth and Expansion",
+          "description": "The school community grows to over 120 students, launches 6 extracurricular clubs, and establishes itself as a bilingual school of reference in the region."
+        }
+      ]
+    },
+    "missionVision": {
+      "badge": "Mission & Vision",
+      "title": "Our Mission, Our Vision, Our Values",
+      "mission": {
+        "title": "Our Mission",
+        "body": "To reveal and cultivate the exceptional potential of every child, through a rigorous bilingual education enriched with innovative pedagogical practices, in a caring and stimulating environment."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "body": "To become the bilingual school of reference in Cameroon, recognised for the quality of its guidance, the innovation of its methods, and the holistic development of responsible, creative and fulfilled citizens."
+      },
+      "valuesCards": [
+        {
+          "icon": "Trophy",
+          "title": "Excellence",
+          "description": "We aim for the highest standards in everything we do — academic results, personal conduct, and community commitment."
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "Integrity",
+          "description": "Honesty, transparency, and respect guide every decision and every interaction within our school community."
+        },
+        {
+          "icon": "Globe",
+          "title": "Bilingualism",
+          "description": "French and English mastery is not just a subject — it is a way of thinking, communicating, and opening doors to the world."
+        },
+        {
+          "icon": "Lightbulb",
+          "title": "Innovation",
+          "description": "We constantly renew our pedagogical approaches, integrating creative projects, technology, and hands-on learning experiences."
+        },
+        {
+          "icon": "Heart",
+          "title": "Care",
+          "description": "Every child is unique and deserves individual attention, kindness, and a supportive environment to thrive."
+        },
+        {
+          "icon": "Users",
+          "title": "Holistic Development",
+          "description": "We educate the mind, body, and heart — academic learning, sports, arts, and moral values are all equally important."
+        }
+      ]
+    },
+    "founderMessage": {
+      "badge": "Founder's Message",
+      "title": "A Word from the Founder",
+      "photo": "/images/founder.jpg",
+      "quoteOpen": "Every child is born a genius waiting to be revealed.",
+      "message": "The dream that led to the creation of Les Génies d'Afrique is above all a dream of hope. Having worked for years in education, I have seen too many children whose talents go unnoticed, confined by rigid systems that do not always take the time to see each child as an individual with unique potential.",
+      "body": "At Les Génies d'Afrique, we have built an environment where every child can blossom — an environment where excellence rhymes with well-being, where rigour goes hand in hand with joy of learning, where French and English open doors to two cultures and two futures. This is our promise to you.",
+      "signature": "The Founder"
+    },
+    "team": {
+      "badge": "Our Team",
+      "title": "Meet the Men and Women Who Shape Your Children's Future",
+      "subtitle": "A passionate, qualified, and committed team at the service of your children's success.",
+      "members": [
+        {
+          "name": "Dr. Ateba Fouda Joséphine",
+          "role": "President / Founder",
+          "photo": "/images/team/founder.jpg",
+          "description": "Visionary founder with over 15 years in education, she is the heart and soul of Les Génies d'Afrique."
+        },
+        {
+          "name": "Dr. Ateba Fouda Joséphine",
+          "role": "General Director",
+          "photo": "/images/team/director.jpg",
+          "description": "Oversees the strategic direction and daily operations of the school with rigour and dedication."
+        },
+        {
+          "name": "Mme Nkolo Marie-Thérèse",
+          "role": "Director of Studies",
+          "photo": "/images/team/studies.jpg",
+          "description": "Ensures academic excellence and the quality of teaching across all levels and both sections."
+        },
+        {
+          "name": "M. Mbarga Jean",
+          "role": "Pedagogical Director",
+          "photo": "/images/team/pedagogical.jpg",
+          "description": "Designs and implements innovative pedagogical approaches aligned with MINEDUB guidelines."
+        },
+        {
+          "name": "Mme Ngo Biyong Brigitte",
+          "role": "Francophone Section Head",
+          "photo": "/images/team/francophone.jpg",
+          "description": "Leads the French section, ensuring curriculum quality and student well-being."
+        },
+        {
+          "name": "M. Atangana Biyick Paul",
+          "role": "Anglophone Section Head",
+          "photo": "/images/team/anglophone.jpg",
+          "description": "Coordinates the English section with a focus on literacy, numeracy, and global citizenship."
+        },
+        {
+          "name": "Mme Essomba Charlotte",
+          "role": "Nursery Coordinator",
+          "photo": "/images/team/nursery.jpg",
+          "description": "Ensures a warm, stimulating, and safe environment for our youngest learners."
+        },
+        {
+          "name": "M. Eyenga Daniel",
+          "role": "Sports & Extracurricular Coordinator",
+          "photo": "/images/team/sports.jpg",
+          "description": "Manages sports, clubs, and all extracurricular activities for holistic development."
+        },
+        {
+          "name": "Mme Ndongo Alice",
+          "role": "Administrative & Admissions Manager",
+          "photo": "/images/team/admin.jpg",
+          "description": "Welcomes families and coordinates administrative processes and admissions with professionalism."
+        }
+      ]
+    }
+  },
+  "formationsPage": {
+    "hero": {
+      "badge": "Our Programs",
+      "title": "Two Linguistic Paths, One Shared Excellence",
+      "subtitle": "From Day Care to Primary, our French and English sections offer a complete bilingual education aligned with MINEDUB standards, enriched by innovative pedagogical projects."
+    },
+    "intro": {
+      "title": "A Complete Bilingual Journey",
+      "body": "At Les Génies d'Afrique, every student benefits from a fully bilingual educational journey. Whether in the French or English section, French and English are taught daily from the earliest age, opening the door to two linguistic and cultural worlds. Our enhanced curricula go beyond official programmes to include school farming, entrepreneurship, arts, and sports."
+    },
+    "levels": [
+      {
+        "id": "daycare",
+        "badge": "Day Care",
+        "title": "Day Care (0–2 years)",
+        "image": "/images/IMG-20260723-WA0015.jpg",
+        "presentation": "A warm, secure, and loving environment where our youngest children take their first steps in a community that values awakening, sensory discovery, and individual care. Each child evolves at their own pace under the watchful eye of qualified early childhood professionals.",
+        "curriculum": [
+          "Sensory awakening and motor skills",
+          "First language experiences in French and English",
+          "Nursery rhymes, songs, and stories",
+          "Artistic and manual activities",
+          "Rest and adapted routines"
+        ],
+        "objectives": [
+          "Ensure the physical and emotional security of each child",
+          "Develop first motor and cognitive skills",
+          "Introduce the joy of discovery and learning",
+          "Foster first social interactions"
+        ]
+      },
+      {
+        "id": "nursery",
+        "badge": "Nursery",
+        "title": "Nursery School (2–5 years)",
+        "image": "/images/IMG-20260723-WA0014.jpg",
+        "presentation": "Nursery school is a crucial stage where children consolidate their learning foundations and prepare for primary education. Our bilingual approach immerses them daily in French and English through playful, structured activities designed to stimulate curiosity and develop social skills.",
+        "curriculum": [
+          "Pre-reading and pre-writing in both languages",
+          "Introduction to mathematics and logic",
+          "Awakening to the world around us",
+          "Plastic arts, music, and movement",
+          "Socialisation and group life"
+        ],
+        "objectives": [
+          "Build solid foundations in reading and counting",
+          "Develop oral fluency in French and English",
+          "Encourage autonomy and self-confidence",
+          "Prepare children for a successful entry into primary school"
+        ]
+      },
+      {
+        "id": "primary",
+        "badge": "Primary",
+        "title": "Primary School (5–11 years)",
+        "image": "/images/IMG-20260723-WA0007.jpg",
+        "presentation": "Primary school at Les Génies d'Afrique offers two parallel sections — Francophone and Anglophone — both following the official MINEDUB curricula. Students benefit from enhanced programmes, intensive bilingual teaching, and innovative projects to develop critical thinking, creativity, and a love of learning.",
+        "curriculum": [
+          "French / English language and literature",
+          "Mathematics and science",
+          "History, geography, and civics",
+          "Technology and digital culture",
+          "Arts, music, and physical education",
+          "School farming and junior entrepreneurship"
+        ],
+        "objectives": [
+          "Ensure mastery of fundamental knowledge and skills",
+          "Develop critical thinking and problem-solving skills",
+          "Achieve fluency in both French and English",
+          "Prepare students for successful entry into secondary school",
+          "Shape responsible, creative, and autonomous citizens"
+        ]
+      }
+    ],
+    "sections": {
+      "title": "Our Two Linguistic Sections",
+      "subtitle": "Two complementary paths, one shared ambition: to shape bilingual, fulfilled, and successful students.",
+      "frenchSection": {
+        "badge": "French Section",
+        "title": "Francophone Programme",
+        "subtitle": "Day Care → CM2 (2–11 years)",
+        "body": "The French section follows the official curricula of the Cameroonian Ministry of Basic Education, enriched with complementary educational content and progressive English immersion from Day Care. Our teaching is rigorous, caring, and stimulating. It prepares students for the success of the First School Leaving Certificate (CFEE) and admission to the best secondary schools.",
+        "keyPoints": [
+          "Enhanced official MINEDUB curriculum",
+          "Intensive English instruction from Grade 1",
+          "Emphasis on sciences, mathematics, and expression",
+          "Agricultural and entrepreneurial projects",
+          "Preparation for CFEE in CM2",
+          "Transition pathways to secondary school"
+        ]
+      },
+      "englishSection": {
+        "badge": "English Section",
+        "title": "Anglophone Programme",
+        "subtitle": "Nursery → Class 6 (2–11 years)",
+        "body": "The English section offers a rigorous curriculum fully aligned with MINEDUB guidelines. Teaching is conducted primarily in English, with French as a strong second language. Students benefit from a rich literary and scientific education that prepares them for the First School Leaving Certificate (FSLC) and the best secondary schools in Cameroon and abroad.",
+        "keyPoints": [
+          "Rigorous Anglophone MINEDUB curriculum",
+          "French as a strong second language",
+          "Focus on English literacy and numeracy",
+          "Cultural openness and global perspective",
+          "Preparation for FSLC in Class 6",
+          "Preparation for common entrance exams"
+        ]
+      }
+    },
+    "admissionConditions": {
+      "title": "Admission Timeline",
+      "subtitle": "Our admissions process is designed to be simple, transparent, and welcoming.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Information & Visit",
+          "description": "Contact us to schedule a visit of the premises and meet our team. We will present our educational project in detail."
+        },
+        {
+          "step": "02",
+          "title": "Submission of Application",
+          "description": "Submit the complete application file (birth certificate, previous school records, ID photos, medical certificate)."
+        },
+        {
+          "step": "03",
+          "title": "Assessment & Interview",
+          "description": "For primary levels, a pedagogical assessment and an interview with the family are conducted to finalise admission."
+        },
+        {
+          "step": "04",
+          "title": "Admission & Registration",
+          "description": "After the admission decision, formalise registration by paying tuition fees and completing administrative procedures."
+        },
+        {
+          "step": "05",
+          "title": "Start of School Year",
+          "description": "Welcome to Les Génies d'Afrique! Your child joins their class and begins their bilingual educational journey."
+        }
+      ]
+    }
+  },
+  "admissionsPage": {
+    "hero": {
+      "badge": "Admissions",
+      "title": "Join the Les Génies d'Afrique Family",
+      "subtitle": "Enrollment is open for the current school year. Limited places — register now to secure your child's spot in our bilingual school of excellence.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "presentation": {
+      "badge": "Presentation",
+      "title": "Why Enroll Your Child at Les Génies d'Afrique?",
+      "subtitle": "Choosing Les Génies d'Afrique means choosing a bilingual school accredited by MINEDUB, where every child is supported, stimulated, and valued as an individual. From Day Care to Primary, French and English sections, enhanced curricula, innovative projects — everything is designed to reveal every child's genius.",
+      "highlights": [
+        {
+          "title": "Academic Excellence",
+          "description": "Enhanced official MINEDUB curricula, innovative teaching methods and excellent results for every student."
+        },
+        {
+          "title": "Accredited School",
+          "description": "Official MINEDUB accreditation obtained in 2025. A recognised institution that meets Cameroonian educational standards."
+        },
+        {
+          "title": "Full Bilingualism",
+          "description": "French and English immersion from Day Care. Two languages, two cultures, an opening to the world."
+        },
+        {
+          "title": "Care & Support",
+          "description": "Personalised welcome, individual monitoring and a climate of trust for every child's development."
+        },
+        {
+          "title": "Close-Knit Community",
+          "description": "Controlled class sizes, available teachers and a strong partnership with families."
+        },
+        {
+          "title": "Flexible Hours",
+          "description": "Early drop-off from 7:00 AM, after-school care until 5:30 PM and schedules adapted to parents' constraints."
+        }
+      ]
+    },
+    "conditions": {
+      "title": "Admission Conditions",
+      "subtitle": "Clear, simple, and transparent admission conditions for all levels.",
+      "items": [
+        {
+          "icon": "Baby",
+          "title": "Day Care (0–2 yrs)",
+          "conditions": [
+            "Minimum age: 6 months completed at time of registration",
+            "Up-to-date vaccination record required",
+            "Medical certificate of aptitude for community life"
+          ]
+        },
+        {
+          "icon": "Smile",
+          "title": "Nursery (2–5 yrs)",
+          "conditions": [
+            "Petit Section: 2 years by September 1st",
+            "Moyen Section: 3 years by September 1st",
+            "Grand Section: 4 years by September 1st",
+            "Up-to-date health and vaccinations"
+          ]
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Primary (5–11 yrs)",
+          "conditions": [
+            "Class 1 / CP: 5 years by September 1st",
+            "Previous school records for transfers",
+            "Pedagogical assessment of level",
+            "Family motivation interview"
+          ]
+        }
+      ]
+    },
+    "documents": {
+      "title": "Required Documents",
+      "subtitle": "Prepare these documents to complete your registration file.",
+      "list": [
+        { "icon": "FileText", "text": "Copy of birth certificate (original + copy)" },
+        { "icon": "Camera", "text": "4 recent ID photos (passport size)" },
+        { "icon": "Stethoscope", "text": "Medical certificate of aptitude for schooling" },
+        { "icon": "Syringe", "text": "Up-to-date vaccination record" },
+        { "icon": "FileCheck", "text": "Previous school reports (for transfers)" },
+        { "icon": "ClipboardCheck", "text": "Registration form (provided by the school)" },
+        { "icon": "User", "text": "Copy of parent or guardian's ID" },
+        { "icon": "Landmark", "text": "Proof of address (residence certificate)" }
+      ]
+    },
+    "steps": {
+      "title": "Registration Steps",
+      "subtitle": "A simple process in 5 steps to join our community.",
+      "items": [
+        {
+          "step": "Step 1",
+          "title": "Information Request",
+          "description": "Fill out the contact form, call us, or visit us directly at the school to get all information about our programmes."
+        },
+        {
+          "step": "Step 2",
+          "title": "Campus Visit",
+          "description": "Discover our facilities, meet the teaching team, and learn more about our educational project during a guided visit."
+        },
+        {
+          "step": "Step 3",
+          "title": "File Submission",
+          "description": "Submit the complete application file with all required documents listed above."
+        },
+        {
+          "step": "Step 4",
+          "title": "Assessment & Admission",
+          "description": "Pedagogical assessment (primary) and family interview. You receive the official admission decision."
+        },
+        {
+          "step": "Step 5",
+          "title": "Registration Confirmation",
+          "description": "Pay registration fees and tuition to confirm your child's place. Welcome to Les Génies d'Afrique!"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Frequently Asked Questions",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Answers to the questions most frequently asked by families.",
+      "items": [
+        {
+          "question": "What is the minimum registration age?",
+          "answer": "The minimum admission age is 2 years completed for entry into Nursery. Our Day Care welcomes children from birth to 2 years old. Exceptions can be considered on a case-by-case basis after an interview with the principal."
+        },
+        {
+          "question": "My child does not speak English, can they join the French section?",
+          "answer": "Absolutely! Bilingualism is progressively introduced. In the French section, English is taught as a second language from Grade 1 (4 hours/week). A catch-up programme is offered to new students according to their level."
+        },
+        {
+          "question": "What are the school hours?",
+          "answer": "Classes are held Monday to Friday, from 7:45 AM to 3:00 PM for Nursery and until 4:00 PM for Primary. Morning reception is open from 7:00 AM and after-school care is available until 5:30 PM on request."
+        },
+        {
+          "question": "Is there a school cafeteria service?",
+          "answer": "Yes, a cafeteria service is available for all students. Meals are balanced, prepared on site and adapted to children's needs. Menu displayed weekly. Half-board or packed lunch options available."
+        },
+        {
+          "question": "Do you offer a school transport service?",
+          "answer": "A transport service is organised according to geographical areas (Nkozoa and its surroundings: Cité-Verte, Mvan, Mokolo, etc.). Schedules and rates are communicated at registration. Limited number of places, on a first-come first-served basis."
+        },
+        {
+          "question": "How are the school fees structured?",
+          "answer": "Fees are broken down into: registration fees (once a year), tuition fees (quarterly or annually with a discount), and miscellaneous fees (canteen, transport, uniforms, materials). A detailed and transparent fee schedule is given to every family during the visit."
+        }
+      ]
+    },
+    "whatsappCta": {
+      "badge": "Still have questions?",
+      "title": "Chat with us directly on WhatsApp",
+      "subtitle": "Our admissions team is available Monday to Friday, 8 AM to 1 PM, to answer all your questions in real time.",
+      "button": "Message us on WhatsApp"
+    }
+  },
+  "newsPage": {
+    "hero": {
+      "badge": "News",
+      "title": "All the News from Les Génies d'Afrique",
+      "subtitle": "Events, achievements, pedagogical projects, school life — stay informed of everything happening at our bilingual school."
+    },
+    "search": {
+      "placeholder": "Search an article...",
+      "label": "Search"
+    },
+    "categories": {
+      "title": "Categories",
+      "all": "All",
+      "items": [
+        { "slug": "events", "name": "Events" },
+        { "slug": "academic", "name": "Academic" },
+        { "slug": "projects", "name": "Projects" },
+        { "slug": "sports", "name": "Sports" },
+        { "slug": "arts", "name": "Arts & Culture" },
+        { "slug": "community", "name": "Community" }
+      ]
+    },
+    "featured": {
+      "badge": "Featured",
+      "title": "Featured Article"
+    },
+    "recentArticles": {
+      "title": "Recent Articles",
+      "subtitle": "Discover our latest publications."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "article": {
+      "readTime": "min read",
+      "publishedOn": "Published on",
+      "by": "By",
+      "share": "Share",
+      "related": "Related Articles",
+      "back": "Back to all news",
+      "notFound": "Article not found."
+    }
+  },
+  "lifePage": {
+    "hero": {
+      "badge": "School Life",
+      "title": "Life at Les Génies d'Afrique",
+      "subtitle": "Beyond the classroom, a rich and diverse school life where every child can express their talent, explore new passions, and grow within a caring community."
+    },
+    "clubs": {
+      "title": "Our School Clubs",
+      "subtitle": "6 clubs to explore, create, and thrive after class.",
+      "items": [
+        {
+          "icon": "BookOpen",
+          "name": "Debate & Reading Club",
+          "description": "Develop oral expression, critical thinking, and a love of reading through debates, storytelling, and literary activities in French and English.",
+          "schedule": "Tuesdays, 1:30 PM – 3:00 PM"
+        },
+        {
+          "icon": "Palette",
+          "name": "Arts Club",
+          "description": "Explore drawing, painting, sculpture, and crafts to develop creativity and artistic expression through hands-on workshops.",
+          "schedule": "Wednesdays, 1:30 PM – 3:00 PM"
+        },
+        {
+          "icon": "Music",
+          "name": "Music Club",
+          "description": "Learn singing, percussion, and traditional instruments. Discover musical cultures and express yourself through rhythm and melody.",
+          "schedule": "Thursdays, 1:30 PM – 3:00 PM"
+        },
+        {
+          "icon": "Trophy",
+          "name": "Sports Club",
+          "description": "Football, basketball, handball, athletics — develop team spirit, physical health, and fair play through varied sports activities.",
+          "schedule": "Fridays, 1:30 PM – 3:00 PM"
+        },
+        {
+          "icon": "Sprout",
+          "name": "Agriculture Club",
+          "description": "Plant, cultivate, and harvest in our school garden. Learn about sustainable farming, ecology, and respect for nature from seed to plate.",
+          "schedule": "Mondays, 1:30 PM – 3:00 PM"
+        },
+        {
+          "icon": "Lightbulb",
+          "name": "Entrepreneurship Club",
+          "description": "Create mini-projects, develop creativity and business sense. Invent, design, and learn the basics of entrepreneurship from an early age.",
+          "schedule": "Tuesdays & Thursdays, 1:30 PM – 3:00 PM"
+        }
+      ]
+    },
+    "activities": {
+      "title": "Daily School Activities",
+      "subtitle": "A variety of daily activities that make every school day rich and memorable.",
+      "items": [
+        {
+          "icon": "Sunrise",
+          "title": "Morning Welcome",
+          "description": "A warm welcome with morning songs, rhymes, and a moment of sharing to start the day with joy and energy."
+        },
+        {
+          "icon": "Users",
+          "title": "Collaborative Work",
+          "description": "Group projects and team activities that develop cooperation, mutual aid, and social skills among students."
+        },
+        {
+          "icon": "Leaf",
+          "title": "Outdoor Play",
+          "description": "Daily outdoor play sessions in our secure playground to develop motor skills and let children run, play, and breathe."
+        },
+        {
+          "icon": "BookMarked",
+          "title": "Reading Time",
+          "description": "A daily reading moment in French and English to cultivate a love of books and develop reading fluency from an early age."
+        }
+      ]
+    },
+    "outings": {
+      "title": "Educational Outings",
+      "subtitle": "Outings that open horizons and enrich classroom learning with real-world experiences.",
+      "items": [
+        {
+          "icon": "Landmark",
+          "name": "Visit to Yaoundé Museums",
+          "description": "Discover Cameroonian history, art, and culture through interactive visits adapted to each age level."
+        },
+        {
+          "icon": "TreeDeciduous",
+          "name": "Botanical Garden",
+          "description": "Explore plant biodiversity, learn about endemic species, and understand ecological issues in a natural setting."
+        },
+        {
+          "icon": "Factory",
+          "name": "Farm Visit",
+          "description": "See farming and livestock up close. Understand where our food comes from and meet local producers."
+        },
+        {
+          "icon": "Plane",
+          "name": "Airport Discovery",
+          "description": "An inspiring visit to discover air transport professions and fuel dreams of travel and discovery."
+        }
+      ]
+    },
+    "events": {
+      "title": "Annual Major Events",
+      "subtitle": "Highlights that punctuate the school year and bring the whole community together.",
+      "items": [
+        { "month": "September", "name": "Start of School Year & Welcome Day", "description": "A festive welcome for new and returning students." },
+        { "month": "December", "name": "Christmas Show & End of Term Party", "description": "Plays, songs, and dances performed by our students." },
+        { "month": "February", "name": "National Youth Day & Cultural Week", "description": "Celebration of youth and cultural diversity." },
+        { "month": "May", "name": "Open Day & Parents' Meeting", "description": "Open doors to families, student work exhibition." },
+        { "month": "June", "name": "Sports Day", "description": "Sports competitions and festive day of activities." },
+        { "month": "July", "name": "End of School Year Ceremony & Prize-Giving", "description": "Celebration of student success and graduation ceremony." }
+      ]
+    }
+  },
+  "galleryPage": {
+    "hero": {
+      "badge": "Gallery",
+      "title": "Our School in Images",
+      "subtitle": "Dive into the daily life of Les Génies d'Afrique through our photo and video gallery."
+    },
+    "tabs": {
+      "photos": "Photos",
+      "videos": "Videos"
+    },
+    "filters": {
+      "title": "Filter by category",
+      "all": "All",
+      "activities": "Activities",
+      "infrastructure": "Infrastructure",
+      "ceremonies": "Ceremonies",
+      "classrooms": "Classrooms",
+      "excursions": "Excursions"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "badge": "Contact",
+      "title": "Contact Us",
+      "subtitle": "Questions, visits, registrations — our team is at your disposal to welcome you and answer all your inquiries."
+    },
+    "infoCards": [
+      {
+        "icon": "MapPin",
+        "title": "Visit Us",
+        "lines": ["Nkozoa, behind Boulangerie Massa", "Yaoundé, Cameroon"]
+      },
+      {
+        "icon": "Phone",
+        "title": "Call Us",
+        "lines": ["+237 651 11 15 06", "+237 656 66 38 48"]
+      },
+      {
+        "icon": "Mail",
+        "title": "Email Us",
+        "lines": ["lesgeniesdafrique@836gmail.com"]
+      },
+      {
+        "icon": "Clock",
+        "title": "Opening Hours",
+        "lines": ["Monday – Friday: 8:00 AM – 1:00 PM", "Saturday: By appointment"]
+      }
+    ],
+    "form": {
+      "title": "Send us a message",
+      "subtitle": "Fill out the form below — our team will get back to you within 24 to 48 hours.",
+      "fields": {
+        "fullName": {
+          "label": "Full Name",
+          "placeholder": "Your first and last name"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "your.email@example.com"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "+237 6XX XX XX XX"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "What is the subject of your message?",
+          "options": [
+            "Enrollment Inquiry",
+            "Visit Request",
+            "General Question",
+            "Partnership / Collaboration",
+            "Other"
+          ]
+        },
+        "childLevel": {
+          "label": "Level of Interest (optional)",
+          "placeholder": "Select a school level",
+          "options": [
+            "Day Care (0–2 yrs)",
+            "Nursery (2–5 yrs)",
+            "Primary – French Section",
+            "Primary – English Section",
+            "Other / Not sure yet"
+          ]
+        },
+        "message": {
+          "label": "Your Message",
+          "placeholder": "Write your message here... (at least 10 characters)"
+        }
+      },
+      "cta": "Send Message",
+      "success": "Thank you! Your message has been sent successfully. We will get back to you shortly.",
+      "error": "An error occurred while sending your message. Please try again or call us directly."
+    },
+    "map": {
+      "title": "Find Us on the Map",
+      "subtitle": "Located in Nkozoa, behind Boulangerie Massa, easily accessible from all districts of Yaoundé."
+    },
+    "whatsapp": {
+      "title": "Prefer WhatsApp?",
+      "subtitle": "Chat with us instantly on WhatsApp for quick answers to your questions.",
+      "cta": "Chat on WhatsApp"
+    }
+  },
+  "pageTitles": {
+    "home": "Les Génies d'Afrique | Bilingual School of Excellence — Nkozoa, Yaoundé",
+    "about": "About Us — Bilingual School Complex Les Génies d'Afrique",
+    "formations": "Programs & Curriculum — French & English Sections | Les Génies d'Afrique",
+    "admissions": "Admissions & Registration — Les Génies d'Afrique, Yaoundé",
+    "news": "School News & Events — Les Génies d'Afrique",
+    "life": "School Life — Clubs, Activities, Events | Les Génies d'Afrique",
+    "gallery": "Photo & Video Gallery — Bilingual School Les Génies d'Afrique",
+    "contact": "Contact Us — Les Génies d'Afrique, Nkozoa Yaoundé"
   }
 }

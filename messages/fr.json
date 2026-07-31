@@ -7,11 +7,12 @@
   },
   "nav": {
     "home": "Accueil",
-    "school": "L'École",
-    "programs": "Programmes",
+    "about": "À propos",
+    "formations": "Formations",
     "admissions": "Admissions",
-    "life": "Vie Scolaire",
     "news": "Actualités",
+    "life": "Vie scolaire",
+    "gallery": "Galerie",
     "contact": "Contact",
     "enroll": "S'inscrire",
     "openMenu": "Ouvrir le menu",
@@ -21,6 +22,642 @@
     "subHistory": "Notre Histoire",
     "subValues": "Nos Valeurs",
     "subTeam": "Notre Équipe"
+  },
+  "pageTitles": {
+    "home": {
+      "title": "Accueil | Complexe Scolaire Bilingue Les Génies d'Afrique",
+      "description": "Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé. École bilingue privée agréée MINEDUB, de la crèche au primaire. Former aujourd'hui les leaders de demain."
+    },
+    "about": {
+      "title": "À propos | Les Génies d'Afrique",
+      "description": "Découvrez l'histoire, la mission, la vision et les valeurs du Complexe Scolaire Bilingue Les Génies d'Afrique. Rencontrez l'équipe pédagogique qui accompagne vos enfants."
+    },
+    "formations": {
+      "title": "Formations | Les Génies d'Afrique",
+      "description": "Nos programmes bilingues de la crèche au primaire. Section francophone et section anglophone, programmes officiels MINEDUB enrichis et objectifs pédagogiques."
+    },
+    "admissions": {
+      "title": "Admissions | Les Génies d'Afrique",
+      "description": "Procédures d'inscription, conditions d'admission, pièces à fournir et frais de scolarité au Complexe Scolaire Bilingue Les Génies d'Afrique."
+    },
+    "news": {
+      "title": "Actualités | Les Génies d'Afrique",
+      "description": "Toutes les actualités, événements, manifestations et nouveautés du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
+    },
+    "life": {
+      "title": "Vie scolaire | Les Génies d'Afrique",
+      "description": "Clubs scolaires, activités extrascolaires, sorties pédagogiques et manifestations culturelles. La vie quotidienne à l'école Les Génies d'Afrique."
+    },
+    "gallery": {
+      "title": "Galerie | Les Génies d'Afrique",
+      "description": "Photos et vidéos de la vie à l'école : activités, infrastructures, cérémonies, salles de classe, excursions et bien plus."
+    },
+    "contact": {
+      "title": "Contact | Les Génies d'Afrique",
+      "description": "Contactez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
+    }
+  },
+  "aboutPage": {
+    "history": {
+      "badge": "Notre Histoire",
+      "title": "De la vision à la réalité",
+      "subtitle": "L'aventure des Génies d'Afrique en 4 étapes clés.",
+      "timeline": [
+        {
+          "date": "2024",
+          "title": "Genèse du projet",
+          "description": "Naissance de la vision : créer un établissement bilingue d'excellence à Nkozoa, centré sur l'épanouissement intégral de l'enfant. Élaboration du projet éducatif et du plan d'implantation."
+        },
+        {
+          "date": "Fév 2025",
+          "title": "Fondation & inauguration",
+          "description": "Ouverture officielle du Complexe Scolaire Bilingue Les Génies d'Afrique. Accueil des premières promotions en crèche et maternelle dans un cadre neuf et adapté."
+        },
+        {
+          "date": "Sept 2025",
+          "title": "Agrément MINEDUB",
+          "description": "Obtention de l'agrément officiel du Ministère de l'Éducation de Base. Extension à l'école primaire et lancement des deux sections francophone et anglophone."
+        },
+        {
+          "date": "2026",
+          "title": "Croissance & rayonnement",
+          "description": "Plus de 120 élèves inscrits, développement des clubs scolaires, des projets agricoles et d'entrepreneuriat. L'établissement devient une référence locale."
+        }
+      ]
+    },
+    "missionVision": {
+      "badge": "Mission & Vision",
+      "title": "Notre raison d'être",
+      "mission": "Former des individus complets, équilibrés et compétitifs, capables de réussir dans un monde globalisé, tout en restant ancrés dans leurs valeurs culturelles africaines.",
+      "vision": "Devenir d'ici 2030 l'établissement bilingue de référence au Cameroun, reconnu à l'international pour l'excellence de ses résultats, l'innovation de ses méthodes et l'épanouissement de ses élèves.",
+      "valuesCards": [
+        {
+          "icon": "Trophy",
+          "title": "Excellence",
+          "description": "Viser le meilleur dans tous les domaines : académique, artistique, sportif et humain."
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "Intégrité",
+          "description": "Cultiver l'honnêteté, la responsabilité et le respect des règles de vie collective."
+        },
+        {
+          "icon": "Globe",
+          "title": "Bilinguisme",
+          "description": "Maîtriser le français et l'anglais comme outils d'ouverture sur le monde et d'excellence académique."
+        },
+        {
+          "icon": "Lightbulb",
+          "title": "Innovation",
+          "description": "Explorer de nouvelles méthodes pédagogiques et développer la créativité et l'esprit critique."
+        },
+        {
+          "icon": "Heart",
+          "title": "Bienveillance",
+          "description": "Accueillir chaque enfant avec empathie, dans un climat de confiance et de sécurité affective."
+        },
+        {
+          "icon": "Star",
+          "title": "Développement global",
+          "description": "Éduquer le corps, l'esprit et le cœur : intellectuel, physique, émotionnel, social et spirituel."
+        }
+      ]
+    },
+    "founderMessage": {
+      "badge": "Mot de la Fondatrice",
+      "title": "Une école née d'une conviction",
+      "photo": "/images/IMG-20260723-WA0075.jpg",
+      "messageQuote": "\"Chaque enfant porte en lui un génie unique. Notre rôle est de créer les conditions pour qu'il s'éveille et s'épanouisse.\"",
+      "messageBody": "Chers parents, chers élèves, chers visiteurs. Le Complexe Scolaire Bilingue Les Génies d'Afrique est né d'une conviction profonde : l'Afrique de demain se construit aujourd'hui dans les salles de classe, à travers l'éducation de ses enfants. Nous avons réuni une équipe passionnée, des infrastructures de qualité et un projet éducatif ambitieux pour offrir à chaque enfant qui nous est confié un environnement propice à la réussite et à l'épanouissement. Notre approche bilingue intégrale, notre ouverture sur les autres cultures et notre engagement en faveur d'un développement global sont autant d'atouts que nous mettons au service de vos enfants. Je vous invite à nous rendre visite, à découvrir notre établissement et à partager avec nous l'aventure extraordinaire de faire éclore les génies de demain.",
+      "signature": "Mme Mbarga",
+      "signatureTitle": "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
+    },
+    "team": {
+      "badge": "Notre Équipe",
+      "title": "Des passionnés au service de vos enfants",
+      "members": [
+        {
+          "name": "Mme Mbarga",
+          "role": "Présidente – Fondatrice",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Atangana",
+          "role": "Directrice Générale",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Ngo",
+          "role": "Directrice des Études",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Essomba",
+          "role": "Directrice Pédagogique",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Olinga",
+          "role": "Responsable Section Francophone",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Smith",
+          "role": "Responsable Section Anglophone",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Tchoupi",
+          "role": "Enseignant – Mathématiques & Sciences",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Biyick",
+          "role": "Enseignante – Français & Expression",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Ewane",
+          "role": "Enseignant – Éducation Physique & Sportive",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        }
+      ]
+    }
+  },
+  "formationsPage": {
+    "hero": {
+      "title": "Nos Formations Bilingues",
+      "subtitle": "Un parcours d'excellence de la crèche au primaire, dans un cadre stimulant et bienveillant.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "intro": {
+      "badge": "Présentation",
+      "title": "Un curriculum complet et équilibré",
+      "subtitle": "De la crèche au CM2 / Class 6, nos programmes suivent les recommandations du MINEDUB, enrichis d'une approche bilingue, de projets pratiques et d'activités extrascolaires variées."
+    },
+    "levels": [
+      {
+        "id": "creche",
+        "title": "La Crèche",
+        "subtitle": "0 à 2 ans",
+        "image": "/images/IMG-20260723-WA0007.jpg",
+        "presentation": "Un environnement doux, sécurisé et chaleureux, conçu pour l'éveil sensoriel et affectif des tout-petits. Une équipe de puéricultrices qualifiées accompagne chaque bébé dans ses premiers pas vers l'autonomie.",
+        "programme": [
+          "Éveil sensoriel et jeux éducatifs adaptés",
+          "Histoires, comptines et musique douce",
+          "Activités motrices et exploration libre",
+          "Soins quotidiens, repas et siestes structurés",
+          "Immersion bilingue progressive FR / EN"
+        ],
+        "objectifs": [
+          "Favoriser la sécurité affective et l'attachement",
+          "Stimuler les sens et la découverte",
+          "Développer la motricité fine et globale",
+          "Éveiller à la langue, aux sons et aux couleurs",
+          "Introduire les premières règles de vie en collectivité"
+        ]
+      },
+      {
+        "id": "maternelle",
+        "title": "La Maternelle",
+        "subtitle": "2 à 5 ans",
+        "image": "/images/IMG-20260723-WA0012.jpg",
+        "presentation": "L'école maternelle est l'âge des grandes découvertes. Nos programmes allient apprentissages structurés, jeux éducatifs et projets créatifs. L'enfant construit progressivement les bases de la lecture, de l'écriture et du calcul, tout en développant sa sociabilité et son autonomie.",
+        "programme": [
+          "Pré-lecture et pré-écriture en français et en anglais",
+          "Initiation aux mathématiques et au raisonnement logique",
+          "Arts plastiques, dessin, peinture et modelage",
+          "Chant, musique, éveil corporel et danse",
+          "Projets nature, sciences et observation",
+          "Jeux de rôle, socialisation et vie en groupe"
+        ],
+        "objectifs": [
+          "Maîtriser les bases pré-requises pour l'entrée au CP",
+          "Développer la confiance en soi et l'autonomie",
+          "Intégrer les règles de vie en collectivité",
+          "Stimuler la curiosité et le goût d'apprendre",
+          "Acquérir un vocabulaire riche dans les deux langues"
+        ]
+      },
+      {
+        "id": "primaire",
+        "title": "Le Primaire",
+        "subtitle": "6 à 11 ans",
+        "image": "/images/IMG-20260723-WA0024.jpg",
+        "presentation": "Du CP au CM2, nos élèves bénéficient d'un enseignement rigoureux et motivant. Les deux sections — francophone et anglophone — suivent les programmes officiels MINEDUB avec un renforcement constant de la seconde langue, des sciences, des technologies et de la culture générale.",
+        "programme": [
+          "Français / Anglais : lecture, grammaire, expression écrite et orale",
+          "Mathématiques, sciences expérimentales et technologie",
+          "Histoire, géographie et éducation civique",
+          "Informatique, bureautique et recherche documentaire",
+          "EPS, sports collectifs et natation (selon session)",
+          "Projets interdisciplinaires, agriculture et entrepreneuriat junior"
+        ],
+        "objectifs": [
+          "Obtenir d'excellents résultats aux examens et concours",
+          "Maîtriser parfaitement les deux langues au niveau primaire",
+          "Développer la réflexion, l'analyse et l'esprit critique",
+          "Former des citoyens responsables, créatifs et entreprenants",
+          "Préparer sereinement l'entrée dans le secondaire"
+        ]
+      }
+    ],
+    "sections": {
+      "badge": "Nos Sections",
+      "title": "Deux parcours, une même ambition",
+      "subtitle": "Une voie francophone et une voie anglophone, deux parcours d'excellence qui partagent les mêmes valeurs et un même environnement bilingue.",
+      "cards": [
+        {
+          "id": "francophone",
+          "flag": "🇫🇷",
+          "title": "Section Francophone",
+          "description": "Programme officiel MINEDUB entièrement dispensé en français, avec un renforcement intensif de l'anglais comme langue seconde dès le CP. Idéale pour préparer les élèves aux voies d'excellence francophones.",
+          "features": [
+            "Programme MINEDUB enrichi et actualisé",
+            "Anglais intensif (4h / semaine dès le CP)",
+            "Mathématiques, SVT, Physique-Chimie renforcées",
+            "Histoire-Géo, EMC et culture africaine",
+            "Projets : agriculture, élevage, entrepreneuriat",
+            "Évaluation continue et examen blanc semestriel"
+          ]
+        },
+        {
+          "id": "anglophone",
+          "flag": "🇬🇧",
+          "title": "Section Anglophone",
+          "description": "Curriculum rigoureux aligné sur les standards anglophones MINEDUB. Français comme langue seconde renforcée. Préparation idéale pour les cursus internationaux ou les filières anglophones d'excellence.",
+          "features": [
+            "Curriculum MINEDUB anglophone complet",
+            "Français langue seconde (4h / semaine)",
+            "English Literacy, Numeracy, Science & ICT",
+            "Social Studies & Citizenship Education",
+            "Projets : Club Débat, Drama, Model UN",
+            "Continuous Assessment + Mock Examinations"
+          ]
+        }
+      ]
+    },
+    "admissionConditions": {
+      "badge": "Conditions d'admission",
+      "title": "Adhérer à la communauté des Génies d'Afrique",
+      "timeline": [
+        {
+          "step": "1",
+          "title": "Vérifier les conditions",
+          "description": "S'assurer que l'enfant remplit les conditions d'âge et d'aptitude pour le niveau demandé. Consulter la section Admissions pour la liste détaillée."
+        },
+        {
+          "step": "2",
+          "title": "Déposer le dossier",
+          "description": "Retirer et remplir le dossier d'inscription au secrétariat, ou en ligne. Fournir l'ensemble des pièces demandées : extrait de naissance, bulletins, photos, certificat médical."
+        },
+        {
+          "step": "3",
+          "title": "Entretien & évaluation",
+          "description": "Un entretien est organisé avec la direction et/ou un enseignant. Pour les niveaux primaires, une évaluation de positionnement peut être proposée à l'élève."
+        },
+        {
+          "step": "4",
+          "title": "Confirmation & inscription",
+          "description": "Réception du bulletin d'inscription définitif. Règlement des frais d'inscription et de la première tranche de scolarité. L'enfant est officiellement inscrit."
+        }
+      ]
+    }
+  },
+  "admissionsPage": {
+    "hero": {
+      "title": "Inscriptions & Admissions",
+      "subtitle": "Rejoignez la famille des Génies d'Afrique. Places limitées pour chaque rentrée scolaire.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "presentation": {
+      "badge": "Présentation",
+      "title": "Bienvenue dans l'aventure Génies d'Afrique",
+      "subtitle": "Nous vous remercions de l'intérêt que vous portez à notre établissement. Notre processus d'admission a été conçu pour être clair, transparent et humain. Notre équipe vous accompagne à chaque étape.",
+      "highlights": [
+        {
+          "title": "Excellence Académique",
+          "description": "Programmes officiels MINEDUB enrichis, méthodes pédagogiques innovantes et résultats d'excellence pour chaque élève."
+        },
+        {
+          "title": "Établissement Agréé",
+          "description": "Agrément officiel MINEDUB obtenu en 2025. Un établissement reconnu et conforme aux normes éducatives camerounaises."
+        },
+        {
+          "title": "Bilinguisme Intégral",
+          "description": "Immersion française et anglaise dès la crèche. Deux langues, deux cultures, une ouverture sur le monde."
+        },
+        {
+          "title": "Bienveillance & Support",
+          "description": "Accueil personnalisé, suivi individuel et climat de confiance pour l'épanouissement de chaque enfant."
+        },
+        {
+          "title": "Communauté Soudée",
+          "description": "Des effectifs maîtrisés, des enseignants disponibles et un partenariat fort avec les familles."
+        },
+        {
+          "title": "Horaires Flexibles",
+          "description": "Accueil matinal dès 7h00, gardiennage jusqu'à 17h30 et horaires adaptés aux contraintes des parents."
+        }
+      ]
+    },
+    "conditions": {
+      "badge": "Conditions d'inscription",
+      "title": "Conditions d'admission",
+      "list": [
+        "Âge minimum : 2 ans révolus pour l'entrée en maternelle ; 0–2 ans pour la crèche",
+        "Fournir un extrait de naissance de l'enfant (ou acte de naissance)",
+        "Certificat médical de non contre-indication à la vie en collectivité",
+        "Bulletins scolaires de l'année précédente pour les élèves de la maternelle supérieure au primaire",
+        "Engagement écrit des parents à respecter le règlement intérieur de l'établissement"
+      ]
+    },
+    "documents": {
+      "badge": "Pièces à fournir",
+      "title": "Dossier d'inscription — Liste complète",
+      "list": [
+        "Fiche d'inscription dûment remplie et signée par les parents ou tuteurs légaux",
+        "Extrait d'acte de naissance de l'enfant (original ou copie certifiée conforme)",
+        "4 photos d'identité récentes (4x4 cm) de l'enfant, sur fond clair",
+        "Certificat médical datant de moins de 3 mois, délivré par un pédiatre",
+        "Bulletins scolaires et certificats de radiation pour les élèves venant d'un autre établissement",
+        "Copie de la carte nationale d'identité ou du passeport des parents ou tuteurs légaux"
+      ]
+    },
+    "steps": {
+      "badge": "Procédure",
+      "title": "Étapes de l'inscription",
+      "items": [
+        {
+          "step": "1",
+          "title": "Prise d'information",
+          "description": "Visitez notre établissement, rencontrez l'équipe pédagogique et découvrez nos infrastructures. Prise de rendez-vous au 651 11 15 06 ou par WhatsApp."
+        },
+        {
+          "step": "2",
+          "title": "Retrait du dossier",
+          "description": "Retirez le dossier d'inscription au secrétariat de l'école (du lundi au vendredi, 8h–13h) ou téléchargez-le en ligne depuis notre site internet."
+        },
+        {
+          "step": "3",
+          "title": "Dépôt du dossier complet",
+          "description": "Déposez le dossier intégralement rempli, accompagné de l'ensemble des pièces demandées, au secrétariat ou par voie numérique."
+        },
+        {
+          "step": "4",
+          "title": "Entretien & confirmation",
+          "description": "Un entretien avec la direction et/ou une évaluation pédagogique est organisé. Suite à son issue, l'inscription est confirmée et les frais de première rentrée sont réglés."
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Questions fréquentes",
+      "title": "Foire aux questions",
+      "items": [
+        {
+          "question": "Quel est l'âge minimum d'inscription ?",
+          "answer": "L'âge minimum d'admission est de 2 ans révolus pour l'entrée en maternelle. Notre crèche accueille dès la naissance les enfants de 0 à 2 ans. Des dérogations peuvent être étudiées au cas par cas, après entretien avec la direction."
+        },
+        {
+          "question": "Mon enfant ne parle pas anglais, peut-il intégrer la section francophone ?",
+          "answer": "Absolument ! Le bilinguisme est progressivement introduit. Dans la section francophone, l'anglais est enseigné comme langue seconde dès le CP (4h/semaine). Un dispositif de remise à niveau est proposé aux nouveaux élèves selon leur niveau."
+        },
+        {
+          "question": "Quels sont les horaires de l'école ?",
+          "answer": "Les cours ont lieu du lundi au vendredi, de 7h45 à 15h00 pour les maternelles et jusqu'à 16h00 pour le primaire. L'accueil matinal est ouvert dès 7h00 et un gardiennage est possible jusqu'à 17h30 sur demande."
+        },
+        {
+          "question": "Y a-t-il un service de restauration scolaire ?",
+          "answer": "Oui, un service de cantine est disponible pour tous les élèves. Les repas sont équilibrés, préparés sur place et adaptés aux besoins des enfants. Menu affiché chaque semaine. Possibilité de demi-pension ou de panier repas."
+        },
+        {
+          "question": "Proposez-vous un service de transport scolaire ?",
+          "answer": "Un service de transport est organisé selon les zones géographiques (Nkozoa et ses environs : Cité-Verte, Mvan, Mokolo, etc.). Les horaires et tarifs sont communiqués à l'inscription. Nombre de places limité, selon première inscription."
+        },
+        {
+          "question": "Comment se composent les frais de scolarité ?",
+          "answer": "Les frais se décomposent en : frais d'inscription (une fois par an), frais de scolarité (trimestriels ou annuels avec remise), et frais divers (cantine, transport, uniformes, matériel). Une grille tarifaire détaillée et transparente est remise à toute famille lors de la visite."
+        }
+      ]
+    },
+    "whatsappCta": {
+      "title": "Besoin d'un renseignement immédiat ?",
+      "subtitle": "Notre équipe est joignable directement sur WhatsApp pour répondre à toutes vos questions sur les admissions.",
+      "button": "Nous écrire sur WhatsApp"
+    }
+  },
+  "newsPage": {
+    "hero": {
+      "title": "Actualités & Événements",
+      "subtitle": "Toute l'actualité des Génies d'Afrique : événements, projets pédagogiques, cérémonies et manifestations.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "searchPlaceholder": "Rechercher un article, un événement…",
+    "categories": {
+      "all": "Toutes les actualités",
+      "evenements": "Événements",
+      "institutionnel": "Institutionnel",
+      "pedagogie": "Pédagogie",
+      "admissions": "Admissions",
+      "sports": "Sports & Vie scolaire"
+    },
+    "featured": "À la une",
+    "recentArticles": "Articles récents",
+    "pagination": {
+      "prev": "Précédent",
+      "next": "Suivant",
+      "page": "Page"
+    },
+    "article": {
+      "authorLabel": "Rédigé par",
+      "galleryLabel": "Galerie photos",
+      "shareLabel": "Partager l'article",
+      "backToList": "← Retour à la liste des actualités"
+    }
+  },
+  "lifePage": {
+    "hero": {
+      "title": "La Vie Scolaire",
+      "subtitle": "Bien plus que des cours : des clubs, des projets, des sorties, des fêtes et des souvenirs gravés pour la vie."
+    },
+    "clubs": {
+      "badge": "Clubs Scolaires",
+      "title": "6 clubs pour révéler tous les talents",
+      "items": [
+        {
+          "icon": "BookOpen",
+          "title": "Club Débat & Lecture",
+          "description": "Développer l'argumentation, l'éloquence et l'amour de la lecture. Séances hebdomadaires : débats, cercles littéraires, concours d'éloquence."
+        },
+        {
+          "icon": "Palette",
+          "title": "Club des Arts",
+          "description": "Peinture, dessin, sculpture, collage, arts plastiques et visuels. Expositions finales et projets de décoration murale de l'école."
+        },
+        {
+          "icon": "Music",
+          "title": "Club Musique & Chant",
+          "description": "Chorale, éveil musical, pratique d'instruments (percussions, piano, guitare). Présentations lors des manifestations culturelles."
+        },
+        {
+          "icon": "Dumbbell",
+          "title": "Club Sportif",
+          "description": "Football, basketball, athlétisme, natation et sports collectifs. Tournois inter-classes et rencontres amicales inter-établissements."
+        },
+        {
+          "icon": "Sprout",
+          "title": "Club Agriculture & Élevage",
+          "description": "Pratique de jardinage, petits élevages (lapins, poules), culture de légumes et fruits. Sensibilisation à l'environnement et au monde rural."
+        },
+        {
+          "icon": "Briefcase",
+          "title": "Club Entreprenariat Junior",
+          "description": "Mini-entreprises créées et gérées par les élèves : mini-coopératives, fabrication de savons, vente de produits du potager, éducation financière."
+        }
+      ]
+    },
+    "activities": {
+      "badge": "Activités Extrascolaires",
+      "title": "Apprendre autrement, s'épanouir toujours",
+      "description": "Au-delà des programmes officiels, nous organisons toute l'année une multitude d'activités pour rendre l'école attrayante, vivante et formatrice : journée de la science, journées culturelles, semaine du livre, ateliers cuisine, kermesses, olympiades, etc.",
+      "gallery": [
+        "/images/IMG-20260723-WA0007.jpg",
+        "/images/IMG-20260723-WA0012.jpg",
+        "/images/IMG-20260723-WA0024.jpg",
+        "/images/IMG-20260723-WA0075.jpg"
+      ]
+    },
+    "outings": {
+      "badge": "Sorties Pédagogiques",
+      "title": "Découvrir le monde, sortir des murs de l'école",
+      "items": [
+        {
+          "title": "Visite du Musée National du Cameroun",
+          "description": "Découverte de l'histoire et du patrimoine culturel camerounais à travers des expositions permanentes et des ateliers interactifs pour les élèves du primaire.",
+          "photos": [
+            "/images/IMG-20260723-WA0007.jpg",
+            "/images/IMG-20260723-WA0012.jpg"
+          ]
+        },
+        {
+          "title": "Ferme pédagogique & Plantation",
+          "description": "Journée à la ferme : observation des animaux d'élevage, apprentissage des cycles de culture, récolte de fruits et légumes de saison, fabrication du beurre et du fromage.",
+          "photos": [
+            "/images/IMG-20260723-WA0024.jpg",
+            "/images/IMG-20260723-WA0075.jpg"
+          ]
+        },
+        {
+          "title": "Randonnée & Découverte de la nature",
+          "description": "Randonnée éducative dans la réserve forestière de Mbam Minkom : observation de la faune et de la flore, exercices d'orientation, pique-nique écologique.",
+          "photos": [
+            "/images/IMG-20260723-WA0007.jpg",
+            "/images/IMG-20260723-WA0012.jpg"
+          ]
+        }
+      ]
+    },
+    "events": {
+      "badge": "Manifestations Culturelles",
+      "title": "Les grands moments de l'année scolaire",
+      "items": [
+        {
+          "title": "Journée Portes Ouvertes",
+          "month": "Octobre",
+          "description": "Découverte de l'école, démonstrations pédagogiques, spectacles des élèves, rencontres avec les enseignants. Moment fort pour les familles et nouveaux futurs élèves."
+        },
+        {
+          "title": "Festival Bilingue & Culturel",
+          "month": "Décembre",
+          "description": "Deux jours célébrant le bilinguisme, les cultures africaines et la diversité. Pièces de théâtre, chants, danses, poèmes en français et en anglais."
+        },
+        {
+          "title": "Olympiades Sportives",
+          "month": "Mars",
+          "description": "Grand tournoi sportif inter-classes : athlétisme, relais, football, basketball, saut en longueur. Remise de médailles et trophées aux équipes gagnantes."
+        },
+        {
+          "title": "Cérémonie de Fin d'Année",
+          "month": "Juin",
+          "description": "Spectacle grandiose des élèves, passation de diplômes, remise des prix d'excellence et pot final entre familles et enseignants. L'événement tant attendu de toute l'année."
+        }
+      ]
+    }
+  },
+  "galleryPage": {
+    "hero": {
+      "title": "Galerie Photo & Vidéo",
+      "subtitle": "Plongez au cœur de la vie des Génies d'Afrique à travers nos plus belles images.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "tabs": {
+      "photos": "Photos",
+      "videos": "Vidéos"
+    },
+    "filters": {
+      "all": "Toutes les photos",
+      "activites": "Activités scolaires",
+      "infrastructures": "Infrastructures",
+      "ceremonies": "Cérémonies",
+      "salles": "Salles de classe",
+      "excursions": "Excursions & sorties"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accueillir.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
+    },
+    "infoCards": [
+      {
+        "icon": "MapPin",
+        "title": "Adresse",
+        "content": "Nkozoa, derrière la Boulangerie Massa",
+        "sublabel": "Yaoundé, Cameroun"
+      },
+      {
+        "icon": "Phone",
+        "title": "Téléphones",
+        "content": "651 11 15 06",
+        "sublabel": "656 66 38 48"
+      },
+      {
+        "icon": "Mail",
+        "title": "Adresse e-mail",
+        "content": "lesgeniesdafrique836@gmail.com",
+        "sublabel": "Réponse sous 24h"
+      },
+      {
+        "icon": "Clock",
+        "title": "Horaires",
+        "content": "Lun – Ven : 8h00 – 13h00",
+        "sublabel": "Secrétariat ouvert"
+      }
+    ],
+    "form": {
+      "title": "Envoyez-nous un message",
+      "subtitle": "Remplissez le formulaire ci-dessous. Notre équipe revient vers vous dans les plus brefs délais.",
+      "name": "Nom et prénom",
+      "namePlaceholder": "Votre nom complet",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "exemple@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "6XX XX XX XX",
+      "subject": "Sujet du message",
+      "subjectPlaceholder": "Inscription, renseignement, réclamation…",
+      "message": "Votre message",
+      "messagePlaceholder": "Écrivez ici votre message en détail…",
+      "submit": "Envoyer le message",
+      "success": "Merci ! Votre message a bien été envoyé. Nous vous répondrons très vite."
+    },
+    "map": {
+      "title": "Nous situer sur la carte"
+    },
+    "whatsapp": {
+      "title": "Discussion directe sur WhatsApp",
+      "subtitle": "Pour une réponse immédiate, écrivez-nous directement sur WhatsApp. Nous sommes disponibles pendant les heures d'ouverture."
+    }
   },
   "announcement": "📢 Les inscriptions sont ouvertes — Du lundi au vendredi 8h–13h",
   "hero": {

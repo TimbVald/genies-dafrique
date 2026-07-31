@@ -11,20 +11,21 @@ import { motion, AnimatePresence } from "framer-motion";
 /* ── Navigation items ───────────────────────────────────────── */
 const NAV_ITEMS = [
   { key: "home",       href: "/" },
-  { key: "school",     href: "/presentation" },
-  { key: "programs",   href: "/programmes" },
+  { key: "about",      href: "/a-propos" },
+  { key: "formations", href: "/formations" },
   { key: "admissions", href: "/admissions" },
-  { key: "life",       href: "/vie-scolaire" },
   { key: "news",       href: "/actualites" },
+  { key: "life",       href: "/vie-scolaire" },
+  { key: "gallery",    href: "/galerie" },
   { key: "contact",    href: "/contact" },
 ] as const;
 
-/* ── Sous-menu L'École ──────────────────────────────────────── */
+/* ── Sous-menu À propos ──────────────────────────────────────── */
 const SCHOOL_SUBMENU = [
-  { key: "subMission",   href: "/presentation#mission" },
-  { key: "subHistory",   href: "/presentation#histoire" },
-  { key: "subValues",    href: "/presentation#valeurs" },
-  { key: "subTeam",      href: "/presentation#equipe" },
+  { key: "subMission",   href: "/a-propos#mission" },
+  { key: "subHistory",   href: "/a-propos#histoire" },
+  { key: "subValues",    href: "/a-propos#valeurs" },
+  { key: "subTeam",      href: "/a-propos#equipe" },
 ] as const;
 
 /* ══════════════════════════════════════════════════════════════ */
@@ -208,8 +209,8 @@ export default function Header() {
             {NAV_ITEMS.map(({ key, href }) => {
               const active = isActive(href);
 
-              /* Sous-menu pour L'École */
-              if (key === "school") {
+              /* Sous-menu pour À propos */
+              if (key === "about") {
                 return (
                   <div
                     key={key}

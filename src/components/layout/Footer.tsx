@@ -9,11 +9,12 @@ export default function Footer() {
   const tn = useTranslations("nav");
 
   const quickLinks = [
-    { key: "school",     href: "/presentation" },
-    { key: "programs",   href: "/programmes" },
+    { key: "about",      href: "/a-propos" },
+    { key: "formations", href: "/formations" },
     { key: "admissions", href: "/admissions" },
     { key: "life",       href: "/vie-scolaire" },
     { key: "news",       href: "/actualites" },
+    { key: "gallery",    href: "/galerie" },
     { key: "contact",    href: "/contact" },
   ] as const;
 
