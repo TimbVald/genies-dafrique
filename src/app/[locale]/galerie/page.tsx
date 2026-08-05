@@ -1,17 +1,11 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
-import type { Metadata } from "next";
-
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pageTitles.gallery" });
-  return { title: t("title"), description: t("description") };
-}
 
 type PhotoCategory = "activites" | "infrastructures" | "ceremonies" | "salles" | "excursions";
 
@@ -73,12 +67,7 @@ const VIDEOS: VideoItem[] = [
   },
 ];
 
-export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {
-  await params;
-  return <GalleryContent />;
-}
-
-function GalleryContent() {
+export default function GalleryPage() {
   const t = useTranslations();
   const navT = useTranslations("nav");
   const tGallery = useTranslations("galleryPage");
