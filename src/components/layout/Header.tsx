@@ -42,7 +42,7 @@ export default function Header() {
   const [langOpen,     setLangOpen]     = useState(false);
 
   const drawerRef    = useRef<HTMLElement>(null);
-  const langRef      = useRef<HTMLElement>(null);
+  const langRef      = useRef<HTMLDivElement>(null);
 
   /* ── Language selector helper ── */
   const getLocalePath = (targetLocale: string) => {
