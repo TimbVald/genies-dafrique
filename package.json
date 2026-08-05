@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "translate-ewondo": "node scripts/translate-ewondo.js",
+    "validate-translations": "start scripts/validate-translations.html"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

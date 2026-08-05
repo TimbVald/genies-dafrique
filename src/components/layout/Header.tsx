@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ── Navigation items ───────────────────────────────────────── */
@@ -39,9 +39,17 @@ export default function Header() {
   const [drawerOpen,   setDrawerOpen]   = useState(false);
   const [annVisible,   setAnnVisible]   = useState(true);
   const [schoolOpen,   setSchoolOpen]   = useState(false);
+  const [langOpen,     setLangOpen]     = useState(false);
 
   const drawerRef    = useRef<HTMLElement>(null);
-  const altHref = locale === "fr" ? "/en" : "/";
+  const langRef      = useRef<HTMLElement>(null);
+
+  /* ── Language selector helper ── */
+  const getLocalePath = (targetLocale: string) => {
+    if (targetLocale === "fr") return pathname.replace(/^\/(en|ew)/, "") || "/";
+    if (locale === "fr") return `/${targetLocale}${pathname === "/" ? "" : pathname}`;
+    return pathname.replace(new RegExp(`^/${locale}`), `/${targetLocale}`);
+  };
 
   /* ── Scroll handler ── */
   useEffect(() => {
@@ -108,20 +116,35 @@ export default function Header() {
     const raf = requestAnimationFrame(() => {
       setDrawerOpen(false);
       setSchoolOpen(false);
+      setLangOpen(false);
     });
     return () => cancelAnimationFrame(raf);
   }, [pathname]);
 
+  /* ── Fermer le sélecteur de langue au clic extérieur ── */
+  useEffect(() => {
+    if (!langOpen) return;
+
+    const handleClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [langOpen]);
+
   /* ── Détecter si on est sur une page intérieure (fond blanc) ── */
-  const isOnHeroPage = pathname === "/" || pathname === "/en";
+  const isOnHeroPage = pathname === "/" || pathname === "/en" || pathname === "/ew";
   /* Sur les pages intérieures, le header doit toujours être opaque */
   const isOpaque = scrolled || !isOnHeroPage;
 
   /* ── Helper : page active ── */
   const isActive = useCallback(
     (href: string) => {
-      if (href === "/") return pathname === "/" || pathname === "/en";
-      const normalized = pathname.replace(/^\/en/, "") || "/";
+      if (href === "/") return pathname === "/" || pathname === "/en" || pathname === "/ew";
+      const normalized = pathname.replace(/^\/(en|ew)/, "") || "/";
       return normalized.startsWith(href);
     },
     [pathname]
@@ -299,18 +322,56 @@ export default function Header() {
           {/* ── Actions droite ── */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Sélecteur langue */}
-            <Link
-              href={altHref}
-              lang={locale === "fr" ? "en" : "fr"}
-              aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
-              className={`hidden sm:flex items-center gap-1 text-xs font-bold px-3 py-1.5
-                rounded-full border transition-all duration-200
-                ${isOpaque
-                  ? "border-[#1A3A8F] text-[#1A3A8F] hover:bg-[#1A3A8F] hover:text-white"
-                  : "border-white/65 text-white hover:bg-white/15"}`}
-            >
-              {t("language")}
-            </Link>
+            <div className="relative" ref={langRef}>
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                aria-expanded={langOpen}
+                aria-label={t("language")}
+                className={`hidden sm:flex items-center gap-1 text-xs font-bold px-3 py-1.5
+                  rounded-full border transition-all duration-200
+                  ${isOpaque
+                    ? "border-[#1A3A8F] text-[#1A3A8F] hover:bg-[#1A3A8F] hover:text-white"
+                    : "border-white/65 text-white hover:bg-white/15"}`}
+              >
+                {locale === "fr" ? "🇨🇲" : locale === "en" ? "🇬🇧" : "🇨🇲"}
+                {t("language")}
+                <ChevronDown size={12} className={`transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {/* Dropdown menu */}
+              <AnimatePresence>
+                {langOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.15 }}
+                    className={`absolute right-0 top-full mt-2 w-32 rounded-xl shadow-lg overflow-hidden z-50
+                      ${isOpaque ? "bg-white border border-[#E2E8F0]" : "bg-white/95 backdrop-blur-sm border border-white/20"}`}
+                  >
+                    {[
+                      { code: "fr", label: t("languageFr"), flag: "🇨🇲" },
+                      { code: "en", label: t("languageEn"), flag: "🇬🇧" },
+                      { code: "ew", label: t("languageEw"), flag: "🇨🇲" },
+                    ].map((lang) => (
+                      <Link
+                        key={lang.code}
+                        href={getLocalePath(lang.code)}
+                        lang={lang.code}
+                        onClick={() => setLangOpen(false)}
+                        className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors
+                          ${locale === lang.code
+                            ? "bg-[#EEF2FF] text-[#1A3A8F]"
+                            : "text-[#1A202C] hover:bg-[#F7F9FC]"}`}
+                      >
+                        <span className="text-base">{lang.flag}</span>
+                        {lang.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* CTA S'inscrire */}
             <Link
@@ -456,7 +517,7 @@ export default function Header() {
               </Link>
 
               {/* Téléphone + langue */}
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-3">
                 <div className="text-xs text-[#4A5568]">
                   <a href="tel:+237651111506" className="font-semibold text-[#1A202C] hover:text-[#1A3A8F] block">
                     651 11 15 06
@@ -465,17 +526,27 @@ export default function Header() {
                     656 66 38 48
                   </a>
                 </div>
-                <Link
-                  href={altHref}
-                  onClick={() => setDrawerOpen(false)}
-                  lang={locale === "fr" ? "en" : "fr"}
-                  aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
-                  className="text-xs font-bold px-3.5 py-2 rounded-full
-                    border-2 border-[#1A3A8F] text-[#1A3A8F]
-                    hover:bg-[#1A3A8F] hover:text-white transition-all duration-200"
-                >
-                  {t("language")}
-                </Link>
+                {/* Mobile language selector */}
+                <div className="flex gap-2">
+                  {[
+                    { code: "fr", label: "🇨🇲 FR" },
+                    { code: "en", label: "🇬🇧 EN" },
+                    { code: "ew", label: "🇨🇲 EW" },
+                  ].map((lang) => (
+                    <Link
+                      key={lang.code}
+                      href={getLocalePath(lang.code)}
+                      onClick={() => setDrawerOpen(false)}
+                      lang={lang.code}
+                      className={`text-xs font-bold px-3 py-2 rounded-full border-2 transition-all duration-200
+                        ${locale === lang.code
+                          ? "border-[#1A3A8F] bg-[#1A3A8F] text-white"
+                          : "border-[#1A3A8F] text-[#1A3A8F] hover:bg-[#1A3A8F] hover:text-white"}`}
+                    >
+                      {lang.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.aside>

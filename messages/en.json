@@ -17,7 +17,10 @@
     "enroll": "Enroll Now",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Français"
+    "language": "Language",
+    "languageFr": "Français",
+    "languageEn": "English",
+    "languageEw": "Ewondo"
   },
   "announcement": "📢 Enrollment is now open — Monday to Friday 8AM–1PM",
   "hero": {
@@ -970,13 +973,37 @@
     }
   },
   "pageTitles": {
-    "home": "Les Génies d'Afrique | Bilingual School of Excellence — Nkozoa, Yaoundé",
-    "about": "About Us — Bilingual School Complex Les Génies d'Afrique",
-    "formations": "Programs & Curriculum — French & English Sections | Les Génies d'Afrique",
-    "admissions": "Admissions & Registration — Les Génies d'Afrique, Yaoundé",
-    "news": "School News & Events — Les Génies d'Afrique",
-    "life": "School Life — Clubs, Activities, Events | Les Génies d'Afrique",
-    "gallery": "Photo & Video Gallery — Bilingual School Les Génies d'Afrique",
-    "contact": "Contact Us — Les Génies d'Afrique, Nkozoa Yaoundé"
+    "home": {
+      "title": "Home | Bilingual School Complex Les Génies d'Afrique",
+      "description": "Bilingual School Complex Les Génies d'Afrique in Nkozoa, Yaoundé. Private bilingual school MINEDUB accredited, from day care to primary. Shaping today's leaders for tomorrow."
+    },
+    "about": {
+      "title": "About Us | Les Génies d'Afrique",
+      "description": "Discover the history, mission, vision and values of the Bilingual School Complex Les Génies d'Afrique. Meet the educational team supporting your children."
+    },
+    "formations": {
+      "title": "Programs | Les Génies d'Afrique",
+      "description": "Our bilingual programs from day care to primary. French and English sections, enhanced MINEDUB official programs and educational objectives."
+    },
+    "admissions": {
+      "title": "Admissions | Les Génies d'Afrique",
+      "description": "Registration procedures, admission conditions, required documents and tuition fees at the Bilingual School Complex Les Génies d'Afrique."
+    },
+    "news": {
+      "title": "News | Les Génies d'Afrique",
+      "description": "All news, events, celebrations and novelties of the Bilingual School Complex Les Génies d'Afrique in Nkozoa, Yaoundé."
+    },
+    "life": {
+      "title": "School Life | Les Génies d'Afrique",
+      "description": "School clubs, extracurricular activities, educational outings and cultural events. Daily life at Les Génies d'Afrique school."
+    },
+    "gallery": {
+      "title": "Gallery | Les Génies d'Afrique",
+      "description": "Photos and videos of school life: activities, infrastructures, ceremonies, classrooms, excursions and much more."
+    },
+    "contact": {
+      "title": "Contact | Les Génies d'Afrique",
+      "description": "Contact the Bilingual School Complex Les Génies d'Afrique. Contact details, hours, contact form and access to the Nkozoa, Yaoundé establishment."
+    }
   }
 }

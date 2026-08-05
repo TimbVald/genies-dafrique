@@ -74,8 +74,8 @@ export async function generateMetadata({
     },
     openGraph: {
       siteName: t("siteName"),
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-      alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
+      locale: locale === "fr" ? "fr_FR" : locale === "en" ? "en_US" : "ew_CM",
+      alternateLocale: locale === "fr" ? "en_US" : locale === "en" ? "fr_FR" : "fr_FR",
       type: "website",
       images: [
         {
@@ -92,11 +92,12 @@ export async function generateMetadata({
       description: t("description"),
     },
     alternates: {
-      canonical: locale === "fr" ? baseUrl : `${baseUrl}/en`,
+      canonical: locale === "fr" ? baseUrl : `${baseUrl}/${locale}`,
       languages: {
         "fr": baseUrl,
         "en": `${baseUrl}/en`,
-      },
+        "ew": `${baseUrl}/ew`,
+      } as Record<string, string>,
     },
   };
 }
@@ -111,7 +112,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as "fr" | "en")) {
+  if (!routing.locales.includes(locale as "fr" | "en" | "ew")) {
     notFound();
   }
 

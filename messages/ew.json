@@ -1,0 +1,919 @@
+{
+  "meta": {
+  "siteName": "Complexe Scolaire Bilingue Les Génies d'Afrique",
+  "siteNameShort": "Les Génies d'Afrique",
+  "slogan": "Bongwan amu mintô mi kië",
+  "description": "Sukul ya bilingue privé, kobi na crèche tii primaire, ya MINEDUB, na Nkozoa, Yaoundé, Kamerun."
+},
+  "nav": {
+  "home": "Akog",
+  "about": "Mvon mvo",
+  "formations": "Mekol",
+  "admissions": "Mebengane",
+  "news": "Mbia",
+  "life": "Mvog Sukul",
+  "gallery": "Galerie",
+  "contact": "Somin",
+  "enroll": "Bengane",
+  "openMenu": "Yib menu",
+  "closeMenu": "Kang menu",
+  "language": "Lokota",
+  "languageFr": "Français",
+  "languageEn": "English",
+  "languageEw": "Ewondo",
+  "subMission": "Ntii Bisu",
+  "subHistory": "Ntan Bisu",
+  "subValues": "Mekat Misu",
+  "subTeam": "Ekipa Bisu"
+},
+  "pageTitles": {
+    "home": {
+      "title": "Akog | Complexe Scolaire Bilingue Les Génies d'Afrique",
+      "description": "Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé. Sukul bilingue privée agréée MINEDUB, de la crèche au primaire. Former aujourd'hui les leaders de demain."
+    },
+    "about": {
+      "title": "Mvon mvo | Les Génies d'Afrique",
+      "description": "Découvrez l'histoire, la mission, la vision et les valeurs du Complexe Scolaire Bilingue Les Génies d'Afrique. Rencontrez l'équipe pédagogique qui accompagne vos enfants."
+    },
+    "formations": {
+      "title": "Mekol | Les Génies d'Afrique",
+      "description": "Nos programmes bilingues de la crèche au primaire. Section francophone et section anglophone, programmes officiels MINEDUB enrichis et objectifs pédagogiques."
+    },
+    "admissions": {
+      "title": "Mebengane | Les Génies d'Afrique",
+      "description": "Procédures d'inscription, conditions d'admission, pièces à fournir et frais de scolarité au Complexe Scolaire Bilingue Les Génies d'Afrique."
+    },
+    "news": {
+      "title": "Mbia | Les Génies d'Afrique",
+      "description": "Toutes les actualités, événements, manifestations et nouveautés du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
+    },
+    "life": {
+      "title": "Vie scolaire | Les Génies d'Afrique",
+      "description": "Clubs scolaires, activités extrascolaires, sorties pédagogiques et manifestations culturelles. La vie quotidienne à l'école Les Génies d'Afrique."
+    },
+    "gallery": {
+      "title": "Galerie | Les Génies d'Afrique",
+      "description": "Photos et vidéos de la vie à l'école : activités, infrastructures, cérémonies, salles de classe, excursions et bien plus."
+    },
+    "contact": {
+      "title": "Somin | Les Génies d'Afrique",
+      "description": "Sominez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
+    }
+  },
+  "aboutPage": {
+  "history": {
+    "badge": "Minkɔ́lɔ́ mia biso",
+    "title": "A mvon na dzam ya mvoé",
+    "subtitle": "Nzame ya Génies d'Afrique na bikɔ́l bi 4 bya mvoé.",
+    "timeline": [
+      {
+        "date": "2024",
+        "title": "A tɔ́lɔ́g ya projet",
+        "description": "A mvon a nga bɔ́g : a tɔ́l sukul bilingue ya excellence na Nkozoa, a yɔ́k mwana nyonso na mvoé ya dzam. A tɔ́l projet ya akom na plan ya sukul."
+      },
+      {
+        "date": "Fév 2025",
+        "title": "A tɔ́lɔ́g na a fɔ́l sukul",
+        "description": "A fɔ́l mvoé ya Complexe Scolaire Bilingue Les Génies d'Afrique. A kɔ́bɔ́talane na bana ba ntɔ́lɔ́g na crèche na maternelle na ase ya mvoé na ya mfañ."
+      },
+      {
+        "date": "Sept 2025",
+        "title": "Agrément MINEDUB",
+        "description": "A zɔ́k agrément ya MINEDUB. A kɔ́l a primaire na a fɔ́l bikɔ́l bibuma iba: francophone na anglophone."
+      },
+      {
+        "date": "2026",
+        "title": "A kɔ́l na a yen mfañ",
+        "description": "Bana balɛ́g 120+ ba nga tɔ́l, bikɔ́l bya sukul, agriculture na entrepreneuriat bi nga kɔ́l. Sukul a nga ne dzam ya mvoé na mfañ."
+      }
+    ]
+  },
+  "missionVision": {
+    "badge": "Mission na Vision",
+    "title": "Dzam ya biso",
+    "mission": "A lɛ́g bana ba ne na mfañ nyonso, ba yeme a kɔ́l na si ya mvoé, na a bɔ́g mimbɔ́g ya Afrika.",
+    "vision": "A ne avant 2030 sukul bilingue ya libɔ́g na Kamerun, a yen na si nyonso na mvoé ya résultats, minlɔ́m ya akom na a yɔ́k bana.",
+    "valuesCards": [
+      {
+        "icon": "Trophy",
+        "title": "Nyɔ́ñ",
+        "description": "A lɔ́g dzam ya libɔ́g na bikɔ́l nyonso: akom, misili, nyam na mfañ ya mwana."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Mbɔ́g ya mfañ",
+        "description": "A yɔ́k mvoé, a tɔ́l dzam ya mfañ na a kɔ́l mimbɔ́g ya fam."
+      },
+      {
+        "icon": "Globe",
+        "title": "Bilinguisme",
+        "description": "A yeme français na anglais amu a kɔ́l si nyonso na a yeme akom."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Minlɔ́m ya mvoé",
+        "description": "A yen minkɔ́lɔ́ ya akom mibuma na a yɔ́k mfañ ya dzam na mfañ ya mwana."
+      },
+      {
+        "icon": "Heart",
+        "title": "Mvoé ya mfañ",
+        "description": "A zɔ́k mwana nyonso na mvoé, na ase ya mbɔ́g na a yen mfañ."
+      },
+      {
+        "icon": "Star",
+        "title": "A yɔ́k mwana nyonso",
+        "description": "A lɛ́g nyam, mvon na motema: akom, nyam, mfañ ya motema, minsili na dzam ya mvoé."
+      }
+    ]
+  },
+  "founderMessage": {
+    "badge": "Mfañ ya Fondatrice",
+    "title": "Sukul a nga bɔ́g na mvon",
+    "photo": "/images/IMG-20260723-WA0075.jpg",
+    "messageQuote": "\"Mwana nyonso a ne génie ya mvoé. Misala ya biso a ne a tɔ́l ase ayi a yen a yɔ́k.\"",
+    "messageBody": "Bana ba fam, bana ba sukul, na bɔ́ngɔ́ ba yen biso. Complexe Scolaire Bilingue Les Génies d'Afrique a nga bɔ́g na mvon ya minene: Afrika ya ndɔ́ma a bɔ́g lelo na bisɔ́m bya sukul, na a lɛ́g bana ba ayi. Biso bi nga kɔ́bɔ́talane na bikɔ́l bya misala, bika bya mvoé na projet ya akom ya libɔ́g amu a yɔ́k mwana nyonso a nga tɔ́l na biso. Minsili mibuma ya biso, a kɔ́l si ya minsili na a lɛ́g mwana nyonso bi ne bikɔ́l bya mvoé bia tɔ́l na bana. Ma jɔ́l bino a yen sukul ya biso, a yeme bikɔ́l bia biso na a kɔ́bɔ́talane na biso na nzame ya a fɔ́l génies ba ndɔ́ma.",
+    "signature": "Mme Mbarga",
+    "signatureTitle": "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
+  },
+    "team": {
+      "badge": "Notre Équipe",
+      "title": "Des passionnés au service de vos enfants",
+      "members": [
+        {
+          "name": "Mme Mbarga",
+          "role": "Présidente – Fondatrice",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Atangana",
+          "role": "Directrice Générale",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Ngo",
+          "role": "Directrice des Études",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Essomba",
+          "role": "Directrice Pédagogique",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Olinga",
+          "role": "Responsable Section Francophone",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Smith",
+          "role": "Responsable Section Anglophone",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Tchoupi",
+          "role": "Munya Sukul – Mathématiques & Sciences",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "Mme Biyick",
+          "role": "Enseignante – Français & Expression",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        },
+        {
+          "name": "M. Ewane",
+          "role": "Enseignant – Nkumbi Physique & Sportive",
+          "photo": "/images/IMG-20260723-WA0075.jpg"
+        }
+      ]
+    }
+  },
+ "formationsPage": {
+  "hero": {
+    "title": "Bikɔ́l bya biso bya Bilingue",
+    "subtitle": "Nzɔ́g ya excellence a tɔ́l crèche na primaire, na ase ya yɔ́k na mvoé.",
+    "image": "/images/IMG-20260723-WA0024.jpg"
+  },
+  "intro": {
+    "badge": "A yen mfañ",
+    "title": "Programme ya akom ya mvoé na nyonso",
+    "subtitle": "A ne crèche na CM2 / Class 6, programmes ya biso bi kɔ́l mfañ ya MINEDUB, a yɔ́k na bilinguisme, bikɔ́l bya misala na activités extrascolaires mibuma."
+  },
+  "levels": [
+    {
+      "id": "creche",
+      "title": "Crèche",
+      "subtitle": "0 na 2 ans",
+      "image": "/images/IMG-20260723-WA0007.jpg",
+      "presentation": "Ase ya mvoé, ya nnam na ya mfañ, a bɔ́g amu a yɔ́k mwana muto na mfañ ya motema. Balɛ́g ba yeme ba yen mwana nyonso na mimbɔ́g ya ntɔ́lɔ́g.",
+      "programme": [
+        "A yɔ́k misuñ na bikɔ́l bya mwana",
+        "Minkɔ́bɔ́, minlɔ́m na nyanga ya mvoé",
+        "Bikɔ́l bya nyam na a yen si",
+        "A yen mwana, bilɔ́g na mvoé ya mɔ́s",
+        "A tɔ́l bilingue FR / EN a mvoé mvoé"
+      ],
+      "objectifs": [
+        "A bɔ́g mbɔ́g ya motema na mfañ",
+        "A yɔ́k misuñ na a yen bilɔ́g",
+        "A yɔ́k nyam ya mwana",
+        "A yen minlɔ́m, minkɔ́bɔ́ na minkɔ́lɔ́",
+        "A tɔ́l mimbɔ́g ya fam"
+      ]
+    },
+    {
+      "id": "maternelle",
+      "title": "Maternelle",
+      "subtitle": "2 na 5 ans",
+      "image": "/images/IMG-20260723-WA0012.jpg",
+      "presentation": "Maternelle a ne mvoé ya a yen bilɔ́g minene. Programmes ya biso bi kɔ́bɔ́talane akom, bikɔ́l bya mwana na bikɔ́l bya dzam. Mwana a tɔ́l mimbɔ́g ya a tɔ́l, a kɔ́bɔ́ na a calcul, na a yɔ́k a ne fam.",
+      "programme": [
+        "A tɔ́l a lɔ́g na a tɔ́l akom na français na anglais",
+        "A yen mathématiques na mfañ ya raisonnement",
+        "Arts plastiques, dessin, peinture na modelage",
+        "Minlɔ́m, nyanga, danse na a yɔ́k nyam",
+        "Bikɔ́l bya nature, bilim na a yen si",
+        "Jeux ya rôle, a kɔ́bɔ́talane na fam"
+      ],
+      "objectifs": [
+        "A yeme mimbɔ́g ya a kɔ́l CP",
+        "A yɔ́k mfañ ya mwana na a yen a ne solo",
+        "A yeme mimbɔ́g ya fam",
+        "A yɔ́k mfañ ya a yen na a lɔ́g akom",
+        "A zɔ́k minkɔ́bɔ́ minene na minsili iba"
+      ]
+    },
+    {
+      "id": "primaire",
+      "title": "Primaire",
+      "subtitle": "6 na 11 ans",
+      "image": "/images/IMG-20260723-WA0024.jpg",
+      "presentation": "A ne CP na CM2, bana ba biso ba zɔ́k akom ya mbɔ́g na ya yɔ́k. Bikɔ́l bibuma iba — francophone na anglophone — bi kɔ́l programmes ya MINEDUB na a yɔ́k mfañ ya minsili iba, sciences, technologies na culture générale.",
+      "programme": [
+        "Français / Anglais : a tɔ́l, grammaire na a kɔ́bɔ́",
+        "Mathématiques, sciences na technologie",
+        "Histoire, géographie na éducation civique",
+        "Informatique, bureautique na recherche",
+        "EPS, minkɔn ya nyam na natation",
+        "Bikɔ́l bya mimbɔ́g, agriculture na entrepreneuriat junior"
+      ],
+      "objectifs": [
+        "A zɔ́k résultats ya libɔ́g na examens",
+        "A yeme français na anglais a mvoé",
+        "A yɔ́k mfañ ya a yen na a analyser",
+        "A lɛ́g balɛ́g ba mbɔ́g, ba dzam na ba yeme",
+        "A lɛ́g a kɔ́l secondaire na mvoé"
+      ]
+    }
+  ],
+  "sections": {
+    "badge": "Bikɔ́l bya biso",
+    "title": "Nzɔ́g iba, mvon imwe",
+    "subtitle": "Nzɔ́g francophone na nzɔ́g anglophone, bibuma bi kɔ́l mimbɔ́g mimwe na ase imwe ya bilingue.",
+    "cards": [
+      {
+        "id": "francophone",
+        "flag": "🇫🇷",
+        "title": "Section Francophone",
+        "description": "Programme MINEDUB ya français, na a yɔ́k anglais a ne mfañ ya iba a tɔ́l CP. Ase ya mvoé amu bana ba lɔ́g nzɔ́g francophone.",
+        "features": [
+          "Programme MINEDUB a yɔ́k na mvoé",
+          "English ya mbɔ́g (4h / semaine a tɔ́l CP)",
+          "Mathématiques, SVT na Physique-Chimie",
+          "Histoire-Géo, EMC na culture africaine",
+          "Bikɔ́l: agriculture, élevage, entrepreneuriat",
+          "A yen mwana nyonso na examen ya semestriel"
+        ]
+      },
+      {
+        "id": "anglophone",
+        "flag": "🇬🇧",
+        "title": "Section Anglophone",
+        "description": "Curriculum ya anglophone a kɔ́l mimbɔ́g ya MINEDUB. Français a ne mfañ ya iba a yɔ́k. A lɛ́g mwana a kɔ́l nzɔ́g ya si na bikɔ́l bya excellence.",
+        "features": [
+          "Curriculum MINEDUB anglophone ya nyonso",
+          "Français mfañ ya iba (4h / semaine)",
+          "English Literacy, Numeracy, Science & ICT",
+          "Social Studies & Citizenship Education",
+          "Bikɔ́l: Club Débat, Drama, Model UN",
+          "Continuous Assessment + Mock Examinations"
+        ]
+      }
+    ]
+  }
+},
+  "admissionsPage": {
+  "hero": {
+    "title": "A lɔ́g bana na a tɔ́l sukul",
+    "subtitle": "Kɔ́bɔ́talane na fam ya Génies d'Afrique. Bika bi ne mvoé amu ngon ya sukul.",
+    "image": "/images/IMG-20260723-WA0024.jpg"
+  },
+  "presentation": {
+    "badge": "A yen mfañ",
+    "title": "Mvoé na nzame ya Génies d'Afrique",
+    "subtitle": "Biso bi wum bino amu a lɔ́g dzam ya sukul ya biso. Nzɔ́g ya a tɔ́l mwana sukul a nga bɔ́g a ne a yen mfañ, a ne mvoé na a yeme. Bikɔ́l bya biso bi ne na bino na minkan nyonso.",
+    "highlights": [
+      {
+        "title": "Nyɔ́ñ ya Akom",
+        "description": "Programmes ya MINEDUB a yɔ́k, minlɔ́m ya akom mibuma na résultats ya libɔ́g amu mwana nyonso."
+      },
+      {
+        "title": "Sukul ya Agrément",
+        "description": "Agrément ya MINEDUB a nga zɔ́k na 2025. Sukul ya yeme na mimbɔ́g ya Cameroun."
+      },
+      {
+        "title": "Bilinguisme ya Nyon",
+        "description": "A yɔ́k français na anglais a tɔ́l crèche. Minsili iba, minsili mibuma iba, nzɔ́g ya si nyonso."
+      },
+      {
+        "title": "Mvoé na A yen mwana",
+        "description": "A yen mwana na mfañ, a kɔ́l mwana nyonso na ase ya mbɔ́g na mvoé."
+      },
+      {
+        "title": "Fam ya Sukul",
+        "description": "Bana ba ne mvoé, balɛ́g ba ne nnam, na kɔ́bɔ́talane ya libɔ́g na balɛ́g ba bana."
+      },
+      {
+        "title": "Minsan mi yeme",
+        "description": "A zɔ́k mwana a tɔ́l 7h00, a yen mwana na nnam a tɔ́l 17h30, na minsan mi yeme na mfañ ya balɛ́g."
+      }
+    ]
+  },
+  "conditions": {
+    "badge": "Mimbɔ́g ya a tɔ́l mwana",
+    "title": "Mimbɔ́g ya admission",
+    "list": [
+      "Mvula ya mwana : 2 ans a nga bɔ́g amu maternelle ; 0–2 ans amu crèche",
+      "A tɔ́l extrait ya naissance ya mwana",
+      "Certificat médical a yen mwana a ne a kɔ́l fam",
+      "Bulletins ya sukul ya ngon ya mvɔ́l amu bana ba maternelle ya minene na primaire",
+      "Mfañ ya balɛ́g ba bana a kɔ́l règlement intérieur ya sukul"
+    ]
+  },
+  "documents": {
+    "badge": "Biyem bya a tɔ́l",
+    "title": "Dossier ya inscription — Biyem nyonso",
+    "list": [
+      "Fiche ya inscription a nga tɔ́l na a sɔ́m na balɛ́g ba mwana",
+      "Extrait ya acte ya naissance ya mwana (original aloŋ copie ya yeme)",
+      "Minkɔ́lɔ́ 4 ya mwana ya mvoé (4x4 cm), na fond ya mvoé",
+      "Certificat médical ya ne na 3 mois, a nga tɔ́l na pédiatre",
+      "Bulletins ya sukul na certificats ya radiation amu bana ba nga sukul si ya mfañ",
+      "Copie ya carte nationale aloŋ passeport ya balɛ́g ba mwana"
+    ]
+  },
+  "steps": {
+    "badge": "Nzɔ́g",
+    "title": "Minkan ya inscription",
+    "items": [
+      {
+        "step": "1",
+        "title": "A zɔ́k mfañ",
+        "description": "Kɔ́l sukul ya biso, yen bikɔ́l bya akom na a yen bika bya biso. A zɔ́k rendez-vous na 651 11 15 06 aloŋ WhatsApp."
+      },
+      {
+        "step": "2",
+        "title": "A zɔ́k dossier",
+        "description": "Zɔ́k dossier ya inscription na secrétariat ya sukul (Mvul na Mvul, 8h–13h) aloŋ a zɔ́k ayi na internet."
+      },
+      {
+        "step": "3",
+        "title": "A tɔ́l dossier nyonso",
+        "description": "Tɔ́l dossier a nga tɔ́l nyonso, na biyem nyonso bi nga jɔ́l, na secrétariat aloŋ na nzɔ́g numérique."
+      },
+      {
+        "step": "4",
+        "title": "A kɔ́bɔ́talane na a yen",
+        "description": "A kɔ́bɔ́talane na direction aloŋ a yen mfañ ya akom a nga bɔ́g. A mvɔ́l, inscription a nga yen na a tɔ́l mimbɔ́g ya sukul."
+      }
+    ]
+  },
+    "faq": {
+  "badge": "Minkɔ́bɔ́ mi jɔ́l mingi",
+  "title": "Minkɔ́bɔ́ mi jɔ́l",
+  "items": [
+    {
+      "question": "Mvula ya mwana a ne a tɔ́l sukul a ne amu?",
+      "answer": "Mvula ya mwana a ne a tɔ́l maternelle a ne 2 ans a nga bɔ́g. Crèche ya biso a zɔ́k bana a tɔ́l mvɔn na 0 na 2 ans. Biyem bya mfañ bi nga yen na mwana nyonso, a mvɔ́l a kɔ́bɔ́talane na direction."
+    },
+    {
+      "question": "Mwana ya ngai a yeme te anglais, a nga kɔ́l section francophone?",
+      "answer": "Iyo! Bilinguisme a tɔ́l mvoé mvoé. Na section francophone, anglais a ne mfañ ya iba a tɔ́l CP (4h/semaine). Nzɔ́g ya a yɔ́k mfañ a nga yen amu bana ba ntɔ́lɔ́g na niveau ya bango."
+    },
+    {
+      "question": "Minsan ya sukul mi ne amu?",
+      "answer": "Bikɔ́l bya akom bi ne mvul na mvul, a tɔ́l 7h45 na 15h00 amu maternelle na a tɔ́l 16h00 amu primaire. A zɔ́k bana a tɔ́l 7h00 na gardiennage a nga yen na 17h30 na mfañ."
+    },
+    {
+      "question": "Sukul a ne na cantine?",
+      "answer": "Iyo, cantine a ne amu bana nyonso. Bilɔ́g bi ne na mfañ, bi nga bɔ́g ayi na sukul na bi kɔ́l mfañ ya bana. Menu a yen ngon nyonso. A nga zɔ́k demi-pension aloŋ panier repas."
+    },
+    {
+      "question": "Sukul a ne na transport?",
+      "answer": "Transport a nga bɔ́g na mfañ ya bika (Nkozoa na bika bya ndɔ́ma: Cité-Verte, Mvan, Mokolo, etc.). Minsan na prix bi nga jɔ́l a tɔ́l inscription. Bika bi ne mvoé na a tɔ́l a mfañ ya a ntɔ́l."
+    },
+    {
+      "question": "Mimbɔ́g ya sukul mi nga kɔ́bɔ́ a ne amu?",
+      "answer": "Mimbɔ́g mi nga kɔ́bɔ́ bi ne: mimbɔ́g ya inscription (mbɔ́g imwe ngon), mimbɔ́g ya sukul (trimestre aloŋ ngon nyonso na remise), na mimbɔ́g miba (cantine, transport, uniforme, matériel). Biyem bya prix bi nga yen na fam nyonso a mvɔ́l a yen sukul."
+    }
+  ]
+},
+"whatsappCta": {
+  "title": "A lɔ́g mfañ lelo?",
+  "subtitle": "Bikɔ́l bya biso bi ne na WhatsApp amu a jɔ́l minkɔ́bɔ́ nyonso ya admission.",
+  "button": "Tɔ́l mfañ na WhatsApp"
+}
+},
+"newsPage": {
+  "hero": {
+    "title": "Biyem na Mvoé ya Sukul",
+    "subtitle": "Biyem nyonso bya Génies d'Afrique: minkɔn, bikɔ́l bya akom, biyem bya nnam na mimbɔ́g.",
+    "image": "/images/IMG-20260723-WA0024.jpg"
+  },
+  "searchPlaceholder": "Lɔ́g dzam, biyem aloŋ mfañ…",
+  "categories": {
+    "all": "Biyem nyonso",
+    "evenements": "Biyem bya nnam",
+    "institutionnel": "Mfañ ya sukul",
+    "pedagogie": "Akom",
+    "admissions": "A tɔ́l bana sukul",
+    "sports": "Nyam na Mvoé ya sukul"
+  },
+  "featured": "Dzam ya libɔ́g",
+  "recentArticles": "Minkɔ́bɔ́ mi mvoé",
+  "pagination": {
+    "prev": "A mvɔ́l",
+    "next": "A jɔ́l",
+    "page": "Page"
+  },
+  "article": {
+    "authorLabel": "A sɔ́m na",
+    "galleryLabel": "Galerie ya minkɔ́lɔ́",
+    "shareLabel": "Kɔ́bɔ́talane article",
+    "backToList": "← Kɔ́l na liste ya biyem"
+  }
+},
+  "lifePage": {
+  "hero": {
+    "title": "Abeñ Sukul",
+    "subtitle": "A si aṅgáa be ndzi? : bikɔ́l, bísɔ́n, biwulu, minkɔn, na bikalane bi nnam a dzam."
+  },
+  "clubs": {
+    "badge": "Bikɔ́l bya Sukul",
+    "title": "Bikɔ́l 6 bi ye mfañ ya kɔ́bɔ́talane ya misuñ",
+    "items": [
+      {
+        "icon": "BookOpen",
+        "title": "Kɔ́l ya Mvɔ́m na Akom",
+        "description": "Kɔ́bɔ́talane ya a tɔ́l, a kɔ́ñ, na a yene akom. Bibɔ́l bya zam a ngon: mvoé, minkɔlɔ, na misuñ ya mvɔ́m."
+      },
+      {
+        "icon": "Palette",
+        "title": "Kɔ́l ya Minsili",
+        "description": "Minkan, mvoé ya misili, mbɔ́k, bikɔ́l bya misili na bísɔ́n. Bikɔ́la bya nnam na misili ya sukul."
+      },
+      {
+        "icon": "Music",
+        "title": "Kɔ́l ya Nyanga na Nlɔ́m",
+        "description": "Nyanga, akom ya minlɔ́m, a yɔ́k instrument (mendzan, piano, guitare). Biyem ya minkɔn ya sukul."
+      },
+      {
+        "icon": "Dumbbell",
+        "title": "Kɔ́l ya Bikɔ́l bya Nyam",
+        "description": "Football, basketball, athlétisme, natation na misala ya mveñ. Bikɔ́la na minkɔn ya minkɔlɔ."
+      },
+      {
+        "icon": "Sprout",
+        "title": "Kɔ́l ya Bilɔ́g na Bibɔ́ñ",
+        "description": "A wulu bilɔ́g, a lɔ́ñ bibɔ́ñ (mimbɔ́k, minkɔ́m), a tɔ́l bisi na biyɔ́l. A yeme mbɔ́g na nnam."
+      },
+      {
+        "icon": "Briefcase",
+        "title": "Kɔ́l ya Bizɔ́bɔ Junior",
+        "description": "Mimbɔ́g ya bisɔ́bɔ bi nga yen a misuñ ya minyɔ́ñ: bikɔ́l bya bisɔ́bɔ, a tɔ́l sabɔ́, a lɔ́ñ bisi, na a yeme mbɔ́g ya akal."
+      }
+      ]
+    },
+      "activities": {
+  "badge": "Bikɔ́l bya Nyon",
+  "title": "A wulu a kɔ́bɔ́, a yɔ́k a dzam ése",
+  "description": "A ne mimbɔ́g ya sukul mvoé, bisóne bi yeme a tɔ́l bikɔ́l bikɔ́lɔ́g nyonso ya mvoé ya sukul, a yɔ́k, a wulu na a lɛ́g: aloŋ ya bilim, minkɔn ya nnam, aloŋ ya akom, bikɔ́l bya mbɔ́g, kermesse, olympiades na bikɔ́l bison.",
+  "gallery": [
+    "/images/IMG-20260723-WA0007.jpg",
+    "/images/IMG-20260723-WA0012.jpg",
+    "/images/IMG-20260723-WA0024.jpg",
+    "/images/IMG-20260723-WA0075.jpg"
+  ]
+},
+"outings": {
+  "badge": "Bikɔ́l bya Minsili",
+  "title": "A yeme si, a lɔ́g a ne mimbɔ́g ya sukul",
+  "items": [
+    {
+      "title": "A yen Musée National ya Kamerun",
+      "description": "A yen mvoé ya history na mbɔ́g ya Kamerun na ndɔ́l ya bilɔ́g, bisɔ́ne bi yen na bikɔ́l bya minsili bi nga yeme biañ a bana ba primaire.",
+      "photos": [
+        "/images/IMG-20260723-WA0007.jpg",
+        "/images/IMG-20260723-WA0012.jpg"
+      ]
+    },
+    {
+      "title": "A yen fam ya sukul na a tɔ́l bilɔ́g",
+      "description": "Mvula ya fam: a yen biam bi tɔ́lɔ́g, a yeme minlɔ́m ya bilɔ́g, a kɔ́l mbɔ́ñ na minkɔ́m ya ndɔ́l, a tɔ́l mɔ́k na fromage.",
+      "photos": [
+        "/images/IMG-20260723-WA0024.jpg",
+        "/images/IMG-20260723-WA0075.jpg"
+      ]
+    },
+    {
+      "title": "A kɔ́l minkɔlɔ na a yeme bilɔ́g bya si",
+      "description": "A kɔ́l minkɔlɔ ya mvoé na réserve forestière ya Mbam Minkom: a yen biam na bilɔ́g bya mɔ́k, misala ya yeme nzɔ́g, piknik ya mbɔ́g.",
+      "photos": [
+        "/images/IMG-20260723-WA0007.jpg",
+        "/images/IMG-20260723-WA0012.jpg"
+      ]
+    }
+  ]
+},
+    "events": {
+  "badge": "Bikɔ́l bya Mbɔ́g ya Nnam",
+  "title": "Biyem bia nnam ya sukul ya ngon nyin",
+  "items": [
+    {
+      "title": "Mvoé ya Bibɔ́g Bibuma",
+      "month": "Okɔtɔ́b",
+      "description": "A yen sukul, a yen misala ya akom, minkɔn ya bana, a yen a balɛ́g ba sukul. Mvoé ya mfañ ya mindima na bana ba nga yɔ́k sukul."
+    },
+    {
+      "title": "Festival ya Minlɔ́m Mibuma na Mbɔ́g",
+      "month": "Dɛ́sɛmb",
+      "description": "Biaṅg biba bi kɔ́bɔ́talane ya minsili mibuma, minkɔ́m ya Afrika na bikɔ́l bya minsili. Biyem bya théâtre, minlɔ́m, minkɔn, na minkɔ́bɔ́ ya français na anglais."
+    },
+    {
+      "title": "Bikɔ́l bya Nyam na Mvɔ́m",
+      "month": "Maa",
+      "description": "Minkɔn minene ya nyam a nnam ya bikɔ́l: athlétisme, mvoé ya mbɔ́g, football, basketball, a tɔ́bɔ́l mvoé. A wum medailles na trophées na bikɔ́l bi nyen."
+    },
+    {
+      "title": "Mvoé ya Mvɔn ya Ngon Sukul",
+      "month": "Yuni",
+      "description": "Minkɔn minene ya bana, a kɔ́bɔ́ diplômes, a wum mimbɔ́g ya excellence na mvoé ya fam na balɛ́g ba sukul. Mvoé ya nnam nyin nyonso a kɔ́l."
+    }
+  ]
+}
+  },
+  "galleryPage": {
+  "hero": {
+    "title": "Galerie ya Minkɔ́lɔ́ na Biyem",
+    "subtitle": "Kɔ́l a ne mfañ ya Génies d'Afrique na misuñ mia minene bia yen na minkɔ́lɔ́.",
+    "image": "/images/IMG-20260723-WA0024.jpg"
+  },
+  "tabs": {
+    "photos": "Minkɔ́lɔ́",
+    "videos": "Biyem bya vidéo"
+  },
+  "filters": {
+    "all": "Minkɔ́lɔ́ nyonso",
+    "activites": "Bikɔ́l bya sukul",
+    "infrastructures": "Bikɔ́l bya ndɔ́l na bika",
+    "ceremonies": "Biyem bya nnam",
+    "salles": "Bisɔ́m bya sukul",
+    "excursions": "Bikɔ́l bya mimbɔ́g na minsili"
+  }
+},
+"contactPage": {
+  "hero": {
+    "title": "Kɔ́bɔ́talane na biso",
+    "subtitle": "Bikɔ́l bya biso bi ne a yen a jɔ́l biabé nyonso na a yeme a yɔ́k bia.",
+    "image": "/images/IMG-20260723-WA0024.jpg"
+  },
+  "infoCards": [
+    {
+      "icon": "MapPin",
+      "title": "Ase",
+      "content": "Nkozoa, nyuma ya Boulangerie Massa",
+      "sublabel": "Yaoundé, Kamerun"
+    },
+    {
+      "icon": "Phone",
+      "title": "Minkɔ́bɔ́ ya téléphone",
+      "content": "651 11 15 06",
+      "sublabel": "656 66 38 48"
+    },
+    {
+      "icon": "Mail",
+      "title": "Adresse e-mail",
+      "content": "lesgeniesdafrique836@gmail.com",
+      "sublabel": "A jɔ́l a ne ngɔn 24h"
+    },
+    {
+      "icon": "Clock",
+      "title": "Minsan ya misala",
+      "content": "Mvul – Mvul : 8h00 – 13h00",
+      "sublabel": "Secrétariat a ne nnam"
+    }
+  ],
+  "form": {
+    "title": "Tɔ́l a yɔ́k mfañ",
+    "subtitle": "Tɔ́l formulaire ayi. Bikɔ́l bya biso bi nga jɔ́l na mvoé mfañ.",
+    "name": "Ayon na dzam",
+    "namePlaceholder": "Ayon na dzam nyonso",
+    "email": "Adresse e-mail",
+    "emailPlaceholder": "exemple@email.com",
+    "phone": "Téléphone",
+    "phonePlaceholder": "6XX XX XX XX",
+    "subject": "Dzam ya mfañ",
+    "subjectPlaceholder": "A lɔ́g mwana, a yen nsili, a kɔ́bɔ́ mfañ…",
+    "message": "Mfañ wua",
+    "messagePlaceholder": "Tɔ́l mfañ wua a si ayi…",
+    "submit": "Tɔ́l mfañ",
+    "success": "Kolé ! Mfañ wua a nga tɔ́l mvoé. Biso bi nga jɔ́l wua na mvoé."
+  },
+  "map": {
+    "title": "A yen biso na carte"
+  },
+  "whatsapp": {
+    "title": "Kɔ́bɔ́talane ya mbɔ́k na WhatsApp",
+    "subtitle": "A yen jɔ́l mvoé, tɔ́l mfañ wua na WhatsApp. Biso bi ne a nnam na minsan ya misala."
+  }
+},
+"announcement": "📢 A lɔ́g bana a nga zɔ́k — Mvul a mvul 8h–13h",
+"hero": {
+  "badge": "Sukul ya Bilingue ya Excellence · Nkozoa, Yaoundé",
+  "title": "A lɛ́g lelo balɛ́g ba ndɔ́ma",
+  "subtitle": "Ase ya bilingue ya excellence a yen a yɔ́k mwana wua nyonso — a crèche na primaire.",
+  "ctaPrimary": "Tɔ́l mwana wua sukul",
+  "ctaSecondary": "A yeme sukul",
+  "scrollHint": "A kɔ́l ase"
+},
+  "trustBar": {
+  "items": [
+    {
+      "icon": "School",
+      "label": "Agréé MINEDUB 2025"
+    },
+    {
+      "icon": "BookOpen",
+      "label": "Minkan mi sukul 4"
+    },
+    {
+      "icon": "Globe",
+      "label": "Bilingue FR / EN"
+    },
+    {
+      "icon": "Phone",
+      "label": "651 11 15 06"
+    }
+  ]
+},
+"about": {
+  "badge": "Mvoé ya biso",
+  "title": "Sukul a nga dzam a yɔ́k génie ya mwana nyonso",
+  "slogan": "Misala – Mbɔ́g – Nyɔ́ñ",
+  "mission": "A tɔ́lɔ́g na Nkozoa na a yen agrément ya MINEDUB, Complexe Scolaire Bilingue Les Génies d'Afrique a nga dzam na mvon mvoé : mwana nyonso a ne mfañ ya dzam ya minene. Misala ya biso a ne a yen dzam ayi, a yɔ́k na a tɔ́l mwana a yeme a nyɔ́ñ na si ya mvoé.",
+  "vision": "Biso bi lɔ́g a ne sukul bilingue ya libɔ́g na Kamerun, a yen na mvoé ya misala ya biso, minkɔ́lɔ́ ya minlɔ́m ya akom na a yɔ́k bana ba biso nyonso.",
+  "values": "Nyɔ́ñ, mbɔ́g, bilinguisme na mvoé ya mfañ bi ne mimbɔ́g ya projet ya biso. Dzam nyonso ya akom a lɔ́g a yɔ́k mwana na a yɔ́k dzam ya mwana nyonso a nga tɔ́l na biso.",
+  "bilingual": "Minsili mibuma ya biso — français na anglais a tɔ́l a crèche — a ne dzam ya minene: a kɔ́l nzɔ́g ya minsili mibuma iba, a lɔ́g nzɔ́g ya mvoé ya akom na misala.",
+  "excellence": "A ne agriculture ya sukul na entrepreneuriat junior, biso bi kɔ́l mfañ ya programmes ya sukul a yɔ́k bana ba dzam nyonso, ba yeme a tɔ́l mimbɔ́g na mbɔ́g. A nɔ́g balɛ́g ba ndɔ́ma a lɛ́g lelo.",
+  "cta": "A yeme histoire ya biso",
+  "directorName": "Maman ya sukul",
+  "directorRole": "Directrice Générale — Complexe Scolaire Bilingue Les Génies d'Afrique",
+  "playLabel": "A yen vidéo ya sukul",
+  "accreditation": "Agréé MINEDUB 2025",
+  "since": "A tɔ́lɔ́g na 2024"
+},
+"stats": {
+  "badge": "Les Génies d'Afrique na minkɔ́bɔ́",
+  "title": "Minkɔ́bɔ́ mi nga yen dzam",
+  "subtitle": "Sukul a kɔ́l, fam ya sukul a tɔ́l misala.",
+  "items": [
+    {
+      "value": "120",
+      "suffix": "+",
+      "label": "Bana ba sukul",
+      "sublabel": "Enrolled students",
+      "icon": "Users"
+    },
+    {
+      "value": "12",
+      "suffix": "",
+      "label": "Balɛ́g ba sukul ba yeme",
+      "sublabel": "Qualified teachers",
+      "icon": "GraduationCap"
+    },
+    {
+      "value": "2",
+      "suffix": "",
+      "label": "Minɔ́l ya misala",
+      "sublabel": "Years of experience",
+      "icon": "Calendar"
+    },
+    {
+      "value": "6",
+      "suffix": "",
+      "label": "Bikɔ́l bya sukul",
+      "sublabel": "School clubs",
+      "icon": "Star"
+    },
+    {
+      "value": "10",
+      "suffix": "+",
+      "label": "Bikɔ́l bya mfañ ya sukul",
+      "sublabel": "Extracurricular activities",
+      "icon": "Zap"
+    }
+  ]
+},
+  "programs": {
+  "badge": "Bikɔ́l bya biso",
+  "title": "Minlɔ́m mibuma iba, dzam imwe",
+  "subtitle": "Nzɔ́g ya bilingue a tɔ́l a crèche na CM2, na français na anglais, a yɔ́k balɛ́g ba ndɔ́ma.",
+  "cta": "A yeme mfañ",
+  "ctaAdmissions": "A tɔ́l mwana lelo",
+  "levels": "Minkan",
+  "strengths": "Dzam ya mvoé",
+  "cards": [
+    {
+      "id": "francophone",
+      "flag": "🇫🇷",
+      "lang": "Français",
+      "badge": "Mfañ ya Français",
+      "title": "Programme Francophone",
+      "subtitle": "A Crèche na CM2",
+      "description": "Mfañ ya français a kɔ́l programmes ya MINEDUB ya Kamerun, a yɔ́k na bikɔ́l bya akom bya ndɔ́ma na a tɔ́l anglais a mvoé mvoé. Ase ya mbɔ́g, ya mfañ na ya yɔ́k mwana nyonso.",
+      "image": "/images/IMG-20260723-WA0007.jpg",
+      "levels": [
+        "Crèche (0–2 ans)",
+        "Maternelle (2–5 ans)",
+        "CP · CE1 · CE2",
+        "CM1 · CM2"
+      ],
+      "strengths": [
+        "Programme MINEDUB a yɔ́k na bikɔ́l bya mvoé",
+        "Anglais ya mvoé a tɔ́l CP",
+        "Bilɔ́g, mathématiques na a tɔ́l mfañ",
+        "Bikɔ́l bya bilɔ́g na entrepreneuriat"
+      ],
+      "href": "/programmes#primaire-fr",
+      "accentColor": "#1A3A8F"
+    },
+    {
+      "id": "anglophone",
+      "flag": "🇬🇧",
+      "lang": "English",
+      "badge": "Mfañ ya English",
+      "title": "Programme Anglophone",
+      "subtitle": "A Nursery na Class 6",
+      "description": "Mfañ ya English a tɔ́l programme ya mbɔ́g a kɔ́l MINEDUB. Akom a yeme mfañ ya English, na français a ne mfañ ya iba. Bana ba yeme a kɔ́l bikɔ́l bya secondaire anglophone na Kamerun na si nyonso.",
+      "image": "/images/IMG-20260723-WA0012.jpg",
+      "levels": [
+        "Nursery (2–5 yrs)",
+        "Class 1 · Class 2",
+        "Class 3 · Class 4",
+        "Class 5 · Class 6"
+      ],
+      "strengths": [
+        "Programme anglophone MINEDUB ya mbɔ́g",
+        "Français a ne mfañ ya iba ya mvoé",
+        "Akom na calcul na English",
+        "A yen minsili na si nyonso"
+      ],
+      "href": "/programmes#primaire-en",
+      "accentColor": "#D32F2F"
+    }
+  ]
+},
+"whyUs": {
+  "badge": "Bikɔ́l bya biso",
+  "title": "A yeme amu dzam a Génies d'Afrique ?",
+  "subtitle": "Mimbɔ́g minene, ase ya mvoé na mfañ nyonso a yɔ́k mwana nyonso.",
+  "items": [
+    {
+      "icon": "Globe",
+      "title": "Akom bilingue",
+      "body": "A yɔ́k français na anglais a tɔ́l crèche. Minsili iba, minsili mibuma iba, nzɔ́g imwe ya si."
+    },
+    {
+      "icon": "Shield",
+      "title": "Mbɔ́g na mimbɔ́g",
+      "body": "Ase ya mbɔ́g a yɔ́k mfañ, a yen balɛ́g, a yeme mfañ ya dzam nyonso."
+    },
+    {
+      "icon": "Trophy",
+      "title": "Nyɔ́ñ ya akom",
+      "body": "Programmes ya MINEDUB a yɔ́k, balɛ́g ba yeme, bikɔ́l bya mvoé. A lɔ́g mfañ ya libɔ́g nyonso."
+    },
+    {
+      "icon": "Heart",
+      "title": "A yen mwana nyonso",
+      "body": "Bana ba mingi te na bisɔ́m, a yen mwana nyonso, a yeme amu mwana nyonso a ne génie ya mvoé."
+    },
+    {
+      "icon": "Lightbulb",
+      "title": "Akom ya minsili mibuma",
+      "body": "Agriculture, élevage, pisciculture, entrepreneuriat: a yeme na nzɔ́g, a tɔ́l na a yɔ́k."
+    },
+    {
+      "icon": "Palette",
+      "title": "Minsili na a tɔ́l dzam",
+      "body": "Arts plastiques, théâtre, musique, danse. A yɔ́k mimbɔ́g ya dzam na mfañ ya mwana."
+    },
+    {
+      "icon": "ShieldCheck",
+      "title": "Nnam ya mbɔ́g",
+      "body": "Sukul a ne na nnam, a yen nyonso, mbɔ́g ya protection ya mwana a ne mbɔ́g."
+    },
+    {
+      "icon": "Plane",
+      "title": "A yen si nyonso",
+      "body": "Bikɔ́l bya si, kɔ́bɔ́talane ya minsili, technologies ya mvoé. A lɔ́g bana ba ndɔ́ma."
+    }
+  ]
+},
+  "gallery": {
+  "badge": "Galerie",
+  "title": "Akom ya sukul na minkɔ́lɔ́",
+  "subtitle": "Ase ya mvoé, bana ba yɔ́k.",
+  "cta": "A yen galerie nyonso"
+},
+"testimonials": {
+  "badge": "Mfañ ya balɛ́g",
+  "title": "Dzam ba balɛ́g ba sukul ba kɔ́bɔ́",
+  "items": [
+    {
+      "name": "Mme Ngo Biyong",
+      "role": "Maman ya mwana",
+      "text": "A tɔ́l mwana wua Génies d'Afrique, ma yen mvoé ya minene a mwana wua. A kɔ́bɔ́ English na français a mvoé. A yen mwana na mbɔ́g ya libɔ́g.",
+      "stars": 5
+    },
+    {
+      "name": "M. Atangana Biyick",
+      "role": "Tata ya mwana",
+      "text": "Sukul a kɔ́bɔ́talane mbɔ́g ya akom na a yɔ́k mwana. Bana ba ngai babɛ́ ba lɔ́g a kɔ́l sukul ngon nyonso!",
+      "stars": 5
+    },
+    {
+      "name": "Mme Essomba",
+      "role": "Maman ya mwana",
+      "text": "Bikɔ́l bya agriculture na élevage bi nga yɔ́k ngai mingi. Mwana ya ngai a nga yɔ́k mfañ ya mbɔ́g na mvoé ya misala. Mvoé na bikɔ́l nyonso!",
+      "stars": 5
+    }
+  ]
+},
+"admissionsCta": {
+  "badge": "Kɔ́bɔ́talane na biso",
+  "title": "A lɔ́g bana a nga zɔ́k",
+  "subtitle": "Kɔ́bɔ́talane na fam ya Génies d'Afrique. Bika bi ne mvoé — tɔ́l dzam lelo.",
+  "schedule": "Mvul a Mvul, 8h00 – 13h00",
+  "scheduleLabel": "Minsan ya a lɔ́g mwana",
+  "address": "Nkozoa, nyuma ya Boulangerie Massa, Yaoundé",
+  "ctaPrimary": "Kɔ́bɔ́talane na biso",
+  "ctaSecondary": "A zɔ́k dossier"
+},
+"news": {
+  "badge": "Biyem bya sukul",
+  "title": "Biyem bya sukul",
+  "cta": "A yen biyem nyonso"
+},
+"footer": {
+  "tagline": "A lɛ́g lelo balɛ́g ba ndɔ́ma",
+  "quickLinks": "Minkɔ́bɔ́ ya mbɔ́k",
+  "contactUs": "Kɔ́bɔ́talane",
+  "followUs": "Bika bya minsili",
+  "hours": "Minsan",
+  "hoursValue": "Mvul–Mvul : 8h00–13h00",
+  "copyright": "Bika nyonso bi ne na biso.",
+  "legal": "Mfañ ya mimbɔ́g",
+  "privacy": "Mfañ ya nzɔ́g"
+},
+"contact": {
+  "address": "Nkozoa, nyuma ya Boulangerie Massa\nYaoundé, Kamerun",
+  "phone1": "651 11 15 06",
+  "phone2": "656 66 38 48",
+  "email": "lesgeniesdafrique@836gmail.com",
+  "whatsappLabel": "Tɔ́l mfañ na WhatsApp",
+  "facebookLabel": "Facebook",
+  "tiktokLabel": "TikTok"
+},
+"common": {
+  "learnMore": "A yeme mfañ",
+  "readMore": "A kɔ́bɔ́talane",
+  "download": "A zɔ́k",
+  "send": "Tɔ́l",
+  "loading": "A tɔ́l…",
+  "backToTop": "A kɔ́l a mfañ",
+  "close": "A kɔ́bɔ́"
+},
+  "_meta": {
+    "language": "Ewondo",
+    "fallback": "fr",
+    "translatedAt": "2026-08-05T11:55:22.519Z",
+    "translationMethod": "glossary + openai",
+    "statistics": {
+      "total": 565,
+      "translated": 32,
+      "glossary": 32,
+      "ai": 0,
+      "fallback": 533
+    }
+  }
+}
