@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <Link href="/" className="flex items-center gap-3 mb-4">
             <Image
-              src="/logo/logo.jpg"
+              src="/logo/logo.png"
               alt="Les Génies d'Afrique"
               width={52}
               height={52}

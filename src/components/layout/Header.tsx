@@ -9,25 +9,39 @@ import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ── Navigation items ───────────────────────────────────────── */
-const NAV_ITEMS = [
-  { key: "home",       href: "/" },
-  { key: "about",      href: "/a-propos" },
-  { key: "formations", href: "/formations" },
-  { key: "admissions", href: "/admissions" },
-  { key: "news",       href: "/actualites" },
+type NavItem = {
+  key: string;
+  href: string;
+  hasSubmenu?: boolean;
+};
+
+const NAV_ITEMS: NavItem[] = [
+  { key: "home",       href: "/", hasSubmenu: false },
+  { key: "about",      href: "/a-propos", hasSubmenu: true },
+  { key: "formations", href: "/formations", hasSubmenu: false },
+  { key: "admissions", href: "/admissions", hasSubmenu: false },
+  { key: "news",       href: "/actualites", hasSubmenu: true },
+  { key: "life",       href: "/vie-scolaire", hasSubmenu: true },
+  { key: "contact",    href: "/contact", hasSubmenu: false },
+];
+
+/* ── Sous-menu Actualités ──────────────────────────────────────── */
+const NEWS_SUBMENU: Array<{ key: string; href: string }> = [
   { key: "calendar",   href: "/calendrier" },
-  { key: "life",       href: "/vie-scolaire" },
+];
+
+/* ── Sous-menu Vie scolaire ────────────────────────────────────── */
+const LIFE_SUBMENU: Array<{ key: string; href: string }> = [
   { key: "gallery",    href: "/galerie" },
-  { key: "contact",    href: "/contact" },
-] as const;
+];
 
 /* ── Sous-menu À propos ──────────────────────────────────────── */
-const SCHOOL_SUBMENU = [
+const SCHOOL_SUBMENU: Array<{ key: string; href: string }> = [
   { key: "subMission",   href: "/a-propos#mission" },
   { key: "subHistory",   href: "/a-propos#histoire" },
   { key: "subValues",    href: "/a-propos#valeurs" },
   { key: "subTeam",      href: "/a-propos#equipe" },
-] as const;
+];
 
 /* ══════════════════════════════════════════════════════════════ */
 export default function Header() {
@@ -40,7 +54,10 @@ export default function Header() {
   const [drawerOpen,   setDrawerOpen]   = useState(false);
   const [annVisible,   setAnnVisible]   = useState(true);
   const [schoolOpen,   setSchoolOpen]   = useState(false);
+  const [newsOpen,     setNewsOpen]     = useState(false);
+  const [lifeOpen,     setLifeOpen]     = useState(false);
   const [langOpen,     setLangOpen]     = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   const drawerRef    = useRef<HTMLElement>(null);
   const langRef      = useRef<HTMLDivElement>(null);
@@ -204,7 +221,7 @@ export default function Header() {
               ring-2 ring-transparent group-hover:ring-[#F5A623]/50 transition-all duration-300
               shadow-md">
               <Image
-                src="/logo/logo.jpg"
+                src="/logo/logo.png"
                 alt=""
                 fill
                 className="object-cover"
@@ -230,7 +247,7 @@ export default function Header() {
             aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"}
             className="hidden lg:flex items-center gap-0.5"
           >
-            {NAV_ITEMS.map(({ key, href }) => {
+            {NAV_ITEMS.map(({ key, href, hasSubmenu = false }) => {
               const active = isActive(href);
 
               /* Sous-menu pour À propos */
@@ -278,6 +295,130 @@ export default function Header() {
                             overflow-hidden py-1.5 z-50"
                         >
                           {SCHOOL_SUBMENU.map(({ key: sk, href: sh }) => (
+                            <Link
+                              key={sk}
+                              href={sh}
+                              className="block px-4 py-2.5 text-sm text-[#1A202C] font-medium
+                                hover:bg-[#EEF2FF] hover:text-[#1A3A8F]
+                                transition-colors duration-150"
+                            >
+                              {t(sk as keyof typeof t)}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              /* Sous-menu pour Actualités */
+              if (key === "news") {
+                return (
+                  <div
+                    key={key}
+                    className="relative"
+                    onMouseEnter={() => setNewsOpen(true)}
+                    onMouseLeave={() => setNewsOpen(false)}
+                  >
+                    <button
+                      aria-expanded={newsOpen}
+                      aria-haspopup="true"
+                      className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
+                        font-medium tracking-wide transition-all duration-200
+                        ${active
+                          ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                          : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                        }
+                        ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
+                        ${active && !isOpaque ? "bg-white/15" : ""}`}
+                    >
+                      {t(key as keyof typeof t)}
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${newsOpen ? "rotate-180" : ""}`}
+                      />
+                      {/* Indicateur actif */}
+                      {active && (
+                        <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
+                      )}
+                    </button>
+
+                    {/* Dropdown */}
+                    <AnimatePresence>
+                      {newsOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0,  scale: 1 }}
+                          exit={{ opacity: 0,  y: -8, scale: 0.97 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl
+                            shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-[#E2E8F0]
+                            overflow-hidden py-1.5 z-50"
+                        >
+                          {NEWS_SUBMENU.map(({ key: sk, href: sh }) => (
+                            <Link
+                              key={sk}
+                              href={sh}
+                              className="block px-4 py-2.5 text-sm text-[#1A202C] font-medium
+                                hover:bg-[#EEF2FF] hover:text-[#1A3A8F]
+                                transition-colors duration-150"
+                            >
+                              {t(sk as keyof typeof t)}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              /* Sous-menu pour Vie scolaire */
+              if (key === "life") {
+                return (
+                  <div
+                    key={key}
+                    className="relative"
+                    onMouseEnter={() => setLifeOpen(true)}
+                    onMouseLeave={() => setLifeOpen(false)}
+                  >
+                    <button
+                      aria-expanded={lifeOpen}
+                      aria-haspopup="true"
+                      className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
+                        font-medium tracking-wide transition-all duration-200
+                        ${active
+                          ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                          : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                        }
+                        ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
+                        ${active && !isOpaque ? "bg-white/15" : ""}`}
+                    >
+                      {t(key as keyof typeof t)}
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${lifeOpen ? "rotate-180" : ""}`}
+                      />
+                      {/* Indicateur actif */}
+                      {active && (
+                        <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
+                      )}
+                    </button>
+
+                    {/* Dropdown */}
+                    <AnimatePresence>
+                      {lifeOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0,  scale: 1 }}
+                          exit={{ opacity: 0,  y: -8, scale: 0.97 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl
+                            shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-[#E2E8F0]
+                            overflow-hidden py-1.5 z-50"
+                        >
+                          {LIFE_SUBMENU.map(({ key: sk, href: sh }) => (
                             <Link
                               key={sk}
                               href={sh}
@@ -473,8 +614,13 @@ export default function Header() {
               aria-label={locale === "fr" ? "Navigation mobile" : "Mobile navigation"}
               className="flex-1 overflow-y-auto py-3 px-3"
             >
-              {NAV_ITEMS.map(({ key, href }, i) => {
+              {NAV_ITEMS.map(({ key, href, hasSubmenu }, i) => {
                 const active = isActive(href);
+                const submenuOpen = mobileSubmenu === key;
+                const submenuItems = key === "about" ? SCHOOL_SUBMENU : 
+                                     key === "news" ? NEWS_SUBMENU :
+                                     key === "life" ? LIFE_SUBMENU : [];
+
                 return (
                   <motion.div
                     key={key}
@@ -482,22 +628,77 @@ export default function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.04, duration: 0.3, ease: "easeOut" }}
                   >
-                    <Link
-                      href={href}
-                      onClick={() => setDrawerOpen(false)}
-                      aria-current={active ? "page" : undefined}
-                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl
-                        font-medium text-base transition-all duration-150 mb-0.5
-                        ${active
-                          ? "bg-[#EEF2FF] text-[#1A3A8F] font-semibold"
-                          : "text-[#1A202C] hover:bg-[#F7F9FC] hover:text-[#1A3A8F]"
-                        }`}
-                    >
-                      {t(key as keyof typeof t)}
-                      {active && (
-                        <span className="w-2 h-2 rounded-full bg-[#D32F2F] flex-shrink-0" />
-                      )}
-                    </Link>
+                    {hasSubmenu ? (
+                      <>
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={href}
+                            onClick={() => setDrawerOpen(false)}
+                            aria-current={active ? "page" : undefined}
+                            className={`flex-1 flex items-center justify-between px-4 py-3.5 rounded-xl
+                              font-medium text-base transition-all duration-150 mb-0.5
+                              ${active
+                                ? "bg-[#EEF2FF] text-[#1A3A8F] font-semibold"
+                                : "text-[#1A202C] hover:bg-[#F7F9FC] hover:text-[#1A3A8F]"
+                              }`}
+                          >
+                            <span>{t(key as keyof typeof t)}</span>
+                          </Link>
+                          <button
+                            onClick={() => setMobileSubmenu(submenuOpen ? null : key)}
+                            className="p-2 rounded-lg hover:bg-[#F7F9FC] transition-colors"
+                            aria-label="Toggle submenu"
+                          >
+                            <ChevronDown
+                              size={16}
+                              className={`transition-transform duration-200 ${submenuOpen ? "rotate-180" : ""}`}
+                            />
+                          </button>
+                        </div>
+                        
+                        {/* Sous-menu mobile */}
+                        <AnimatePresence>
+                          {submenuOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="pl-4 overflow-hidden"
+                            >
+                              {submenuItems.map(({ key: sk, href: sh }) => (
+                                <Link
+                                  key={sk}
+                                  href={sh}
+                                  onClick={() => setDrawerOpen(false)}
+                                  className="block px-4 py-2.5 text-sm text-[#1A202C] font-medium
+                                    hover:bg-[#EEF2FF] hover:text-[#1A3A8F] rounded-lg transition-colors duration-150"
+                                >
+                                  {t(sk as keyof typeof t)}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        href={href}
+                        onClick={() => setDrawerOpen(false)}
+                        aria-current={active ? "page" : undefined}
+                        className={`flex items-center justify-between px-4 py-3.5 rounded-xl
+                          font-medium text-base transition-all duration-150 mb-0.5
+                          ${active
+                            ? "bg-[#EEF2FF] text-[#1A3A8F] font-semibold"
+                            : "text-[#1A202C] hover:bg-[#F7F9FC] hover:text-[#1A3A8F]"
+                          }`}
+                      >
+                        {t(key as keyof typeof t)}
+                        {active && (
+                          <span className="w-2 h-2 rounded-full bg-[#D32F2F] flex-shrink-0" />
+                        )}
+                      </Link>
+                    )}
                   </motion.div>
                 );
               })}
