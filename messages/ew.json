@@ -11,6 +11,7 @@
   "formations": "Mekol",
   "admissions": "Mebengane",
   "news": "Mbia",
+  "calendar": "Kalandriya",
   "life": "Mvog Sukul",
   "gallery": "Galerie",
   "contact": "Somin",
@@ -902,6 +903,55 @@
   "loading": "A tɔ́l…",
   "backToTop": "A kɔ́l a mfañ",
   "close": "A kɔ́bɔ́"
+},
+"calendar": {
+  "title": "Kalandriya ya sukul",
+  "description": "A yen bikɔ́l bya sukul nyonso: bikɔ́l bya a lɔ́g, mikɔ́l, minkɔ́bɔ́, mikundu na bikɔ́l bya mimbɔ́g.",
+  "views": {
+    "month": "Osu",
+    "week": "Saman",
+    "day": "Sibili",
+    "list": "Liste"
+  },
+  "today": "Sibli lelo",
+  "previous": "A kɔ́l a sɛ́",
+  "next": "A kɔ́l a kuma",
+  "eventDetails": "Mfañ ya bikɔ́l",
+  "close": "A kɔ́bɔ́",
+  "viewFullCalendar": "A yen kalandriya nyonso",
+  "upcomingEvents": "Bikɔ́l bya a kuma",
+  "noEvents": "Akuna bikɔ́l bya a kuma",
+  "categories": {
+    "rentree": "Bikɔ́l bya a lɔ́g",
+    "examens": "Mikɔ́l",
+    "reunions-parents": "Minkɔ́bɔ́ ya bata",
+    "vacances": "Mikundu",
+    "sorties-pedagogiques": "Mikundu ya sukul",
+    "activites-sportives": "Bikɔ́l bya sport",
+    "activites-culturelles": "Bikɔ́l bya mimbɔ́g",
+    "celebrations": "Mikɔ́bɔ́",
+    "concours": "Mikɔ́l",
+    "evenements-administratifs": "Bikɔ́l bya mimbɔ́g"
+  },
+  "status": {
+    "upcoming": "A kuma",
+    "ongoing": "A lɔ́g",
+    "completed": "A kɔ́l"
+  },
+  "labels": {
+    "date": "Sibili",
+    "time": "Minsan",
+    "location": "Sibe",
+    "organizer": "Mvɔ́n",
+    "category": "Kategori",
+    "description": "Mfañ",
+    "relatedNews": "Biyem bya a kɔ́bɔ́talane"
+  },
+  "home": {
+    "badge": "A kɔ́bɔ́talane",
+    "title": "Bikɔ́l bya a kuma",
+    "subtitle": "A yeme mfañ za bikɔ́l bya sukul bya a kuma."
+  }
 },
   "_meta": {
     "language": "Ewondo",

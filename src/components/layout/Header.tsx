@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { key: "formations", href: "/formations" },
   { key: "admissions", href: "/admissions" },
   { key: "news",       href: "/actualites" },
+  { key: "calendar",   href: "/calendrier" },
   { key: "life",       href: "/vie-scolaire" },
   { key: "gallery",    href: "/galerie" },
   { key: "contact",    href: "/contact" },

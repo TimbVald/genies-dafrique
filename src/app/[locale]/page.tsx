@@ -4,6 +4,7 @@ import AboutSection         from "@/components/sections/AboutSection";
 import StatsSection         from "@/components/sections/StatsSection";
 import ProgramsSection      from "@/components/sections/ProgramsSection";
 import WhyUsSection         from "@/components/sections/WhyUsSection";
+import UpcomingEventsSection from "@/components/sections/UpcomingEventsSection";
 import GallerySection       from "@/components/sections/GallerySection";
 import TestimonialsSection  from "@/components/sections/TestimonialsSection";
 import AdmissionsCtaSection from "@/components/sections/AdmissionsCtaSection";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <StatsSection />
       <ProgramsSection />
       <WhyUsSection />
+      <UpcomingEventsSection />
       <GallerySection />
       <TestimonialsSection />
       <AdmissionsCtaSection />

@@ -11,6 +11,7 @@
     "formations": "Formations",
     "admissions": "Admissions",
     "news": "Actualités",
+    "calendar": "Calendrier",
     "life": "Vie scolaire",
     "gallery": "Galerie",
     "contact": "Contact",
@@ -58,6 +59,10 @@
     "contact": {
       "title": "Contact | Les Génies d'Afrique",
       "description": "Contactez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
+    },
+    "calendar": {
+      "title": "Calendrier scolaire | Les Génies d'Afrique",
+      "description": "Consultez le calendrier scolaire du Complexe Scolaire Bilingue Les Génies d'Afrique. Toutes les dates importantes : rentrées, examens, réunions, sorties et événements culturels."
     }
   },
   "aboutPage": {
@@ -897,6 +902,55 @@
     "whatsappLabel": "Écrire sur WhatsApp",
     "facebookLabel": "Facebook",
     "tiktokLabel": "TikTok"
+  },
+  "calendar": {
+    "title": "Calendrier scolaire",
+    "description": "Consultez toutes les activités importantes de l'établissement : rentrées, examens, réunions, sorties et événements culturels.",
+    "views": {
+      "month": "Mois",
+      "week": "Semaine",
+      "day": "Jour",
+      "list": "Liste"
+    },
+    "today": "Aujourd'hui",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "eventDetails": "Détails de l'événement",
+    "close": "Fermer",
+    "viewFullCalendar": "Voir le calendrier complet",
+    "upcomingEvents": "Prochains événements",
+    "noEvents": "Aucun événement à venir",
+    "categories": {
+      "rentree": "Rentrée scolaire",
+      "examens": "Examens",
+      "reunions-parents": "Réunions de parents",
+      "vacances": "Vacances",
+      "sorties-pedagogiques": "Sorties pédagogiques",
+      "activites-sportives": "Activités sportives",
+      "activites-culturelles": "Activités culturelles",
+      "celebrations": "Célébrations",
+      "concours": "Concours",
+      "evenements-administratifs": "Événements administratifs"
+    },
+    "status": {
+      "upcoming": "À venir",
+      "ongoing": "En cours",
+      "completed": "Terminé"
+    },
+    "labels": {
+      "date": "Date",
+      "time": "Horaires",
+      "location": "Lieu",
+      "organizer": "Organisateur",
+      "category": "Catégorie",
+      "description": "Description",
+      "relatedNews": "Actualité associée"
+    },
+    "home": {
+      "badge": "À ne pas manquer",
+      "title": "Prochains événements",
+      "subtitle": "Restez informés des activités à venir de l'établissement."
+    }
   },
   "common": {
     "learnMore": "En savoir plus",

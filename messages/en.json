@@ -11,6 +11,7 @@
     "formations": "Programs",
     "admissions": "Admissions",
     "news": "News",
+    "calendar": "Calendar",
     "life": "School Life",
     "gallery": "Gallery",
     "contact": "Contact",
@@ -1004,6 +1005,55 @@
     "contact": {
       "title": "Contact | Les Génies d'Afrique",
       "description": "Contact the Bilingual School Complex Les Génies d'Afrique. Contact details, hours, contact form and access to the Nkozoa, Yaoundé establishment."
+    },
+    "calendar": {
+      "title": "School Calendar | Les Génies d'Afrique",
+      "description": "View the school calendar of the Bilingual School Complex Les Génies d'Afrique. All important dates: start dates, exams, meetings, outings and cultural events.",
+      "views": {
+        "month": "Month",
+        "week": "Week",
+        "day": "Day",
+        "list": "List"
+      },
+      "today": "Today",
+      "previous": "Previous",
+      "next": "Next",
+      "eventDetails": "Event Details",
+      "close": "Close",
+      "viewFullCalendar": "View full calendar",
+      "upcomingEvents": "Upcoming Events",
+      "noEvents": "No upcoming events",
+      "categories": {
+        "rentree": "School Start",
+        "examens": "Exams",
+        "reunions-parents": "Parent Meetings",
+        "vacances": "Holidays",
+        "sorties-pedagogiques": "Educational Outings",
+        "activites-sportives": "Sports Activities",
+        "activites-culturelles": "Cultural Activities",
+        "celebrations": "Celebrations",
+        "concours": "Competitions",
+        "evenements-administratifs": "Administrative Events"
+      },
+      "status": {
+        "upcoming": "Upcoming",
+        "ongoing": "Ongoing",
+        "completed": "Completed"
+      },
+      "labels": {
+        "date": "Date",
+        "time": "Time",
+        "location": "Location",
+        "organizer": "Organizer",
+        "category": "Category",
+        "description": "Description",
+        "relatedNews": "Related News"
+      },
+      "home": {
+        "badge": "Don't Miss",
+        "title": "Upcoming Events",
+        "subtitle": "Stay informed about upcoming school activities."
+      }
     }
   }
 }
