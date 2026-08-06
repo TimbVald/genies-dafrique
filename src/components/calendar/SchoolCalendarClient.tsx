@@ -1,46 +1,77 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
-import interactionPlugin from "@fullcalendar/interaction";
-import { useTranslations, useLocale } from "next-intl";
+import { useState, useCallback, useMemo } from "react";
+import { Calendar, dateFnsLocalizer, Views, View } from "react-big-calendar";
+import { format, parseISO } from "date-fns";
+import { fr, enUS } from "date-fns/locale";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Clock, MapPin, User, Tag } from "lucide-react";
-import type { CalendarEvent, FullCalendarEvent } from "@/types/calendar";
-import { toFullCalendarEvent, getCategoryConfig } from "@/types/calendar";
-import { getPublishedEvents } from "@/data/mockEvents";
+import { X, Calendar as CalendarIcon, Clock, MapPin, User, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import type { CalendarEvent, ReactBigCalendarEvent } from "@/types/calendar";
+import { getCategoryConfig } from "@/types/calendar";
 import { getNewsById } from "@/data/mockNews";
 
-// @ts-ignore - FullCalendar types are bundled with @fullcalendar/react
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type EventClickArg = any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type EventDidMountArg = any;
-
 /* ═══════════════════════════════════════════════════════════════
-   CALENDRIER SCOLAIRE INTERACTIF
+   CLIENT COMPONENT PRINCIPAL AVEC REACT BIG CALENDAR
 ══════════════════════════════════════════════════════════════════ */
 
-export default function SchoolCalendar() {
-  const t = useTranslations("calendar");
-  const locale = useLocale();
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
-  const [view, setView] = useState<"dayGridMonth" | "timeGridWeek" | "timeGridDay" | "listMonth">("dayGridMonth");
+// Configurer le localizer pour date-fns
+const localizer = dateFnsLocalizer({
+  format,
+  parse: parseISO,
+  startOfWeek: () => new Date(2025, 0, 1), // Lundi comme premier jour
+  getDayOfWeek: (date: Date) => date.getDay(),
+});
 
-  /* ── Charger les événements ───────────────────────────────────── */
-  const events = getPublishedEvents();
-  const calendarEvents: FullCalendarEvent[] = events.map(toFullCalendarEvent);
+export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents: ReactBigCalendarEvent[]; locale: string }) {
+  const t = useTranslations("calendar");
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [view, setView] = useState<View>(Views.MONTH);
+  const [date, setDate] = useState(new Date());
+
+  // Choisir la locale date-fns appropriée
+  const dateFnsLocale = locale === "fr" ? fr : enUS;
+
+  // Convertir les événements en format CalendarEvent pour le modal
+  const calendarEvents: CalendarEvent[] = useMemo(() => {
+    return initialEvents.map((event) => ({
+      id: event.id,
+      title: event.title,
+      description: event.extendedProps.description,
+      startDate: event.start.toISOString().split('T')[0],
+      endDate: event.end.toISOString().split('T')[0],
+      startTime: event.allDay ? undefined : event.start.toTimeString().substring(0, 5),
+      endTime: event.allDay ? undefined : event.end.toTimeString().substring(0, 5),
+      category: event.extendedProps.category,
+      color: event.extendedProps.color,
+      image: event.extendedProps.image,
+      location: event.extendedProps.location,
+      organizer: event.extendedProps.organizer,
+      status: event.extendedProps.status,
+      relatedNewsId: event.extendedProps.relatedNewsId,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      published: true,
+    }));
+  }, [initialEvents]);
 
   /* ── Gestion du clic sur un événement ─────────────────────────── */
-  const handleEventClick = useCallback((info: any) => {
-    const eventData = events.find((e) => e.id === info.event.id);
+  const handleEventClick = useCallback((event: ReactBigCalendarEvent) => {
+    const eventData = calendarEvents.find((e) => e.id === event.id);
     if (eventData) {
       setSelectedEvent(eventData);
     }
-  }, [events]);
+  }, [calendarEvents]);
+
+  /* ── Gestion de la navigation ─────────────────────────────────── */
+  const handleNavigate = useCallback((newDate: Date, view: string, action: string) => {
+    setDate(newDate);
+  }, []);
+
+  /* ── Gestion du changement de vue ─────────────────────────────── */
+  const handleViewChange = useCallback((newView: string) => {
+    setView(newView as View);
+  }, []);
 
   /* ── Formater la date ─────────────────────────────────────────── */
   const formatDate = (dateString: string) => {
@@ -69,6 +100,12 @@ export default function SchoolCalendar() {
     return t(`categories.${category}` as any);
   };
 
+  /* ── Obtenir la couleur de la catégorie ─────────────────────────── */
+  const getCategoryColor = (category: string) => {
+    const config = getCategoryConfig(category as any);
+    return config.bgColor;
+  };
+
   return (
     <div className="w-full">
       {/* ═══════════════════════════════════════════════════════════════
@@ -81,15 +118,15 @@ export default function SchoolCalendar() {
         
         {/* ── Sélecteur de vue ─────────────────────────────────────── */}
         <div className="flex items-center gap-2 bg-white rounded-lg shadow-sm p-1">
-          {[
-            { value: "dayGridMonth", label: t("views.month") },
-            { value: "timeGridWeek", label: t("views.week") },
-            { value: "timeGridDay", label: t("views.day") },
-            { value: "listMonth", label: t("views.list") },
-          ].map((viewOption) => (
+          {([
+            { value: "month" as View, label: t("views.month") },
+            { value: "week" as View, label: t("views.week") },
+            { value: "day" as View, label: t("views.day") },
+            { value: "agenda" as View, label: t("views.list") },
+          ] as const).map((viewOption) => (
             <button
               key={viewOption.value}
-              onClick={() => setView(viewOption.value as any)}
+              onClick={() => setView(viewOption.value)}
               className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 view === viewOption.value
                   ? "bg-[#1A3A8F] text-white"
@@ -100,66 +137,90 @@ export default function SchoolCalendar() {
             </button>
           ))}
         </div>
+
+        {/* ── Navigation ─────────────────────────────────────────── */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              const newDate = new Date(date);
+              if (view === Views.MONTH) {
+                newDate.setMonth(newDate.getMonth() - 1);
+              } else if (view === Views.WEEK) {
+                newDate.setDate(newDate.getDate() - 7);
+              } else if (view === Views.DAY) {
+                newDate.setDate(newDate.getDate() - 1);
+              } else if (view === Views.AGENDA) {
+                newDate.setMonth(newDate.getMonth() - 1);
+              }
+              setDate(newDate);
+            }}
+            className="p-2 rounded-lg hover:bg-[#F7F9FC] transition-colors"
+            aria-label={t("previous")}
+          >
+            <ChevronLeft size={20} className="text-[#4A5568]" />
+          </button>
+          <button
+            onClick={() => setDate(new Date())}
+            className="px-4 py-2 rounded-lg hover:bg-[#F7F9FC] transition-colors font-medium text-[#4A5568]"
+          >
+            {t("today")}
+          </button>
+          <button
+            onClick={() => {
+              const newDate = new Date(date);
+              if (view === Views.MONTH) {
+                newDate.setMonth(newDate.getMonth() + 1);
+              } else if (view === Views.WEEK) {
+                newDate.setDate(newDate.getDate() + 7);
+              } else if (view === Views.DAY) {
+                newDate.setDate(newDate.getDate() + 1);
+              } else if (view === Views.AGENDA) {
+                newDate.setMonth(newDate.getMonth() + 1);
+              }
+              setDate(newDate);
+            }}
+            className="p-2 rounded-lg hover:bg-[#F7F9FC] transition-colors"
+            aria-label={t("next")}
+          >
+            <ChevronRight size={20} className="text-[#4A5568]" />
+          </button>
+        </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════
-          CALENDRIER FULLCALENDAR
+          CALENDRIER REACT BIG CALENDAR
       ═════════════════════════════════════════════════════════════════ */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-          initialView={view}
-          events={calendarEvents}
-          eventClick={handleEventClick}
-          headerToolbar={{
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
-          }}
-          height="auto"
-          aspectRatio={1.8}
-          editable={false}
-          selectable={false}
-          selectMirror={false}
-          dayMaxEvents={true}
-          weekends={true}
-          nowIndicator={true}
-          eventTimeFormat={{
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          }}
-          displayEventTime={true}
-          displayEventEnd={true}
-          eventDidMount={(info: any) => {
-            // Personnalisation de l'apparence des événements
-            const element = info.el as HTMLElement;
-            element.style.borderRadius = "8px";
-            element.style.borderLeftWidth = "4px";
-            element.style.padding = "4px 8px";
-            element.style.fontSize = "12px";
-            element.style.cursor = "pointer";
-            element.style.transition = "all 0.2s ease";
-            
-            // Ajouter un indicateur si l'événement provient d'une actualité
-            const eventData = events.find((e) => e.id === info.event.id);
-            if (eventData?.relatedNewsId) {
-              const indicator = document.createElement("span");
-              indicator.innerHTML = "📰";
-              indicator.style.marginLeft = "4px";
-              indicator.style.fontSize = "10px";
-              element.appendChild(indicator);
-            }
-            
-            element.addEventListener("mouseenter", () => {
-              element.style.transform = "scale(1.02)";
-              element.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
-            });
-            
-            element.addEventListener("mouseleave", () => {
-              element.style.transform = "scale(1)";
-              element.style.boxShadow = "none";
-            });
+        <Calendar
+          localizer={localizer}
+          events={initialEvents}
+          view={view}
+          date={date}
+          onNavigate={handleNavigate}
+          onView={handleViewChange}
+          startAccessor="start"
+          endAccessor="end"
+          onSelectEvent={(event) => handleEventClick(event)}
+          eventPropGetter={(event: ReactBigCalendarEvent) => ({
+            style: {
+              backgroundColor: event.extendedProps.color || getCategoryColor(event.extendedProps.category),
+              borderLeftColor: event.extendedProps.color || getCategoryConfig(event.extendedProps.category).borderColor,
+              borderRadius: "6px",
+              padding: "4px 8px",
+              fontSize: "12px",
+              cursor: "pointer",
+            },
+            title: event.extendedProps.relatedNewsId ? `${event.title} 📰` : event.title,
+          })}
+          style={{ height: 600 }}
+          messages={{
+            today: t("today"),
+            previous: t("previous"),
+            next: t("next"),
+            month: t("views.month"),
+            week: t("views.week"),
+            day: t("views.day"),
+            agenda: t("views.list"),
           }}
         />
       </div>
@@ -240,7 +301,7 @@ export default function SchoolCalendar() {
                 <div className="space-y-4 mb-6">
                   {/* Date */}
                   <div className="flex items-start gap-3">
-                    <Calendar className="w-5 h-5 text-[#1A3A8F] mt-0.5 flex-shrink-0" />
+                    <CalendarIcon className="w-5 h-5 text-[#1A3A8F] mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-medium text-[#4A5568]">
                         {t("labels.date")}

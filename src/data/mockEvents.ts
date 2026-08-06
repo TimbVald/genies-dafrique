@@ -2,9 +2,10 @@
    DONNÉES D'EXEMPLE POUR LE CALENDRIER SCOLAIRE
 ══════════════════════════════════════════════════════════════════ */
 
-import type { CalendarEvent } from "@/types/calendar";
+import type { CalendarEvent, ReactBigCalendarEvent } from "@/types/calendar";
 import { getPublishedNews } from "@/data/mockNews";
 import { syncNewsToCalendar } from "@/lib/newsCalendarSync";
+import { toReactBigCalendarEvent } from "@/types/calendar";
 
 /* ── Événements créés manuellement (sans liaison actualités) ───── */
 const MANUAL_EVENTS: CalendarEvent[] = [
@@ -139,6 +140,11 @@ export function getUpcomingEvents(limit: number = 3) {
 }
 
 /* ── Fonction pour obtenir tous les événements publiés ─────────── */
-export function getPublishedEvents() {
+export function getPublishedEvents(): CalendarEvent[] {
   return MOCK_EVENTS.filter((event) => event.published);
+}
+
+/* ── Fonction pour obtenir les événements au format React Big Calendar ─── */
+export function getReactBigCalendarEvents(): ReactBigCalendarEvent[] {
+  return getPublishedEvents().map(toReactBigCalendarEvent);
 }

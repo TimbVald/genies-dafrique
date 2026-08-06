@@ -39,6 +39,26 @@ export interface CalendarEvent {
   published: boolean;    // Visible ou non sur le calendrier
 }
 
+/* ── Événement pour React Big Calendar ─────────────────────────── */
+export interface ReactBigCalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  allDay?: boolean;
+  resource?: string;
+  extendedProps: {
+    description: string;
+    category: EventCategory;
+    location: string;
+    organizer: string;
+    status: EventStatus;
+    image?: string;
+    relatedNewsId?: string;
+    color?: string;
+  };
+}
+
 /* ── Configuration des catégories avec couleurs ────────────────── */
 export const CATEGORY_CONFIG: Record<
   EventCategory,
@@ -111,49 +131,29 @@ export function getCategoryConfig(category: EventCategory) {
   return CATEGORY_CONFIG[category];
 }
 
-/* ── Format pour FullCalendar ──────────────────────────────────── */
-export interface FullCalendarEvent {
-  id: string;
-  title: string;
-  start: string;
-  end?: string;
-  startTime?: string;
-  endTime?: string;
-  allDay?: boolean;
-  backgroundColor: string;
-  borderColor: string;
-  textColor: string;
-  extendedProps: {
-    description: string;
-    category: EventCategory;
-    location: string;
-    organizer: string;
-    status: EventStatus;
-    image?: string;
-    relatedNewsId?: string;
-  };
-}
-
-/* ── Fonction pour convertir CalendarEvent en FullCalendarEvent ── */
-export function toFullCalendarEvent(
+/* ── Fonction pour convertir CalendarEvent en ReactBigCalendarEvent ── */
+export function toReactBigCalendarEvent(
   event: CalendarEvent
-): FullCalendarEvent {
-  const config = getCategoryConfig(event.category);
+): ReactBigCalendarEvent {
   const hasTime = event.startTime && event.endTime;
+  
+  const startDate = new Date(event.startDate);
+  const endDate = new Date(event.endDate);
+  
+  if (hasTime && event.startTime && event.endTime) {
+    const [startHours, startMinutes] = event.startTime.split(':');
+    const [endHours, endMinutes] = event.endTime.split(':');
+    
+    startDate.setHours(parseInt(startHours), parseInt(startMinutes));
+    endDate.setHours(parseInt(endHours), parseInt(endMinutes));
+  }
 
   return {
     id: event.id,
     title: event.title,
-    start: hasTime
-      ? `${event.startDate}T${event.startTime}`
-      : event.startDate,
-    end: hasTime
-      ? `${event.endDate}T${event.endTime}`
-      : event.endDate,
+    start: startDate,
+    end: endDate,
     allDay: !hasTime,
-    backgroundColor: event.color || config.bgColor,
-    borderColor: event.color || config.borderColor,
-    textColor: event.color ? "#FFFFFF" : "#1A202C",
     extendedProps: {
       description: event.description,
       category: event.category,
@@ -162,6 +162,7 @@ export function toFullCalendarEvent(
       status: event.status,
       image: event.image,
       relatedNewsId: event.relatedNewsId,
+      color: event.color,
     },
   };
 }
@@ -175,4 +176,19 @@ export interface UpcomingEvent {
   time?: string;
   category: EventCategory;
   location: string;
+}
+
+/* ── Props pour le composant d'événement personnalisé ─────────────── */
+export interface EventComponentProps {
+  event: ReactBigCalendarEvent;
+  onClick: () => void;
+}
+
+/* ── Props pour la toolbar personnalisée ─────────────────────────── */
+export interface ToolbarProps {
+  label: string;
+  view: string;
+  views: string[];
+  onView: (view: string) => void;
+  onNavigate: (action: 'PREV' | 'NEXT' | 'TODAY') => void;
 }
