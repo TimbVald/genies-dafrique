@@ -59,10 +59,6 @@
     "contact": {
       "title": "Contact | Les Génies d'Afrique",
       "description": "Contactez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
-    },
-    "calendar": {
-      "title": "Calendrier scolaire | Les Génies d'Afrique",
-      "description": "Consultez le calendrier scolaire du Complexe Scolaire Bilingue Les Génies d'Afrique. Toutes les dates importantes : rentrées, examens, réunions, sorties et événements culturels."
     }
   },
   "aboutPage": {
@@ -483,115 +479,7 @@
       "backToList": "← Retour à la liste des actualités"
     }
   },
-  "lifePage": {
-    "hero": {
-      "title": "La Vie Scolaire",
-      "subtitle": "Bien plus que des cours : des clubs, des projets, des sorties, des fêtes et des souvenirs gravés pour la vie."
-    },
-    "clubs": {
-      "badge": "Clubs Scolaires",
-      "title": "6 clubs pour révéler tous les talents",
-      "items": [
-        {
-          "icon": "BookOpen",
-          "title": "Club Débat & Lecture",
-          "description": "Développer l'argumentation, l'éloquence et l'amour de la lecture. Séances hebdomadaires : débats, cercles littéraires, concours d'éloquence."
-        },
-        {
-          "icon": "Palette",
-          "title": "Club des Arts",
-          "description": "Peinture, dessin, sculpture, collage, arts plastiques et visuels. Expositions finales et projets de décoration murale de l'école."
-        },
-        {
-          "icon": "Music",
-          "title": "Club Musique & Chant",
-          "description": "Chorale, éveil musical, pratique d'instruments (percussions, piano, guitare). Présentations lors des manifestations culturelles."
-        },
-        {
-          "icon": "Dumbbell",
-          "title": "Club Sportif",
-          "description": "Football, basketball, athlétisme, natation et sports collectifs. Tournois inter-classes et rencontres amicales inter-établissements."
-        },
-        {
-          "icon": "Sprout",
-          "title": "Club Agriculture & Élevage",
-          "description": "Pratique de jardinage, petits élevages (lapins, poules), culture de légumes et fruits. Sensibilisation à l'environnement et au monde rural."
-        },
-        {
-          "icon": "Briefcase",
-          "title": "Club Entreprenariat Junior",
-          "description": "Mini-entreprises créées et gérées par les élèves : mini-coopératives, fabrication de savons, vente de produits du potager, éducation financière."
-        }
-      ]
-    },
-    "activities": {
-      "badge": "Activités Extrascolaires",
-      "title": "Apprendre autrement, s'épanouir toujours",
-      "description": "Au-delà des programmes officiels, nous organisons toute l'année une multitude d'activités pour rendre l'école attrayante, vivante et formatrice : journée de la science, journées culturelles, semaine du livre, ateliers cuisine, kermesses, olympiades, etc.",
-      "gallery": [
-        "/images/IMG-20260723-WA0007.jpg",
-        "/images/IMG-20260723-WA0012.jpg",
-        "/images/IMG-20260723-WA0024.jpg",
-        "/images/IMG-20260723-WA0075.jpg"
-      ]
-    },
-    "outings": {
-      "badge": "Sorties Pédagogiques",
-      "title": "Découvrir le monde, sortir des murs de l'école",
-      "items": [
-        {
-          "title": "Visite du Musée National du Cameroun",
-          "description": "Découverte de l'histoire et du patrimoine culturel camerounais à travers des expositions permanentes et des ateliers interactifs pour les élèves du primaire.",
-          "photos": [
-            "/images/IMG-20260723-WA0007.jpg",
-            "/images/IMG-20260723-WA0012.jpg"
-          ]
-        },
-        {
-          "title": "Ferme pédagogique & Plantation",
-          "description": "Journée à la ferme : observation des animaux d'élevage, apprentissage des cycles de culture, récolte de fruits et légumes de saison, fabrication du beurre et du fromage.",
-          "photos": [
-            "/images/IMG-20260723-WA0024.jpg",
-            "/images/IMG-20260723-WA0075.jpg"
-          ]
-        },
-        {
-          "title": "Randonnée & Découverte de la nature",
-          "description": "Randonnée éducative dans la réserve forestière de Mbam Minkom : observation de la faune et de la flore, exercices d'orientation, pique-nique écologique.",
-          "photos": [
-            "/images/IMG-20260723-WA0007.jpg",
-            "/images/IMG-20260723-WA0012.jpg"
-          ]
-        }
-      ]
-    },
-    "events": {
-      "badge": "Manifestations Culturelles",
-      "title": "Les grands moments de l'année scolaire",
-      "items": [
-        {
-          "title": "Journée Portes Ouvertes",
-          "month": "Octobre",
-          "description": "Découverte de l'école, démonstrations pédagogiques, spectacles des élèves, rencontres avec les enseignants. Moment fort pour les familles et nouveaux futurs élèves."
-        },
-        {
-          "title": "Festival Bilingue & Culturel",
-          "month": "Décembre",
-          "description": "Deux jours célébrant le bilinguisme, les cultures africaines et la diversité. Pièces de théâtre, chants, danses, poèmes en français et en anglais."
-        },
-        {
-          "title": "Olympiades Sportives",
-          "month": "Mars",
-          "description": "Grand tournoi sportif inter-classes : athlétisme, relais, football, basketball, saut en longueur. Remise de médailles et trophées aux équipes gagnantes."
-        },
-        {
-          "title": "Cérémonie de Fin d'Année",
-          "month": "Juin",
-          "description": "Spectacle grandiose des élèves, passation de diplômes, remise des prix d'excellence et pot final entre familles et enseignants. L'événement tant attendu de toute l'année."
-        }
-      ]
-    }
-  },
+
   "galleryPage": {
     "hero": {
       "title": "Galerie Photo & Vidéo",
@@ -903,55 +791,7 @@
     "facebookLabel": "Facebook",
     "tiktokLabel": "TikTok"
   },
-  "calendar": {
-    "title": "Calendrier scolaire",
-    "description": "Consultez toutes les activités importantes de l'établissement : rentrées, examens, réunions, sorties et événements culturels.",
-    "views": {
-      "month": "Mois",
-      "week": "Semaine",
-      "day": "Jour",
-      "list": "Liste"
-    },
-    "today": "Aujourd'hui",
-    "previous": "Précédent",
-    "next": "Suivant",
-    "eventDetails": "Détails de l'événement",
-    "close": "Fermer",
-    "viewFullCalendar": "Voir le calendrier complet",
-    "upcomingEvents": "Prochains événements",
-    "noEvents": "Aucun événement à venir",
-    "categories": {
-      "rentree": "Rentrée scolaire",
-      "examens": "Examens",
-      "reunions-parents": "Réunions de parents",
-      "vacances": "Vacances",
-      "sorties-pedagogiques": "Sorties pédagogiques",
-      "activites-sportives": "Activités sportives",
-      "activites-culturelles": "Activités culturelles",
-      "celebrations": "Célébrations",
-      "concours": "Concours",
-      "evenements-administratifs": "Événements administratifs"
-    },
-    "status": {
-      "upcoming": "À venir",
-      "ongoing": "En cours",
-      "completed": "Terminé"
-    },
-    "labels": {
-      "date": "Date",
-      "time": "Horaires",
-      "location": "Lieu",
-      "organizer": "Organisateur",
-      "category": "Catégorie",
-      "description": "Description",
-      "relatedNews": "Actualité associée"
-    },
-    "home": {
-      "badge": "À ne pas manquer",
-      "title": "Prochains événements",
-      "subtitle": "Restez informés des activités à venir de l'établissement."
-    }
-  },
+
   "common": {
     "learnMore": "En savoir plus",
     "readMore": "Lire la suite",
