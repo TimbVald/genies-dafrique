@@ -10,6 +10,7 @@ import { X, Calendar as CalendarIcon, Clock, MapPin, User, Tag, ChevronLeft, Che
 import type { CalendarEvent, ReactBigCalendarEvent } from "@/types/calendar";
 import { getCategoryConfig } from "@/types/calendar";
 import { getNewsById } from "@/data/mockNews";
+import { getReactBigCalendarEvents } from "@/data/mockEvents";
 
 /* ═══════════════════════════════════════════════════════════════
    CLIENT COMPONENT PRINCIPAL AVEC REACT BIG CALENDAR
@@ -23,7 +24,7 @@ const localizer = dateFnsLocalizer({
   getDayOfWeek: (date: Date) => date.getDay(),
 });
 
-export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents: any[]; locale: string }) {
+export default function SchoolCalendarClient({ locale }: { locale: string }) {
   const t = useTranslations("calendar");
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const [view, setView] = useState<View>(Views.MONTH);
@@ -32,14 +33,11 @@ export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents:
   // Choisir la locale date-fns appropriée
   const dateFnsLocale = locale === "fr" ? fr : enUS;
 
-  // Convertir les événements sérialisés (ISO strings) en objets Date pour React Big Calendar
+  // Charger les événements directement dans le client component
   const calendarEvents: ReactBigCalendarEvent[] = useMemo(() => {
-    return initialEvents.map((event) => ({
-      ...event,
-      start: new Date(event.start),
-      end: new Date(event.end),
-    }));
-  }, [initialEvents]);
+    const events = getReactBigCalendarEvents();
+    return events;
+  }, []);
 
   // Convertir les événements en format CalendarEvent pour le modal
   const modalEvents: CalendarEvent[] = useMemo(() => {
