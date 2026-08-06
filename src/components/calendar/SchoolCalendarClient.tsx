@@ -23,7 +23,7 @@ const localizer = dateFnsLocalizer({
   getDayOfWeek: (date: Date) => date.getDay(),
 });
 
-export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents: ReactBigCalendarEvent[]; locale: string }) {
+export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents: any[]; locale: string }) {
   const t = useTranslations("calendar");
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const [view, setView] = useState<View>(Views.MONTH);
@@ -32,9 +32,18 @@ export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents:
   // Choisir la locale date-fns appropriée
   const dateFnsLocale = locale === "fr" ? fr : enUS;
 
-  // Convertir les événements en format CalendarEvent pour le modal
-  const calendarEvents: CalendarEvent[] = useMemo(() => {
+  // Convertir les événements sérialisés (ISO strings) en objets Date pour React Big Calendar
+  const calendarEvents: ReactBigCalendarEvent[] = useMemo(() => {
     return initialEvents.map((event) => ({
+      ...event,
+      start: new Date(event.start),
+      end: new Date(event.end),
+    }));
+  }, [initialEvents]);
+
+  // Convertir les événements en format CalendarEvent pour le modal
+  const modalEvents: CalendarEvent[] = useMemo(() => {
+    return calendarEvents.map((event) => ({
       id: event.id,
       title: event.title,
       description: event.extendedProps.description,
@@ -53,15 +62,15 @@ export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents:
       updatedAt: new Date().toISOString(),
       published: true,
     }));
-  }, [initialEvents]);
+  }, [calendarEvents]);
 
   /* ── Gestion du clic sur un événement ─────────────────────────── */
   const handleEventClick = useCallback((event: ReactBigCalendarEvent) => {
-    const eventData = calendarEvents.find((e) => e.id === event.id);
+    const eventData = modalEvents.find((e) => e.id === event.id);
     if (eventData) {
       setSelectedEvent(eventData);
     }
-  }, [calendarEvents]);
+  }, [modalEvents]);
 
   /* ── Gestion de la navigation ─────────────────────────────────── */
   const handleNavigate = useCallback((newDate: Date, view: string, action: string) => {
@@ -193,7 +202,7 @@ export function SchoolCalendarClient({ initialEvents, locale }: { initialEvents:
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
         <Calendar
           localizer={localizer}
-          events={initialEvents}
+          events={calendarEvents}
           view={view}
           date={date}
           onNavigate={handleNavigate}

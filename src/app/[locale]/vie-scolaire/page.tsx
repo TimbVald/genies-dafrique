@@ -63,66 +63,137 @@ export default async function VieScolairePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  await params;
-  return <VieScolaireContent />;
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "lifePage" });
+  const tn = await getTranslations({ locale, namespace: "nav" });
+
+  try {
+    // Récupérer les données de traduction côté serveur et les sérialiser
+    const clubs = t.raw("clubs.items") as Array<{
+      icon: string;
+      title: string;
+      description: string;
+    }>;
+
+    const activities = t.raw("activities.items") as Array<{
+      icon: string;
+      title: string;
+      description: string;
+    }>;
+
+    const outings = t.raw("outings.items") as Array<{
+      title: string;
+      description: string;
+      photos?: string[];
+    }>;
+
+    const events = t.raw("events.items") as Array<{
+      title: string;
+      month?: string;
+      description: string;
+    }>;
+
+    const heroData = {
+      title: t("hero.title"),
+      subtitle: t("hero.subtitle"),
+    };
+
+    const clubsData = {
+      badge: t("clubs.badge"),
+      title: t("clubs.title"),
+      items: clubs,
+    };
+
+    const activitiesData = {
+      badge: t("activities.badge"),
+      title: t("activities.title"),
+      description: t("activities.description"),
+      items: activities,
+    };
+
+    const outingsData = {
+      badge: t("outings.badge"),
+      title: t("outings.title"),
+      description: t("outings.description"),
+      items: outings,
+    };
+
+    const eventsData = {
+      badge: t("events.badge"),
+      title: t("events.title"),
+      description: t("events.description"),
+      items: events,
+    };
+
+    const navData = {
+      home: tn("home"),
+      life: tn("life"),
+    };
+
+    return (
+      <VieScolaireContent
+        heroData={heroData}
+        clubsData={clubsData}
+        activitiesData={activitiesData}
+        outingsData={outingsData}
+        eventsData={eventsData}
+        navData={navData}
+      />
+    );
+  } catch (error) {
+    console.error("Error loading vie-scolaire page:", error);
+    return (
+      <div className="text-center py-12">
+        <p className="text-red-600">Error loading page. Please try again later.</p>
+      </div>
+    );
+  }
 }
 
-function VieScolaireContent() {
+function VieScolaireContent({
+  heroData,
+  clubsData,
+  activitiesData,
+  outingsData,
+  eventsData,
+  navData,
+}: {
+  heroData: { title: string; subtitle: string };
+  clubsData: { badge: string; title: string; items: Array<{ icon: string; title: string; description: string }> };
+  activitiesData: { badge: string; title: string; description: string; items: Array<{ icon: string; title: string; description: string }> };
+  outingsData: { badge: string; title: string; description: string; items: Array<{ title: string; description: string; photos?: string[] }> };
+  eventsData: { badge: string; title: string; description: string; items: Array<{ title: string; month?: string; description: string }> };
+  navData: { home: string; life: string };
+}) {
   "use client";
-  const t = useTranslations("lifePage");
-  const tn = useTranslations("nav");
-
-  const clubs = t.raw("clubs.items") as Array<{
-    icon: string;
-    title: string;
-    description: string;
-  }>;
-
-  const activities = t.raw("activities.items") as Array<{
-    icon: string;
-    title: string;
-    description: string;
-  }>;
-
-  const outings = t.raw("outings.items") as Array<{
-    title: string;
-    description: string;
-    photos?: string[];
-  }>;
-
-  const events = t.raw("events.items") as Array<{
-    title: string;
-    month?: string;
-    description: string;
-  }>;
 
   return (
     <>
       <PageHero
         image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
-          { label: tn("home"), href: "/" },
-          { label: tn("life") },
+          { label: navData.home, href: "/" },
+          { label: navData.life },
         ]}
-        title={t("hero.title")}
-        subtitle={t("hero.subtitle")}
+        title={heroData.title}
+        subtitle={heroData.subtitle}
       />
 
       {/* ── SECTION CLUBS ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
-            <SectionBadge>{t("clubs.badge")}</SectionBadge>
+            <SectionBadge>{clubsData.badge}</SectionBadge>
             <h2
               className="font-display font-bold text-[#1A202C]"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              {t("clubs.title")}
+              {clubsData.title}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {clubs.map((club, i) => (
+            {clubsData.items.map((club, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -153,20 +224,20 @@ function VieScolaireContent() {
       <section className="py-24 bg-[#F7F9FC]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
-            <SectionBadge>{t("activities.badge")}</SectionBadge>
+            <SectionBadge>{activitiesData.badge}</SectionBadge>
             <h2
               className="font-display font-bold text-[#1A202C]"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              {t("activities.title")}
+              {activitiesData.title}
             </h2>
             <p className="text-[#4A5568] mt-3 max-w-2xl mx-auto">
-              {t("activities.description")}
+              {activitiesData.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {activities.map((act, i) => (
+            {activitiesData.items.map((act, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -231,17 +302,17 @@ function VieScolaireContent() {
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
-            <SectionBadge>{t("outings.badge")}</SectionBadge>
+            <SectionBadge>{outingsData.badge}</SectionBadge>
             <h2
               className="font-display font-bold text-[#1A202C]"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              {t("outings.title")}
+              {outingsData.title}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {outings.slice(0, 3).map((outing, i) => (
+            {outingsData.items.slice(0, 3).map((outing, i) => (
               <motion.article
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
@@ -300,17 +371,17 @@ function VieScolaireContent() {
       <section className="py-24 bg-[#F7F9FC]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
-            <SectionBadge>{t("events.badge")}</SectionBadge>
+            <SectionBadge>{eventsData.badge}</SectionBadge>
             <h2
               className="font-display font-bold text-[#1A202C]"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              {t("events.title")}
+              {eventsData.title}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {events.slice(0, 4).map((ev, i) => (
+            {eventsData.items.slice(0, 4).map((ev, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
