@@ -1,239 +1,461 @@
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { BookOpen, Palette, Music, Dumbbell, Sprout, Briefcase, Calendar, Users, MapPin, PartyPopper } from 'lucide-react';
-import SectionBadge from '@/components/ui/SectionBadge';
+"use client";
 
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import {
+  BookOpen, Palette, Music, Dumbbell, Sprout, Briefcase,
+  MapPin, PartyPopper, GraduationCap,
+  Trophy, ArrowRight, Handshake, Monitor, Globe,
+} from "lucide-react";
+import Link from "next/link";
+import PageHero from "@/components/ui/PageHero";
+import SectionBadge from "@/components/ui/SectionBadge";
+import {
+  Tabs, TabsList, TabsTrigger, TabsContent,
+} from "@/components/ui/tabs";
+import {
+  Card, CardHeader, CardTitle, CardDescription, CardContent,
+} from "@/components/ui/card";
+
+/* ─── Animation helpers ─────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.08, ease: "easeOut" as const },
+  }),
+};
+
+/* ─── Static icon maps ──────────────────────────────────────────────────── */
+const CLUB_ICONS = [BookOpen, Palette, Music, Dumbbell, Sprout, Briefcase];
+
+const CLUB_COLORS: Record<string, { bg: string; text: string; border: string }> = {
+  blue:    { bg: "bg-[#EEF2FF]", text: "text-[#1A3A8F]", border: "border-[#C7D7FF]" },
+  purple:  { bg: "bg-[#F3E8FF]", text: "text-[#7B1FA2]", border: "border-[#E0BBFF]" },
+  pink:    { bg: "bg-[#FFF0F5]", text: "text-[#E91E63]", border: "border-[#FFB3CE]" },
+  green:   { bg: "bg-[#E8F5E9]", text: "text-[#2E7D32]", border: "border-[#A5D6A7]" },
+  emerald: { bg: "bg-[#E0F2F1]", text: "text-[#00796B]", border: "border-[#80CBC4]" },
+  orange:  { bg: "bg-[#FFF8EE]", text: "text-[#E65100]", border: "border-[#FFCC80]" },
+};
+
+const ACTIVITY_ICONS = [Handshake, BookOpen, Monitor, Palette, Globe, Trophy];
+
+const EVENT_ICONS = [MapPin, PartyPopper, Trophy, GraduationCap];
+
+const EVENT_COLORS: Record<string, { accent: string; badge: string }> = {
+  blue:  { accent: "bg-[#1A3A8F]", badge: "bg-[#EEF2FF] text-[#1A3A8F]" },
+  gold:  { accent: "bg-[#F5A623]", badge: "bg-[#FFF8EE] text-[#B37000]" },
+  red:   { accent: "bg-[#D32F2F]", badge: "bg-[#FFF0F0] text-[#D32F2F]" },
+  green: { accent: "bg-[#2E7D32]", badge: "bg-[#E8F5E9] text-[#2E7D32]" },
+};
+
+/* ─── Types ─────────────────────────────────────────────────────────────── */
+interface ClubItem {
+  emoji: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
+interface ActivityItem {
+  emoji: string;
+  title: string;
+  description: string;
+}
+
+interface EventItem {
+  month: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+/* ─── Page ──────────────────────────────────────────────────────────────── */
 export default function VieScolairePage() {
-  const t = useTranslations('nav');
+  const t = useTranslations("vieScolairePage");
+  const tn = useTranslations("nav");
+
+  const clubs = t.raw("clubs.items") as ClubItem[];
+  const activities = t.raw("activities.items") as ActivityItem[];
+  const events = t.raw("events.items") as EventItem[];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1A3A8F] to-[#0D1F6B] text-white py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        </div>
-        
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <SectionBadge>Vie Scolaire</SectionBadge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            La Vie Scolaire
-          </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-            Bien plus que des cours : des clubs, des projets, des sorties, des fêtes et des souvenirs gravés pour la vie.
-          </p>
-        </div>
-      </section>
+    <>
+      {/* ── HERO ── */}
+      <PageHero
+        image={t("hero.image")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        breadcrumbs={[
+          { label: tn("home"), href: "/" },
+          { label: tn("life") },
+        ]}
+      />
 
-      {/* Clubs Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <SectionBadge>Clubs Scolaires</SectionBadge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              6 clubs pour révéler tous les talents
+      {/* ── CLUBS — Tabs layout ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+          {/* Header */}
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+          >
+            <SectionBadge>{t("clubs.badge")}</SectionBadge>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-4 mb-3">
+              {t("clubs.title")}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Chaque élève peut explorer ses passions et développer ses compétences dans nos clubs parascolaires
+            <p className="text-[#4A5568] max-w-2xl mx-auto text-lg">
+              {t("clubs.subtitle")}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ClubCard
-              icon={<BookOpen className="w-6 h-6" />}
-              title="Club Débat & Lecture"
-              description="Développer l'argumentation, l'éloquence et l'amour de la lecture. Séances hebdomadaires : débats, cercles littéraires, concours d'éloquence."
-              emoji="📚"
-              color="blue"
-            />
-            <ClubCard
-              icon={<Palette className="w-6 h-6" />}
-              title="Club des Arts"
-              description="Peinture, dessin, sculpture, collage, arts plastiques et visuels. Expositions finales et projets de décoration murale de l'école."
-              emoji="🎨"
-              color="purple"
-            />
-            <ClubCard
-              icon={<Music className="w-6 h-6" />}
-              title="Club Musique & Chant"
-              description="Chorale, éveil musical, pratique d'instruments (percussions, piano, guitare). Présentations lors des manifestations culturelles."
-              emoji="🎵"
-              color="pink"
-            />
-            <ClubCard
-              icon={<Dumbbell className="w-6 h-6" />}
-              title="Club Sportif"
-              description="Football, basketball, athlétisme, natation et sports collectifs. Tournois inter-classes et rencontres amicales inter-établissements."
-              emoji="⚽"
-              color="green"
-            />
-            <ClubCard
-              icon={<Sprout className="w-6 h-6" />}
-              title="Club Agriculture & Élevage"
-              description="Pratique de jardinage, petits élevages (lapins, poules), culture de légumes et fruits. Sensibilisation à l'environnement et au monde rural."
-              emoji="🌱"
-              color="emerald"
-            />
-            <ClubCard
-              icon={<Briefcase className="w-6 h-6" />}
-              title="Club Entreprenariat Junior"
-              description="Mini-entreprises créées et gérées par les élèves : mini-coopératives, fabrication de savons, vente de produits du potager, éducation financière."
-              emoji="💼"
-              color="orange"
-            />
+          {/* Tabs — one per club */}
+          <Tabs defaultValue="0" className="gap-4">
+            {/* Tab triggers */}
+            <TabsList
+              className="
+                flex-wrap h-auto gap-2 bg-[#F7F9FC] border border-[#E2E8F0]
+                rounded-2xl p-2 w-full justify-start
+              "
+            >
+              {clubs.map((club, i) => (
+                <TabsTrigger
+                  key={i}
+                  value={String(i)}
+                  className="
+                    rounded-xl px-4 py-2 text-sm font-semibold text-[#4A5568]
+                    data-active:bg-[#1A3A8F] data-active:text-white
+                    data-active:shadow-md transition-all duration-200
+                  "
+                >
+                  <span className="mr-1.5">{club.emoji}</span>
+                  {club.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Tab panels */}
+            {clubs.map((club, i) => {
+              const IconComp = CLUB_ICONS[i];
+              const colors = CLUB_COLORS[club.color] ?? CLUB_COLORS.blue;
+              return (
+                <TabsContent key={i} value={String(i)} className="mt-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className={`
+                      rounded-2xl border ${colors.border}
+                      bg-white shadow-lg p-8 md:p-10
+                      grid md:grid-cols-[auto_1fr] gap-8 items-start
+                    `}
+                  >
+                    {/* Icon badge */}
+                    <div
+                      className={`
+                        w-20 h-20 rounded-2xl flex flex-col items-center
+                        justify-center ${colors.bg} ${colors.text}
+                        flex-shrink-0 text-4xl
+                      `}
+                    >
+                      {club.emoji}
+                    </div>
+
+                    {/* Content */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
+                        <IconComp size={18} className={colors.text} />
+                        <h3 className="text-2xl font-bold text-[#1A202C]">
+                          {club.title}
+                        </h3>
+                      </div>
+                      <p className="text-[#4A5568] text-base leading-relaxed max-w-2xl">
+                        {club.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </TabsContent>
+              );
+            })}
+          </Tabs>
+
+          {/* Club grid — quick overview cards below tabs */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+            {clubs.map((club, i) => {
+              const colors = CLUB_COLORS[club.color] ?? CLUB_COLORS.blue;
+              const IconComp = CLUB_ICONS[i];
+              return (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={fadeUp}
+                >
+                  <Card className={`h-full border ${colors.border} shadow-sm hover:shadow-md transition-shadow duration-300`}>
+                    <CardHeader className="pb-2">
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`
+                            w-10 h-10 rounded-xl flex items-center justify-center
+                            text-xl flex-shrink-0 ${colors.bg}
+                          `}
+                        >
+                          {club.emoji}
+                        </span>
+                        <CardTitle className={`text-base font-bold ${colors.text}`}>
+                          {club.title}
+                        </CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-[#4A5568] leading-relaxed">
+                        {club.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Activities Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <SectionBadge>Activités Quotidiennes</SectionBadge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Apprendre autrement, s'épanouir toujours
+      {/* ── ACTIVITÉS QUOTIDIENNES ── */}
+      <section className="py-24 bg-[#F7F9FC]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+          >
+            <SectionBadge>{t("activities.badge")}</SectionBadge>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-4 mb-3">
+              {t("activities.title")}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Au-delà des programmes officiels, nous organisons toute l'année une multitude d'activités pour rendre l'école attrayante et vivante
+            <p className="text-[#4A5568] max-w-2xl mx-auto text-lg">
+              {t("activities.subtitle")}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <ActivityCard
-              icon={<Users className="w-8 h-8" />}
-              title="Travail collaboratif"
-              description="Projets de groupe et activités d'équipe qui développent la coopération, l'entraide et les compétences sociales."
-              color="blue"
-            />
-            <ActivityCard
-              icon={<Calendar className="w-8 h-8" />}
-              title="Temps de lecture"
-              description="Moment quotidien de lecture en français et en anglais pour cultiver l'amour des livres et développer la fluidité de lecture."
-              color="indigo"
-            />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activities.map((act, i) => {
+              const IconComp = ACTIVITY_ICONS[i];
+              return (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.15 }}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg border border-[#E2E8F0] transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-5 text-[#1A3A8F]">
+                    <IconComp size={22} />
+                  </div>
+                  <h3 className="font-bold text-[#1A202C] text-lg mb-2">{act.title}</h3>
+                  <p className="text-[#4A5568] text-sm leading-relaxed">{act.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Events Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <SectionBadge>Grands Événements</SectionBadge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Les moments forts de l'année scolaire
+      {/* ── GRANDS ÉVÉNEMENTS ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+          >
+            <SectionBadge>{t("events.badge")}</SectionBadge>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-4 mb-3">
+              {t("events.title")}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Manifestations culturelles et sportives qui rythment notre année et rassemblent toute la communauté
+            <p className="text-[#4A5568] max-w-2xl mx-auto text-lg">
+              {t("events.subtitle")}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <EventCard
-              month="Octobre"
-              title="Journée Portes Ouvertes"
-              description="Découverte de l'école, démonstrations pédagogiques et rencontres avec les enseignants."
-              icon={<MapPin className="w-5 h-5" />}
-            />
-            <EventCard
-              month="Décembre"
-              title="Festival Bilingue"
-              description="Célébration du bilinguisme, des cultures africaines et de la diversité."
-              icon={<PartyPopper className="w-5 h-5" />}
-            />
-            <EventCard
-              month="Mars"
-              title="Olympiades Sportives"
-              description="Tournoi sportif inter-classes : athlétisme, football, basketball et remise de trophées."
-              icon={<Dumbbell className="w-5 h-5" />}
-            />
-            <EventCard
-              month="Juin"
-              title="Cérémonie de Fin d'Année"
-              description="Spectacle des élèves, remise des prix d'excellence et pot final entre familles et enseignants."
-              icon={<Calendar className="w-5 h-5" />}
-            />
+          {/* Timeline-style event cards */}
+          <div className="relative">
+            {/* Connecting line — desktop only */}
+            <div className="hidden lg:block absolute top-14 left-0 right-0 h-0.5 bg-[#E2E8F0] mx-[12.5%]" />
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {events.map((ev, i) => {
+                const IconComp = EVENT_ICONS[i];
+                const colors = EVENT_COLORS[ev.color] ?? EVENT_COLORS.blue;
+                return (
+                  <motion.div
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={fadeUp}
+                    whileHover={{ y: -6 }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Circle with icon */}
+                    <div
+                      className={`
+                        w-14 h-14 rounded-full ${colors.accent} text-white
+                        flex items-center justify-center shadow-lg mb-5 relative z-10
+                      `}
+                    >
+                      <IconComp size={22} />
+                    </div>
+
+                    {/* Card */}
+                    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl border border-[#E2E8F0] p-6 w-full transition-shadow duration-300">
+                      <span
+                        className={`
+                          inline-block px-3 py-1 rounded-full text-xs font-bold
+                          uppercase tracking-wide mb-3 ${colors.badge}
+                        `}
+                      >
+                        {ev.month}
+                      </span>
+                      <h3 className="font-bold text-[#1A202C] text-base mb-2">{ev.title}</h3>
+                      <p className="text-[#4A5568] text-sm leading-relaxed">{ev.description}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <SectionBadge>À venir</SectionBadge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Plus de contenu à venir
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Nous travaillons sur d'autres sections pour enrichir la vie scolaire : galerie d'activités, sorties pédagogiques et événements culturels.
-          </p>
+      {/* ── GALERIE TEASER ── */}
+      <section className="py-20 bg-[#F7F9FC]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={fadeUp}
+          >
+            <SectionBadge>Galerie</SectionBadge>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-4 mb-3">
+              La vie scolaire en images
+            </h2>
+            <p className="text-[#4A5568] max-w-xl mx-auto">
+              Découvrez quelques instants capturés de notre quotidien à l&apos;école.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {[
+              "/images/IMG-20260723-WA0006.jpg",
+              "/images/IMG-20260723-WA0007.jpg",
+              "/images/IMG-20260723-WA0012.jpg",
+              "/images/IMG-20260723-WA0015.jpg",
+              "/images/IMG-20260723-WA0017.jpg",
+              "/images/IMG-20260723-WA0018.jpg",
+              "/images/IMG-20260723-WA0022.jpg",
+              "/images/IMG-20260723-WA0024.jpg",
+            ].map((src, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+                variants={fadeUp}
+                className="relative aspect-square overflow-hidden rounded-xl group cursor-pointer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt=""
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 bg-[#0D1F6B]/0 group-hover:bg-[#0D1F6B]/30 transition-colors duration-300" />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/galerie"
+              className="inline-flex items-center gap-2 bg-[#1A3A8F] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#0D1F6B] transition-colors duration-200 shadow-md"
+            >
+              Voir toute la galerie
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
-    </div>
-  );
-}
 
-function ClubCard({ icon, title, description, emoji, color }: { icon: React.ReactNode; title: string; description: string; emoji: string; color: string }) {
-  const colorClasses = {
-    blue: "bg-blue-100 text-blue-600",
-    purple: "bg-purple-100 text-purple-600",
-    pink: "bg-pink-100 text-pink-600",
-    green: "bg-green-100 text-green-600",
-    emerald: "bg-emerald-100 text-emerald-600",
-    orange: "bg-orange-100 text-orange-600",
-  };
-
-  return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100"
-    >
-      <div className="flex items-start gap-4 mb-4">
-        <div className={`w-14 h-14 ${colorClasses[color as keyof typeof colorClasses]} rounded-xl flex items-center justify-center text-3xl flex-shrink-0`}>
-          {emoji}
+      {/* ── CTA FINAL ── */}
+      <section className="py-24 bg-gradient-to-br from-[#1A3A8F] to-[#0D1F6B] text-white relative overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-white rounded-full blur-3xl" />
         </div>
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-2 text-lg">{title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
+
+        <div className="relative z-10 max-w-[800px] mx-auto px-6 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={fadeUp}
+          >
+            <SectionBadge variant="white">{t("cta.badge")}</SectionBadge>
+            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 leading-tight">
+              {t("cta.title")}
+            </h2>
+            <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
+              {t("cta.subtitle")}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/admissions"
+                className="
+                  inline-flex items-center justify-center gap-2
+                  bg-[#D32F2F] text-white font-bold px-8 py-4 rounded-full
+                  hover:bg-[#B71C1C] transition-colors duration-200
+                  shadow-lg text-base
+                "
+              >
+                {t("cta.button")}
+                <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="/programmes"
+                className="
+                  inline-flex items-center justify-center gap-2
+                  bg-white/15 text-white font-semibold px-8 py-4 rounded-full
+                  hover:bg-white/25 border border-white/30 transition-all duration-200
+                  text-base
+                "
+              >
+                {t("cta.link")}
+              </Link>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ActivityCard({ icon, title, description, color }: { icon: React.ReactNode; title: string; description: string; color: string }) {
-  const colorClasses = {
-    blue: "bg-blue-600",
-    indigo: "bg-indigo-600",
-  };
-
-  return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100"
-    >
-      <div className={`${colorClasses[color as keyof typeof colorClasses]} w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6`}>
-        {icon}
-      </div>
-      <h3 className="font-bold text-gray-900 mb-3 text-xl">{title}</h3>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
-    </motion.div>
-  );
-}
-
-function EventCard({ month, title, description, icon }: { month: string; title: string; description: string; icon: React.ReactNode }) {
-  return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100"
-    >
-      <div className="text-blue-600 font-bold text-sm mb-2">{month}</div>
-      <div className="flex items-center gap-2 mb-3">
-        <div className="text-blue-600">{icon}</div>
-        <h3 className="font-bold text-gray-900">{title}</h3>
-      </div>
-      <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
-    </motion.div>
+      </section>
+    </>
   );
 }

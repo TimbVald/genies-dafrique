@@ -450,6 +450,135 @@
       "button": "Nous écrire sur WhatsApp"
     }
   },
+  "vieScolairePage": {
+    "hero": {
+      "title": "Vie Scolaire",
+      "subtitle": "Clubs, activités, sorties, fêtes — bien plus que des cours.",
+      "image": "/images/IMG-20260723-WA0039.jpg"
+    },
+    "clubs": {
+      "badge": "Clubs Scolaires",
+      "title": "6 clubs pour révéler tous les talents",
+      "subtitle": "Chaque élève explore ses passions et développe ses compétences dans nos clubs parascolaires.",
+      "items": [
+        {
+          "emoji": "📚",
+          "title": "Club Débat & Lecture",
+          "description": "Argumentation, éloquence et amour de la lecture. Séances hebdomadaires : débats, cercles littéraires, concours d'éloquence.",
+          "color": "blue"
+        },
+        {
+          "emoji": "🎨",
+          "title": "Club des Arts",
+          "description": "Peinture, dessin, sculpture, arts plastiques et visuels. Expositions finales et projets de décoration murale.",
+          "color": "purple"
+        },
+        {
+          "emoji": "🎵",
+          "title": "Club Musique & Chant",
+          "description": "Chorale, éveil musical, instruments (percussions, piano, guitare). Présentations lors des manifestations culturelles.",
+          "color": "pink"
+        },
+        {
+          "emoji": "⚽",
+          "title": "Club Sportif",
+          "description": "Football, basketball, athlétisme. Tournois inter-classes et rencontres amicales inter-établissements.",
+          "color": "green"
+        },
+        {
+          "emoji": "🌱",
+          "title": "Club Agriculture & Élevage",
+          "description": "Jardinage, petits élevages (lapins, poules), culture de légumes. Sensibilisation à l'environnement et au monde rural.",
+          "color": "emerald"
+        },
+        {
+          "emoji": "💼",
+          "title": "Club Entrepreneuriat Junior",
+          "description": "Mini-entreprises créées par les élèves : coopératives, fabrication de savons, vente de produits du potager, éducation financière.",
+          "color": "orange"
+        }
+      ]
+    },
+    "activities": {
+      "badge": "Activités Quotidiennes",
+      "title": "Apprendre autrement, s'épanouir toujours",
+      "subtitle": "Au-delà des programmes officiels, toute l'année une multitude d'activités pour rendre l'école attrayante et vivante.",
+      "items": [
+        {
+          "emoji": "🤝",
+          "title": "Travail collaboratif",
+          "description": "Projets de groupe qui développent la coopération, l'entraide et les compétences sociales essentielles pour la vie."
+        },
+        {
+          "emoji": "📖",
+          "title": "Temps de lecture",
+          "description": "Moment quotidien de lecture en français et en anglais pour cultiver l'amour des livres et la fluidité."
+        },
+        {
+          "emoji": "🖥️",
+          "title": "Ateliers numériques",
+          "description": "Initiation à l'informatique, au codage et aux outils digitaux adaptés à chaque niveau d'apprentissage."
+        },
+        {
+          "emoji": "🎭",
+          "title": "Expression artistique",
+          "description": "Théâtre, danse, arts plastiques : chaque enfant explore sa créativité dans un cadre bienveillant et encourageant."
+        },
+        {
+          "emoji": "🌍",
+          "title": "Sorties pédagogiques",
+          "description": "Visites de musées, fermes, entreprises et lieux culturels pour ancrer les apprentissages dans le monde réel."
+        },
+        {
+          "emoji": "🏆",
+          "title": "Concours & Compétitions",
+          "description": "Olympiades, dictées, concours de lecture : les élèves s'affrontent dans un esprit de fair-play et de dépassement."
+        }
+      ]
+    },
+    "events": {
+      "badge": "Grands Événements",
+      "title": "Les moments forts de l'année scolaire",
+      "subtitle": "Manifestations culturelles et sportives qui rythment notre année et rassemblent toute la communauté.",
+      "items": [
+        {
+          "month": "Octobre",
+          "title": "Journée Portes Ouvertes",
+          "description": "Découverte de l'école, démonstrations pédagogiques et rencontres avec les enseignants.",
+          "icon": "MapPin",
+          "color": "blue"
+        },
+        {
+          "month": "Décembre",
+          "title": "Festival Bilingue",
+          "description": "Célébration du bilinguisme, des cultures africaines et de la diversité de notre communauté.",
+          "icon": "PartyPopper",
+          "color": "gold"
+        },
+        {
+          "month": "Mars",
+          "title": "Olympiades Sportives",
+          "description": "Tournoi sportif inter-classes : athlétisme, football, basketball et remise de trophées.",
+          "icon": "Trophy",
+          "color": "red"
+        },
+        {
+          "month": "Juin",
+          "title": "Cérémonie de Fin d'Année",
+          "description": "Spectacle des élèves, remise des prix d'excellence et pot final entre familles et enseignants.",
+          "icon": "GraduationCap",
+          "color": "green"
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Rejoignez-nous",
+      "title": "Votre enfant mérite le meilleur",
+      "subtitle": "Inscrivez-le dans un cadre où chaque journée est une aventure d'apprentissage.",
+      "button": "S'inscrire maintenant",
+      "link": "Voir nos programmes"
+    }
+  },
   "newsPage": {
     "hero": {
       "title": "Actualités & Événements",

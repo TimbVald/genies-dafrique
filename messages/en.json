@@ -861,6 +861,135 @@
       "cta": "Chat on WhatsApp"
     }
   },
+  "vieScolairePage": {
+    "hero": {
+      "title": "School Life",
+      "subtitle": "Clubs, activities, outings, celebrations — so much more than lessons.",
+      "image": "/images/IMG-20260723-WA0039.jpg"
+    },
+    "clubs": {
+      "badge": "School Clubs",
+      "title": "6 clubs to reveal every talent",
+      "subtitle": "Every student can explore their passions and develop their skills in our extracurricular clubs.",
+      "items": [
+        {
+          "emoji": "📚",
+          "title": "Debate & Reading Club",
+          "description": "Develop argumentation, eloquence, and a love of reading. Weekly sessions: debates, literary circles, eloquence contests.",
+          "color": "blue"
+        },
+        {
+          "emoji": "🎨",
+          "title": "Arts Club",
+          "description": "Painting, drawing, sculpture, visual and plastic arts. Final exhibitions and school mural decoration projects.",
+          "color": "purple"
+        },
+        {
+          "emoji": "🎵",
+          "title": "Music & Choir Club",
+          "description": "Choir, musical awakening, instruments (percussion, piano, guitar). Performances at cultural events.",
+          "color": "pink"
+        },
+        {
+          "emoji": "⚽",
+          "title": "Sports Club",
+          "description": "Football, basketball, athletics. Inter-class tournaments and friendly matches between schools.",
+          "color": "green"
+        },
+        {
+          "emoji": "🌱",
+          "title": "Farming & Livestock Club",
+          "description": "Gardening, small livestock (rabbits, chickens), vegetable growing. Raising environmental awareness.",
+          "color": "emerald"
+        },
+        {
+          "emoji": "💼",
+          "title": "Junior Entrepreneurship Club",
+          "description": "Student-run mini-enterprises: cooperatives, soap making, selling garden produce, financial literacy.",
+          "color": "orange"
+        }
+      ]
+    },
+    "activities": {
+      "badge": "Daily Activities",
+      "title": "Learning differently, thriving always",
+      "subtitle": "Beyond the official curriculum, a range of activities all year round to make school vibrant and engaging.",
+      "items": [
+        {
+          "emoji": "🤝",
+          "title": "Collaborative work",
+          "description": "Group projects that build cooperation, mutual support and essential social skills for life."
+        },
+        {
+          "emoji": "📖",
+          "title": "Reading time",
+          "description": "A daily reading moment in French and English to foster a love of books and develop reading fluency."
+        },
+        {
+          "emoji": "🖥️",
+          "title": "Digital workshops",
+          "description": "Introduction to computing, coding, and digital tools adapted to each learning level."
+        },
+        {
+          "emoji": "🎭",
+          "title": "Artistic expression",
+          "description": "Theatre, dance, arts and crafts: every child explores their creativity in a caring, encouraging environment."
+        },
+        {
+          "emoji": "🌍",
+          "title": "Educational outings",
+          "description": "Visits to museums, farms, companies, and cultural sites to anchor learning in the real world."
+        },
+        {
+          "emoji": "🏆",
+          "title": "Contests & Competitions",
+          "description": "Olympiads, spelling bees, reading contests: students compete with a spirit of fair play and self-improvement."
+        }
+      ]
+    },
+    "events": {
+      "badge": "Key Events",
+      "title": "The highlights of the school year",
+      "subtitle": "Cultural and sports events that mark our year and bring the whole community together.",
+      "items": [
+        {
+          "month": "October",
+          "title": "Open Day",
+          "description": "School discovery, pedagogical demonstrations and meetings with teaching staff.",
+          "icon": "MapPin",
+          "color": "blue"
+        },
+        {
+          "month": "December",
+          "title": "Bilingual Festival",
+          "description": "A celebration of bilingualism, African cultures and the diversity of our school community.",
+          "icon": "PartyPopper",
+          "color": "gold"
+        },
+        {
+          "month": "March",
+          "title": "Sports Olympiad",
+          "description": "Inter-class sports tournament: athletics, football, basketball and trophy ceremony.",
+          "icon": "Trophy",
+          "color": "red"
+        },
+        {
+          "month": "June",
+          "title": "End-of-Year Ceremony",
+          "description": "Student show, prizes for excellence, and a final gathering for families and staff.",
+          "icon": "GraduationCap",
+          "color": "green"
+        }
+      ]
+    },
+    "cta": {
+      "badge": "Join Us",
+      "title": "Your child deserves the best",
+      "subtitle": "Enroll them in an environment where every day is a learning adventure.",
+      "button": "Enroll Now",
+      "link": "Discover Our Programs"
+    }
+  },
   "pageTitles": {
     "home": {
       "title": "Home | Bilingual School Complex Les Génies d'Afrique",
