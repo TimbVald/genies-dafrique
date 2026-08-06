@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { X } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
+import { NEWS_DATA, CATEGORY_COLORS, CATEGORY_KEYS, CATEGORY_LABELS_FR, CATEGORY_LABELS_EN } from "@/data/newsData";
+import type { NewsItem } from "@/data/newsData";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg
@@ -28,122 +30,6 @@ const FacebookIcon = ({ size = 14 }: { size?: number }) => (
     <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
   </svg>
 );
-
-interface NewsItem {
-  id: string;
-  date: string;
-  category: string;
-  categoryKey: string;
-  titleFr: string;
-  titleEn: string;
-  excerpt: string;
-  image: string;
-  galleryCount: number;
-  author: string;
-}
-
-const NEWS: NewsItem[] = [
-  {
-    id: "rentree-2025",
-    date: "Septembre 2025",
-    category: "Événements",
-    categoryKey: "evenements",
-    titleFr: "Rentrée scolaire 2025-2026 : un nouveau chapitre !",
-    titleEn: "Back to School 2025-2026: A New Chapter!",
-    excerpt: "L'école a officiellement ouvert ses portes à la rentrée de septembre 2025 avec enthousiasme et de nombreux nouveaux élèves. Une rentrée historique pour Les Génies d'Afrique.",
-    image: "/images/IMG-20260723-WA0006.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-  {
-    id: "agrement-minedub",
-    date: "Février 2025",
-    category: "Institutionnel",
-    categoryKey: "institutionnel",
-    titleFr: "Obtention de l'agrément officiel MINEDUB",
-    titleEn: "Official MINEDUB Accreditation Obtained",
-    excerpt: "Le Complexe Scolaire Bilingue Les Génies d'Afrique a obtenu son agrément officiel du Ministère de l'Éducation de Base du Cameroun, une étape fondatrice pour l'établissement.",
-    image: "/images/IMG-20260723-WA0022.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-  {
-    id: "projets-agricoles",
-    date: "Octobre 2025",
-    category: "Pédagogie",
-    categoryKey: "pedagogie",
-    titleFr: "Lancement des projets agricoles et d'élevage",
-    titleEn: "Launch of Farming and Livestock Projects",
-    excerpt: "Les élèves du primaire ont lancé leurs premiers projets d'agriculture scolaire et d'élevage, découvrant la culture des légumes et l'élevage de volaille sur le terrain de l'école.",
-    image: "/images/IMG-20260723-WA0013.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-  {
-    id: "fete-noel-2025",
-    date: "Décembre 2025",
-    category: "Événements",
-    categoryKey: "evenements",
-    titleFr: "Fête de fin d'année : spectacle et remise de prix",
-    titleEn: "End-of-Year Celebration: Show and Prize Giving",
-    excerpt: "La première grande fête scolaire des Génies d'Afrique a réuni parents, élèves et enseignants pour une soirée inoubliable, couronnée par la remise des prix d'excellence.",
-    image: "/images/IMG-20260723-WA0034.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-  {
-    id: "inscriptions-2026",
-    date: "Juillet 2026",
-    category: "Admissions",
-    categoryKey: "admissions",
-    titleFr: "Inscriptions ouvertes pour l'année scolaire 2026-2027",
-    titleEn: "Enrollment Open for the 2026-2027 School Year",
-    excerpt: "Les inscriptions pour la rentrée de septembre 2026 sont officiellement ouvertes. Venez déposer votre dossier au secrétariat du lundi au vendredi de 8h à 13h.",
-    image: "/images/IMG-20260723-WA0039.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-  {
-    id: "journee-sport",
-    date: "Novembre 2025",
-    category: "Sports",
-    categoryKey: "sports",
-    titleFr: "Journée sportive inter-classes : les champions sont désignés !",
-    titleEn: "Inter-class Sports Day: Champions Are Crowned!",
-    excerpt: "La première journée sportive de l'école a mobilisé tous les élèves autour de compétitions de football et d'athlétisme dans une ambiance festive et compétitive.",
-    image: "/images/IMG-20260723-WA0017.jpg",
-    galleryCount: 4,
-    author: "Rédaction Les Génies d'Afrique",
-  },
-];
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Événements: "bg-[#EEF2FF] text-[#1A3A8F]",
-  Institutionnel: "bg-[#FFF0F0] text-[#D32F2F]",
-  Pédagogie: "bg-[#F0FFF4] text-[#2E7D32]",
-  Admissions: "bg-[#FFF8EE] text-[#F5A623]",
-  Sports: "bg-[#F0F9FF] text-[#0284C7]",
-};
-
-const CATEGORY_KEYS = ["all", "evenements", "institutionnel", "pedagogie", "admissions", "sports"];
-
-const CATEGORY_LABELS_FR: Record<string, string> = {
-  all: "Toutes les actualités",
-  evenements: "Événements",
-  institutionnel: "Institutionnel",
-  pedagogie: "Pédagogie",
-  admissions: "Admissions",
-  sports: "Sports & Vie scolaire",
-};
-
-const CATEGORY_LABELS_EN: Record<string, string> = {
-  all: "All News",
-  evenements: "Events",
-  institutionnel: "Institutional",
-  pedagogie: "Pedagogy",
-  admissions: "Admissions",
-  sports: "Sports & School Life",
-};
 
 interface ActualitesContentProps {
   locale: string;
@@ -173,7 +59,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
   const readMoreLabel = isFr ? "Lire la suite" : "Read More";
 
   const filteredNews = useMemo(() => {
-    return NEWS.filter((article) => {
+    return NEWS_DATA.filter((article) => {
       const matchesCategory =
         selectedCategory === "all" || article.categoryKey === selectedCategory;
       const search = searchQuery.toLowerCase();
@@ -187,7 +73,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
     });
   }, [searchQuery, selectedCategory]);
 
-  const featured = NEWS[0];
+  const featured = NEWS_DATA[0];
   const restAll = filteredNews.filter((a) => a.id !== featured.id);
   const rest = restAll.length > 0 ? restAll : filteredNews;
 
@@ -197,7 +83,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
     currentPage * itemsPerPage
   );
 
-  const recentArticles = NEWS.slice(0, 3);
+  const recentArticles = NEWS_DATA.slice(0, 3);
 
   const handleShare = (platform: string, article: NewsItem) => {
     const url = typeof window !== "undefined" ? window.location.href : "";
