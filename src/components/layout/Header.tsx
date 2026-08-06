@@ -259,28 +259,40 @@ export default function Header() {
                     onMouseEnter={() => setSchoolOpen(true)}
                     onMouseLeave={() => setSchoolOpen(false)}
                   >
-                    <button
-                      aria-expanded={schoolOpen}
-                      aria-haspopup="true"
-                      className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
-                        font-medium tracking-wide transition-all duration-200
-                        ${active
-                          ? isOpaque ? "text-[#1A3A8F]" : "text-white"
-                          : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
-                        }
-                        ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
-                        ${active && !isOpaque ? "bg-white/15" : ""}`}
-                    >
-                      {t(key as keyof typeof t)}
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-200 ${schoolOpen ? "rotate-180" : ""}`}
-                      />
-                      {/* Indicateur actif */}
-                      {active && (
-                        <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
-                      )}
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={href}
+                        aria-current={active ? "page" : undefined}
+                        className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
+                          font-medium tracking-wide transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }
+                          ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
+                          ${active && !isOpaque ? "bg-white/15" : ""}`}
+                      >
+                        {t(key as keyof typeof t)}
+                        {/* Indicateur actif */}
+                        {active && (
+                          <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
+                        )}
+                      </Link>
+                      <button
+                        aria-expanded={schoolOpen}
+                        aria-haspopup="true"
+                        className={`p-1 rounded-lg transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }`}
+                      >
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${schoolOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    </div>
 
                     {/* Dropdown */}
                     <AnimatePresence>
@@ -321,28 +333,40 @@ export default function Header() {
                     onMouseEnter={() => setNewsOpen(true)}
                     onMouseLeave={() => setNewsOpen(false)}
                   >
-                    <button
-                      aria-expanded={newsOpen}
-                      aria-haspopup="true"
-                      className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
-                        font-medium tracking-wide transition-all duration-200
-                        ${active
-                          ? isOpaque ? "text-[#1A3A8F]" : "text-white"
-                          : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
-                        }
-                        ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
-                        ${active && !isOpaque ? "bg-white/15" : ""}`}
-                    >
-                      {t(key as keyof typeof t)}
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-200 ${newsOpen ? "rotate-180" : ""}`}
-                      />
-                      {/* Indicateur actif */}
-                      {active && (
-                        <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
-                      )}
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={href}
+                        aria-current={active ? "page" : undefined}
+                        className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
+                          font-medium tracking-wide transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }
+                          ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
+                          ${active && !isOpaque ? "bg-white/15" : ""}`}
+                      >
+                        {t(key as keyof typeof t)}
+                        {/* Indicateur actif */}
+                        {active && (
+                          <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
+                        )}
+                      </Link>
+                      <button
+                        aria-expanded={newsOpen}
+                        aria-haspopup="true"
+                        className={`p-1 rounded-lg transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }`}
+                      >
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${newsOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    </div>
 
                     {/* Dropdown */}
                     <AnimatePresence>
@@ -383,28 +407,40 @@ export default function Header() {
                     onMouseEnter={() => setLifeOpen(true)}
                     onMouseLeave={() => setLifeOpen(false)}
                   >
-                    <button
-                      aria-expanded={lifeOpen}
-                      aria-haspopup="true"
-                      className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
-                        font-medium tracking-wide transition-all duration-200
-                        ${active
-                          ? isOpaque ? "text-[#1A3A8F]" : "text-white"
-                          : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
-                        }
-                        ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
-                        ${active && !isOpaque ? "bg-white/15" : ""}`}
-                    >
-                      {t(key as keyof typeof t)}
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-200 ${lifeOpen ? "rotate-180" : ""}`}
-                      />
-                      {/* Indicateur actif */}
-                      {active && (
-                        <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
-                      )}
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={href}
+                        aria-current={active ? "page" : undefined}
+                        className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[15px]
+                          font-medium tracking-wide transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }
+                          ${active && isOpaque ? "bg-[#EEF2FF]" : ""}
+                          ${active && !isOpaque ? "bg-white/15" : ""}`}
+                      >
+                        {t(key as keyof typeof t)}
+                        {/* Indicateur actif */}
+                        {active && (
+                          <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />
+                        )}
+                      </Link>
+                      <button
+                        aria-expanded={lifeOpen}
+                        aria-haspopup="true"
+                        className={`p-1 rounded-lg transition-all duration-200
+                          ${active
+                            ? isOpaque ? "text-[#1A3A8F]" : "text-white"
+                            : isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F]" : "text-white/90 hover:text-white"
+                          }`}
+                      >
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-200 ${lifeOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    </div>
 
                     {/* Dropdown */}
                     <AnimatePresence>
@@ -645,7 +681,10 @@ export default function Header() {
                             <span>{t(key as keyof typeof t)}</span>
                           </Link>
                           <button
-                            onClick={() => setMobileSubmenu(submenuOpen ? null : key)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setMobileSubmenu(submenuOpen ? null : key);
+                            }}
                             className="p-2 rounded-lg hover:bg-[#F7F9FC] transition-colors"
                             aria-label="Toggle submenu"
                           >
