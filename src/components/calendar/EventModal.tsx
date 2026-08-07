@@ -5,7 +5,7 @@ import { X, Calendar as CalendarIcon, Clock, Newspaper } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr, enGB } from 'date-fns/locale';
 import { NEWS_DATA } from '@/data/newsData';
-import { EVENT_CATEGORIES } from './SchoolCalendar';
+import { EVENT_CATEGORIES } from '@/lib/data/events';
 import { useTranslations, useLocale } from 'next-intl';
 
 interface EventModalProps {
@@ -88,7 +88,7 @@ export default function EventModal({ isOpen, onClose, eventId, onNavigateToDetai
                   color: category.textColor 
                 }}
               >
-                {category.label}
+                {category.label[locale as "fr" | "en" | "ew"] || category.label.fr}
               </div>
             )}
           </div>
@@ -115,7 +115,7 @@ export default function EventModal({ isOpen, onClose, eventId, onNavigateToDetai
                   className="w-2 h-2 rounded-full" 
                   style={{ backgroundColor: category.color }}
                 />
-                {category.label}
+                {category.label[locale as "fr" | "en" | "ew"] || category.label.fr}
               </div>
             )}
           </div>

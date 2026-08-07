@@ -78,7 +78,7 @@ export function globalSearch(query: string, locale: string = "fr"): SearchResult
     if (
       title.toLowerCase().includes(searchTerm) ||
       description.toLowerCase().includes(searchTerm) ||
-      item.level.toLowerCase().includes(searchTerm)
+      item.level?.toLowerCase().includes(searchTerm)
     ) {
       results.push({
         id: item.id,

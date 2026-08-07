@@ -2,29 +2,12 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { getVisibleTestimonials } from "@/lib/data/testimonials";
+import { getTestimonials } from "@/lib/data/testimonials";
 import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
 
-interface TestimonialItem {
-  name: {
-    fr: string;
-    en: string;
-    ew: string;
-  };
-  role: {
-    fr: string;
-    en: string;
-    ew: string;
-  };
-  text: {
-    fr: string;
-    en: string;
-    ew: string;
-  };
-  stars: number;
-}
+
 
 /* ── Animations ─────────────────────────────────────────────── */
 const headerAnim: Variants = {
@@ -38,7 +21,7 @@ const AUTOPLAY_DELAY = 6000;
 export default function TestimonialsSection() {
   const t      = useTranslations("testimonials");
   const locale = useLocale();
-  const items  = getVisibleTestimonials();
+  const items  = getTestimonials();
 
   const [current,   setCurrent]   = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -178,21 +161,21 @@ export default function TestimonialsSection() {
                       className="font-display italic text-white/90 leading-relaxed mb-8"
                       style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }}
                     >
-                      &ldquo;{items[current].text[locale as keyof typeof items[current].text] || items[current].text.fr}&rdquo;
+                      &ldquo;{items[current].content[locale as "fr" | "en" | "ew"] || items[current].content.fr}&rdquo;
                     </p>
 
                     <footer>
                       {/* Étoiles */}
                       <div
                         className="flex gap-1 mb-3"
-                        aria-label={`${items[current].stars} étoiles sur 5`}
+                        aria-label={`${items[current].rating} étoiles sur 5`}
                       >
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star
                             key={i}
                             size={16}
                             className={
-                              i < items[current].stars
+                              i < items[current].rating
                                 ? "text-[#F5A623] fill-[#F5A623]"
                                 : "text-white/20"
                             }
@@ -216,10 +199,10 @@ export default function TestimonialsSection() {
                         </div>
                         <div>
                           <cite className="not-italic font-bold text-white text-sm block">
-                            {items[current].name[locale as keyof typeof items[current].name] || items[current].name.fr}
+                            {items[current].name}
                           </cite>
                           <span className="text-white/55 text-xs">
-                            {items[current].role[locale as keyof typeof items[current].role] || items[current].role.fr}
+                            {items[current].role[locale as "fr" | "en" | "ew"] || items[current].role.fr}
                           </span>
                         </div>
                       </div>

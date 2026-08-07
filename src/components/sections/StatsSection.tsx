@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { getStatistics, getStatisticsConfig } from "@/lib/data/home";
+import type { LocalizedText } from "@/types";
 import {
   motion,
   useInView,
@@ -17,8 +18,8 @@ import {
 interface StatItem {
   value: string;
   suffix: string;
-  label: string;
-  sublabel: string;
+  label: LocalizedText;
+  sublabel: LocalizedText;
   icon: string;
 }
 
@@ -72,10 +73,12 @@ function StatItem({
   item,
   index,
   inView,
+  locale,
 }: {
   item: StatItem;
   index: number;
   inView: boolean;
+  locale: string;
 }) {
   const numeric   = parseInt(item.value, 10);
   const isNumeric = !isNaN(numeric);
@@ -231,7 +234,7 @@ export default function StatsSection() {
           animate={inView ? "show" : "hidden"}
         >
           {items.map((item, i) => (
-            <StatItem key={i} item={item} index={i} inView={inView} />
+            <StatItem key={i} item={item} index={i} inView={inView} locale={locale} />
           ))}
         </motion.div>
 
