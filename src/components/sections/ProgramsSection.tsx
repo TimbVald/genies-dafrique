@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   motion,
   useInView,
@@ -13,10 +13,12 @@ import {
 } from "framer-motion";
 import { CheckCircle2, ArrowRight, BookOpen, Layers } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
+import { getPrograms } from "@/lib/data/programs";
 
 /* ── Types ───────────────────────────────────────────────────── */
 interface ProgramCard {
   id: string;
+  slug: string;
   flag: string;
   lang: string;
   badge: string;
@@ -90,6 +92,7 @@ function ProgramCard({
       variants={anim}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
+      id={card.slug}
       className="group relative bg-white rounded-3xl overflow-hidden
         shadow-[0_4px_32px_rgba(0,0,0,0.08)]
         border border-[#E2E8F0]
@@ -320,8 +323,26 @@ function ProgramCard({
 
 /* ══════════════════════════════════════════════════════════════ */
 export default function ProgramsSection() {
-  const t     = useTranslations("programs");
-  const cards = t.raw("cards") as ProgramCard[];
+  const t = useTranslations("programs");
+  const locale = useLocale();
+  const programs = getPrograms();
+  
+  // Convert programs to card format for compatibility
+  const cards: ProgramCard[] = programs.slice(0, 2).map((prog) => ({
+    id: prog.id,
+    slug: prog.slug,
+    flag: prog.section === "francophone" ? "🇫🇷" : prog.section === "anglophone" ? "🇬🇧" : "🌍",
+    lang: prog.section === "francophone" ? "FR" : prog.section === "anglophone" ? "EN" : "FR+EN",
+    badge: prog.badge[locale as keyof typeof prog.badge] || prog.badge.fr,
+    title: prog.name[locale as keyof typeof prog.name] || prog.name.fr,
+    subtitle: prog.shortDescription[locale as keyof typeof prog.shortDescription] || prog.shortDescription.fr,
+    description: prog.description[locale as keyof typeof prog.description] || prog.description.fr,
+    image: prog.image,
+    levels: [prog.badge[locale as keyof typeof prog.badge] || prog.badge.fr],
+    strengths: prog.features.map((f) => f[locale as keyof typeof f] || f.fr),
+    href: `/programmes#${prog.slug}`,
+    accentColor: prog.section === "francophone" ? "#1A3A8F" : prog.section === "anglophone" ? "#D32F2F" : "#1A3A8F",
+  }));
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -374,7 +395,7 @@ export default function ProgramsSection() {
         <div className="grid lg:grid-cols-2 gap-8 xl:gap-10">
           {cards.map((card, i) => (
             <ProgramCard
-              key={card.id}
+              key={card.slug}
               card={card}
               index={i}
               levelsLabel={t("levels")}

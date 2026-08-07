@@ -4,91 +4,13 @@ import { ArrowRight, Clock, Users, Globe, CheckCircle2 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import type { Metadata } from "next";
+import { getPrograms } from "@/lib/data/programs";
 
 export const metadata: Metadata = {
   title: "Programmes",
   description:
     "Crèche, maternelle et primaire bilingue à Yaoundé. Découvrez nos programmes FR/EN et nos projets pédagogiques.",
 };
-
-const PROGRAMMES = [
-  {
-    id: "creche",
-    badge: "0 – 2 ans",
-    badgeEn: "0 – 2 years",
-    titleFr: "Crèche",
-    titleEn: "Day Care",
-    image: "/images/IMG-20260723-WA0024.jpg",
-    descFr:
-      "Un environnement sécurisé, chaleureux et affectif pour les tout-petits de 0 à 2 ans. Nos éducatrices diplômées proposent des activités d'éveil sensoriel, de motricité et de socialisation adaptées à chaque stade du développement. Les premiers mots en français et en anglais sont introduits naturellement dès cet âge.",
-    descEn:
-      "A safe, warm and affectionate environment for toddlers aged 0 to 2. Our qualified educators offer sensory, motor and social development activities tailored to each developmental stage. First words in French and English are naturally introduced from this age.",
-    points: [
-      "Éveil sensoriel / Sensory development",
-      "Motricité fine et globale / Fine & gross motor skills",
-      "Premiers mots FR & EN / First words in FR & EN",
-      "Activités musicales / Musical activities",
-      "Socialisation en petits groupes / Small group socialisation",
-    ],
-  },
-  {
-    id: "maternelle",
-    badge: "2 – 5 ans",
-    badgeEn: "2 – 5 years",
-    titleFr: "Maternelle",
-    titleEn: "Nursery",
-    image: "/images/Generated_Image.png",
-    descFr:
-      "De 2 à 5 ans, la section maternelle (Pré-nursery et Nursery) offre à l'enfant un espace d'épanouissement complet. Jeux éducatifs, arts plastiques, éveil musical, initiation à la lecture et aux mathématiques, jardinage pédagogique : chaque journée est une aventure d'apprentissage. L'immersion bilingue est totale et naturelle.",
-    descEn:
-      "From 2 to 5 years, the nursery section (Pre-Nursery and Nursery) offers children a complete space for development. Educational games, arts and crafts, musical awakening, introduction to reading and mathematics, educational gardening: every day is a learning adventure. Bilingual immersion is total and natural.",
-    points: [
-      "Pré-lecture et pré-écriture / Pre-reading & pre-writing",
-      "Initiation aux mathématiques / Maths introduction",
-      "Arts plastiques & créatifs / Arts & crafts",
-      "Jardinage pédagogique / Educational gardening",
-      "Éveil musical bilingue / Bilingual musical awakening",
-    ],
-  },
-  {
-    id: "primaire-fr",
-    badge: "6 – 12 ans · Français",
-    badgeEn: "6 – 12 years · French",
-    titleFr: "Primaire Francophone",
-    titleEn: "French Primary",
-    image: "/images/IMG-20260723-WA0007.jpg",
-    descFr:
-      "La section primaire francophone suit les programmes officiels du MINEDUB, enrichis de contenus pédagogiques complémentaires. Du CP au CM2, les élèves développent des compétences solides en français, mathématiques, sciences et histoire-géographie. L'anglais est enseigné en intensif à raison de plusieurs heures par semaine.",
-    descEn:
-      "The French primary section follows the official MINEDUB programmes, enriched with complementary teaching content. From Grade 1 to Grade 6, students develop strong skills in French, maths, sciences and social studies. English is taught intensively for several hours per week.",
-    points: [
-      "Programme officiel MINEDUB / Official MINEDUB curriculum",
-      "Anglais intensif (4h/semaine) / Intensive English (4h/week)",
-      "Sciences & environnement / Science & environment",
-      "Éducation civique & morale / Civic & moral education",
-      "Activités agricoles / Agricultural activities",
-    ],
-  },
-  {
-    id: "primaire-en",
-    badge: "6 – 12 ans · Anglais",
-    badgeEn: "6 – 12 years · English",
-    titleFr: "Primaire Anglophone",
-    titleEn: "English Primary",
-    image: "/images/Generated_Image.png",
-    descFr:
-      "La section primaire anglophone propose un curriculum anglophone rigoureux, en conformité avec les directives du MINEDUB. L'enseignement se fait majoritairement en anglais, avec une place importante accordée au français comme langue seconde. Les élèves progressent vers les meilleures filières secondaires anglophones.",
-    descEn:
-      "The English primary section offers a rigorous anglophone curriculum, in full compliance with MINEDUB guidelines. Teaching is conducted primarily in English, with significant space given to French as a second language. Students confidently progress towards the best anglophone secondary schools.",
-    points: [
-      "Curriculum anglophone MINEDUB / MINEDUB anglophone curriculum",
-      "Français langue seconde / French as second language",
-      "English literacy & numeracy",
-      "Sciences en anglais / Science in English",
-      "Préparation lycée anglophone / Anglophone secondary prep",
-    ],
-  },
-];
 
 const PROJETS = [
   { emoji: "🌱", titleFr: "Agriculture scolaire", titleEn: "School Farming", descFr: "Les élèves cultivent leur propre jardin, apprenant les bases de l'agronomie.", descEn: "Students grow their own garden, learning the basics of agronomy." },
@@ -100,6 +22,7 @@ const PROJETS = [
 ];
 
 export default function ProgrammesPage() {
+  const programs = getPrograms();
   return (
     <>
       <PageHero
@@ -136,47 +59,47 @@ export default function ProgrammesPage() {
       {/* Programmes détaillés */}
       <section className="pb-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 space-y-20">
-          {PROGRAMMES.map((prog, i) => (
+          {programs.map((prog, i) => (
             <article
               key={prog.id}
-              id={prog.id}
+              id={prog.slug}
               className={`grid lg:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}
             >
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video">
                 <Image
                   src={prog.image}
-                  alt={prog.titleFr}
+                  alt={prog.name.fr}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#1A3A8F]/90
                   text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-                  {prog.badge}
+                  {prog.badge.fr}
                 </span>
               </div>
 
               {/* Contenu */}
               <div>
                 <div className="mb-2">
-                  <span className="text-xs font-bold text-[#D32F2F] uppercase tracking-widest">{prog.titleEn}</span>
+                  <span className="text-xs font-bold text-[#D32F2F] uppercase tracking-widest">{prog.name.en}</span>
                 </div>
                 <h3
                   className="font-display font-bold text-[#1A202C] mb-4"
                   style={{ fontSize: "clamp(1.4rem, 2vw, 2rem)" }}
                 >
-                  {prog.titleFr}
+                  {prog.name.fr}
                 </h3>
-                <p className="text-[#4A5568] leading-relaxed mb-2">{prog.descFr}</p>
-                <p className="text-[#4A5568]/75 text-sm italic leading-relaxed mb-6">{prog.descEn}</p>
+                <p className="text-[#4A5568] leading-relaxed mb-2">{prog.shortDescription.fr}</p>
+                <p className="text-[#4A5568]/75 text-sm italic leading-relaxed mb-6">{prog.shortDescription.en}</p>
 
                 {/* Points forts */}
                 <ul className="space-y-2.5 mb-8">
-                  {prog.points.map((pt, j) => (
+                  {prog.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <CheckCircle2 size={18} className="text-[#D32F2F] flex-shrink-0 mt-0.5" />
-                      <span className="text-[#4A5568] text-sm">{pt}</span>
+                      <span className="text-[#4A5568] text-sm">{feature.fr}</span>
                     </li>
                   ))}
                 </ul>
