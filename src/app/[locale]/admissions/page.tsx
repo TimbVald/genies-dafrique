@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
 import {
   ClipboardList, Send, Users, CheckCircle2,
@@ -12,49 +12,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import EnrollForm from "@/components/sections/EnrollForm";
+import { getAdmissionSteps, getAdmissionDocuments, getAdmissionFees } from "@/lib/data/admissions";
 
-const STEPS = [
-  {
-    icon: <ClipboardList size={28} className="text-white" />,
-    numFr: "01", titleFr: "Constitution du dossier", titleEn: "Prepare Your Documents",
-    descFr: "Rassemblez toutes les pièces requises (liste ci-dessous) avant de vous présenter.",
-    descEn: "Gather all required documents (see list below) before coming to the school.",
-  },
-  {
-    icon: <Send size={28} className="text-white" />,
-    numFr: "02", titleFr: "Dépôt du dossier", titleEn: "Submit Application",
-    descFr: "Déposez le dossier complet au secrétariat : Lun–Ven, 8h00–13h00.",
-    descEn: "Submit the complete file at the office: Mon–Fri, 8AM–1PM.",
-  },
-  {
-    icon: <Users size={28} className="text-white" />,
-    numFr: "03", titleFr: "Entretien d'admission", titleEn: "Admission Interview",
-    descFr: "Un entretien avec la direction pour les parents et l'élève concerné.",
-    descEn: "A meeting with the principal for the parents and the student.",
-  },
-  {
-    icon: <CheckCircle2 size={28} className="text-white" />,
-    numFr: "04", titleFr: "Confirmation & Paiement", titleEn: "Confirmation & Payment",
-    descFr: "Confirmation de l'admission et règlement des frais de scolarité.",
-    descEn: "Admission confirmation and payment of tuition fees.",
-  },
-];
+const ICON_MAP: Record<string, React.ReactNode> = {
+  ClipboardList: <ClipboardList size={28} className="text-white" />,
+  Send: <Send size={28} className="text-white" />,
+  Users: <Users size={28} className="text-white" />,
+  CheckCircle2: <CheckCircle2 size={28} className="text-white" />,
+};
 
-const DOSSIER = [
-  { fr: "Extrait d'acte de naissance (original + copie)", en: "Birth certificate (original + copy)" },
-  { fr: "Carnet de vaccinations à jour", en: "Up-to-date vaccination booklet" },
-  { fr: "4 photos d'identité récentes de l'enfant", en: "4 recent passport photos of the child" },
-  { fr: "Photocopie de la CNI ou passeport du parent/tuteur", en: "Copy of parent/guardian's ID card or passport" },
-  { fr: "Fiche de renseignements complétée (fournie par l'école)", en: "Completed information form (provided by the school)" },
-  { fr: "Bulletins scolaires des 2 dernières années (à partir du CP)", en: "Last 2 years' report cards (from Grade 1 onwards)" },
-];
-
-const FRAIS = [
-  { niveauFr: "Crèche", niveauEn: "Day Care", tranche: "0 – 2 ans", mensualite: "Sur devis / On request" },
-  { niveauFr: "Maternelle", niveauEn: "Nursery", tranche: "2 – 5 ans", mensualite: "Sur devis / On request" },
-  { niveauFr: "Primaire Francophone", niveauEn: "French Primary", tranche: "6 – 12 ans", mensualite: "Sur devis / On request" },
-  { niveauFr: "Primaire Anglophone", niveauEn: "English Primary", tranche: "6 – 12 ans", mensualite: "Sur devis / On request" },
-];
+function getIcon(iconName: string): React.ReactNode {
+  return ICON_MAP[iconName] ?? <ClipboardList size={28} className="text-white" />;
+}
 
 const HIGHLIGHT_ICONS = [CheckCircle, Award, Globe, Heart, Users, Clock];
 
@@ -71,9 +40,15 @@ interface HighlightItem {
 export default function AdmissionsPage() {
   const t = useTranslations("admissionsPage");
   const tn = useTranslations("nav");
+  const locale = useLocale();
   const faqItems = t.raw("faq.items") as FaqItem[];
   const highlights = t.raw("presentation.highlights") as HighlightItem[];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  // Use data services
+  const steps = getAdmissionSteps();
+  const documents = getAdmissionDocuments();
+  const fees = getAdmissionFees();
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -111,17 +86,17 @@ export default function AdmissionsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            {STEPS.map((step, i) => (
-              <div key={i} className="relative">
+            {steps.map((step, i) => (
+              <div key={step.id} className="relative">
                 <div className="bg-[#1A3A8F] rounded-2xl p-6 text-white h-full">
                   <div className="flex items-start justify-between mb-4">
-                    {step.icon}
-                    <span className="text-2xl font-bold opacity-30">{step.numFr}</span>
+                    {getIcon(step.icon)}
+                    <span className="text-2xl font-bold opacity-30">{String(step.step).padStart(2, '0')}</span>
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{step.titleFr}</h3>
-                  <p className="text-sm opacity-90">{step.descFr}</p>
+                  <h3 className="font-bold text-lg mb-2">{step.title[locale as keyof typeof step.title] || step.title.fr}</h3>
+                  <p className="text-sm opacity-90">{step.description[locale as keyof typeof step.description] || step.description.fr}</p>
                 </div>
-                {i < STEPS.length - 1 && (
+                {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-[#D32F2F]">
                     <ChevronDown size={24} className="rotate-90" />
                   </div>
@@ -140,10 +115,13 @@ export default function AdmissionsPage() {
           <div className="max-w-3xl mx-auto mb-20">
             <div className="bg-[#F7F9FC] rounded-2xl p-8">
               <ul className="space-y-4">
-                {DOSSIER.map((doc, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                {documents.map((doc) => (
+                  <li key={doc.id} className="flex items-start gap-3">
                     <CheckCircle size={20} className="text-[#1B893B] flex-shrink-0 mt-0.5" />
-                    <span className="text-[#1A202C]">{doc.fr}</span>
+                    <span className="text-[#1A202C]">
+                      {doc.name[locale as keyof typeof doc.name] || doc.name.fr}
+                      {!doc.required && <span className="text-[#4A5568] text-sm ml-2">(optionnel / optional)</span>}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -167,11 +145,11 @@ export default function AdmissionsPage() {
                 </tr>
               </thead>
               <tbody>
-                {FRAIS.map((frais, i) => (
-                  <tr key={i} className="border-b border-[#E2E8F0]">
-                    <td className="px-6 py-4 font-medium">{frais.niveauFr}</td>
-                    <td className="px-6 py-4">{frais.tranche}</td>
-                    <td className="px-6 py-4">{frais.mensualite}</td>
+                {fees.map((fee) => (
+                  <tr key={fee.id} className="border-b border-[#E2E8F0]">
+                    <td className="px-6 py-4 font-medium">{fee.level[locale as keyof typeof fee.level] || fee.level.fr}</td>
+                    <td className="px-6 py-4">{fee.ageRange[locale as keyof typeof fee.ageRange] || fee.ageRange.fr}</td>
+                    <td className="px-6 py-4">{fee.tuition[locale as keyof typeof fee.tuition] || fee.tuition.fr}</td>
                   </tr>
                 ))}
               </tbody>

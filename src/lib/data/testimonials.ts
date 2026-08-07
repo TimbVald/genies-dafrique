@@ -1,5 +1,5 @@
-/* ── Testimonials Data Service Functions ─────────────────────────────── */
-import { getFeaturedTestimonials, getVisibleTestimonials } from "@/data/testimonials";
+/* ── Testimonials Data Service Functions ──────────────────────────── */
+import { getTestimonials, getFeaturedTestimonials } from "@/data/testimonials";
 
-/* ── Re-export data functions ───────────────────────────────────────── */
-export { getFeaturedTestimonials, getVisibleTestimonials };
+/* ── Re-export data functions ───────────────────────────────────── */
+export { getTestimonials, getFeaturedTestimonials };

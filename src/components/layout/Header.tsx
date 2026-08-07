@@ -20,15 +20,21 @@ const NAV_ITEMS: NavItem[] = [
   { key: "about",      href: "/a-propos", hasSubmenu: true },
   { key: "formations", href: "/formations", hasSubmenu: false },
   { key: "admissions", href: "/admissions", hasSubmenu: false },
-  { key: "news",       href: "/actualites", hasSubmenu: false },
-  { key: "calendar",   href: "/calendrier", hasSubmenu: false },
+  { key: "news",       href: "/actualites", hasSubmenu: true },
+  // { key: "calendar",   href: "/calendrier", hasSubmenu: false },
   { key: "life",       href: "/vie-scolaire", hasSubmenu: true },
   { key: "contact",    href: "/contact", hasSubmenu: false },
 ];
 
 /* ── Sous-menu Actualités ──────────────────────────────────────── */
+const FORMATION_SUBMENU: Array<{ key: string; href: string }> = [
+  { key: "calendar",   href: "/calendrier" },
+  // Plus de sous-menu pour le moment
+];
+
+/* ── Sous-menu Actualités ──────────────────────────────────────── */
 const NEWS_SUBMENU: Array<{ key: string; href: string }> = [
-  // { key: "calendar",   href: "/calendrier" },
+  { key: "calendar",   href: "/calendrier" },
   // Plus de sous-menu pour le moment
 ];
 

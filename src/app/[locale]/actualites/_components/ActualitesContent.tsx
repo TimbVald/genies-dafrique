@@ -16,8 +16,14 @@ import {
 } from "lucide-react";
 import { X } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
-import { NEWS_DATA, CATEGORY_COLORS, CATEGORY_KEYS, CATEGORY_LABELS_FR, CATEGORY_LABELS_EN } from "@/data/newsData";
-import type { NewsItem } from "@/data/newsData";
+import { 
+  getNews, 
+  CATEGORY_COLORS, 
+  CATEGORY_KEYS, 
+  CATEGORY_LABELS_FR, 
+  CATEGORY_LABELS_EN 
+} from "@/lib/data/news";
+import type { NewsArticle } from "@/types";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg
@@ -42,6 +48,8 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
+  // Use data service
+  const newsData = getNews();
   const catLabels = isFr ? CATEGORY_LABELS_FR : CATEGORY_LABELS_EN;
 
   const searchPlaceholder = isFr
@@ -59,21 +67,25 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
   const readMoreLabel = isFr ? "Lire la suite" : "Read More";
 
   const filteredNews = useMemo(() => {
-    return NEWS_DATA.filter((article) => {
+    return newsData.filter((article) => {
       const matchesCategory =
         selectedCategory === "all" || article.categoryKey === selectedCategory;
       const search = searchQuery.toLowerCase();
+      const titleFr = article.title.fr.toLowerCase();
+      const titleEn = article.title.en.toLowerCase();
+      const excerpt = article.excerpt.fr.toLowerCase();
+      const category = article.category.fr.toLowerCase();
       const matchesSearch =
         search === "" ||
-        article.titleFr.toLowerCase().includes(search) ||
-        article.titleEn.toLowerCase().includes(search) ||
-        article.excerpt.toLowerCase().includes(search) ||
-        article.category.toLowerCase().includes(search);
+        titleFr.includes(search) ||
+        titleEn.includes(search) ||
+        excerpt.includes(search) ||
+        category.includes(search);
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, newsData]);
 
-  const featured = NEWS_DATA[0];
+  const featured = newsData[0];
   const restAll = filteredNews.filter((a) => a.id !== featured.id);
   const rest = restAll.length > 0 ? restAll : filteredNews;
 
@@ -83,11 +95,11 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
     currentPage * itemsPerPage
   );
 
-  const recentArticles = NEWS_DATA.slice(0, 3);
+  const recentArticles = newsData.slice(0, 3);
 
-  const handleShare = (platform: string, article: NewsItem) => {
+  const handleShare = (platform: string, article: NewsArticle) => {
     const url = typeof window !== "undefined" ? window.location.href : "";
-    const text = isFr ? article.titleFr : article.titleEn;
+    const text = isFr ? article.title.fr : article.title.en;
     let shareUrl = "";
     if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
@@ -166,7 +178,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
             >
               <SectionBadge>{featuredLabel}</SectionBadge>
               <Link
-                href={`/actualites/${featured.id}`}
+                href={`/actualites/${featured.slug}`}
                 className="group mt-4 grid lg:grid-cols-2 gap-8 items-center rounded-2xl overflow-hidden
                   border border-[#E2E8F0] hover:shadow-[0_8px_40px_rgba(26,58,143,0.12)]
                   hover:-translate-y-1 transition-all duration-300"
@@ -174,14 +186,14 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                 <div className="relative aspect-video lg:aspect-auto lg:h-full min-h-[260px] overflow-hidden">
                   <Image
                     src={featured.image}
-                    alt={featured.titleFr}
+                    alt={featured.title.fr}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  {featured.galleryCount > 0 && (
+                  {featured.gallery.length > 0 && (
                     <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                      📷 {galleryLabel} {featured.galleryCount} photos
+                      📷 {galleryLabel} {featured.gallery.length} photos
                     </div>
                   )}
                 </div>
@@ -189,27 +201,27 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
-                        CATEGORY_COLORS[featured.category] ??
+                        CATEGORY_COLORS[featured.category.fr] ??
                         "bg-[#EEF2FF] text-[#1A3A8F]"
                       }`}
                     >
-                      {featured.category}
+                      {featured.category.fr}
                     </span>
                     <span className="flex items-center gap-1 text-[#4A5568] text-xs">
-                      <Calendar size={13} /> {featured.date}
+                      <Calendar size={13} /> {new Date(featured.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'long', year: 'numeric' })}
                     </span>
                     <span className="flex items-center gap-1 text-[#4A5568] text-xs">
                       <User size={13} /> {featured.author}
                     </span>
                   </div>
                   <h2 className="font-display font-bold text-[#1A202C] text-2xl mb-2">
-                    {isFr ? featured.titleFr : featured.titleEn}
+                    {featured.title[locale as keyof typeof featured.title] || featured.title.fr}
                   </h2>
                   <p className="text-[#4A5568]/70 text-sm italic mb-4">
-                    {isFr ? featured.titleEn : featured.titleFr}
+                    {featured.title[locale === 'fr' ? 'en' : 'fr' as keyof typeof featured.title] || featured.title.en}
                   </p>
                   <p className="text-[#4A5568] leading-relaxed mb-6">
-                    {featured.excerpt}
+                    {featured.excerpt[locale as keyof typeof featured.excerpt] || featured.excerpt.fr}
                   </p>
 
                   {/* Share buttons */}
@@ -283,14 +295,14 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                     <div className="relative aspect-video overflow-hidden">
                       <Image
                         src={article.image}
-                        alt={article.titleFr}
+                        alt={article.title.fr}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      {article.galleryCount > 0 && (
+                      {article.gallery.length > 0 && (
                         <div className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
-                          📷 +{article.galleryCount} photos
+                          📷 +{article.gallery.length} photos
                         </div>
                       )}
                     </div>
@@ -298,26 +310,26 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                       <div className="flex items-center gap-2 mb-3 flex-wrap">
                         <span
                           className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${
-                            CATEGORY_COLORS[article.category] ??
+                            CATEGORY_COLORS[article.category.fr] ??
                             "bg-[#EEF2FF] text-[#1A3A8F]"
                           }`}
                         >
                           <Tag size={9} className="inline mr-1" />
-                          {article.category}
+                          {article.category[locale as keyof typeof article.category] || article.category.fr}
                         </span>
                         <span className="text-[#4A5568] text-[11px] flex items-center gap-1">
-                          <Calendar size={10} /> {article.date}
+                          <Calendar size={10} /> {new Date(article.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'short', year: 'numeric' })}
                         </span>
                       </div>
                       <h3 className="font-display font-bold text-[#1A202C] text-lg mb-2 line-clamp-2">
-                        {isFr ? article.titleFr : article.titleEn}
+                        {article.title[locale as keyof typeof article.title] || article.title.fr}
                       </h3>
                       <div className="flex items-center gap-1 text-[#94A3B8] text-[11px] mb-3">
                         <User size={10} />
                         <span>{authorLabel} : {article.author}</span>
                       </div>
                       <p className="text-[#4A5568] text-sm leading-relaxed line-clamp-3 flex-1">
-                        {article.excerpt}
+                        {article.excerpt[locale as keyof typeof article.excerpt] || article.excerpt.fr}
                       </p>
 
                       {/* Share buttons */}
@@ -448,7 +460,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                         <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-[#E2E8F0]">
                           <Image
                             src={article.image}
-                            alt={article.titleFr}
+                            alt={article.title.fr}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
@@ -457,18 +469,18 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                           <div className="flex items-center gap-2 mb-1">
                             <span
                               className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide ${
-                                CATEGORY_COLORS[article.category] ??
+                                CATEGORY_COLORS[article.category.fr] ??
                                 "bg-[#EEF2FF] text-[#1A3A8F]"
                               }`}
                             >
-                              {article.category}
+                              {article.category[locale as keyof typeof article.category] || article.category.fr}
                             </span>
                           </div>
                           <h4 className="font-semibold text-[#1A202C] text-sm leading-snug line-clamp-2 group-hover:text-[#1A3A8F] transition-colors mb-1">
-                            {isFr ? article.titleFr : article.titleEn}
+                            {article.title[locale as keyof typeof article.title] || article.title.fr}
                           </h4>
                           <span className="text-[11px] text-[#94A3B8] flex items-center gap-1">
-                            <Calendar size={10} /> {article.date}
+                            <Calendar size={10} /> {new Date(article.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'short', year: 'numeric' })}
                           </span>
                         </div>
                       </Link>

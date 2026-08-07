@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { X } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
-import type { NewsArticleFull } from "../[slug]/page";
+import type { NewsArticle } from "@/types";
+import { getNews, CATEGORY_COLORS } from "@/lib/data/news";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg
@@ -27,28 +28,21 @@ const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-const CATEGORY_COLORS: Record<string, string> = {
-  Événements: "bg-[#EEF2FF] text-[#1A3A8F]",
-  Institutionnel: "bg-[#FFF0F0] text-[#D32F2F]",
-  Pédagogie: "bg-[#F0FFF4] text-[#2E7D32]",
-  Admissions: "bg-[#FFF8EE] text-[#F5A623]",
-  Sports: "bg-[#F0F9FF] text-[#0284C7]",
-};
-
 interface ArticleDetailContentProps {
-  article: NewsArticleFull;
+  article: NewsArticle;
   locale: string;
-  relatedArticles: NewsArticleFull[];
-  isFr: boolean;
 }
 
 export default function ArticleDetailContent({
   article,
   locale,
-  relatedArticles,
-  isFr,
 }: ArticleDetailContentProps) {
-  const content = isFr ? article.contentFr : article.contentEn;
+  const isFr = locale === "fr";
+  const allNews = getNews();
+  const relatedArticles = allNews.filter((a) => a.id !== article.id).slice(0, 3);
+  const content = article.content[locale as keyof typeof article.content] || article.content.fr;
+  // Split content into paragraphs
+  const paragraphs = content.split('\n').filter(p => p.trim());
 
   const galleryLabel = isFr ? "Galerie photos" : "Photo Gallery";
   const authorLabel = isFr ? "Rédigé par" : "By";
@@ -60,7 +54,7 @@ export default function ArticleDetailContent({
 
   const handleShare = (platform: string) => {
     const url = typeof window !== "undefined" ? window.location.href : "";
-    const text = isFr ? article.titleFr : article.titleEn;
+    const text = article.title[locale as keyof typeof article.title] || article.title.fr;
     let shareUrl = "";
     if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
@@ -105,15 +99,15 @@ export default function ArticleDetailContent({
               <div className="flex flex-wrap items-center gap-3 mb-5">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
-                    CATEGORY_COLORS[article.category] ??
+                    CATEGORY_COLORS[article.category.fr] ??
                     "bg-[#EEF2FF] text-[#1A3A8F]"
                   }`}
                 >
                   <Tag size={11} className="inline mr-1.5" />
-                  {article.category}
+                  {article.category[locale as keyof typeof article.category] || article.category.fr}
                 </span>
                 <span className="flex items-center gap-1.5 text-[#4A5568] text-sm">
-                  <Calendar size={14} /> {publishedLabel} {article.date}
+                  <Calendar size={14} /> {publishedLabel} {new Date(article.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                 </span>
                 <span className="flex items-center gap-1.5 text-[#4A5568] text-sm">
                   <User size={14} /> {authorLabel} {article.author}
@@ -121,10 +115,10 @@ export default function ArticleDetailContent({
               </div>
 
               <h1 className="font-display font-bold text-[#1A202C] text-3xl md:text-4xl leading-tight mb-4">
-                {isFr ? article.titleFr : article.titleEn}
+                {article.title[locale as keyof typeof article.title] || article.title.fr}
               </h1>
               <p className="text-[#4A5568]/70 text-base italic mb-8">
-                {isFr ? article.titleEn : article.titleFr}
+                {article.title[locale === 'fr' ? 'en' : 'fr' as keyof typeof article.title] || article.title.en}
               </p>
 
               {/* Share bar */}
@@ -171,7 +165,7 @@ export default function ArticleDetailContent({
             >
               <Image
                 src={article.image}
-                alt={article.titleFr}
+                alt={article.title[locale as keyof typeof article.title] || article.title.fr}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1280px) 100vw, 800px"
@@ -188,7 +182,7 @@ export default function ArticleDetailContent({
               className="prose prose-lg max-w-none"
             >
               <div className="space-y-6">
-                {content.map((paragraph, i) => (
+                {paragraphs.map((paragraph: string, i: number) => (
                   <p
                     key={i}
                     className="text-[#2D3748] leading-[1.9] text-[16.5px]"
@@ -234,7 +228,7 @@ export default function ArticleDetailContent({
                   >
                     <Image
                       src={img}
-                      alt={`${isFr ? article.titleFr : article.titleEn} - photo ${i + 1}`}
+                      alt={`${article.title[locale as keyof typeof article.title] || article.title.fr} - photo ${i + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 50vw, 25vw"
@@ -317,11 +311,11 @@ export default function ArticleDetailContent({
                 <div className="pt-4 border-t border-[#F1F5F9] space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-[#94A3B8]">{publishedLabel}</span>
-                    <span className="font-semibold text-[#1A202C]">{article.date}</span>
+                    <span className="font-semibold text-[#1A202C]">{new Date(article.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#94A3B8]">{isFr ? "Catégorie" : "Category"}</span>
-                    <span className="font-semibold text-[#1A3A8F]">{article.category}</span>
+                    <span className="font-semibold text-[#1A3A8F]">{article.category[locale as keyof typeof article.category] || article.category.fr}</span>
                   </div>
                 </div>
               </motion.div>
@@ -349,13 +343,13 @@ export default function ArticleDetailContent({
                       whileHover={{ x: 4 }}
                     >
                       <Link
-                        href={`/actualites/${relArticle.id}`}
+                        href={`/actualites/${relArticle.slug}`}
                         className="group flex gap-4 items-start"
                       >
                         <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-[#E2E8F0]">
                           <Image
                             src={relArticle.image}
-                            alt={relArticle.titleFr}
+                            alt={relArticle.title[locale as keyof typeof relArticle.title] || relArticle.title.fr}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
@@ -364,18 +358,18 @@ export default function ArticleDetailContent({
                           <div className="flex items-center gap-2 mb-1">
                             <span
                               className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide ${
-                                CATEGORY_COLORS[relArticle.category] ??
+                                CATEGORY_COLORS[relArticle.category.fr] ??
                                 "bg-[#EEF2FF] text-[#1A3A8F]"
                               }`}
                             >
-                              {relArticle.category}
+                              {relArticle.category[locale as keyof typeof relArticle.category] || relArticle.category.fr}
                             </span>
                           </div>
                           <h4 className="font-semibold text-[#1A202C] text-sm leading-snug line-clamp-2 group-hover:text-[#1A3A8F] transition-colors mb-1">
-                            {isFr ? relArticle.titleFr : relArticle.titleEn}
+                            {relArticle.title[locale as keyof typeof relArticle.title] || relArticle.title.fr}
                           </h4>
                           <span className="text-[11px] text-[#94A3B8] flex items-center gap-1">
-                            <Calendar size={10} /> {relArticle.date}
+                            <Calendar size={10} /> {new Date(relArticle.publishedAt).toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'short', year: 'numeric' })}
                           </span>
                         </div>
                       </Link>

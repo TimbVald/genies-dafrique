@@ -1,15 +1,4 @@
-import type { LocalizedText, BaseContent, Media } from "@/types";
-
-/* ── Gallery Item Configuration ───────────────────────────────────── */
-export interface GalleryItem extends BaseContent {
-  title: LocalizedText;
-  description?: LocalizedText;
-  media: Media;
-  category: string;
-  featured: boolean;
-  visible: boolean;
-  order: number;
-}
+import type { GalleryItem } from "@/types";
 
 /* ── Gallery Data ─────────────────────────────────────────────────── */
 export const GALLERY_DATA: GalleryItem[] = [
@@ -23,14 +12,7 @@ export const GALLERY_DATA: GalleryItem[] = [
       en: "Students in learning activity",
       ew: "Bana ba akom",
     },
-    media: {
-      url: "/images/IMG-20260723-WA0024.jpg",
-      alt: {
-        fr: "Élèves en activité pédagogique",
-        en: "Students in learning activity",
-        ew: "Bana ba akom",
-      },
-    },
+    imageUrl: "/images/IMG-20260723-WA0024.jpg",
     category: "activities",
     featured: true,
     visible: true,
@@ -46,14 +28,7 @@ export const GALLERY_DATA: GalleryItem[] = [
       en: "Creative workshop at school",
       ew: "Atelier ya dzam",
     },
-    media: {
-      url: "/images/Generated_Image.png",
-      alt: {
-        fr: "Atelier créatif à l'école",
-        en: "Creative workshop at school",
-        ew: "Atelier ya dzam",
-      },
-    },
+    imageUrl: "/images/Generated_Image.png",
     category: "activities",
     featured: false,
     visible: true,
@@ -69,14 +44,7 @@ export const GALLERY_DATA: GalleryItem[] = [
       en: "Daily school life",
       ew: "Mvog sukul ya lekela",
     },
-    media: {
-      url: "/images/pexels-ai25studioai-7342628.jpg",
-      alt: {
-        fr: "Vie scolaire au quotidien",
-        en: "Daily school life",
-        ew: "Mvog sukul ya lekela",
-      },
-    },
+    imageUrl: "/images/pexels-ai25studioai-7342628.jpg",
     category: "school-life",
     featured: false,
     visible: true,
@@ -92,14 +60,7 @@ export const GALLERY_DATA: GalleryItem[] = [
       en: "Outdoor student activities",
       ew: "Bisala ya nɔ́n",
     },
-    media: {
-      url: "/images/pexels-karola-g-7269671.jpg",
-      alt: {
-        fr: "Activités extérieures des élèves",
-        en: "Outdoor student activities",
-        ew: "Bisala ya nɔ́n",
-      },
-    },
+    imageUrl: "/images/pexels-karola-g-7269671.jpg",
     category: "activities",
     featured: false,
     visible: true,
@@ -115,14 +76,7 @@ export const GALLERY_DATA: GalleryItem[] = [
       en: "Group of happy students",
       ew: "Mbog ya bana ba yɔ́m",
     },
-    media: {
-      url: "/images/pexels-ani-ani.jpg",
-      alt: {
-        fr: "Groupe d'élèves heureux",
-        en: "Group of happy students",
-        ew: "Mbog ya bana ba yɔ́m",
-      },
-    },
+    imageUrl: "/images/pexels-ani-ani.jpg",
     category: "school-life",
     featured: false,
     visible: true,

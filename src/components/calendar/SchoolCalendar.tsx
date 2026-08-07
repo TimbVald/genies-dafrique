@@ -5,7 +5,7 @@ import { Calendar, dateFnsLocalizer, Views, View, EventProps, ToolbarProps } fro
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { fr, enGB } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
-import { NEWS_DATA } from '@/data/newsData';
+import { getEvents, EVENT_CATEGORIES } from '@/lib/data/events';
 import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import EventModal from './EventModal';
@@ -28,115 +28,7 @@ const locales = {
   'en': enGB,
 };
 
-interface EventCategory {
-  key: string;
-  label: string;
-  color: string;
-  bgColor: string;
-  textColor: string;
-}
-
-export const EVENT_CATEGORIES: EventCategory[] = [
-  {
-    key: 'rentree',
-    label: 'Rentrée scolaire',
-    color: '#1A3A8F',
-    bgColor: '#EEF2FF',
-    textColor: '#1A3A8F',
-  },
-  {
-    key: 'reunions_parents',
-    label: 'Réunion parents',
-    color: '#059669',
-    bgColor: '#ECFDF5',
-    textColor: '#059669',
-  },
-  {
-    key: 'examens',
-    label: 'Examen',
-    color: '#D97706',
-    bgColor: '#FFFBEB',
-    textColor: '#D97706',
-  },
-  {
-    key: 'vacances',
-    label: 'Vacances scolaires',
-    color: '#7C3AED',
-    bgColor: '#F5F3FF',
-    textColor: '#7C3AED',
-  },
-  {
-    key: 'sorties_pedagogiques',
-    label: 'Sortie pédagogique',
-    color: '#0891B2',
-    bgColor: '#ECFEFF',
-    textColor: '#0891B2',
-  },
-  {
-    key: 'activites_sportives',
-    label: 'Activité sportive',
-    color: '#DC2626',
-    bgColor: '#FEF2F2',
-    textColor: '#DC2626',
-  },
-  {
-    key: 'activites_culturelles',
-    label: 'Activité culturelle',
-    color: '#DB2777',
-    bgColor: '#FDF2F8',
-    textColor: '#DB2777',
-  },
-  {
-    key: 'club',
-    label: 'Club',
-    color: '#2563EB',
-    bgColor: '#EFF6FF',
-    textColor: '#2563EB',
-  },
-  {
-    key: 'ceremonie',
-    label: 'Cérémonie',
-    color: '#EA580C',
-    bgColor: '#FFF7ED',
-    textColor: '#EA580C',
-  },
-  {
-    key: 'journee_speciale',
-    label: 'Journée spéciale',
-    color: '#65A30D',
-    bgColor: '#F7FEE7',
-    textColor: '#65A30D',
-  },
-  {
-    key: 'actualite',
-    label: 'Actualité',
-    color: '#4B5563',
-    bgColor: '#F3F4F6',
-    textColor: '#4B5563',
-  },
-  {
-    key: 'celebrations',
-    label: 'Célébration',
-    color: '#EA580C',
-    bgColor: '#FFF7ED',
-    textColor: '#EA580C',
-  },
-  {
-    key: 'concours',
-    label: 'Concours',
-    color: '#65A30D',
-    bgColor: '#F7FEE7',
-    textColor: '#65A30D',
-  },
-  {
-    key: 'evenements_administratifs',
-    label: 'Événement administratif',
-    color: '#6B7280',
-    bgColor: '#F3F4F6',
-    textColor: '#6B7280',
-  },
-];
-
+// Use imported EVENT_CATEGORIES from data service
 const EVENT_COLORS: Record<string, string> = EVENT_CATEGORIES.reduce((acc, cat) => {
   acc[cat.key] = cat.color;
   return acc;
@@ -147,7 +39,7 @@ function CustomEvent({ event }: any) {
   
   return (
     <div className="rbc-event-content">
-      <div className="truncate font-medium">{event.title}</div>
+      <span className="rbc-event-title">{event.title}</span>
     </div>
   );
 }
@@ -248,30 +140,39 @@ export default function SchoolCalendar() {
 
   const availableViews = isMobile ? [Views.MONTH, Views.AGENDA] : [Views.MONTH, Views.WEEK, Views.AGENDA, Views.DAY];
 
-  // Convertir les actualités en événements de calendrier
+  // Convertir les événements en format calendrier
   const events = useMemo(() => {
-    return NEWS_DATA
-      .filter(news => news.eventDate && news.eventType)
-      .filter(news => selectedCategory === 'all' || news.eventType === selectedCategory)
-      .map((news) => {
-        const eventDate = new Date(news.eventDate!);
-        const category = EVENT_CATEGORIES.find(cat => cat.key === news.eventType) || EVENT_CATEGORIES[0];
+    return getEvents()
+      .filter(event => selectedCategory === 'all' || event.categoryKey === selectedCategory)
+      .map((event) => {
+        const startDate = new Date(event.startDate);
+        const category = EVENT_CATEGORIES.find(cat => cat.key === event.categoryKey) || EVENT_CATEGORIES[0];
         
         // Créer les dates de début et fin
-        const startDate = new Date(eventDate);
-        startDate.setHours(0, 0, 0, 0);
+        const startDateTime = new Date(startDate);
+        if (event.startTime) {
+          const [hours, minutes] = event.startTime.split(':').map(Number);
+          startDateTime.setHours(hours, minutes, 0, 0);
+        } else {
+          startDateTime.setHours(0, 0, 0, 0);
+        }
         
-        const endDate = new Date(eventDate);
-        endDate.setHours(23, 59, 59, 999);
+        const endDateTime = event.endDate ? new Date(event.endDate) : new Date(startDate);
+        if (event.endTime) {
+          const [hours, minutes] = event.endTime.split(':').map(Number);
+          endDateTime.setHours(hours, minutes, 0, 0);
+        } else {
+          endDateTime.setHours(23, 59, 59, 999);
+        }
         
         return {
-          id: news.id,
-          title: locale === 'en' ? news.titleEn : news.titleFr,
-          start: startDate,
-          end: endDate,
+          id: event.id,
+          title: event.title[locale as keyof typeof event.title] || event.title.fr,
+          start: startDateTime,
+          end: endDateTime,
           color: category.color,
-          category: news.eventType!,
-          newsId: news.id,
+          category: event.categoryKey,
+          newsId: event.newsId,
         } as CalendarEvent;
       });
   }, [selectedCategory, locale]);

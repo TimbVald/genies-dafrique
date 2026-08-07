@@ -1,5 +1,5 @@
-/* ── Gallery Data Service Functions ─────────────────────────────────── */
+/* ── Gallery Data Service Functions ──────────────────────────────── */
 import { getFeaturedGallery, getGalleryByCategory, getVisibleGallery } from "@/data/gallery";
 
-/* ── Re-export data functions ───────────────────────────────────────── */
+/* ── Re-export data functions ───────────────────────────────────── */
 export { getFeaturedGallery, getGalleryByCategory, getVisibleGallery };

@@ -1,105 +1,77 @@
-import type { LocalizedText, BaseContent } from "@/types";
+import type { Testimonial } from "@/types";
 
-/* ── Testimonial Item Configuration ───────────────────────────────── */
-export interface TestimonialItem extends BaseContent {
-  name: LocalizedText;
-  role: LocalizedText;
-  text: LocalizedText;
-  stars: number;
-  featured: boolean;
-  visible: boolean;
-  order: number;
-}
-
-/* ── Testimonials Data ─────────────────────────────────────────────── */
-export const TESTIMONIALS_DATA: TestimonialItem[] = [
+/* ── Testimonials Data ───────────────────────────────────────────── */
+export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: "testimonial-1",
-    slug: "testimonial-maman-sarah",
+    slug: "parent-mbarga",
     status: "published",
-    createdAt: "2025-01-15T00:00:00Z",
-    name: {
-      fr: "Sarah M.",
-      en: "Sarah M.",
-      ew: "Sarah M.",
-    },
+    createdAt: "2024-01-01T00:00:00Z",
+    name: "Mme Nkodo",
     role: {
-      fr: "Maman d'élève en CP1",
-      en: "CP1 Parent",
-      ew: "Mama wa bana wa CP1",
+      fr: "Parent d'élève",
+      en: "Parent",
+      ew: "Parent",
     },
-    text: {
-      fr: "Depuis que mon fils fréquente Les Génies d'Afrique, j'ai remarqué une amélioration spectaculaire dans son niveau de français et d'anglais. Les enseignants sont dévoués et l'environnement est propice à l'apprentissage.",
-      en: "Since my son started attending Les Génies d'Afrique, I've noticed a spectacular improvement in his French and English levels. The teachers are dedicated and the environment is conducive to learning.",
-      ew: "Kɔ́kɔ́ mwa mwa a kɔ́l na Les Génies d'Afrique, ma ye ɓɔl amelioration ya minene na français na anglais na be. Basa ba akom ba ne dedication na environment a ne amus amu akom.",
+    content: {
+      fr: "Les Génies d'Afrique a transformé l'éducation de mon fils. Les enseignants sont dévoués et l'environnement est excellent.",
+      en: "Les Génies d'Afrique has transformed my son's education. The teachers are dedicated and the environment is excellent.",
+      ew: "Les Génies d'Afrique a transformed education ya mwana mɔ́n. Teachers a dedicated.",
     },
-    stars: 5,
+    rating: 5,
     featured: true,
-    visible: true,
     order: 1,
+    visible: true,
   },
   {
     id: "testimonial-2",
-    slug: "testimonial-papa-jean",
+    slug: "parent-ewane",
     status: "published",
-    createdAt: "2025-02-20T00:00:00Z",
-    name: {
-      fr: "Jean-Pierre K.",
-      en: "Jean-Pierre K.",
-      ew: "Jean-Pierre K.",
-    },
+    createdAt: "2024-01-01T00:00:00Z",
+    name: "M. Ewane",
     role: {
-      fr: "Papa d'élève en CE2",
-      en: "CE2 Parent",
-      ew: "Papa wa bana wa CE2",
+      fr: "Parent d'élève",
+      en: "Parent",
+      ew: "Parent",
     },
-    text: {
-      fr: "L'approche bilingue est vraiment exceptionnelle. Ma fille parle maintenant couramment les deux langues et développe une ouverture d'esprit remarquable. Je recommande vivement cette école.",
-      en: "The bilingual approach is truly exceptional. My daughter now speaks both languages fluently and develops a remarkable openness of mind. I highly recommend this school.",
-      ew: "Minsili ya bilingue a ne minene kɔ́kɔ́. Mwa mwa a kɔ́l lokota mibuma mbaba a ne dzam ya mvoé. Ma kɔ́l sukul yi kɔ́kɔ́.",
+    content: {
+      fr: "Je recommande vivement cette école. Le bilinguisme et l'approche pédagogique sont exceptionnels.",
+      en: "I highly recommend this school. The bilingual approach and pedagogy are exceptional.",
+      ew: "I recommend sukul yi. Bilingualism na pedagogy a exceptional.",
     },
-    stars: 5,
+    rating: 5,
     featured: true,
-    visible: true,
     order: 2,
+    visible: true,
   },
   {
     id: "testimonial-3",
-    slug: "testimonial-maman-marie",
+    slug: "enseignant",
     status: "published",
-    createdAt: "2025-03-10T00:00:00Z",
-    name: {
-      fr: "Marie-Claire N.",
-      en: "Marie-Claire N.",
-      ew: "Marie-Claire N.",
-    },
+    createdAt: "2024-01-01T00:00:00Z",
+    name: "Mme Atangana",
     role: {
-      fr: "Maman d'élève en maternelle",
-      en: "Nursery Parent",
-      ew: "Mama wa bana wa maternelle",
+      fr: "Enseignante",
+      en: "Teacher",
+      ew: "Teacher",
     },
-    text: {
-      fr: "Les valeurs enseignées à l'école — discipline, respect, excellence — se reflètent dans le comportement de mon enfant à la maison. C'est plus qu'une école, c'est une véritable famille éducative.",
-      en: "The values taught at school — discipline, respect, excellence — are reflected in my child's behavior at home. It's more than a school, it's a true educational family.",
-      ew: "Mekat ma akom kɔ́l na sukul — dzam, mbɔ́g, nyɔ́ñ — ma ye na be na mfañ ya mwa mwa na nɔ́n. A nyɔ́n kɔ́l sukul, a ne mbog ya akom ya mvoé.",
+    content: {
+      fr: "Travailler aux Génies d'Afrique est un vrai plaisir. L'équipe pédagogique est passionnée et soutenue.",
+      en: "Working at Les Génies d'Afrique is a true pleasure. The pedagogical team is passionate and supported.",
+      ew: "Work na Les Génies d'Afrique a pleasure. Team a passionate.",
     },
-    stars: 5,
+    rating: 5,
     featured: false,
-    visible: true,
     order: 3,
+    visible: true,
   },
 ];
 
-/* ── Get Featured Testimonials Function ───────────────────────────── */
-export function getFeaturedTestimonials(): TestimonialItem[] {
-  return TESTIMONIALS_DATA.filter(
-    (t) => t.featured && t.visible && t.status === "published"
-  );
+/* ── Get Testimonials Functions ──────────────────────────────────── */
+export function getTestimonials(): Testimonial[] {
+  return TESTIMONIALS_DATA.filter((t) => t.visible && t.status === "published").sort((a, b) => a.order - b.order);
 }
 
-/* ── Get All Visible Testimonials Function ────────────────────────── */
-export function getVisibleTestimonials(): TestimonialItem[] {
-  return TESTIMONIALS_DATA.filter(
-    (t) => t.visible && t.status === "published"
-  ).sort((a, b) => a.order - b.order);
+export function getFeaturedTestimonials(): Testimonial[] {
+  return TESTIMONIALS_DATA.filter((t) => t.featured && t.visible && t.status === "published").sort((a, b) => a.order - b.order);
 }
