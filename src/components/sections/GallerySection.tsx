@@ -4,12 +4,13 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { getVisibleGallery } from "@/lib/data/gallery";
 import { motion, useInView, type Variants, AnimatePresence } from "framer-motion";
 import { ZoomIn, X, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
 
 /* ── Photos de la galerie aperçu ─────────────────────────────── */
-const GALLERY_PHOTOS = [
+const GALLERY_DATA_STATIC = [
   {
     src: "/images/IMG-20260723-WA0024.jpg",
     altFr: "Élèves en activité pédagogique",
@@ -62,6 +63,9 @@ const photoAnim: Variants = {
 export default function GallerySection() {
   const t      = useTranslations("gallery");
   const locale = useLocale();
+  
+  // Use static data for now - will be migrated to dynamic data in next phase
+  const galleryPhotos = GALLERY_DATA_STATIC;
 
   const [lightbox, setLightbox] = useState<number | null>(null);
 
@@ -71,11 +75,13 @@ export default function GallerySection() {
   const openLightbox = (i: number) => setLightbox(i);
   const closeLightbox = () => setLightbox(null);
   const prev = () => setLightbox((l) =>
-    l !== null ? (l - 1 + GALLERY_PHOTOS.length) % GALLERY_PHOTOS.length : null
+    l !== null ? (l - 1 + galleryPhotos.length) % galleryPhotos.length : null
   );
   const next = () => setLightbox((l) =>
-    l !== null ? (l + 1) % GALLERY_PHOTOS.length : null
+    l !== null ? (l + 1) % galleryPhotos.length : null
   );
+
+  const currentPhoto = lightbox !== null ? galleryPhotos[lightbox] : null;
 
   return (
     <>
@@ -112,7 +118,7 @@ export default function GallerySection() {
             initial="hidden"
             animate={inView ? "show" : "hidden"}
           >
-            {GALLERY_PHOTOS.map((photo, i) => {
+            {galleryPhotos.map((photo, i) => {
               const altText = locale === "fr" ? photo.altFr : photo.altEn;
 
               return (
@@ -258,11 +264,11 @@ export default function GallerySection() {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={GALLERY_PHOTOS[lightbox].src}
+                src={galleryPhotos[lightbox].src}
                 alt={
                   locale === "fr"
-                    ? GALLERY_PHOTOS[lightbox].altFr
-                    : GALLERY_PHOTOS[lightbox].altEn
+                    ? galleryPhotos[lightbox].altFr
+                    : galleryPhotos[lightbox].altEn
                 }
                 fill
                 className="object-contain rounded-xl"
@@ -289,7 +295,7 @@ export default function GallerySection() {
               className="absolute bottom-4 left-1/2 -translate-x-1/2
                 text-white/50 text-sm tabular-nums"
             >
-              {lightbox + 1} / {GALLERY_PHOTOS.length}
+              {lightbox + 1} / {galleryPhotos.length}
             </p>
           </motion.div>
         )}

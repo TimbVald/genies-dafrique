@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { getStatistics, getStatisticsConfig } from "@/lib/data/home";
 import {
   motion,
   useInView,
@@ -126,12 +127,12 @@ function StatItem({
           drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
         style={{ fontSize: "clamp(0.85rem, 1.4vw, 1rem)" }}
       >
-        {item.label}
+        {item.label[locale as keyof typeof item.label] || item.label.fr}
       </p>
 
       {/* Sous-label — secondaire */}
       <p className="text-white/55 text-xs italic drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-        {item.sublabel}
+        {item.sublabel[locale as keyof typeof item.sublabel] || item.sublabel.fr}
       </p>
     </motion.div>
   );
@@ -144,7 +145,9 @@ function StatItem({
 ══════════════════════════════════════════════════════════════════ */
 export default function StatsSection() {
   const t     = useTranslations("stats");
-  const items = t.raw("items") as StatItem[];
+  const locale = useLocale();
+  const statsConfig = getStatisticsConfig();
+  const items = getStatistics();
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -161,7 +164,7 @@ export default function StatsSection() {
       ref={sectionRef}
       className="relative overflow-hidden"
       style={{ minHeight: "480px" }}
-      aria-label={t("title")}
+      aria-label={statsConfig.title[locale as keyof typeof statsConfig.title] || t("title")}
     >
       {/* ══ IMAGE DE FOND — très visible (scale légèrement pour parallaxe) ══ */}
       <motion.div
@@ -206,7 +209,7 @@ export default function StatsSection() {
             <div className="h-px w-10 bg-[#F5A623]/70" />
             <span className="text-[#F5A623] text-xs font-bold uppercase tracking-[0.22em]
               drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
-              {t("badge")}
+              {statsConfig.badge[locale as keyof typeof statsConfig.badge] || t("badge")}
             </span>
             <div className="h-px w-10 bg-[#F5A623]/70" />
           </div>
@@ -216,7 +219,7 @@ export default function StatsSection() {
               drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
             style={{ fontSize: "clamp(1.6rem, 3vw, 2.6rem)" }}
           >
-            {t("title")}
+            {statsConfig.title[locale as keyof typeof statsConfig.title] || t("title")}
           </h2>
         </motion.div>
 

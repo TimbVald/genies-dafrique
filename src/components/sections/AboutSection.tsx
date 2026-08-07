@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { getAboutSectionData } from "@/lib/data/home";
 import {
   motion,
   useInView,
@@ -48,6 +49,7 @@ const PILLARS = [
 export default function AboutSection() {
   const t      = useTranslations("about");
   const locale = useLocale();
+  const aboutData = getAboutSectionData();
 
   const [videoOpen,   setVideoOpen]   = useState(false);
   const [activeTab,   setActiveTab]   = useState(0);
@@ -99,12 +101,12 @@ export default function AboutSection() {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === "Enter" && setVideoOpen(true)}
-                aria-label={t("playLabel")}
+                aria-label={aboutData.videoLabel[locale as keyof typeof aboutData.videoLabel] || t("playLabel")}
               >
                 {/* Miniature */}
                 <Image
-                  src="/images/IMG-20260723-WA0024.jpg"
-                  alt={t("playLabel")}
+                  src={aboutData.videoThumbnail}
+                  alt={aboutData.videoLabel[locale as keyof typeof aboutData.videoLabel] || t("playLabel")}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -134,7 +136,7 @@ export default function AboutSection() {
                 {/* Label bas gauche */}
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white font-bold text-base leading-tight drop-shadow-sm">
-                    {t("playLabel")}
+                    {aboutData.videoLabel[locale as keyof typeof aboutData.videoLabel] || t("playLabel")}
                   </p>
                 </div>
               </div>
@@ -150,7 +152,7 @@ export default function AboutSection() {
               >
                 <p className="text-2xl font-bold text-[#F5A623] font-display leading-none">2025</p>
                 <p className="text-[11px] font-semibold text-white/80 mt-0.5 uppercase tracking-wider">
-                  {t("accreditation")}
+                  {aboutData.accreditation[locale as keyof typeof aboutData.accreditation] || t("accreditation")}
                 </p>
               </motion.div>
 
@@ -168,7 +170,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <p className="text-[11px] font-bold text-[#4A5568] uppercase tracking-wider leading-none mb-0.5">
-                    {t("since")}
+                    {aboutData.since[locale as keyof typeof aboutData.since] || t("since")}
                   </p>
                   <p className="text-sm font-bold text-[#1A202C]">Nkozoa, Yaoundé</p>
                 </div>
@@ -176,18 +178,14 @@ export default function AboutSection() {
 
               {/* Bande décorative colorée sous la carte */}
               <div className="mt-10 grid grid-cols-3 gap-3">
-                {[
-                  { src: "/images/pexels-ani-ani.jpg", alt: "Cours bilingue" },
-                  { src: "/images/IMG-20260723-WA0039.jpg", alt: "Activité créative" },
-                  { src: "/images/pexels-ai25studioai-7342628.jpg", alt: "Vie scolaire" },
-                ].map((img, i) => (
+                {aboutData.decorativeImages.map((src, i) => (
                   <div
                     key={i}
                     className="relative rounded-xl overflow-hidden aspect-square shadow-md"
                   >
                     <Image
-                      src={img.src}
-                      alt={img.alt}
+                      src={src}
+                      alt="Décoration"
                       fill
                       className="object-cover hover:scale-110 transition-transform duration-500"
                       sizes="15vw"
@@ -216,7 +214,7 @@ export default function AboutSection() {
                 className="font-display font-bold text-[#1A202C] mt-1 mb-3 leading-tight"
                 style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}
               >
-                {t("title")}
+                {aboutData.title[locale as keyof typeof aboutData.title] || t("title")}
               </motion.h2>
 
               {/* Slogan officiel */}
@@ -226,7 +224,7 @@ export default function AboutSection() {
                   tracking-[0.18em] text-[#D32F2F] mb-7"
               >
                 <span className="w-8 h-px bg-[#D32F2F]" />
-                {t("slogan")}
+                {aboutData.slogan[locale as keyof typeof aboutData.slogan] || t("slogan")}
                 <span className="w-8 h-px bg-[#D32F2F]" />
               </motion.p>
 
@@ -267,7 +265,17 @@ export default function AboutSection() {
                     <div className="absolute top-0 left-0 w-1 h-full bg-[#D32F2F] rounded-full"
                       style={{ height: "30%", top: "35%" }} />
                     <p className="text-[#4A5568] leading-relaxed text-[0.97rem]">
-                      {t(PILLARS[activeTab].keyFr as Parameters<typeof t>[0])}
+                      {(() => {
+                        const contentMap = {
+                          0: aboutData.mission,
+                          1: aboutData.vision,
+                          2: aboutData.values,
+                          3: aboutData.bilingual,
+                          4: aboutData.excellence,
+                        };
+                        const content = contentMap[activeTab as keyof typeof contentMap];
+                        return content[locale as keyof typeof content] || t(PILLARS[activeTab].keyFr as Parameters<typeof t>[0]);
+                      })()}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -275,16 +283,16 @@ export default function AboutSection() {
 
               {/* Bouton CTA */}
               <motion.div variants={fadeUp}>
-                <Link href="/presentation">
+                <Link href={aboutData.cta.href}>
                   <motion.span
                     className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl
                       bg-gradient-to-r from-[#1A3A8F] to-[#2D5BE3] text-white font-bold
-                      shadow-[0_4px_20px_rgba(26,58,143,0.30)] cursor-pointer"
+                      shadow-[0_4px 20px_rgba(26,58,143,0.30)] cursor-pointer"
                     whileHover={{ scale: 1.03, y: -2, boxShadow: "0 8px 28px rgba(26,58,143,0.40)" }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 380, damping: 26 }}
                   >
-                    {t("cta")}
+                    {aboutData.cta.label[locale as keyof typeof aboutData.cta.label] || t("cta")}
                     <ArrowRight size={18} />
                   </motion.span>
                 </Link>
@@ -315,9 +323,9 @@ export default function AboutSection() {
                       bg-[#2E7D32] border-2 border-white shadow" />
                   </div>
                   <div>
-                    <p className="font-bold text-[#1A202C] text-sm">{t("directorName")}</p>
+                    <p className="font-bold text-[#1A202C] text-sm">{aboutData.directorName[locale as keyof typeof aboutData.directorName] || t("directorName")}</p>
                     <p className="text-[#4A5568] text-xs leading-snug max-w-[220px]">
-                      {t("directorRole")}
+                      {aboutData.directorRole[locale as keyof typeof aboutData.directorRole] || t("directorRole")}
                     </p>
                   </div>
                 </div>

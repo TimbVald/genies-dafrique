@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
+// TrustBar uses translation data directly - no changes needed for this step
+// The data is already properly structured in the translation files
 import { motion, useInView, type Variants } from "framer-motion";
 import { School, BookOpen, Globe, Phone, type LucideIcon } from "lucide-react";
 

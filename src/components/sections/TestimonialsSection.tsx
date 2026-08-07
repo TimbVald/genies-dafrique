@@ -2,14 +2,27 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { getVisibleTestimonials } from "@/lib/data/testimonials";
 import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
 
 interface TestimonialItem {
-  name: string;
-  role: string;
-  text: string;
+  name: {
+    fr: string;
+    en: string;
+    ew: string;
+  };
+  role: {
+    fr: string;
+    en: string;
+    ew: string;
+  };
+  text: {
+    fr: string;
+    en: string;
+    ew: string;
+  };
   stars: number;
 }
 
@@ -25,7 +38,7 @@ const AUTOPLAY_DELAY = 6000;
 export default function TestimonialsSection() {
   const t      = useTranslations("testimonials");
   const locale = useLocale();
-  const items  = t.raw("items") as TestimonialItem[];
+  const items  = getVisibleTestimonials();
 
   const [current,   setCurrent]   = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -165,7 +178,7 @@ export default function TestimonialsSection() {
                       className="font-display italic text-white/90 leading-relaxed mb-8"
                       style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }}
                     >
-                      &ldquo;{items[current].text}&rdquo;
+                      &ldquo;{items[current].text[locale as keyof typeof items[current].text] || items[current].text.fr}&rdquo;
                     </p>
 
                     <footer>
@@ -203,10 +216,10 @@ export default function TestimonialsSection() {
                         </div>
                         <div>
                           <cite className="not-italic font-bold text-white text-sm block">
-                            {items[current].name}
+                            {items[current].name[locale as keyof typeof items[current].name] || items[current].name.fr}
                           </cite>
                           <span className="text-white/55 text-xs">
-                            {items[current].role}
+                            {items[current].role[locale as keyof typeof items[current].role] || items[current].role.fr}
                           </span>
                         </div>
                       </div>

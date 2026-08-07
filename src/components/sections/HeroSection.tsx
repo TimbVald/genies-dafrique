@@ -14,37 +14,18 @@ import {
 } from "framer-motion";
 import { Play, X, ChevronDown, ArrowRight } from "lucide-react";
 
+import { getHeroSlides, getHeroContent, getHeroConfig } from "@/lib/data/home";
+
 /* ══════════════════════════════════════════════════════════════
    3 SLIDES — images portrait affichées en plein écran desktop
    Chaque slide a : position sujet, zoom Ken Burns, durée
 ══════════════════════════════════════════════════════════════════ */
-const SLIDES = [
-  {
-    src:      "/images/IMG-20260723-WA0024.jpg",
-    // Image portrait : enfant avec plante → sujet centré haut
-    pos:      "center 20%",
-    // Ken Burns : zoom légèrement vers le bas (suit le sujet)
-    kenFrom:  "scale(1.08) translateY(-2%)",
-    kenTo:    "scale(1.0)  translateY(2%)",
-  },
-  {
-    src:      "/images/pexels-ani-ani.jpg",
-    // Image portrait : enfant avec poissons → sujet haut-centre
-    pos:      "center 15%",
-    kenFrom:  "scale(1.06) translateY(-1%)",
-    kenTo:    "scale(1.0)  translateY(3%)",
-  },
-  {
-    src:      "/images/pexels-ai25studioai-7342628.jpg",
-    // Image portrait : enfant avec cubes → sujet centre
-    pos:      "center 30%",
-    kenFrom:  "scale(1.07) translateY(0%)",
-    kenTo:    "scale(1.0)  translateY(4%)",
-  },
-] as const;
+const SLIDES = getHeroSlides();
+const HERO_DATA = getHeroContent();
+const HERO_CFG = getHeroConfig();
 
-const SLIDE_MS   = 7000;
-const TRANSITION = 1600;
+const SLIDE_MS   = HERO_CFG.slideDuration;
+const TRANSITION = HERO_CFG.transitionDuration;
 
 /* ── Variants crossfade ──────────────────────────────────────── */
 const TV: Transition = { duration: TRANSITION / 1000, ease: "easeInOut" };
@@ -64,6 +45,9 @@ const CAP_V: Variants = {
 export default function HeroSection() {
   const t      = useTranslations("hero");
   const locale = useLocale();
+  
+  // Use data from service, falling back to translations for compatibility
+  const heroContent = HERO_DATA;
 
   const [current,   setCurrent]   = useState(0);
   const [paused,    setPaused]    = useState(false);
@@ -80,7 +64,7 @@ export default function HeroSection() {
 
   /* ── Autoplay slides ── */
   const advance = useCallback(() => {
-    if (!paused) setCurrent((c) => (c + 1) % SLIDES.length);
+    if (!paused && HERO_CFG.autoplay) setCurrent((c) => (c + 1) % SLIDES.length);
   }, [paused]);
 
   useEffect(() => {
@@ -116,8 +100,8 @@ export default function HeroSection() {
         ref={sectionRef}
         className="relative w-full overflow-hidden bg-[#0D1F6B]"
         style={{ height: "100svh", minHeight: 580, maxHeight: 1080 }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        onMouseEnter={() => HERO_CFG.pauseOnHover && setPaused(true)}
+        onMouseLeave={() => HERO_CFG.pauseOnHover && setPaused(false)}
         aria-label={
           locale === "fr"
             ? "Bienvenue aux Génies d'Afrique"
@@ -146,11 +130,11 @@ export default function HeroSection() {
                 transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
               >
                 <Image
-                  src={SLIDES[current].src}
+                  src={SLIDES[current].image}
                   alt=""
                   fill
                   className="object-cover"
-                  style={{ objectPosition: SLIDES[current].pos }}
+                  style={{ objectPosition: SLIDES[current].position }}
                   sizes="100vw"
                   priority={current === 0}
                   aria-hidden="true"
