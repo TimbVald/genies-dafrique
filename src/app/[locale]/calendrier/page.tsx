@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from 'next-intl';
 import SchoolCalendar from '@/components/calendar/SchoolCalendar';
 import SectionBadge from '@/components/ui/SectionBadge';
