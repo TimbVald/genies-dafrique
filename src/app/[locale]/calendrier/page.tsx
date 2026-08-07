@@ -15,12 +15,12 @@ export default function CalendrierPage() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <SectionBadge>Calendrier Scolaire</SectionBadge>
+          <SectionBadge variant="white">Calendrier Scolaire</SectionBadge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Calendrier Scolaire
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-            Consultez toutes les activités importantes de l'établissement : rentrées, examens, réunions, sorties et événements culturels.
+            Retrouvez les principales activités, événements et rendez-vous de la vie de notre établissement.
           </p>
         </div>
       </section>
