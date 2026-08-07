@@ -1,4 +1,5 @@
 import type { LocalizedText } from "@/types";
+import { getMission, getVision } from "@/lib/data/about";
 
 /* ── About Section Configuration for Home Page ───────────────────── */
 export interface AboutSectionData {
@@ -42,16 +43,9 @@ export const ABOUT_SECTION_DATA: AboutSectionData = {
     en: "Work – Discipline – Success",
     ew: "Akɔm – Dzam – Nyɔ́ñ",
   },
-  mission: {
-    fr: "Fondé à Nkozoa et agréé par le MINEDUB, le Complexe Scolaire Bilingue Les Génies d'Afrique est né d'une conviction profonde : chaque enfant porte un potentiel exceptionnel. Notre mission est de le révéler, de le nourrir et de le préparer à exceller dans un monde globalisé.",
-    en: "Founded in Nkozoa and accredited by MINEDUB, the Bilingual School Complex Les Génies d'Afrique was born from a deep conviction: every child carries exceptional potential. Our mission is to reveal it, nurture it and prepare them to excel in a globalised world.",
-    ew: "A tɔ́l na Nkozoa na a yɔ́k agrément ya MINEDUB, Complexe Scolaire Bilingue Les Génies d'Afrique a nga bɔ́g na mvon ya minene : mwana nyonso a ne génie ya mvoé. Ntii biso a ne a yɔ́k, a lɛ́g na a sɔ́m a yɔ́k na si ya mvoé.",
-  },
-  vision: {
-    fr: "Nous aspirons à devenir l'établissement bilingue de référence au Cameroun, reconnu pour la qualité de son accompagnement, l'innovation de ses méthodes pédagogiques et l'épanouissement de ses élèves.",
-    en: "We aspire to become the bilingual school of reference in Cameroon, recognised for the quality of our guidance, the innovation of our teaching methods and the holistic development of our students.",
-    ew: "Biso bi ne avant sukul bilingue ya libɔ́g na Kamerun, a yen na si nyonso na mvoé ya akom, minlɔ́m ya akom na a yɔ́k bana.",
-  },
+  // Use centralized mission and vision data
+  mission: getMission().content,
+  vision: getVision().content,
   values: {
     fr: "L'excellence, l'intégrité, le bilinguisme et la bienveillance forment le fondement de notre projet éducatif. Chaque décision pédagogique est guidée par le bien-être et la progression de chaque enfant qui nous est confié.",
     en: "Excellence, integrity, bilingualism and care form the foundation of our educational project. Every pedagogical decision is guided by the well-being and progress of each child entrusted to us.",
