@@ -342,6 +342,32 @@
         ]
       }
     ]
+  },
+  "admissionConditions": {
+    "badge": "Nzɔ́g ya admission",
+    "title": "A kɔ́bɔ́talane na fam ya Génies d'Afrique",
+    "timeline": [
+      {
+        "step": "1",
+        "title": "A yen mimbɔ́g",
+        "description": "A kɔ́l mwana a ne na mvula na mfañ ya nkan ya a jɔ́l. A kɔ́l section Admissions amu liste ya nyonso."
+      },
+      {
+        "step": "2",
+        "title": "A zɔ́k dossier",
+        "description": "A zɔ́k na a tɔ́l dossier ya inscription na secrétariat aloŋ na internet. Tɔ́l biyem nyonso: extrait ya naissance, bulletins, photos, certificat médical."
+      },
+      {
+        "step": "3",
+        "title": "Mvog na a yen",
+        "description": "Mvog na direction na/aloŋ munya. Amu bana ba primaire, a yen nkan ya mwana a nga bɔ́g."
+      },
+      {
+        "step": "4",
+        "title": "Confirmation na inscription",
+        "description": "A zɔ́k bulletin ya inscription ya nyonso. A tɔ́l mimbɔ́g ya inscription na ya ngon ya ntɔ́l. Mwana a ne a tɔ́l mvoé."
+      }
+    ]
   }
 },
   "admissionsPage": {
@@ -464,6 +490,31 @@
   "title": "A lɔ́g mfañ lelo?",
   "subtitle": "Bikɔ́l bya biso bi ne na WhatsApp amu a jɔ́l minkɔ́bɔ́ nyonso ya admission.",
   "button": "Tɔ́l mfañ na WhatsApp"
+},
+"process": {
+  "badge": "Nzɔ́g ya admission",
+  "title": "Minkan ya inscription",
+  "subtitle": "Nzɔ́g ya mvoé na mbɔ́g na minsani 4."
+},
+"documents": {
+  "badge": "Biyem bya a tɔ́l",
+  "title": "Dossier ya inscription"
+},
+"fees": {
+  "badge": "Mimbɔ́g ya sukul",
+  "title": "Prix ya sukul",
+  "level": "Nkan",
+  "age": "Mvula",
+  "tuition": "Mimbɔ́g"
+},
+"contact": {
+  "badge": "Kɔ́bɔ́talane",
+  "title": "Kɔ́bɔ́talane na bikɔ́l bya admission",
+  "phone": "Kɔ́l biso",
+  "hours": "Minsan ya misala",
+  "hoursValue": "Mvul – Mvul : 8h00 – 13h00",
+  "location": "Ase ya biso",
+  "locationValue": "Nkozoa, nyuma ya Boulangerie Massa, Yaoundé"
 }
 },
 "newsPage": {

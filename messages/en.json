@@ -21,7 +21,11 @@
     "language": "Language",
     "languageFr": "Français",
     "languageEn": "English",
-    "languageEw": "Ewondo"
+    "languageEw": "Ewondo",
+    "subMission": "Our Mission",
+    "subHistory": "Our History",
+    "subValues": "Our Values",
+    "subTeam": "Our Team"
   },
   "calendar": {
     "title": "School Calendar",
@@ -464,133 +468,135 @@
       "subtitle": "From Day Care to Primary, our French and English sections offer a complete bilingual education aligned with MINEDUB standards, enriched by innovative pedagogical projects."
     },
     "intro": {
+      "badge": "Overview",
       "title": "A Complete Bilingual Journey",
-      "body": "At Les Génies d'Afrique, every student benefits from a fully bilingual educational journey. Whether in the French or English section, French and English are taught daily from the earliest age, opening the door to two linguistic and cultural worlds. Our enhanced curricula go beyond official programmes to include school farming, entrepreneurship, arts, and sports."
+      "subtitle": "From Day Care to CM2 / Class 6, our programmes follow MINEDUB recommendations, enriched with a bilingual approach, practical projects and varied extracurricular activities."
     },
     "levels": [
       {
         "id": "daycare",
-        "badge": "Day Care",
         "title": "Day Care (0–2 years)",
-        "image": "/images/IMG-20260723-WA0015.jpg",
+        "subtitle": "0 to 2 years",
+        "image": "/images/IMG-20260723-WA0024.jpg",
         "presentation": "A warm, secure, and loving environment where our youngest children take their first steps in a community that values awakening, sensory discovery, and individual care. Each child evolves at their own pace under the watchful eye of qualified early childhood professionals.",
-        "curriculum": [
-          "Sensory awakening and motor skills",
-          "First language experiences in French and English",
-          "Nursery rhymes, songs, and stories",
-          "Artistic and manual activities",
-          "Rest and adapted routines"
+        "programme": [
+          "Sensory awakening and educational play",
+          "Stories, nursery rhymes and gentle music",
+          "Motor and sensory exploration activities",
+          "Structured daily routines, meals and naps",
+          "Progressive bilingual immersion FR / EN"
         ],
-        "objectives": [
-          "Ensure the physical and emotional security of each child",
-          "Develop first motor and cognitive skills",
-          "Introduce the joy of discovery and learning",
-          "Foster first social interactions"
+        "objectifs": [
+          "Foster emotional security and bonding",
+          "Stimulate the senses and discovery",
+          "Develop fine and gross motor skills",
+          "Awaken language, sounds and colours",
+          "Introduce first rules of community life"
         ]
       },
       {
-        "id": "nursery",
-        "badge": "Nursery",
+        "id": "maternelle",
         "title": "Nursery School (2–5 years)",
-        "image": "/images/IMG-20260723-WA0014.jpg",
-        "presentation": "Nursery school is a crucial stage where children consolidate their learning foundations and prepare for primary education. Our bilingual approach immerses them daily in French and English through playful, structured activities designed to stimulate curiosity and develop social skills.",
-        "curriculum": [
-          "Pre-reading and pre-writing in both languages",
-          "Introduction to mathematics and logic",
-          "Awakening to the world around us",
-          "Plastic arts, music, and movement",
-          "Socialisation and group life"
+        "subtitle": "2 to 5 years",
+        "image": "/images/Generated_Image.png",
+        "presentation": "Nursery school is the age of great discoveries. Our programmes combine structured learning, educational games and creative projects. Children progressively build foundations in reading, writing and numeracy, while developing their social skills and autonomy.",
+        "programme": [
+          "Pre-reading and pre-writing in French and English",
+          "Introduction to mathematics and logical reasoning",
+          "Arts and crafts, drawing, painting and modelling",
+          "Singing, music, body awareness and dance",
+          "Nature, science and observation projects",
+          "Role play, socialisation and group life"
         ],
-        "objectives": [
-          "Build solid foundations in reading and counting",
-          "Develop oral fluency in French and English",
-          "Encourage autonomy and self-confidence",
-          "Prepare children for a successful entry into primary school"
+        "objectifs": [
+          "Master the prerequisites for entry into Grade 1",
+          "Develop self-confidence and autonomy",
+          "Integrate rules of community life",
+          "Stimulate curiosity and love of learning",
+          "Build a rich vocabulary in both languages"
         ]
       },
       {
-        "id": "primary",
-        "badge": "Primary",
-        "title": "Primary School (5–11 years)",
+        "id": "primaire",
+        "title": "Primary School (6–11 years)",
+        "subtitle": "6 to 11 years",
         "image": "/images/IMG-20260723-WA0007.jpg",
-        "presentation": "Primary school at Les Génies d'Afrique offers two parallel sections — Francophone and Anglophone — both following the official MINEDUB curricula. Students benefit from enhanced programmes, intensive bilingual teaching, and innovative projects to develop critical thinking, creativity, and a love of learning.",
-        "curriculum": [
-          "French / English language and literature",
-          "Mathematics and science",
-          "History, geography, and civics",
-          "Technology and digital culture",
-          "Arts, music, and physical education",
-          "School farming and junior entrepreneurship"
+        "presentation": "From Grade 1 to Grade 6, our students benefit from a rigorous and motivating education. Both sections — Francophone and Anglophone — follow official MINEDUB programmes with constant reinforcement of the second language, sciences, technologies and general culture.",
+        "programme": [
+          "French / English: reading, grammar, written and oral expression",
+          "Mathematics, experimental science and technology",
+          "History, geography and civic education",
+          "Computing, IT skills and documentary research",
+          "Physical education, team sports and swimming",
+          "Interdisciplinary projects, farming and junior entrepreneurship"
         ],
-        "objectives": [
-          "Ensure mastery of fundamental knowledge and skills",
-          "Develop critical thinking and problem-solving skills",
-          "Achieve fluency in both French and English",
-          "Prepare students for successful entry into secondary school",
-          "Shape responsible, creative, and autonomous citizens"
+        "objectifs": [
+          "Achieve excellent results in exams and competitions",
+          "Master both languages at primary level",
+          "Develop critical thinking, analysis and reasoning",
+          "Shape responsible, creative and entrepreneurial citizens",
+          "Prepare confidently for secondary school entry"
         ]
       }
     ],
     "sections": {
-      "title": "Our Two Linguistic Sections",
-      "subtitle": "Two complementary paths, one shared ambition: to shape bilingual, fulfilled, and successful students.",
-      "frenchSection": {
-        "badge": "French Section",
-        "title": "Francophone Programme",
-        "subtitle": "Day Care → CM2 (2–11 years)",
-        "body": "The French section follows the official curricula of the Cameroonian Ministry of Basic Education, enriched with complementary educational content and progressive English immersion from Day Care. Our teaching is rigorous, caring, and stimulating. It prepares students for the success of the First School Leaving Certificate (CFEE) and admission to the best secondary schools.",
-        "keyPoints": [
-          "Enhanced official MINEDUB curriculum",
-          "Intensive English instruction from Grade 1",
-          "Emphasis on sciences, mathematics, and expression",
-          "Agricultural and entrepreneurial projects",
-          "Preparation for CFEE in CM2",
-          "Transition pathways to secondary school"
-        ]
-      },
-      "englishSection": {
-        "badge": "English Section",
-        "title": "Anglophone Programme",
-        "subtitle": "Nursery → Class 6 (2–11 years)",
-        "body": "The English section offers a rigorous curriculum fully aligned with MINEDUB guidelines. Teaching is conducted primarily in English, with French as a strong second language. Students benefit from a rich literary and scientific education that prepares them for the First School Leaving Certificate (FSLC) and the best secondary schools in Cameroon and abroad.",
-        "keyPoints": [
-          "Rigorous Anglophone MINEDUB curriculum",
-          "French as a strong second language",
-          "Focus on English literacy and numeracy",
-          "Cultural openness and global perspective",
-          "Preparation for FSLC in Class 6",
-          "Preparation for common entrance exams"
-        ]
-      }
+      "badge": "Our Sections",
+      "title": "Two Paths, One Ambition",
+      "subtitle": "A Francophone path and an Anglophone path — two routes to excellence sharing the same values in a fully bilingual environment.",
+      "cards": [
+        {
+          "id": "francophone",
+          "flag": "🇫🇷",
+          "title": "Francophone Section",
+          "description": "Official MINEDUB curriculum delivered in French, with intensive English as a second language from Grade 1. Ideal for preparing students for the best Francophone secondary schools.",
+          "features": [
+            "Enhanced official MINEDUB curriculum",
+            "Intensive English (4h / week from Grade 1)",
+            "Reinforced mathematics, sciences and expression",
+            "History-Geography, civic and African culture",
+            "Projects: farming, livestock, entrepreneurship",
+            "Continuous assessment and mock exam each semester"
+          ]
+        },
+        {
+          "id": "anglophone",
+          "flag": "🇬🇧",
+          "title": "Anglophone Section",
+          "description": "Rigorous curriculum aligned with MINEDUB anglophone standards. French as a reinforced second language. Ideal preparation for international programmes or top Anglophone secondary schools.",
+          "features": [
+            "Full MINEDUB anglophone curriculum",
+            "French as second language (4h / week)",
+            "English Literacy, Numeracy, Science & ICT",
+            "Social Studies & Citizenship Education",
+            "Projects: Debate Club, Drama, Model UN",
+            "Continuous Assessment + Mock Examinations"
+          ]
+        }
+      ]
     },
     "admissionConditions": {
-      "title": "Admission Timeline",
-      "subtitle": "Our admissions process is designed to be simple, transparent, and welcoming.",
-      "steps": [
+      "badge": "Admission Process",
+      "title": "Join the Les Génies d'Afrique Community",
+      "timeline": [
         {
-          "step": "01",
-          "title": "Information & Visit",
-          "description": "Contact us to schedule a visit of the premises and meet our team. We will present our educational project in detail."
+          "step": "1",
+          "title": "Check Conditions",
+          "description": "Verify the age and aptitude requirements for the requested level. Visit the Admissions section for the full list."
         },
         {
-          "step": "02",
-          "title": "Submission of Application",
-          "description": "Submit the complete application file (birth certificate, previous school records, ID photos, medical certificate)."
+          "step": "2",
+          "title": "Submit Application",
+          "description": "Collect and complete the enrolment form at the school office or online. Provide all required documents: birth certificate, report cards, photos, medical certificate."
         },
         {
-          "step": "03",
-          "title": "Assessment & Interview",
-          "description": "For primary levels, a pedagogical assessment and an interview with the family are conducted to finalise admission."
+          "step": "3",
+          "title": "Interview & Assessment",
+          "description": "An interview is held with the principal and/or a teacher. For primary levels, a placement assessment may be offered."
         },
         {
-          "step": "04",
-          "title": "Admission & Registration",
-          "description": "After the admission decision, formalise registration by paying tuition fees and completing administrative procedures."
-        },
-        {
-          "step": "05",
-          "title": "Start of School Year",
-          "description": "Welcome to Les Génies d'Afrique! Your child joins their class and begins their bilingual educational journey."
+          "step": "4",
+          "title": "Confirm & Enrol",
+          "description": "Receive the official enrolment confirmation. Pay registration and first-term tuition fees. Your child is officially enrolled."
         }
       ]
     }
@@ -749,6 +755,31 @@
       "title": "Chat with us directly on WhatsApp",
       "subtitle": "Our admissions team is available Monday to Friday, 8 AM to 1 PM, to answer all your questions in real time.",
       "button": "Message us on WhatsApp"
+    },
+    "process": {
+      "badge": "Admission Process",
+      "title": "How Enrollment Works",
+      "subtitle": "A simple, transparent and welcoming process in 4 steps."
+    },
+    "documents": {
+      "badge": "Required Documents",
+      "title": "Documents to Provide"
+    },
+    "fees": {
+      "badge": "Tuition Fees",
+      "title": "Fee Schedule",
+      "level": "Level",
+      "age": "Age",
+      "tuition": "Tuition"
+    },
+    "contact": {
+      "badge": "Contact Us",
+      "title": "Reach Our Admissions Team",
+      "phone": "Call Us",
+      "hours": "Opening Hours",
+      "hoursValue": "Mon – Fri: 8:00 AM – 1:00 PM",
+      "location": "Our Location",
+      "locationValue": "Nkozoa, behind Boulangerie Massa, Yaoundé"
     }
   },
   "newsPage": {

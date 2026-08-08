@@ -490,6 +490,31 @@
       "title": "Besoin d'un renseignement immédiat ?",
       "subtitle": "Notre équipe est joignable directement sur WhatsApp pour répondre à toutes vos questions sur les admissions.",
       "button": "Nous écrire sur WhatsApp"
+    },
+    "process": {
+      "badge": "Procédure d'admission",
+      "title": "Comment se déroule l'inscription ?",
+      "subtitle": "Un processus simple, transparent et humain en 4 étapes."
+    },
+    "documents": {
+      "badge": "Pièces à fournir",
+      "title": "Documents à fournir"
+    },
+    "fees": {
+      "badge": "Frais de scolarité",
+      "title": "Grille tarifaire",
+      "level": "Niveau",
+      "age": "Âge",
+      "tuition": "Scolarité"
+    },
+    "contact": {
+      "badge": "Nous contacter",
+      "title": "Contacter l'équipe des admissions",
+      "phone": "Appelez-nous",
+      "hours": "Horaires d'ouverture",
+      "hoursValue": "Lun – Ven : 8h00 – 13h00",
+      "location": "Notre adresse",
+      "locationValue": "Nkozoa, derrière la Boulangerie Massa, Yaoundé"
     }
   },
   "vieScolairePage": {
