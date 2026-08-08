@@ -25,7 +25,8 @@
   "subMission": "Ntii Bisu",
   "subHistory": "Ntan Bisu",
   "subValues": "Mekat Misu",
-  "subTeam": "Ekipa Bisu"
+  "subTeam": "Ekipa Bisu",
+  "programmes": "Bikɔ́l"
 },
   "calendar": {
     "title": "Kalandriya ya Sukul",
@@ -69,6 +70,101 @@
       "evenements_administratifs": "Mbia ya administration"
     }
   },
+  "programmesPage": {
+    "hero": {
+      "title": "Bikɔ́l bya biso",
+      "subtitle": "Nzɔ́g a tɔ́l 0 na 12 osu"
+    },
+    "intro": {
+      "badge": "Bikɔ́l",
+      "title": "Akom ya mbɔ́g amu mwana nyonso",
+      "body": "A crèche na primaire, programmes nyonso a ne a yɔ́k dzam ya mwana nyonso. Bilingue, bikɔ́l mibuma na bana ba ne mvoé — nyonso amu a yen nyɔ́ñ ya mwana nyonso."
+    },
+    "card": {
+      "learnMore": "A yeme mfañ",
+      "smallClasses": "Bana ba ne mvoé (<25)"
+    },
+    "projects": {
+      "badge": "Bikɔ́l bya akom",
+      "title": "A yeme na misala",
+      "subtitle": "Bikɔ́l bya mvoé bi yeme Génies d'Afrique a ne mvoé na sukul nyonso.",
+      "items": [
+        { "emoji": "🌱", "title": "Agriculture ya sukul",  "description": "Bana ba lɛ́g bilɔ́g bya bango na a yeme mimbɔ́g ya agronomie." },
+        { "emoji": "🐄", "title": "Élevage",               "description": "A yeme élevage ya mbɔ́g (inki, lapin) na ase ya sukul." },
+        { "emoji": "🐟", "title": "Pisciculture",           "description": "A yeme aquaculture na a yen bassin ya mbɔ́g." },
+        { "emoji": "💡", "title": "Mini-entreprises",       "description": "Bikɔ́l bya entrepreneuriat a yeme mfañ ya dzam ya mwana nyonso." },
+        { "emoji": "🎭", "title": "Arts & Culture",         "description": "Théâtre, danse, minlɔ́m ya Afrika na ya si nyonso ngon nyonso." },
+        { "emoji": "⚽", "title": "Nyam",                   "description": "Football, athlétisme, bisala bya fam amu mfañ ya nyam na mfañ ya fam." }
+      ]
+    },
+    "cta": {
+      "title": "A kɔ́bɔ́ na fam ya Génies d'Afrique?",
+      "subtitle": "Bikɔ́l bya biso bi ne Mvul na Mvul, 8h–13h. Za yen biso!",
+      "btnFormations": "A yen bikɔ́l",
+      "btnContact": "Kɔ́bɔ́talane"
+    }
+  },
+  "presentationPage": {
+    "hero": {
+      "title": "Sukul ya biso",
+      "subtitle": "Ntii, mekat na ntan ya biso"
+    },
+    "director": {
+      "badge": "Mfañ ya Direction",
+      "title": "A zɔ́k na fam ya biso",
+      "altPhoto": "Direction ya sukul",
+      "roleLabel": "Directeur Général",
+      "quote": "\"Sukul ya biso a nga bɔ́g na mvon mvoé: mwana nyonso a ne génie ya mvoé ya mwana. Misala ya biso a ne a yen dzam ayi, a yɔ́k na a tɔ́l mwana a yen a nyɔ́ñ. Ayi, biso bi ye akom — biso bi ye akom, biso bi kɔ́bɔ́, biso bi yɔ́k.\"",
+      "body": "Bikɔ́l bya biso bi nga kɔ́l ngon nyonso a ye mwana wua ase ya libɔ́g ya akom bilingue, na mfañ ya minsan ya mwana na minsili ya mwana."
+    },
+    "history": {
+      "badge": "Ntan ya biso",
+      "title": "Sukul a nga bɔ́g na mvon",
+      "items": [
+        { "year": "2024",      "text": "A tɔ́l sukul na a tɔ́l bikɔ́l bya ndɔ́l na Nkozoa, Yaoundé." },
+        { "year": "Fév. 2025", "text": "A zɔ́k agrément ya MINEDUB — Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP." },
+        { "year": "Sept. 2025","text": "A yɔ́k mvoé na a tɔ́l bana ba ntɔ́lɔ́g a crèche na primaire." },
+        { "year": "2026",      "text": "A yɔ́k programmes mibuma, a tɔ́l site web na a yen fam ya sukul." }
+      ]
+    },
+    "values": {
+      "badge": "Mekat Misu",
+      "title": "Dzam bi ne na biso",
+      "items": [
+        { "icon": "Star",      "title": "Nyɔ́ñ",              "body": "Biso bi wum mwana nyonso a ne na mfañ ya dzam minene. Biso bi lɔ́g minsili ya misala, dzam ya mvoé na a yɔ́k si ya mwana." },
+        { "icon": "Shield",    "title": "Mbɔ́g ya mfañ",      "body": "Mfañ, mbɔ́g na a yen balɛ́g bi ne mimbɔ́g ya a yɔ́k mwana a tɔ́l mvoé mvoé." },
+        { "icon": "Globe",     "title": "Bilinguisme",        "body": "A yeme français na anglais a ne a kɔ́l nzɔ́g ya minsili mibuma iba na a ye mfañ ya nyɔ́ñ na si nyonso." },
+        { "icon": "Lightbulb", "title": "Minlɔ́m ya mvoé",   "body": "A ne agriculture ya sukul na entrepreneuriat junior, biso bi lɛ́g bana biso amu si ya ndɔ́ma." },
+        { "icon": "Heart",     "title": "Mvoé ya mfañ",       "body": "Mwana a ne mfañ a yeme mvoé. Sukul ya biso a ne ase ya mbɔ́g, ya a yen balɛ́g na mfañ ya motema." },
+        { "icon": "Sprout",    "title": "A yɔ́k mwana nyonso","body": "Biso bi lɛ́g mwana na dzam nyonso: nyam, mfañ ya motema, minsili na mbɔ́g ya motema." }
+      ]
+    },
+    "accreditation": {
+      "badge": "Agrément ya mvoé",
+      "title": "Sukul a yen na État ya Kamerun",
+      "decree": "Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP",
+      "date": "14 février 2025 — Ministère de l'Éducation de Base"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Kɔ́bɔ́talane na biso",
+      "subtitle": "Bikɔ́l bya biso bi ne a yen a jɔ́l biabé nyonso na a yeme a yɔ́k bia."
+    },
+    "writeBadge": "Tɔ́l mfañ",
+    "mapTitle": "Ase ya biso",
+    "followUs": "Bika bya minsili",
+    "infoCards": [
+      { "icon": "MapPin", "title": "Ase",                   "lines": ["Nkozoa, nyuma ya Boulangerie Massa", "Yaoundé, Kamerun"] },
+      { "icon": "Phone",  "title": "Minkɔ́bɔ́ ya téléphone","lines": ["651 11 15 06", "656 66 38 48"] },
+      { "icon": "Mail",   "title": "Adresse e-mail",        "lines": ["lesgeniesdafrique836@gmail.com"] },
+      { "icon": "Clock",  "title": "Minsan ya misala",      "lines": ["Mvul – Mvul", "8h00 – 13h00"] }
+    ],
+    "form": {
+      "title": "Tɔ́l a yɔ́k mfañ",
+      "subtitle": "Bikɔ́l bya biso bi nga jɔ́l wua na 24 na 48 minsani."
+    }
+  },
   "pageTitles": {
     "home": {
       "title": "Akog | Complexe Scolaire Bilingue Les Génies d'Afrique",
@@ -104,6 +200,10 @@
     }
   },
   "aboutPage": {
+  "hero": {
+    "title": "Mvon mvo bisu",
+    "subtitle": "Ntan, ntii, vision, mekat na ekipa ya bisu"
+  },
   "history": {
     "badge": "Minkɔ́lɔ́ mia biso",
     "title": "A mvon na dzam ya mvoé",

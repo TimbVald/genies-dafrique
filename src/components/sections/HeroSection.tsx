@@ -242,8 +242,8 @@ export default function HeroSection() {
 
             {/* Actions droite */}
             <div className="flex items-center gap-3 flex-shrink-0 flex-wrap">
-              {/* CTA principal */}
-              <Link href="/admissions">
+              {/* CTA principal — link to formations, not admissions */}
+              <Link href="/formations">
                 <motion.span
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
                     bg-[#D32F2F] text-white font-bold text-sm tracking-wide

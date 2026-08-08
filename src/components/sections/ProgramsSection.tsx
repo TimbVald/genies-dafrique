@@ -67,7 +67,6 @@ function ProgramCard({
   levelsLabel,
   strengthsLabel,
   ctaLabel,
-  ctaAdmissionsLabel,
   inView,
 }: {
   card: ProgramCard;
@@ -75,7 +74,6 @@ function ProgramCard({
   levelsLabel: string;
   strengthsLabel: string;
   ctaLabel: string;
-  ctaAdmissionsLabel: string;
   inView: boolean;
 }) {
   const [tab, setTab]         = useState<"levels" | "strengths">("levels");
@@ -257,13 +255,9 @@ function ProgramCard({
           </AnimatePresence>
         </div>
 
-        {/* Ligne de séparation */}
-        <div className="h-px bg-[#E2E8F0]" />
-
-        {/* ── Boutons d'action ── */}
-        <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-          {/* Bouton principal "En savoir plus" */}
-          <Link href={card.href} className="flex-1">
+        {/* ── Bouton d'action unique ── */}
+        <div className="mt-auto">
+          <Link href={card.href} className="w-full">
             <motion.span
               className="flex items-center justify-center gap-2 w-full
                 py-3.5 rounded-xl text-white font-bold text-sm
@@ -274,39 +268,12 @@ function ProgramCard({
                 } 100%)`,
                 boxShadow: `0 4px 18px ${accent}45`,
               }}
-              whileHover={{
-                scale: 1.02,
-                y: -2,
-                boxShadow: `0 8px 28px ${accent}55`,
-              }}
+              whileHover={{ scale: 1.02, y: -2, boxShadow: `0 8px 28px ${accent}55` }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 380, damping: 24 }}
             >
               {ctaLabel}
               <ArrowRight size={16} />
-            </motion.span>
-          </Link>
-
-          {/* Bouton secondaire "S'inscrire" */}
-          <Link href="/admissions">
-            <motion.span
-              className="flex items-center justify-center gap-2
-                px-5 py-3.5 rounded-xl font-semibold text-sm
-                border-2 cursor-pointer whitespace-nowrap"
-              style={{
-                color: accent,
-                borderColor: `${accent}60`,
-              }}
-              whileHover={{
-                scale: 1.02,
-                y: -2,
-                backgroundColor: `${accent}0d`,
-                borderColor: accent,
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 380, damping: 24 }}
-            >
-              {ctaAdmissionsLabel}
             </motion.span>
           </Link>
         </div>
@@ -401,7 +368,6 @@ export default function ProgramsSection() {
               levelsLabel={t("levels")}
               strengthsLabel={t("strengths")}
               ctaLabel={t("cta")}
-              ctaAdmissionsLabel={t("ctaAdmissions")}
               inView={inView}
             />
           ))}

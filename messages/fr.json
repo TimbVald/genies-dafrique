@@ -25,7 +25,8 @@
     "subMission": "Notre Mission",
     "subHistory": "Notre Histoire",
     "subValues": "Nos Valeurs",
-    "subTeam": "Notre Équipe"
+    "subTeam": "Notre Équipe",
+    "programmes": "Programmes"
   },
   "calendar": {
     "title": "Calendrier scolaire",
@@ -69,6 +70,101 @@
       "evenements_administratifs": "Événements administratifs"
     }
   },
+  "programmesPage": {
+    "hero": {
+      "title": "Nos Programmes",
+      "subtitle": "Un parcours complet de 0 à 12 ans"
+    },
+    "intro": {
+      "badge": "Programmes",
+      "title": "Une pédagogie adaptée à chaque âge",
+      "body": "Du tout premier âge jusqu'à la fin du cycle primaire, chaque programme est conçu pour correspondre précisément aux besoins développementaux de l'enfant. Immersion bilingue, projets innovants et petits effectifs — tout au service de la réussite de chaque enfant."
+    },
+    "card": {
+      "learnMore": "En savoir plus",
+      "smallClasses": "Petits effectifs (<25)"
+    },
+    "projects": {
+      "badge": "Projets Pédagogiques",
+      "title": "Apprendre par l'action",
+      "subtitle": "Des projets uniques qui distinguent Les Génies d'Afrique de tous les autres établissements.",
+      "items": [
+        { "emoji": "🌱", "title": "Agriculture scolaire",  "description": "Les élèves cultivent leur propre jardin et apprennent les bases de l'agronomie." },
+        { "emoji": "🐄", "title": "Élevage",               "description": "Initiation à l'élevage responsable (poules, lapins) dans l'enceinte de l'école." },
+        { "emoji": "🐟", "title": "Pisciculture",           "description": "Découverte de l'aquaculture et de la gestion d'un bassin piscicole." },
+        { "emoji": "💡", "title": "Mini-entreprises",       "description": "Projets entrepreneuriaux supervisés pour développer l'esprit d'initiative des élèves." },
+        { "emoji": "🎭", "title": "Arts & Culture",         "description": "Théâtre, danse, musique africaine et internationale tout au long de l'année." },
+        { "emoji": "⚽", "title": "Sport",                  "description": "Football, athlétisme, jeux collectifs pour le développement physique et l'esprit d'équipe." }
+      ]
+    },
+    "cta": {
+      "title": "Prêt à rejoindre les Génies d'Afrique ?",
+      "subtitle": "Notre équipe est disponible du lundi au vendredi, 8h–13h. Venez nous rencontrer !",
+      "btnFormations": "Voir nos formations",
+      "btnContact": "Nous contacter"
+    }
+  },
+  "presentationPage": {
+    "hero": {
+      "title": "L'École",
+      "subtitle": "Notre mission, nos valeurs, notre histoire"
+    },
+    "director": {
+      "badge": "Mot du Directeur",
+      "title": "Bienvenue dans notre famille",
+      "altPhoto": "Le Directeur",
+      "roleLabel": "Directeur Général",
+      "quote": "« Notre établissement est né d'une conviction profonde : chaque enfant porte en lui un génie unique, qu'il revient à l'école de révéler et de cultiver. Ici, nous ne nous contentons pas d'instruire — nous éduquons, nous accompagnons, nous inspirons. »",
+      "body": "Notre équipe s'engage chaque jour à offrir à votre enfant le meilleur environnement d'apprentissage bilingue, dans le respect de ses rythmes et de sa personnalité."
+    },
+    "history": {
+      "badge": "Notre Histoire",
+      "title": "Une école née d'une vision",
+      "items": [
+        { "year": "2024",      "text": "Fondation de l'établissement et construction des locaux à Nkozoa, Yaoundé." },
+        { "year": "Fév. 2025", "text": "Obtention de l'agrément officiel du MINEDUB — Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP." },
+        { "year": "Sept. 2025","text": "Ouverture officielle et accueil des premiers élèves de la crèche au primaire." },
+        { "year": "2026",      "text": "Extension des programmes pédagogiques, lancement du site web et développement de la communauté scolaire." }
+      ]
+    },
+    "values": {
+      "badge": "Nos Valeurs",
+      "title": "Ce en quoi nous croyons",
+      "items": [
+        { "icon": "Star",      "title": "Excellence",          "body": "Nous croyons que chaque enfant est capable de grandes choses. Nous cultivons une culture de l'effort, de l'ambition raisonnée et du dépassement de soi." },
+        { "icon": "Shield",    "title": "Intégrité",            "body": "Honnêteté, responsabilité et respect sont les piliers du comportement que nous inculquons dès le plus jeune âge." },
+        { "icon": "Globe",     "title": "Bilinguisme",          "body": "Maîtriser le français et l'anglais, c'est s'ouvrir à deux univers culturels et se donner les moyens de réussir partout dans le monde." },
+        { "icon": "Lightbulb", "title": "Innovation",           "body": "De l'agriculture scolaire à l'entrepreneuriat junior, nous préparons nos élèves au monde de demain." },
+        { "icon": "Heart",     "title": "Bienveillance",        "body": "Un enfant épanoui apprend mieux. Notre école est un espace de confiance, de respect mutuel et de soutien affectif." },
+        { "icon": "Sprout",    "title": "Développement global", "body": "Nous développons l'enfant dans toutes ses dimensions : intellectuelle, physique, créative et morale." }
+      ]
+    },
+    "accreditation": {
+      "badge": "Accréditation officielle",
+      "title": "Un établissement reconnu par l'État du Cameroun",
+      "decree": "Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP",
+      "date": "14 février 2025 — Ministère de l'Éducation de Base"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions."
+    },
+    "writeBadge": "Nous écrire",
+    "mapTitle": "Notre localisation",
+    "followUs": "Suivez-nous",
+    "infoCards": [
+      { "icon": "MapPin", "title": "Notre adresse",   "lines": ["Nkozoa, derrière la Boulangerie Massa", "Yaoundé, Cameroun"] },
+      { "icon": "Phone",  "title": "Téléphones",       "lines": ["651 11 15 06", "656 66 38 48"] },
+      { "icon": "Mail",   "title": "Email",             "lines": ["lesgeniesdafrique836@gmail.com"] },
+      { "icon": "Clock",  "title": "Horaires",          "lines": ["Lundi – Vendredi", "8h00 – 13h00"] }
+    ],
+    "form": {
+      "title": "Envoyez-nous un message",
+      "subtitle": "Notre équipe vous répondra dans les 24 à 48 heures."
+    }
+  },
   "pageTitles": {
     "home": {
       "title": "Accueil | Complexe Scolaire Bilingue Les Génies d'Afrique",
@@ -104,6 +200,10 @@
     }
   },
   "aboutPage": {
+    "hero": {
+      "title": "À propos de nous",
+      "subtitle": "Histoire, mission, vision, valeurs et équipe pédagogique"
+    },
     "history": {
       "badge": "Notre Histoire",
       "title": "De la vision à la réalité",

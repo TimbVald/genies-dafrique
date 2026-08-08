@@ -1,211 +1,211 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 import { CheckCircle2, Star, Globe, Sprout, Heart, Shield, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "L'École",
-  description:
-    "Découvrez la mission, les valeurs et l'équipe du Complexe Scolaire Bilingue Les Génies d'Afrique.",
+/* ─── Types ─────────────────────────────────────────────────────────── */
+interface HistoryItem { year: string; text: string; }
+interface ValueItem   { icon: string; title: string; body: string; }
+
+/* ─── Icon map ───────────────────────────────────────────────────────── */
+const ICON_MAP: Record<string, React.ReactNode> = {
+  Star:      <Star      size={24} className="text-[#1A3A8F]" />,
+  Shield:    <Shield    size={24} className="text-[#1A3A8F]" />,
+  Globe:     <Globe     size={24} className="text-[#1A3A8F]" />,
+  Lightbulb: <Lightbulb size={24} className="text-[#1A3A8F]" />,
+  Heart:     <Heart     size={24} className="text-[#1A3A8F]" />,
+  Sprout:    <Sprout    size={24} className="text-[#1A3A8F]" />,
 };
 
-const VALEURS = [
-  {
-    icon: <Star size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Excellence",
-    titleEn: "Excellence",
-    fr: "Nous croyons que chaque enfant est capable de grandes choses. Nous cultivons une culture de l'effort, de l'ambition raisonnée et du dépassement de soi.",
-    en: "We believe every child is capable of great things. We cultivate a culture of effort, measured ambition and self-surpassing.",
-  },
-  {
-    icon: <Shield size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Intégrité",
-    titleEn: "Integrity",
-    fr: "Honnêteté, responsabilité et respect sont les piliers du comportement que nous inculquons dès le plus jeune âge.",
-    en: "Honesty, responsibility and respect are the pillars of the behaviour we instil from the earliest age.",
-  },
-  {
-    icon: <Globe size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Bilinguisme",
-    titleEn: "Bilingualism",
-    fr: "Maîtriser le français et l'anglais, c'est s'ouvrir à deux univers culturels et se donner les moyens de réussir partout dans le monde.",
-    en: "Mastering French and English means opening up to two cultural worlds and giving yourself the means to succeed anywhere in the world.",
-  },
-  {
-    icon: <Lightbulb size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Innovation",
-    titleEn: "Innovation",
-    fr: "De l'agriculture scolaire à l'entrepreneuriat junior, nous préparons nos élèves au monde de demain.",
-    en: "From school farming to junior entrepreneurship, we prepare our students for tomorrow's world.",
-  },
-  {
-    icon: <Heart size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Bienveillance",
-    titleEn: "Care",
-    fr: "Un enfant épanoui apprend mieux. Notre école est un espace de confiance, de respect mutuel et de soutien affectif.",
-    en: "A happy child learns better. Our school is a space of trust, mutual respect and emotional support.",
-  },
-  {
-    icon: <Sprout size={28} className="text-[#1A3A8F]" />,
-    titleFr: "Développement global",
-    titleEn: "Holistic Development",
-    fr: "Nous développons l'enfant dans toutes ses dimensions : intellectuelle, physique, créative et morale.",
-    en: "We develop the child in all their dimensions: intellectual, physical, creative and moral.",
-  },
-];
+/* ─── Animation ─────────────────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
 
-const TIMELINE = [
-  { year: "2024", fr: "Fondation de l'établissement et construction des locaux à Nkozoa, Yaoundé.", en: "Foundation of the school and construction of premises in Nkozoa, Yaoundé." },
-  { year: "Fév. 2025", fr: "Obtention de l'agrément officiel du MINEDUB — Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP.", en: "Official MINEDUB accreditation obtained — Order No. 103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP." },
-  { year: "Sept. 2025", fr: "Ouverture officielle et accueil des premiers élèves de la crèche au primaire.", en: "Official opening and welcome of first students from day care to primary school." },
-  { year: "2026", fr: "Extension des programmes pédagogiques, lancement du site web et développement de la communauté scolaire.", en: "Extension of educational programmes, website launch and development of the school community." },
-];
-
+/* ═════════════════════════════════════════════════════════════════════ */
 export default function PresentationPage() {
+  const t   = useTranslations("presentationPage");
+  const tn  = useTranslations("nav");
+
+  /* Lire les tableaux depuis les messages (toute langue lue automatiquement) */
+  const historyItems = t.raw("history.items") as HistoryItem[];
+  const valuesItems  = t.raw("values.items")  as ValueItem[];
+
   return (
     <>
+      {/* ── HERO ── */}
       <PageHero
-        title="L'École / The School"
-        subtitle="Notre mission, nos valeurs, notre histoire"
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
         image="/images/IMG-20260723-WA0024.jpg"
         breadcrumbs={[
-          { label: "Accueil / Home", href: "/" },
-          { label: "L'École / The School" },
+          { label: tn("home"), href: "/" },
+          { label: t("hero.title") },
         ]}
       />
 
       {/* ── MOT DU DIRECTEUR ── */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="relative aspect-[3/4] max-w-[380px] rounded-2xl overflow-hidden shadow-2xl">
+
+            {/* Image */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div className="relative aspect-[3/4] max-w-[380px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-[#E2E8F0]">
                 <Image
                   src="/images/IMG-20260723-WA0024.jpg"
-                  alt="Le Directeur du Complexe Scolaire Bilingue Les Génies d'Afrique"
+                  alt={t("director.altPhoto")}
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F6B]/50 to-transparent" />
               </div>
-              {/* Badge signature */}
-              <div className="absolute -bottom-4 -right-4 lg:right-8 bg-[#D32F2F] text-white rounded-2xl px-5 py-3 shadow-lg">
-                <p className="font-bold text-sm">Le Directeur</p>
-                <p className="text-white/70 text-xs">The Principal</p>
+              <div className="absolute -bottom-4 -right-2 lg:right-4 bg-[#D32F2F] text-white rounded-2xl px-5 py-3 shadow-xl">
+                <p className="font-bold text-sm">{t("director.altPhoto")}</p>
+                <p className="text-white/75 text-xs">{t("director.roleLabel")}</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div>
-              <SectionBadge>Mot du Directeur / Director&apos;s Message</SectionBadge>
-              <h2
-                className="font-display font-bold text-[#1A202C] mb-6"
+            {/* Texte */}
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              transition={{ staggerChildren: 0.12 }}
+            >
+              <motion.div variants={fadeUp}>
+                <SectionBadge>{t("director.badge")}</SectionBadge>
+              </motion.div>
+              <motion.h2
+                variants={fadeUp}
+                className="font-display font-bold text-[#1A202C] mb-6 mt-2 leading-tight"
                 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
               >
-                Bienvenue dans notre famille
-              </h2>
-
-              <blockquote className="border-l-4 border-[#F5A623] pl-6 mb-6">
-                <p className="font-display italic text-[#4A5568] text-lg leading-relaxed mb-4">
-                  &laquo; Notre établissement est né d&apos;une conviction profonde : chaque enfant porte en lui
-                  un génie unique, qu&apos;il revient à l&apos;école de révéler et de cultiver. Ici, nous ne
-                  nous contentons pas d&apos;instruire — nous éduquons, nous accompagnons, nous inspirons. &raquo;
+                {t("director.title")}
+              </motion.h2>
+              <motion.blockquote
+                variants={fadeUp}
+                className="border-l-4 border-[#F5A623] pl-6 mb-6 bg-[#FFF8EE]/50 py-3 rounded-r-xl"
+              >
+                <p className="font-display italic text-[#4A5568] text-lg leading-relaxed">
+                  {t("director.quote")}
                 </p>
-                <p className="font-display italic text-[#4A5568] text-base leading-relaxed">
-                  &ldquo;Our institution was born from a deep conviction: every child carries a unique
-                  genius within them, and it is the school&apos;s role to reveal and nurture it. Here,
-                  we do not merely instruct — we educate, we support, we inspire.&rdquo;
-                </p>
-              </blockquote>
-
-              <p className="text-[#4A5568] leading-relaxed mb-4">
-                Notre équipe s&apos;engage chaque jour à offrir à votre enfant le meilleur environnement
-                d&apos;apprentissage bilingue, dans le respect de ses rythmes et de sa personnalité.
-              </p>
-              <p className="text-[#4A5568] leading-relaxed">
-                Our team is committed every day to providing your child with the best bilingual
-                learning environment, respecting their rhythm and personality.
-              </p>
-            </div>
+              </motion.blockquote>
+              <motion.p variants={fadeUp} className="text-[#4A5568] leading-relaxed">
+                {t("director.body")}
+              </motion.p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── NOTRE HISTOIRE / TIMELINE ── */}
+      {/* ── HISTOIRE ── */}
       <section className="py-24 bg-[#F7F9FC]">
         <div className="max-w-[800px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <SectionBadge>Notre Histoire / Our History</SectionBadge>
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <SectionBadge>{t("history.badge")}</SectionBadge>
             <h2
-              className="font-display font-bold text-[#1A202C]"
+              className="font-display font-bold text-[#1A202C] mt-2"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              Une école née d&apos;une vision
+              {t("history.title")}
             </h2>
-          </div>
+          </motion.div>
 
           <div className="relative">
-            {/* Ligne verticale */}
-            <div className="absolute left-[27px] top-0 bottom-0 w-0.5 bg-[#E2E8F0]" />
-
-            <div className="space-y-10">
-              {TIMELINE.map((item, i) => (
-                <div key={i} className="flex gap-6 items-start">
-                  {/* Point + Année */}
-                  <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-full bg-[#1A3A8F] flex items-center justify-center shadow-md z-10">
-                      <span className="text-white text-xs font-bold text-center leading-tight px-1">
+            <div className="absolute left-7 top-0 bottom-0 w-0.5 bg-[#E2E8F0]" />
+            <div className="space-y-8">
+              {historyItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="flex gap-6 items-start"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-14 h-14 rounded-full bg-[#1A3A8F] flex items-center justify-center shadow-md z-10 relative">
+                      <span className="text-white text-[11px] font-bold text-center leading-tight px-1">
                         {item.year}
                       </span>
                     </div>
                   </div>
-
-                  {/* Texte */}
-                  <div className="bg-white rounded-xl p-5 shadow-sm border border-[#E2E8F0] flex-1 mt-2">
-                    <p className="text-[#1A202C] font-medium text-sm mb-1">{item.fr}</p>
-                    <p className="text-[#4A5568] text-sm italic">{item.en}</p>
+                  <div className="flex-1 bg-white rounded-xl p-5 shadow-sm border border-[#E2E8F0] mt-2
+                    hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                    <p className="text-[#1A202C] font-semibold text-sm leading-relaxed">
+                      {item.text}
+                    </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── NOS VALEURS ── */}
+      {/* ── VALEURS ── */}
       <section className="py-24 bg-white">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-16">
-            <SectionBadge>Nos Valeurs / Our Values</SectionBadge>
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <SectionBadge>{t("values.badge")}</SectionBadge>
             <h2
-              className="font-display font-bold text-[#1A202C]"
+              className="font-display font-bold text-[#1A202C] mt-2"
               style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
             >
-              Ce en quoi nous croyons
+              {t("values.title")}
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {VALEURS.map((v, i) => (
-              <div
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {valuesItems.map((v, i) => (
+              <motion.div
                 key={i}
-                className="group p-7 rounded-2xl border border-[#E2E8F0]
-                  hover:border-[#1A3A8F]/30 hover:shadow-[0_8px_32px_rgba(26,58,143,0.10)]
-                  hover:-translate-y-1 transition-all duration-300"
+                className="group p-7 rounded-2xl border border-[#E2E8F0] bg-white
+                  hover:border-[#1A3A8F]/30 hover:shadow-xl hover:-translate-y-1.5
+                  transition-all duration-300 cursor-default"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.07 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4
-                  group-hover:bg-[#1A3A8F] group-hover:scale-110 transition-all duration-300">
-                  <span className="group-hover:[&>svg]:text-white transition-colors duration-300">
-                    {v.icon}
+                <div
+                  className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4
+                    group-hover:bg-[#1A3A8F] group-hover:scale-110 transition-all duration-300"
+                >
+                  <span className="group-hover:[&>svg]:!text-white transition-colors duration-300">
+                    {ICON_MAP[v.icon] ?? <Star size={24} className="text-[#1A3A8F]" />}
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-[#1A202C] text-lg mb-1">
-                  {v.titleFr}
-                  <span className="text-[#4A5568] font-normal text-sm ml-2">/ {v.titleEn}</span>
+                <h3 className="font-display font-bold text-[#1A202C] text-base mb-2">
+                  {v.title}
                 </h3>
-                <p className="text-[#4A5568] text-sm leading-relaxed mb-2">{v.fr}</p>
-                <p className="text-[#4A5568]/70 text-sm leading-relaxed italic">{v.en}</p>
-              </div>
+                <p className="text-[#4A5568] text-sm leading-relaxed">{v.body}</p>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -217,22 +217,27 @@ export default function PresentationPage() {
         style={{ background: "linear-gradient(135deg, #1A3A8F 0%, #0D1F6B 100%)" }}
       >
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 text-center">
-          <SectionBadge variant="white">Accréditation officielle / Official Accreditation</SectionBadge>
+          <SectionBadge variant="white">{t("accreditation.badge")}</SectionBadge>
           <h2
-            className="font-display font-bold text-white mb-6"
+            className="font-display font-bold text-white mb-8 mt-2"
             style={{ fontSize: "clamp(1.3rem, 2.5vw, 2rem)" }}
           >
-            Un établissement reconnu par l&apos;État du Cameroun
+            {t("accreditation.title")}
           </h2>
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/10 backdrop-blur-sm
-            rounded-2xl px-8 py-6 border border-white/20">
-            <CheckCircle2 size={40} className="text-[#F5A623] flex-shrink-0" />
+          <motion.div
+            className="inline-flex flex-col sm:flex-row items-center gap-5
+              bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-6 border border-white/20"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <CheckCircle2 size={44} className="text-[#F5A623] flex-shrink-0" />
             <div className="text-left">
-              <p className="text-white font-bold text-base">Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP</p>
-              <p className="text-white/70 text-sm">14 février 2025 — Ministère de l&apos;Éducation de Base</p>
-              <p className="text-white/50 text-xs mt-1 italic">Ministry of Basic Education — February 14, 2025</p>
+              <p className="text-white font-bold text-base">{t("accreditation.decree")}</p>
+              <p className="text-white/70 text-sm mt-1">{t("accreditation.date")}</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

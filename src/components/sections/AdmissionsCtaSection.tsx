@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { motion, useInView, useScroll, useTransform, type Variants } from "framer-motion";
-import { Calendar, Phone, MapPin, ArrowRight, Download } from "lucide-react";
+import { Calendar, Phone, MapPin, ArrowRight } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
 
 /* ── Animations ─────────────────────────────────────────────── */
@@ -187,35 +187,23 @@ export default function AdmissionsCtaSection() {
               className="inline-flex items-center justify-center gap-2.5
                 px-8 py-4 rounded-xl bg-white text-[#D32F2F] font-bold text-sm
                 tracking-wide shadow-[0_6px_24px_rgba(0,0,0,0.25)] cursor-pointer"
-              whileHover={{
-                scale: 1.03,
-                y: -3,
-                boxShadow: "0 12px 36px rgba(0,0,0,0.30)",
-              }}
+              whileHover={{ scale: 1.03, y: -3, boxShadow: "0 12px 36px rgba(0,0,0,0.30)" }}
               whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 360, damping: 24 }}
-            >
+              transition={{ type: "spring", stiffness: 360, damping: 24 }}>
               {t("ctaPrimary")}
               <ArrowRight size={17} aria-hidden="true" />
             </motion.span>
           </Link>
 
-          {/* Bouton secondaire outline blanc */}
-          <Link href="/admissions">
+          {/* Bouton secondaire — voir les programmes */}
+          <Link href="/formations">
             <motion.span
               className="inline-flex items-center justify-center gap-2.5
                 px-8 py-4 rounded-xl border-2 border-white/75
                 text-white font-semibold text-sm cursor-pointer"
-              whileHover={{
-                scale: 1.03,
-                y: -3,
-                backgroundColor: "rgba(255,255,255,0.14)",
-                borderColor: "rgba(255,255,255,1)",
-              }}
+              whileHover={{ scale: 1.03, y: -3, backgroundColor: "rgba(255,255,255,0.14)", borderColor: "rgba(255,255,255,1)" }}
               whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 360, damping: 24 }}
-            >
-              <Download size={17} aria-hidden="true" />
+              transition={{ type: "spring", stiffness: 360, damping: 24 }}>
               {t("ctaSecondary")}
             </motion.span>
           </Link>

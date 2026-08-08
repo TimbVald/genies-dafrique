@@ -1,77 +1,93 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
-interface Crumb {
-  label: string;
-  href?: string;
-}
+interface Crumb { label: string; href?: string; }
 
 interface PageHeroProps {
   title: string;
   subtitle?: string;
   image: string;
   breadcrumbs: Crumb[];
+  /** Optional accent color for the bottom bar (defaults to brand red) */
+  accentColor?: string;
 }
 
-export default function PageHero({
-  title,
-  subtitle,
-  image,
-  breadcrumbs,
-}: PageHeroProps) {
+export default function PageHero({ title, subtitle, image, breadcrumbs, accentColor = "#D32F2F" }: PageHeroProps) {
   return (
-    <section className="relative h-[320px] md:h-[400px] flex items-end overflow-hidden">
-      {/* Image de fond */}
-      <Image
-        src={image}
-        alt=""
-        fill
-        className="object-cover object-center"
-        sizes="100vw"
-        priority
-        aria-hidden="true"
-      />
-      {/* Overlay dégradé */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(13,31,107,0.92) 0%, rgba(13,31,107,0.5) 60%, rgba(13,31,107,0.15) 100%)",
-        }}
+    <section className="relative h-[300px] md:h-[400px] lg:h-[440px] flex items-end overflow-hidden">
+      {/* Background image */}
+      <Image src={image} alt="" fill className="object-cover object-center" sizes="100vw" priority aria-hidden="true" />
+
+      {/* Layered overlays for depth */}
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,107,0.85) 0%, rgba(13,31,107,0.60) 50%, rgba(13,31,107,0.30) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,107,0.95) 0%, transparent 55%)" }} />
+
+      {/* Decorative geometric accent */}
+      <div className="absolute top-0 right-0 w-[40%] h-full opacity-10 pointer-events-none"
+        style={{ background: "linear-gradient(135deg, transparent 0%, rgba(245,166,35,0.4) 100%)" }} />
+
+      {/* Dot pattern */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+
+      {/* Accent left bar */}
+      <motion.div
+        className="absolute left-0 top-0 bottom-0 w-1"
+        style={{ background: `linear-gradient(to bottom, transparent, ${accentColor}, transparent)` }}
+        initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
       />
 
-      {/* Contenu */}
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-10 pb-10">
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-10 pb-10 lg:pb-14">
         {/* Breadcrumb */}
-        <nav aria-label="breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-white/60 text-sm">
+        <motion.nav
+          aria-label="breadcrumb" className="mb-4"
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <ol className="flex items-center gap-1.5 text-white/60 text-xs font-medium flex-wrap">
             {breadcrumbs.map((crumb, i) => (
-              <li key={i} className="flex items-center gap-2">
-                {i > 0 && <span className="text-white/30">/</span>}
+              <li key={i} className="flex items-center gap-1.5">
+                {i > 0 && <ChevronRight size={12} className="text-white/30 flex-shrink-0" />}
                 {crumb.href ? (
-                  <Link
-                    href={crumb.href}
-                    className="hover:text-white transition-colors duration-150"
-                  >
+                  <Link href={crumb.href} className="hover:text-white transition-colors duration-150 hover:underline underline-offset-2">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-white/90">{crumb.label}</span>
+                  <span className="text-white/95 font-semibold">{crumb.label}</span>
                 )}
               </li>
             ))}
           </ol>
-        </nav>
+        </motion.nav>
 
-        <h1
-          className="font-display font-bold text-white"
-          style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+        {/* Title */}
+        <motion.h1
+          className="font-display font-bold text-white leading-tight mb-3"
+          style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)", textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
         >
           {title}
-        </h1>
+        </motion.h1>
+
         {subtitle && (
-          <p className="text-white/80 mt-2 text-lg max-w-xl">{subtitle}</p>
+          <motion.p
+            className="text-white/80 text-base md:text-lg max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
+          >
+            {subtitle}
+          </motion.p>
         )}
+
+        {/* Bottom accent line */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[3px]"
+          style={{ background: `linear-gradient(90deg, ${accentColor} 0%, #F5A623 50%, ${accentColor} 100%)` }}
+          initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        />
       </div>
     </section>
   );

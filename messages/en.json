@@ -25,7 +25,8 @@
     "subMission": "Our Mission",
     "subHistory": "Our History",
     "subValues": "Our Values",
-    "subTeam": "Our Team"
+    "subTeam": "Our Team",
+    "programmes": "Programs"
   },
   "calendar": {
     "title": "School Calendar",
@@ -1061,6 +1062,101 @@
       "subtitle": "Enroll them in an environment where every day is a learning adventure.",
       "button": "Enroll Now",
       "link": "Discover Our Programs"
+    }
+  },
+  "programmesPage": {
+    "hero": {
+      "title": "Our Programs",
+      "subtitle": "A complete journey from 0 to 12 years"
+    },
+    "intro": {
+      "badge": "Programs",
+      "title": "A Pedagogy Tailored to Every Age",
+      "body": "From early childhood through primary school, every programme is designed to match each child's developmental stage precisely. Bilingual immersion, innovative projects and small class sizes — all at the service of every child's success."
+    },
+    "card": {
+      "learnMore": "Learn More",
+      "smallClasses": "Small classes (<25)"
+    },
+    "projects": {
+      "badge": "Educational Projects",
+      "title": "Learning by Doing",
+      "subtitle": "Unique projects that set Les Génies d'Afrique apart from every other school.",
+      "items": [
+        { "emoji": "🌱", "title": "School Farming",          "description": "Students grow their own garden, learning the basics of agronomy." },
+        { "emoji": "🐄", "title": "Livestock",               "description": "Introduction to responsible livestock rearing (chickens, rabbits) on campus." },
+        { "emoji": "🐟", "title": "Aquaculture",             "description": "Introduction to aquaculture and fish pond management." },
+        { "emoji": "💡", "title": "Junior Entrepreneurship", "description": "Supervised entrepreneurial projects to develop initiative and creativity." },
+        { "emoji": "🎭", "title": "Arts & Culture",          "description": "Theatre, dance, African and international music throughout the year." },
+        { "emoji": "⚽", "title": "Sports",                  "description": "Football, athletics, team games for physical development and team spirit." }
+      ]
+    },
+    "cta": {
+      "title": "Ready to join Les Génies d'Afrique?",
+      "subtitle": "Our team is available Monday to Friday, 8 AM – 1 PM. Come and meet us!",
+      "btnFormations": "View Our Programs",
+      "btnContact": "Contact Us"
+    }
+  },
+  "presentationPage": {
+    "hero": {
+      "title": "The School",
+      "subtitle": "Our mission, values and history"
+    },
+    "director": {
+      "badge": "Director's Message",
+      "title": "Welcome to Our Family",
+      "altPhoto": "The Principal",
+      "roleLabel": "General Director",
+      "quote": "\u201cOur institution was born from a deep conviction: every child carries a unique genius within them, and it is the school\u2019s role to reveal and nurture it. Here, we do not merely instruct \u2014 we educate, we support, we inspire.\u201d",
+      "body": "Our team is committed every day to providing your child with the best bilingual learning environment, respecting their rhythm and personality."
+    },
+    "history": {
+      "badge": "Our History",
+      "title": "A School Born from a Vision",
+      "items": [
+        { "year": "2024",      "text": "Foundation of the school and construction of premises in Nkozoa, Yaoundé." },
+        { "year": "Feb. 2025", "text": "Official MINEDUB accreditation obtained — Order No. 103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP." },
+        { "year": "Sept. 2025","text": "Official opening and welcome of first students from day care to primary school." },
+        { "year": "2026",      "text": "Extension of educational programmes, website launch and development of the school community." }
+      ]
+    },
+    "values": {
+      "badge": "Our Values",
+      "title": "What We Believe In",
+      "items": [
+        { "icon": "Star",      "title": "Excellence",          "body": "We believe every child is capable of great things. We cultivate a culture of effort, measured ambition and self-surpassing." },
+        { "icon": "Shield",    "title": "Integrity",           "body": "Honesty, responsibility and respect are the pillars of the behaviour we instil from the earliest age." },
+        { "icon": "Globe",     "title": "Bilingualism",        "body": "Mastering French and English means opening up to two cultural worlds and giving yourself the means to succeed anywhere in the world." },
+        { "icon": "Lightbulb", "title": "Innovation",          "body": "From school farming to junior entrepreneurship, we prepare our students for tomorrow's world." },
+        { "icon": "Heart",     "title": "Care",                "body": "A happy child learns better. Our school is a space of trust, mutual respect and emotional support." },
+        { "icon": "Sprout",    "title": "Holistic Development","body": "We develop the child in all their dimensions: intellectual, physical, creative and moral." }
+      ]
+    },
+    "accreditation": {
+      "badge": "Official Accreditation",
+      "title": "An Institution Recognised by the State of Cameroon",
+      "decree": "Order No. 103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP",
+      "date": "February 14, 2025 — Ministry of Basic Education"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Our team is here to answer all your questions."
+    },
+    "writeBadge": "Write to Us",
+    "mapTitle": "Our Location",
+    "followUs": "Follow Us",
+    "infoCards": [
+      { "icon": "MapPin", "title": "Our Address",   "lines": ["Nkozoa, behind Boulangerie Massa", "Yaoundé, Cameroon"] },
+      { "icon": "Phone",  "title": "Phone Numbers", "lines": ["651 11 15 06", "656 66 38 48"] },
+      { "icon": "Mail",   "title": "Email",          "lines": ["lesgeniesdafrique836@gmail.com"] },
+      { "icon": "Clock",  "title": "Office Hours",   "lines": ["Monday – Friday", "8:00 AM – 1:00 PM"] }
+    ],
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "Our team will reply within 24 to 48 hours."
     }
   },
   "pageTitles": {

@@ -8,6 +8,7 @@ import {
   Trophy, ArrowRight, Handshake, Monitor, Globe,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import {
@@ -106,10 +107,11 @@ export default function VieScolairePage() {
             variants={fadeUp}
           >
             <SectionBadge>{t("clubs.badge")}</SectionBadge>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A202C] mt-4 mb-3">
+            <h2 className="font-display font-bold text-[#1A202C] mt-4 mb-3"
+              style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}>
               {t("clubs.title")}
             </h2>
-            <p className="text-[#4A5568] max-w-2xl mx-auto text-lg">
+            <p className="text-[#4A5568] max-w-2xl mx-auto text-base">
               {t("clubs.subtitle")}
             </p>
           </motion.div>
@@ -117,21 +119,14 @@ export default function VieScolairePage() {
           {/* Tabs — one per club */}
           <Tabs defaultValue="0" className="gap-4">
             {/* Tab triggers */}
-            <TabsList
-              className="
-                flex-wrap h-auto gap-2 bg-[#F7F9FC] border border-[#E2E8F0]
-                rounded-2xl p-2 w-full justify-start
-              "
-            >
+            <TabsList className="flex-wrap h-auto gap-2 bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-2 w-full justify-start shadow-sm">
               {clubs.map((club, i) => (
                 <TabsTrigger
                   key={i}
                   value={String(i)}
-                  className="
-                    rounded-xl px-4 py-2 text-sm font-semibold text-[#4A5568]
-                    data-active:bg-[#1A3A8F] data-active:text-white
-                    data-active:shadow-md transition-all duration-200
-                  "
+                  className="rounded-xl px-4 py-2.5 text-sm font-semibold text-[#4A5568]
+                    data-[state=active]:bg-[#1A3A8F] data-[state=active]:text-white
+                    data-[state=active]:shadow-md transition-all duration-200"
                 >
                   <span className="mr-1.5">{club.emoji}</span>
                   {club.title}
@@ -381,11 +376,12 @@ export default function VieScolairePage() {
                 variants={fadeUp}
                 className="relative aspect-square overflow-hidden rounded-xl group cursor-pointer"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={src}
                   alt=""
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   aria-hidden="true"
                 />
                 <div className="absolute inset-0 bg-[#0D1F6B]/0 group-hover:bg-[#0D1F6B]/30 transition-colors duration-300" />
@@ -430,25 +426,17 @@ export default function VieScolairePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/admissions"
-                className="
-                  inline-flex items-center justify-center gap-2
-                  bg-[#D32F2F] text-white font-bold px-8 py-4 rounded-full
-                  hover:bg-[#B71C1C] transition-colors duration-200
-                  shadow-lg text-base
-                "
+                href="/programmes"
+                className="inline-flex items-center justify-center gap-2 bg-[#D32F2F] text-white font-bold px-8 py-4 rounded-full
+                  hover:bg-[#B71C1C] transition-colors duration-200 shadow-lg text-base"
               >
                 {t("cta.button")}
                 <ArrowRight size={18} />
               </Link>
               <Link
-                href="/programmes"
-                className="
-                  inline-flex items-center justify-center gap-2
-                  bg-white/15 text-white font-semibold px-8 py-4 rounded-full
-                  hover:bg-white/25 border border-white/30 transition-all duration-200
-                  text-base
-                "
+                href="/formations"
+                className="inline-flex items-center justify-center gap-2 bg-white/15 text-white font-semibold px-8 py-4 rounded-full
+                  hover:bg-white/25 border border-white/30 transition-all duration-200 text-base"
               >
                 {t("cta.link")}
               </Link>
