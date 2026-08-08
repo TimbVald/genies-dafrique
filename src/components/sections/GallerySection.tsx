@@ -4,184 +4,92 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { getVisibleGallery } from "@/lib/data/gallery";
 import { motion, useInView, type Variants, AnimatePresence } from "framer-motion";
-import { ZoomIn, X, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ZoomIn, X, ArrowRight, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
 
-/* ── Photos de la galerie aperçu ─────────────────────────────── */
-const GALLERY_DATA_STATIC = [
-  {
-    src: "/images/IMG-20260723-WA0024.jpg",
-    altFr: "Élèves en activité pédagogique",
-    altEn: "Students in learning activity",
-    span: "lg:col-span-2 lg:row-span-2",
-  },
-  {
-    src: "/images/Generated_Image.png",
-    altFr: "Atelier créatif à l'école",
-    altEn: "Creative workshop at school",
-    span: "",
-  },
-  {
-    src: "/images/pexels-ai25studioai-7342628.jpg",
-    altFr: "Vie scolaire au quotidien",
-    altEn: "Daily school life",
-    span: "",
-  },
-  {
-    src: "/images/pexels-karola-g-7269671.jpg",
-    altFr: "Activités extérieures des élèves",
-    altEn: "Outdoor student activities",
-    span: "",
-  },
-  {
-    src: "/images/pexels-ani-ani.jpg",
-    altFr: "Groupe d'élèves heureux",
-    altEn: "Group of happy students",
-    span: "",
-  },
+const PHOTOS = [
+  { src: "/images/IMG-20260723-WA0024.jpg",          altFr: "Élèves en activité pédagogique",    altEn: "Students in learning activity",     span: "lg:col-span-2 lg:row-span-2" },
+  { src: "/images/Generated_Image.png",              altFr: "Atelier créatif à l'école",          altEn: "Creative workshop at school",       span: "" },
+  { src: "/images/pexels-ai25studioai-7342628.jpg",  altFr: "Vie scolaire au quotidien",          altEn: "Daily school life",                 span: "" },
+  { src: "/images/pexels-karola-g-7269671.jpg",      altFr: "Activités extérieures",              altEn: "Outdoor activities",                span: "" },
+  { src: "/images/pexels-ani-ani.jpg",               altFr: "Groupe d'élèves épanouis",           altEn: "Group of happy students",           span: "" },
 ];
 
-/* ── Animations ─────────────────────────────────────────────── */
-const headerAnim: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
-};
+const hdrAnim: Variants  = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } } };
+const gridAnim: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } };
+const photoAnim: Variants= { hidden: { opacity: 0, scale: 0.97 }, show: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } } };
 
-const gridAnim: Variants = {
-  hidden: {},
-  show:   { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-
-const photoAnim: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  show:   { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
-/* ══════════════════════════════════════════════════════════════ */
 export default function GallerySection() {
   const t      = useTranslations("gallery");
   const locale = useLocale();
-  
-  // Use static data for now - will be migrated to dynamic data in next phase
-  const galleryPhotos = GALLERY_DATA_STATIC;
-
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  const openLightbox = (i: number) => setLightbox(i);
-  const closeLightbox = () => setLightbox(null);
-  const prev = () => setLightbox((l) =>
-    l !== null ? (l - 1 + galleryPhotos.length) % galleryPhotos.length : null
-  );
-  const next = () => setLightbox((l) =>
-    l !== null ? (l + 1) % galleryPhotos.length : null
-  );
-
-  const currentPhoto = lightbox !== null ? galleryPhotos[lightbox] : null;
+  const prev = () => setLightbox(l => l !== null ? (l - 1 + PHOTOS.length) % PHOTOS.length : null);
+  const next = () => setLightbox(l => l !== null ? (l + 1) % PHOTOS.length : null);
 
   return (
     <>
-      <section
-        ref={sectionRef}
-        className="py-24 lg:py-28 bg-[#F7F9FC]"
-        aria-label={locale === "fr" ? "Galerie photos" : "Photo gallery"}
-      >
+      <section ref={sectionRef} className="py-24 lg:py-28 bg-[#F7F9FC]"
+        aria-label={locale === "fr" ? "Galerie photos" : "Photo gallery"}>
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
 
-          {/* ── En-tête ── */}
-          <motion.div
-            className="text-center mb-12"
-            variants={headerAnim}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-          >
-            <SectionBadge>{t("badge")}</SectionBadge>
-            <h2
-              className="font-display font-bold text-[#1A202C] mb-3 mt-1"
-              style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}
-            >
-              {t("title")}
-            </h2>
-            <p className="text-[#4A5568] text-lg max-w-none">{t("subtitle")}</p>
+          {/* En-tête avec compteur */}
+          <motion.div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4"
+            variants={hdrAnim} initial="hidden" animate={inView ? "show" : "hidden"}>
+            <div>
+              <SectionBadge>{t("badge")}</SectionBadge>
+              <h2 className="font-display font-bold text-[#1A202C] mb-2 mt-1"
+                style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}>
+                {t("title")}
+              </h2>
+              <p className="text-[#4A5568] text-base max-w-lg">{t("subtitle")}</p>
+            </div>
+            {/* Compteur photos */}
+            <div className="flex items-center gap-2 text-[#4A5568] flex-shrink-0">
+              <Camera size={18} className="text-[#1A3A8F]" />
+              <span className="font-bold text-[#1A202C]">{PHOTOS.length}</span>
+              <span className="text-sm">{locale === "fr" ? "photos" : "photos"}</span>
+            </div>
           </motion.div>
 
-          {/* ── Grille mosaïque ── */}
+          {/* Mosaïque éditorial */}
           <motion.div
             className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mb-10"
-            /* CSS grid rows pour la grande photo */
-            style={{ gridAutoRows: "200px" }}
-            variants={gridAnim}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-          >
-            {galleryPhotos.map((photo, i) => {
-              const altText = locale === "fr" ? photo.altFr : photo.altEn;
-
+            style={{ gridAutoRows: "210px" }}
+            variants={gridAnim} initial="hidden" animate={inView ? "show" : "hidden"}>
+            {PHOTOS.map((photo, i) => {
+              const alt = locale === "fr" ? photo.altFr : photo.altEn;
               return (
-                <motion.div
-                  key={i}
-                  variants={photoAnim}
-                  className={`relative overflow-hidden rounded-2xl group
-                    cursor-pointer ring-2 ring-transparent
-                    hover:ring-[#1A3A8F]/40 focus-within:ring-[#1A3A8F]
-                    transition-all duration-300 ${photo.span}`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={altText}
-                    fill
-                    className="object-cover group-hover:scale-[1.06]
-                      transition-transform duration-700 ease-in-out"
-                    sizes={
-                      photo.span
-                        ? "(max-width: 640px) 50vw, 66vw"
-                        : "(max-width: 640px) 50vw, 33vw"
-                    }
-                  />
+                <motion.div key={i} variants={photoAnim}
+                  className={`relative overflow-hidden rounded-2xl group cursor-pointer
+                    ring-2 ring-transparent hover:ring-[#1A3A8F]/40 focus-within:ring-[#1A3A8F]
+                    transition-all duration-300 ${photo.span}`}>
+                  <Image src={photo.src} alt={alt} fill
+                    className="object-cover group-hover:scale-[1.06] transition-transform duration-700 ease-in-out"
+                    sizes={photo.span ? "(max-width: 640px) 50vw, 66vw" : "(max-width: 640px) 50vw, 33vw"} />
 
                   {/* Overlay hover */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-[#1A3A8F]/70 via-[#1A3A8F]/20
-                      to-transparent opacity-0 group-hover:opacity-100
-                      transition-opacity duration-350"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A3A8F]/72 via-[#1A3A8F]/18
+                    to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Bouton zoom accessible */}
-                  <button
-                    onClick={() => openLightbox(i)}
-                    aria-label={
-                      locale === "fr"
-                        ? `Agrandir : ${altText}`
-                        : `Expand: ${altText}`
-                    }
-                    className="absolute inset-0 flex items-center justify-center
-                      focus:outline-none"
-                    tabIndex={0}
-                  >
-                    <span
-                      className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm
-                        flex items-center justify-center shadow-lg
-                        opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100
-                        transition-all duration-300"
-                      aria-hidden="true"
-                    >
+                  {/* Bouton zoom */}
+                  <button onClick={() => setLightbox(i)} aria-label={`${locale === "fr" ? "Agrandir" : "Expand"}: ${alt}`}
+                    className="absolute inset-0 flex items-center justify-center focus:outline-none">
+                    <span className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center
+                      justify-center shadow-lg opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100
+                      transition-all duration-300" aria-hidden="true">
                       <ZoomIn size={22} className="text-[#1A3A8F]" />
                     </span>
                   </button>
 
-                  {/* Légende au bas (grande photo) */}
+                  {/* Légende grande photo */}
                   {photo.span && (
-                    <div
-                      className="absolute bottom-0 left-0 right-0 p-4
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    >
-                      <p className="text-white text-sm font-medium drop-shadow-sm">
-                        {altText}
-                      </p>
+                    <div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="text-white text-sm font-semibold drop-shadow">{alt}</p>
                     </div>
                   )}
                 </motion.div>
@@ -189,22 +97,18 @@ export default function GallerySection() {
             })}
           </motion.div>
 
-          {/* ── CTA ── */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-          >
+          {/* CTA */}
+          <motion.div className="text-center"
+            initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.5 }}>
             <Link href="/vie-scolaire">
               <motion.span
                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl
-                  bg-[#D32F2F] text-white font-bold text-sm tracking-wide
-                  shadow-[var(--shadow-red)] cursor-pointer"
-                whileHover={{ scale: 1.03, y: -2, boxShadow: "0 8px 28px rgba(211,47,47,0.45)" }}
+                  bg-[#1A3A8F] text-white font-bold text-sm tracking-wide
+                  shadow-[0_4px_20px_rgba(26,58,143,0.30)] cursor-pointer"
+                whileHover={{ scale: 1.03, y: -2, boxShadow: "0 8px 28px rgba(26,58,143,0.40)" }}
                 whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 360, damping: 24 }}
-              >
+                transition={{ type: "spring", stiffness: 360, damping: 24 }}>
                 {t("cta")}
                 <ArrowRight size={18} />
               </motion.span>
@@ -213,89 +117,50 @@ export default function GallerySection() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════ */}
-      {/* LIGHTBOX                                             */}
-      {/* ════════════════════════════════════════════════════ */}
+      {/* Lightbox */}
       <AnimatePresence>
         {lightbox !== null && (
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-label={locale === "fr" ? "Visionneuse de photos" : "Photo viewer"}
-            className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={closeLightbox}
-          >
-            {/* Bouton fermer */}
-            <button
-              onClick={closeLightbox}
-              aria-label={locale === "fr" ? "Fermer la visionneuse" : "Close viewer"}
-              className="absolute top-4 right-4 w-11 h-11 rounded-full
-                bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20
-                flex items-center justify-center text-white
-                transition-colors duration-200 z-10 focus-invert"
-            >
+          <motion.div role="dialog" aria-modal="true"
+            aria-label={locale === "fr" ? "Visionneuse" : "Photo viewer"}
+            className="fixed inset-0 bg-black/96 z-[100] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }} onClick={() => setLightbox(null)}>
+
+            <button onClick={() => setLightbox(null)} aria-label={locale === "fr" ? "Fermer" : "Close"}
+              className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25
+                backdrop-blur-sm border border-white/20 flex items-center justify-center text-white
+                transition-colors z-10">
               <X size={20} />
             </button>
 
-            {/* Navigation gauche */}
-            <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-              aria-label={locale === "fr" ? "Photo précédente" : "Previous photo"}
-              className="absolute left-3 sm:left-6 w-12 h-12 rounded-full
-                bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20
-                flex items-center justify-center text-white
-                transition-colors duration-200 z-10 focus-invert"
-            >
+            <button onClick={e => { e.stopPropagation(); prev(); }}
+              aria-label={locale === "fr" ? "Précédent" : "Previous"}
+              className="absolute left-3 sm:left-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25
+                backdrop-blur-sm border border-white/20 flex items-center justify-center text-white
+                transition-colors z-10">
               <ChevronLeft size={24} />
             </button>
 
-            {/* Image principale */}
-            <motion.div
-              key={lightbox}
-              className="relative w-full max-w-4xl aspect-video"
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={galleryPhotos[lightbox].src}
-                alt={
-                  locale === "fr"
-                    ? galleryPhotos[lightbox].altFr
-                    : galleryPhotos[lightbox].altEn
-                }
-                fill
-                className="object-contain rounded-xl"
-                sizes="100vw"
-                priority
-              />
+            <motion.div key={lightbox} className="relative w-full max-w-4xl aspect-video"
+              initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }} transition={{ duration: 0.28, ease: "easeOut" }}
+              onClick={e => e.stopPropagation()}>
+              <Image src={PHOTOS[lightbox].src}
+                alt={locale === "fr" ? PHOTOS[lightbox].altFr : PHOTOS[lightbox].altEn}
+                fill className="object-contain rounded-xl" sizes="100vw" priority />
             </motion.div>
 
-            {/* Navigation droite */}
-            <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
-              aria-label={locale === "fr" ? "Photo suivante" : "Next photo"}
-              className="absolute right-3 sm:right-6 w-12 h-12 rounded-full
-                bg-white/10 hover:bg-white/25 backdrop-blur-sm border border-white/20
-                flex items-center justify-center text-white
-                transition-colors duration-200 z-10 focus-invert"
-            >
+            <button onClick={e => { e.stopPropagation(); next(); }}
+              aria-label={locale === "fr" ? "Suivant" : "Next"}
+              className="absolute right-3 sm:right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25
+                backdrop-blur-sm border border-white/20 flex items-center justify-center text-white
+                transition-colors z-10">
               <ChevronRight size={24} />
             </button>
 
-            {/* Compteur */}
-            <p
-              aria-live="polite"
-              className="absolute bottom-4 left-1/2 -translate-x-1/2
-                text-white/50 text-sm tabular-nums"
-            >
-              {lightbox + 1} / {galleryPhotos.length}
+            <p aria-live="polite"
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums">
+              {lightbox + 1} / {PHOTOS.length}
             </p>
           </motion.div>
         )}
