@@ -1,64 +1,80 @@
 "use client";
 
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion, useInView } from "framer-motion";
-import { School, BookOpen, Globe, Phone } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
-const ICON_MAP: Record<string, LucideIcon> = { School, BookOpen, Globe, Phone };
-
+/**
+ * TrustBar — Bande de réassurance sobre, fond blanc ou gris très clair.
+ * Inspiré de La Gaieté : pas voyant, texte discret, chiffres clés.
+ */
 export default function TrustBar() {
-  const t     = useTranslations("trustBar");
-  const items = t.raw("items") as { icon: string; label: string }[];
-  const ref   = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-20px" });
+  const locale = useLocale();
+  const ref    = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-10px" });
+
+  const ITEMS = [
+    {
+      fr: { value: "Agréé MINEDUB", sub: "Depuis 2025" },
+      en: { value: "MINEDUB Accredited", sub: "Since 2025" },
+      ew: { value: "Agréé MINEDUB", sub: "2025" },
+    },
+    {
+      fr: { value: "Bilingue FR / EN", sub: "Dès la crèche" },
+      en: { value: "Bilingual FR / EN", sub: "From day care" },
+      ew: { value: "Bilingue FR / EN", sub: "A tɔ́l crèche" },
+    },
+    {
+      fr: { value: "120+ Élèves", sub: "Inscrits 2025–2026" },
+      en: { value: "120+ Students", sub: "Enrolled 2025–2026" },
+      ew: { value: "120+ Bana", sub: "2025–2026" },
+    },
+    {
+      fr: { value: "0 à 12 ans", sub: "Crèche · Maternelle · Primaire" },
+      en: { value: "0 to 12 years", sub: "Day Care · Nursery · Primary" },
+      ew: { value: "0 na 12 osu", sub: "Crèche · Maternelle · Primaire" },
+    },
+  ];
+
+  const L = locale as "fr" | "en" | "ew";
 
   return (
     <section
       ref={ref}
-      aria-label="Indicateurs de confiance"
-      className="relative bg-[#F5A623] overflow-hidden"
+      aria-label={locale === "fr" ? "Chiffres clés" : "Key figures"}
+      className="relative bg-[#F7F9FC] border-y border-[#E2E8F0]"
     >
-      {/* Shine line top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-white/30" />
-
-      {/* Motif diagonal décoratif */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: "repeating-linear-gradient(45deg, white 0, white 1px, transparent 0, transparent 50%)",
-          backgroundSize: "12px 12px",
-        }}
-      />
-
-      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
-          {items.map((item, i) => {
-            const Icon = ICON_MAP[item.icon] ?? Globe;
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-[#E2E8F0]">
+          {ITEMS.map((item, i) => {
+            const d = item[L] ?? item.fr;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
-                className="flex items-center justify-center gap-3 py-4 px-5 group
-                  hover:bg-white/10 transition-colors duration-200"
+                transition={{ delay: i * 0.07, duration: 0.4, ease: "easeOut" }}
+                className="flex items-center gap-3 py-5 px-5 lg:px-8 group"
               >
-                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center
-                  flex-shrink-0 group-hover:bg-white/30 transition-colors duration-200">
-                  <Icon size={16} className="text-white" aria-hidden="true" />
+                <CheckCircle
+                  size={18}
+                  className="text-[#1A3A8F] flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="font-bold text-[#1A202C] text-sm leading-tight">
+                    {d.value}
+                  </p>
+                  <p className="text-[#4A5568] text-[0.72rem] mt-0.5 leading-tight">
+                    {d.sub}
+                  </p>
                 </div>
-                <span className="text-white font-bold text-sm leading-tight">
-                  {item.label}
-                </span>
               </motion.div>
             );
           })}
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/20" />
     </section>
   );
 }
