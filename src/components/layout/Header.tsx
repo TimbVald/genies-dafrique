@@ -17,10 +17,10 @@ const NAV_ITEMS: NavItem[] = [
   { key: "home",       href: "/",           hasSubmenu: false },
   { key: "about",      href: "/a-propos",   hasSubmenu: true  },
   { key: "formations", href: "/formations", hasSubmenu: true  },
-  { key: "admissions", href: "/admissions", hasSubmenu: false },
+  // { key: "admissions", href: "/admissions", hasSubmenu: false },
   { key: "news",       href: "/actualites", hasSubmenu: true  },
   { key: "life",       href: "/vie-scolaire", hasSubmenu: true },
-  { key: "contact",    href: "/contact",    hasSubmenu: false },
+  // { key: "contact",    href: "/contact",    hasSubmenu: false },
 ];
 
 /* ── Mega-menu definitions ──────────────────────────────────── */
@@ -29,6 +29,7 @@ const ABOUT_MENU = [
   { key: "subMission",  href: "/a-propos#mission",  icon: BookOpen },
   { key: "subValues",   href: "/a-propos#valeurs",  icon: Globe },
   { key: "subTeam",     href: "/a-propos#equipe",   icon: Users },
+  { key: "contact",    href: "/contact", icon: Mail},
 ];
 const FORMATIONS_MENU = [
   { key: "formations",  href: "/formations",  icon: BookOpen },
@@ -36,11 +37,11 @@ const FORMATIONS_MENU = [
   { key: "admissions",  href: "/admissions",  icon: ArrowRight },
 ];
 const NEWS_MENU = [
-  { key: "news",      href: "/actualites", icon: BookOpen },
+  // { key: "news",      href: "/actualites", icon: BookOpen },
   { key: "calendar",  href: "/calendrier", icon: Calendar },
 ];
 const LIFE_MENU = [
-  { key: "life",    href: "/vie-scolaire", icon: Users },
+  // { key: "life",    href: "/vie-scolaire", icon: Users },
   { key: "gallery", href: "/galerie",      icon: ImageIcon },
 ];
 

@@ -389,6 +389,19 @@ a { color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   HERO — fusion avec le header sur desktop
+   La section remonte sous le header (lg:-mt-[--header-h])
+   et prend 100svh + la hauteur du header pour que le contenu
+   visible occupe bien tout l'écran.
+═════════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .hero-section {
+    height: calc(100svh + var(--header-h)) !important;
+    max-height: calc(1080px + var(--header-h)) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    PRINT
 ══════════════════════════════════════════════════════════════════ */
 @media print {
