@@ -291,26 +291,50 @@ export default function Header() {
       {/* Search overlay */}
       <AnimatePresence>{searchOpen && <SearchBar onClose={() => setSearchOpen(false)} />}</AnimatePresence>
 
-      {/* Header */}
-      <header
+      {/* Header — motion.header pour transitions fluides */}
+      <motion.header
         role="banner"
-        className={`sticky top-0 z-50 w-full transition-all duration-500 ease-in-out ${
-          isOpaque
-            ? "bg-white/98 backdrop-blur-md shadow-[var(--shadow-header)]"
-            : "bg-transparent shadow-none"
-        }`}
+        className="sticky top-0 z-50 w-full"
         style={{ height: "var(--header-h)" }}
+        animate={isOpaque ? "opaque" : "transparent"}
+        variants={{
+          transparent: {
+            backgroundColor: "rgba(6,16,58,0)",
+            backdropFilter: "blur(0px)",
+            boxShadow: "0 0 0 0 rgba(0,0,0,0)",
+          },
+          opaque: {
+            backgroundColor: "rgba(255,255,255,0.98)",
+            backdropFilter: "blur(12px)",
+            boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
+          },
+        }}
+        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between h-full gap-4">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group" aria-label="Les Génies d'Afrique — Accueil">
-            <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-[#F5A623]/50 transition-all duration-300 shadow-md">
+            <div className="relative w-11 h-11 rounded-full overflow-hidden
+              ring-2 ring-transparent group-hover:ring-[#F5A623]/60 transition-all duration-300
+              shadow-md">
               <Image src="/logo/logo.png" alt="" fill className="object-cover" sizes="44px" priority />
             </div>
             <div className="hidden sm:block leading-tight">
-              <p className={`font-bold text-sm tracking-tight transition-all duration-500 ${isOpaque ? "text-[#1A3A8F]" : "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]"}`}>Les Génies d&apos;Afrique</p>
-              <p className={`text-[11px] font-medium transition-all duration-500 ${isOpaque ? "text-[#4A5568]" : "text-white/80 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]"}`}>Complexe Scolaire Bilingue</p>
+              <motion.p
+                className="font-bold text-sm tracking-tight"
+                animate={isOpaque ? { color: "#1A3A8F", textShadow: "none" } : { color: "#ffffff", textShadow: "0 1px 10px rgba(0,0,0,0.6)" }}
+                transition={{ duration: 0.4 }}
+              >
+                Les Génies d&apos;Afrique
+              </motion.p>
+              <motion.p
+                className="text-[11px] font-medium"
+                animate={isOpaque ? { color: "#4A5568", textShadow: "none" } : { color: "rgba(255,255,255,0.82)", textShadow: "0 1px_10px rgba(0,0,0,0.5)" }}
+                transition={{ duration: 0.4 }}
+              >
+                Complexe Scolaire Bilingue
+              </motion.p>
             </div>
           </Link>
 
@@ -326,16 +350,20 @@ export default function Header() {
                   <div key={key} className="relative" onMouseEnter={() => setActiveMenu(key)} onMouseLeave={() => setActiveMenu(null)}>
                     <div className="flex items-center gap-0.5">
                       <Link href={href} aria-current={active ? "page" : undefined}
-                        className={`relative flex items-center px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-300
-                          ${active
+                        className={`relative flex items-center px-3 py-2 rounded-lg text-[14px] font-semibold tracking-wide transition-colors duration-300 ${
+                          active
                             ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15")
-                            : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/95 hover:text-white hover:bg-white/10 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]")
-                          }`}>
+                            : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/60" : "text-white hover:bg-white/12")
+                        }`}
+                        style={!isOpaque ? { textShadow: "0 1px 12px rgba(0,0,0,0.65)" } : undefined}
+                      >
                         {t(key as Parameters<typeof t>[0])}
                         {active && <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />}
                       </Link>
                       <button aria-expanded={isOpen} aria-haspopup="true"
-                        className={`p-1 rounded-lg transition-all duration-300 ${isOpaque ? "text-[#4A5568] hover:text-[#1A3A8F]" : "text-white/80 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]"}`}>
+                        className={`p-1 rounded-lg transition-colors duration-300 ${isOpaque ? "text-[#4A5568] hover:text-[#1A3A8F]" : "text-white/85 hover:text-white"}`}
+                        style={!isOpaque ? { filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.5))" } : undefined}
+                      >
                         <ChevronDown size={13} className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
                       </button>
                     </div>
@@ -346,11 +374,13 @@ export default function Header() {
 
               return (
                 <Link key={key} href={href} aria-current={active ? "page" : undefined}
-                  className={`relative px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-300
-                    ${active
+                  className={`relative px-3 py-2 rounded-lg text-[14px] font-semibold tracking-wide transition-colors duration-300 ${
+                    active
                       ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15")
-                      : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/95 hover:text-white hover:bg-white/10 [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]")
-                    }`}>
+                      : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/60" : "text-white hover:bg-white/12")
+                  }`}
+                  style={!isOpaque ? { textShadow: "0 1px 12px rgba(0,0,0,0.65)" } : undefined}
+                >
                   {t(key as Parameters<typeof t>[0])}
                   {active && <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />}
                 </Link>
@@ -362,18 +392,28 @@ export default function Header() {
           <div className="flex items-center gap-2 flex-shrink-0">
             {/* Search button */}
             <button onClick={() => setSearchOpen(true)} aria-label={locale === "fr" ? "Rechercher" : "Search"}
-              className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 group
-                ${isOpaque ? "border-[#E2E8F0] text-[#4A5568] hover:border-[#1A3A8F] hover:text-[#1A3A8F] bg-[#F7F9FC]" : "border-white/30 text-white/80 hover:bg-white/10 hover:text-white"}`}>
+              className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-300 ${
+                isOpaque
+                  ? "border-[#E2E8F0] text-[#4A5568] hover:border-[#1A3A8F] hover:text-[#1A3A8F] bg-[#F7F9FC]"
+                  : "border-white/40 text-white bg-white/8 hover:bg-white/18 hover:border-white/70"
+              }`}
+              style={!isOpaque ? { textShadow: "0 1px 6px rgba(0,0,0,0.5)" } : undefined}
+            >
               <Search size={14} />
               <span className="hidden md:inline">{locale === "fr" ? "Rechercher" : "Search"}</span>
-              <kbd className={`hidden lg:inline-block text-[10px] px-1.5 py-0.5 rounded border transition-colors ${isOpaque ? "bg-white border-[#E2E8F0] text-[#A0AEC0]" : "bg-white/10 border-white/20 text-white/50"}`}>⌘K</kbd>
+              <kbd className={`hidden lg:inline-block text-[10px] px-1.5 py-0.5 rounded border ${isOpaque ? "bg-white border-[#E2E8F0] text-[#A0AEC0]" : "bg-white/10 border-white/20 text-white/50"}`}>⌘K</kbd>
             </button>
 
             {/* Language selector */}
             <div className="relative" ref={langRef}>
               <button onClick={() => setLangOpen(!langOpen)} aria-expanded={langOpen} aria-label={t("language")}
-                className={`hidden sm:flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full border transition-all duration-200
-                  ${isOpaque ? "border-[#1A3A8F] text-[#1A3A8F] hover:bg-[#1A3A8F] hover:text-white" : "border-white/65 text-white hover:bg-white/15"}`}>
+                className={`hidden sm:flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full border transition-all duration-300 ${
+                  isOpaque
+                    ? "border-[#1A3A8F] text-[#1A3A8F] hover:bg-[#1A3A8F] hover:text-white"
+                    : "border-white/50 text-white bg-white/8 hover:bg-white/18 hover:border-white/80"
+                }`}
+                style={!isOpaque ? { textShadow: "0 1px 6px rgba(0,0,0,0.5)" } : undefined}
+              >
                 {locale === "fr" ? "🇨🇲" : locale === "en" ? "🇬🇧" : "🇨🇲"} {locale.toUpperCase()}
                 <ChevronDown size={11} className={`transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`} />
               </button>
@@ -404,7 +444,7 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile overlay */}
       <AnimatePresence>

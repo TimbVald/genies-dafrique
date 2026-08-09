@@ -160,9 +160,9 @@
 
 html {
   scroll-behavior: smooth;
-  /* Compenser le header sticky sur les ancres */
   scroll-padding-top: calc(var(--header-h) + 24px);
   text-size-adjust: 100%;
+  overflow-x: hidden; /* supprime tout scroll/barre horizontal */
 }
 
 body {
@@ -387,15 +387,34 @@ a { color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HERO — fusion avec le header sur desktop
-   La section remonte sous le header (lg:-mt-[--header-h])
-   et prend 100svh + la hauteur du header pour que le contenu
-   visible occupe bien tout l'écran.
+   HERO — hauteur stable par breakpoint + fusion avec le header
 ═════════════════════════════════════════════════════════════════ */
+
+/* Mobile — hauteur fixe conservatrice, pas de svh instable */
+.hero-section {
+  height: 520px;
+}
+
+/* Tablette paysage / petits laptops */
+@media (min-width: 640px) {
+  .hero-section {
+    height: 620px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    height: 700px;
+  }
+}
+
+/* Desktop — fullscreen avec compensation du header */
 @media (min-width: 1024px) {
   .hero-section {
-    height: calc(100svh + var(--header-h)) !important;
-    max-height: calc(1080px + var(--header-h)) !important;
+    /* 100dvh = hauteur viewport stable, pas de saut iOS */
+    height: calc(100dvh + var(--header-h));
+    /* Borne haute pour les très grands écrans */
+    max-height: calc(980px + var(--header-h));
   }
 }
 
