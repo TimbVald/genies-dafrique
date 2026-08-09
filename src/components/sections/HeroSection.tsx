@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import {
-  motion, useScroll, useTransform,
+  motion,
   AnimatePresence, type Variants, type Transition,
 } from "framer-motion";
 import {
@@ -46,10 +46,6 @@ export default function HeroSection() {
 
   const sectionRef = useRef<HTMLElement>(null);
   const videoSrc   = locale === "en" ? "/videos/VID-EN.mp4" : "/videos/VID-FR.mp4";
-
-  /* ── Parallaxe léger au scroll ── */
-  const { scrollY } = useScroll({ target: sectionRef });
-  const bgY = useTransform(scrollY, [0, 600], ["0%", "10%"]);
 
   const advance = useCallback(() => {
     if (!paused && CFG.autoplay) setCurrent(c => (c + 1) % SLIDES.length);
@@ -93,8 +89,8 @@ export default function HeroSection() {
         onMouseLeave={() => CFG.pauseOnHover && setPaused(false)}
         aria-label={locale === "fr" ? "Bienvenue aux Génies d'Afrique" : "Welcome to Les Génies d'Afrique"}
       >
-        {/* ── Images plein écran — Ken Burns ── */}
-        <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
+        {/* ── Images plein écran — Ken Burns, position fixe ── */}
+        <div className="absolute inset-0 z-0">
           <AnimatePresence mode="sync">
             <motion.div
               key={current}
@@ -114,7 +110,7 @@ export default function HeroSection() {
                   src={SLIDES[current].image}
                   alt=""
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   style={{ objectPosition: SLIDES[current].position }}
                   sizes="100vw"
                   priority={current === 0}
@@ -123,7 +119,7 @@ export default function HeroSection() {
               </motion.div>
             </motion.div>
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         {/* ─────────────────────────────────────────────────────
             OVERLAYS — très légers pour que l'image reste visible
