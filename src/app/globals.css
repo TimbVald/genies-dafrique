@@ -241,14 +241,13 @@ a { color: inherit; }
 /* ═══════════════════════════════════════════════════════════════
    SCROLLBAR PERSONNALISÉE
 ══════════════════════════════════════════════════════════════════ */
-::-webkit-scrollbar              { width: 6px; height: 6px; }
-::-webkit-scrollbar-track        { background: var(--color-grey-50); }
+::-webkit-scrollbar              { width: 6px; }
+::-webkit-scrollbar-track        { background: transparent; }
 ::-webkit-scrollbar-thumb        {
-  background: var(--color-blue);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  transition: background var(--t-fast);
 }
-::-webkit-scrollbar-thumb:hover  { background: var(--color-blue-dark); }
+::-webkit-scrollbar-thumb:hover  { background: rgba(0, 0, 0, 0.3); }
 
 /* ═══════════════════════════════════════════════════════════════
    ANIMATIONS DE DÉFILEMENT
@@ -395,16 +394,28 @@ a { color: inherit; }
   height: 520px;
 }
 
+/* Sur mobile, les images se centrent sur le sujet principal */
+.hero-section img {
+  object-position: center 25% !important;
+}
+
 /* Tablette paysage / petits laptops */
 @media (min-width: 640px) {
   .hero-section {
     height: 620px;
+  }
+  .hero-section img {
+    object-position: center 20% !important;
   }
 }
 
 @media (min-width: 768px) {
   .hero-section {
     height: 700px;
+  }
+  .hero-section img {
+    /* Laisser la position du slide s'appliquer via le style inline */
+    object-position: unset !important;
   }
 }
 
@@ -415,6 +426,9 @@ a { color: inherit; }
     height: calc(100dvh + var(--header-h));
     /* Borne haute pour les très grands écrans */
     max-height: calc(980px + var(--header-h));
+  }
+  .hero-section img {
+    object-position: unset !important;
   }
 }
 

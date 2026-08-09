@@ -216,9 +216,9 @@ export default function Header() {
     return pathname.replace(new RegExp(`^/${locale}`), `/${targetLocale}`);
   };
 
-  // Scroll
+  // Scroll — seuil à 80px pour laisser le hero respirer
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 60);
+    const fn = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", fn, { passive: true });
     fn();
     return () => window.removeEventListener("scroll", fn);
@@ -291,25 +291,19 @@ export default function Header() {
       {/* Search overlay */}
       <AnimatePresence>{searchOpen && <SearchBar onClose={() => setSearchOpen(false)} />}</AnimatePresence>
 
-      {/* Header — motion.header pour transitions fluides */}
-      <motion.header
+      {/* Header — transitions CSS natives, fiables cross-browser */}
+      <header
         role="banner"
-        className="sticky top-0 z-50 w-full"
-        style={{ height: "var(--header-h)" }}
-        animate={isOpaque ? "opaque" : "transparent"}
-        variants={{
-          transparent: {
-            backgroundColor: "rgba(6,16,58,0)",
-            backdropFilter: "blur(0px)",
-            boxShadow: "0 0 0 0 rgba(0,0,0,0)",
-          },
-          opaque: {
-            backgroundColor: "rgba(255,255,255,0.98)",
-            backdropFilter: "blur(12px)",
-            boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
-          },
+        className={`sticky top-0 z-50 w-full`}
+        style={{
+          height: "var(--header-h)",
+          /* Toutes les propriétés transitionnent en 400ms */
+          transition: "background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease",
+          backgroundColor: isOpaque ? "rgba(255,255,255,0.97)" : "rgba(6,16,58,0)",
+          backdropFilter: isOpaque ? "blur(12px)" : "blur(0px)",
+          WebkitBackdropFilter: isOpaque ? "blur(12px)" : "blur(0px)",
+          boxShadow: isOpaque ? "0 2px 20px rgba(0,0,0,0.08)" : "none",
         }}
-        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
       >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between h-full gap-4">
 
@@ -330,7 +324,7 @@ export default function Header() {
               </motion.p>
               <motion.p
                 className="text-[11px] font-medium"
-                animate={isOpaque ? { color: "#4A5568", textShadow: "none" } : { color: "rgba(255,255,255,0.82)", textShadow: "0 1px_10px rgba(0,0,0,0.5)" }}
+                animate={isOpaque ? { color: "#4A5568", textShadow: "none" } : { color: "rgba(255,255,255,0.82)", textShadow: "0 1px 10px rgba(0,0,0,0.5)" }}
                 transition={{ duration: 0.4 }}
               >
                 Complexe Scolaire Bilingue
@@ -444,7 +438,7 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile overlay */}
       <AnimatePresence>
