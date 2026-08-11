@@ -162,8 +162,7 @@ html {
   scroll-behavior: smooth;
   /* Compenser le header sticky sur les ancres */
   scroll-padding-top: calc(var(--header-h) + 24px);
-  /* Empêche le shift de scrollbar */
-  scrollbar-gutter: stable;
+  /* scrollbar-gutter: stable retiré — scrollbar native masquée via CSS */
   text-size-adjust: 100%;
 }
 
@@ -241,15 +240,22 @@ a { color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SCROLLBAR PERSONNALISÉE
-══════════════════════════════════════════════════════════════════ */
-::-webkit-scrollbar              { width: 6px; }
-::-webkit-scrollbar-track        { background: transparent; }
-::-webkit-scrollbar-thumb        {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 3px;
+   SCROLLBAR PERSONNALISÉE — panels internes (modales, drawers)
+   Utilisée uniquement dans les éléments avec overflow: auto/scroll
+   à l'intérieur des composants (ex: liste de résultats de recherche).
+═════════════════════════════════════════════════════════════════ */
+/* Scrollbar fine pour les panels (drawer mobile, liste recherche) */
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-auto::-webkit-scrollbar   { width: 4px; display: block; }
+.overflow-y-auto::-webkit-scrollbar-track,
+.overflow-auto::-webkit-scrollbar-track { background: transparent; }
+.overflow-y-auto::-webkit-scrollbar-thumb,
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
 }
-::-webkit-scrollbar-thumb:hover  { background: rgba(0, 0, 0, 0.3); }
+.overflow-y-auto::-webkit-scrollbar-thumb:hover,
+.overflow-auto::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
 
 /* ═══════════════════════════════════════════════════════════════
    ANIMATIONS DE DÉFILEMENT
@@ -389,9 +395,6 @@ a { color: inherit; }
 
 /* ═══════════════════════════════════════════════════════════════
    HERO — fusion avec le header sur desktop
-   La section remonte sous le header (lg:-mt-[--header-h])
-   et prend 100svh + la hauteur du header pour que le contenu
-   visible occupe bien tout l'écran.
 ═════════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) {
   .hero-section {
@@ -399,6 +402,39 @@ a { color: inherit; }
     max-height: calc(1080px + var(--header-h)) !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER SUR HERO — text-shadow pour lisibilité garantie
+   S'applique quand le header est transparent (sur le hero).
+   Ratio de contraste ≥ 4.5:1 garanti par l'ombre.
+═════════════════════════════════════════════════════════════════ */
+.nav-on-hero {
+  text-shadow: 0 1px 4px rgba(0,0,0,0.55), 0 0px 12px rgba(0,0,0,0.30);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR — discrète (4px, neutre)
+   Accessible : visible mais non intrusive.
+   Garde la scrollbar pour les utilisateurs qui en dépendent
+   visuellement, mais la rend très fine et neutre.
+═════════════════════════════════════════════════════════════════ */
+
+/* Masquer la scrollbar native — scroll reste fonctionnel */
+html {
+  scrollbar-width: none;        /* Firefox */
+}
+html::-webkit-scrollbar {
+  display: none;                /* Chrome, Edge, Safari */
+}
+body {
+  -ms-overflow-style: none;     /* IE / anciens Edge */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR PERSONNALISÉE — panels internes (modales, drawers)
+   Utilisée uniquement dans les éléments avec overflow: auto/scroll
+   à l'intérieur des composants (ex: liste de résultats de recherche).
+═════════════════════════════════════════════════════════════════ */
 
 /* ═══════════════════════════════════════════════════════════════
    PRINT

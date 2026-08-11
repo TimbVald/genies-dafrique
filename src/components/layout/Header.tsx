@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Users, Calendar, Image as ImageIcon, Mail, Home, Globe } from "lucide-react";
+import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Users, Calendar, Image as ImageIcon, Mail, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { globalSearch, type SearchResult } from "@/lib/data/search";
 
@@ -197,16 +197,14 @@ function Dropdown({ items, t }: { items: { key: string; href: string; icon: Reac
 ══════════════════════════════════════════════════════════════════ */
 export default function Header() {
   const t        = useTranslations("nav");
-  const tAnn     = useTranslations();
   const locale   = useLocale();
   const pathname = usePathname();
 
-  const [scrolled,    setScrolled]    = useState(false);
-  const [drawerOpen,  setDrawerOpen]  = useState(false);
-  const [annVisible,  setAnnVisible]  = useState(true);
-  const [activeMenu,  setActiveMenu]  = useState<string | null>(null);
-  const [langOpen,    setLangOpen]    = useState(false);
-  const [searchOpen,  setSearchOpen]  = useState(false);
+  const [scrolled,      setScrolled]      = useState(false);
+  const [drawerOpen,    setDrawerOpen]    = useState(false);
+  const [activeMenu,    setActiveMenu]    = useState<string | null>(null);
+  const [langOpen,      setLangOpen]      = useState(false);
+  const [searchOpen,    setSearchOpen]    = useState(false);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   const drawerRef = useRef<HTMLElement>(null);
@@ -293,23 +291,22 @@ export default function Header() {
       {/* Search overlay */}
       <AnimatePresence>{searchOpen && <SearchBar onClose={() => setSearchOpen(false)} />}</AnimatePresence>
 
-      {/* Announcement bar */}
-      <AnimatePresence>
-        {annVisible && (
-          <motion.div initial={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-            <div className="bg-[#D32F2F] text-white text-xs sm:text-sm py-2.5 px-4 text-center relative">
-              <p className="pr-8">{tAnn("announcement")}</p>
-              <button onClick={() => setAnnVisible(false)} aria-label={locale === "fr" ? "Fermer" : "Close"}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center opacity-70 hover:opacity-100 hover:bg-white/20 transition-all">
-                <X size={14} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Header */}
-      <header role="banner" className={`sticky top-0 z-50 w-full transition-all duration-300 ${isOpaque ? "bg-white/98 backdrop-blur-sm shadow-[var(--shadow-header)]" : "bg-transparent"}`} style={{ height: "var(--header-h)" }}>
+      {/* ══════════════════════════════════════════════════════
+          HEADER PRINCIPAL
+          • Transparent + texte blanc sur le hero (homepage)
+          • Transition fluide en 400ms vers fond blanc au scroll
+          • text-shadow sur le texte du menu pour garantir
+            la lisibilité même sur les images claires
+      ═════════════════════════════════════════════════════════ */}
+      <header
+        role="banner"
+        className={`sticky top-0 z-50 w-full transition-all duration-400 ease-in-out ${
+          isOpaque
+            ? "bg-white/98 backdrop-blur-md shadow-[var(--shadow-header)]"
+            : "bg-transparent"
+        }`}
+        style={{ height: "var(--header-h)" }}
+      >
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between h-full gap-4">
 
           {/* Logo */}
@@ -335,13 +332,16 @@ export default function Header() {
                   <div key={key} className="relative" onMouseEnter={() => setActiveMenu(key)} onMouseLeave={() => setActiveMenu(null)}>
                     <div className="flex items-center gap-0.5">
                       <Link href={href} aria-current={active ? "page" : undefined}
-                        className={`relative flex items-center px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-200
-                          ${active ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15") : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/90 hover:text-white hover:bg-white/10")}`}>
+                        className={`relative flex items-center px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-400 ease-in-out
+                          ${!isOpaque ? "nav-on-hero" : ""}
+                          ${active ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15") : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/95 hover:text-white hover:bg-white/10")}`}>
                         {t(key as Parameters<typeof t>[0])}
                         {active && <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />}
                       </Link>
                       <button aria-expanded={isOpen} aria-haspopup="true"
-                        className={`p-1 rounded-lg transition-all duration-200 ${isOpaque ? "text-[#4A5568] hover:text-[#1A3A8F]" : "text-white/70 hover:text-white"}`}>
+                        className={`p-1 rounded-lg transition-all duration-400 ease-in-out
+                          ${!isOpaque ? "nav-on-hero" : ""}
+                          ${isOpaque ? "text-[#4A5568] hover:text-[#1A3A8F]" : "text-white/80 hover:text-white"}`}>
                         <ChevronDown size={13} className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
                       </button>
                     </div>
@@ -352,8 +352,9 @@ export default function Header() {
 
               return (
                 <Link key={key} href={href} aria-current={active ? "page" : undefined}
-                  className={`relative px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-200
-                    ${active ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15") : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/90 hover:text-white hover:bg-white/10")}`}>
+                  className={`relative px-3 py-2 rounded-lg text-[14px] font-medium tracking-wide transition-all duration-400 ease-in-out
+                    ${!isOpaque ? "nav-on-hero" : ""}
+                    ${active ? (isOpaque ? "text-[#1A3A8F] bg-[#EEF2FF]" : "text-white bg-white/15") : (isOpaque ? "text-[#1A202C] hover:text-[#1A3A8F] hover:bg-[#EEF2FF]/50" : "text-white/95 hover:text-white hover:bg-white/10")}`}>
                   {t(key as Parameters<typeof t>[0])}
                   {active && <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-[#D32F2F]" />}
                 </Link>
