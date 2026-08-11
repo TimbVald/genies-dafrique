@@ -51,8 +51,8 @@ function CycleCard({
     <motion.article
       variants={cardAnim}
       className="group relative rounded-2xl overflow-hidden cursor-pointer
-        shadow-[0_4px_24px_rgba(0,0,0,0.10)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)]
-        transition-shadow duration-400"
+        shadow-[0_4px_20px_rgba(0,0,0,0.10)] hover:shadow-[0_14px_44px_rgba(0,0,0,0.18)]
+        hover:-translate-y-1 transition-all duration-350"
       style={{ aspectRatio: "3/4" }}
     >
       {/* Image plein-fond */}
