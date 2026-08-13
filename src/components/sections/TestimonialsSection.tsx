@@ -62,12 +62,12 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* 3 cartes */}
-        <motion.div className="grid md:grid-cols-3 gap-6"
-          variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"}>
+        <motion.div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scroll-smooth snap-x snap-mandatory"
+          variants={stagger} initial="hidden" animate={inView ? "show" : "hidden"} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {items.map((item, i) => (
             <motion.article key={item.id} variants={cardAnim}
               whileHover={{ y: -6, transition: { type: "spring", stiffness: 320, damping: 22 } }}
-              className={`relative flex flex-col rounded-3xl p-7 border overflow-hidden cursor-default
+              className={`relative flex flex-col rounded-3xl p-7 border overflow-hidden cursor-default min-w-[300px] md:min-w-0
                 ${i === 1
                   ? "bg-[#F5A623] border-[#F5A623] shadow-[0_8px_40px_rgba(245,166,35,0.35)]"
                   : "bg-white/10 backdrop-blur-sm border-white/15 shadow-[0_4px_24px_rgba(0,0,0,0.20)]"}`}>

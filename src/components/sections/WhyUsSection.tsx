@@ -73,8 +73,8 @@ export default function WhyUsSection() {
         </motion.div>
 
         {/* Grille 8 cartes — fond semi-transparent, style "pôles d'excellence" */}
-        <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
-          variants={grdV} initial="hidden" animate={inView ? "show" : "hidden"}>
+        <motion.div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 overflow-x-auto pb-4 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory"
+          variants={grdV} initial="hidden" animate={inView ? "show" : "hidden"} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {items.map((item, i) => {
             const Icon   = ICON_MAP[item.icon] ?? Globe;
             const accent = ACCENTS[i % ACCENTS.length];
@@ -83,7 +83,7 @@ export default function WhyUsSection() {
                 whileHover={{ y: -8, scale: 1.025, transition: { type: "spring", stiffness: 320, damping: 22 } }}
                 className="group relative bg-white/8 backdrop-blur-sm rounded-2xl p-6 cursor-default
                   border border-white/12 hover:bg-white/15 hover:border-white/25
-                  transition-all duration-300 flex flex-col gap-4 overflow-hidden">
+                  transition-all duration-300 flex flex-col gap-4 overflow-hidden min-w-[280px] sm:min-w-0">
 
                 {/* Numéro décoratif */}
                 <div className="absolute top-3 right-4 font-display font-bold text-4xl leading-none

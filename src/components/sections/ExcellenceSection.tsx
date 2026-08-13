@@ -90,10 +90,11 @@ export default function ExcellenceSection() {
 
         {/* Grille 6 pôles */}
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto pb-4 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory"
           variants={gridV}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {poles.map((pole, i) => {
             const Icon  = ICON_MAP[pole.icon] ?? Monitor;
@@ -106,7 +107,7 @@ export default function ExcellenceSection() {
                 variants={cardV}
                 className="group bg-white rounded-2xl p-6 border border-[#E2E8F0]
                   shadow-sm hover:shadow-xl hover:-translate-y-1.5
-                  transition-all duration-300 flex flex-col gap-4 relative overflow-hidden"
+                  transition-all duration-300 flex flex-col gap-4 relative overflow-hidden min-w-[280px] sm:min-w-0"
               >
                 {/* Barre couleur haut */}
                 <div

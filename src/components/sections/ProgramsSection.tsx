@@ -52,7 +52,7 @@ function CycleCard({
       variants={cardAnim}
       className="group relative rounded-2xl overflow-hidden cursor-pointer
         shadow-[0_4px_20px_rgba(0,0,0,0.10)] hover:shadow-[0_14px_44px_rgba(0,0,0,0.18)]
-        hover:-translate-y-1 transition-all duration-350"
+        hover:-translate-y-1 transition-all duration-350 min-w-[280px] sm:min-w-0"
       style={{ aspectRatio: "3/4" }}
     >
       {/* Image plein-fond */}
@@ -192,10 +192,11 @@ export default function ProgramsSection() {
 
         {/* ── Grille de cycles — style "Nos institutions" La Gaieté ── */}
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 overflow-x-auto pb-4 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory"
           variants={gridAnim}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {cycleCards.map(prog => (
             <CycleCard

@@ -35,7 +35,7 @@ export default function TrustBar() {
       className="relative bg-white border-b border-[#E2E8F0]"
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-[#E2E8F0]">
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-0 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {pillars.map((pillar, i) => {
             const Icon  = ICON_MAP[pillar.icon] ?? Trophy;
             const title = pillar.title[L] || pillar.title.fr;
@@ -48,7 +48,7 @@ export default function TrustBar() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.09, duration: 0.5, ease: "easeOut" }}
                 className="flex items-start gap-4 py-7 px-6 lg:px-8 group
-                  hover:bg-[#F7F9FC] transition-colors duration-200"
+                  hover:bg-[#F7F9FC] transition-colors duration-200 min-w-[280px] sm:min-w-0 sm:border-r sm:border-[#E2E8F0]"
               >
                 {/* Icône ronde colorée */}
                 <div
