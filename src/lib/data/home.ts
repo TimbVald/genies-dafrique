@@ -5,7 +5,6 @@ import { STATISTICS_DATA, STATISTICS_CONFIG }      from "@/data/home/statistics"
 import { ABOUT_SECTION_DATA }                      from "@/data/home/about";
 import { getTrustBarPillars }                      from "@/data/home/trustbar";
 import { getExcellencePoles }                      from "@/data/home/excellence";
-import { getDirectriceSectionData as getDirectriceData } from "@/data/home/directrice";
 
 /* ── Hero Data Functions ─────────────────────────────────────────────── */
 /** Slides legacy (image + ken burns uniquement) */
@@ -49,9 +48,4 @@ export function getStatisticsConfig() {
 /* ── About Section Data Functions ─────────────────────────────────────── */
 export function getAboutSectionData() {
   return ABOUT_SECTION_DATA;
-}
-
-/* ── Directrice Section Data Functions ─────────────────────────────────── */
-export function getDirectriceSectionData() {
-  return getDirectriceData();
 }

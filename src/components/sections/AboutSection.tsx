@@ -274,6 +274,32 @@ export default function AboutSection() {
                   </motion.span>
                 </Link>
               </motion.div>
+
+              {/* Signature directeur */}
+              <motion.div
+                variants={fadeUp}
+                className="mt-9 pt-7 border-t border-[#E2E8F0] flex items-center gap-4"
+              >
+                <div className="relative flex-shrink-0">
+                  <div className="w-14 h-14 rounded-full overflow-hidden ring-4 ring-[#F5A623]/35 shadow-md">
+                    <Image
+                      src="/images/IMG-20260723-WA0075.jpg"
+                      alt={aboutData.directorName[locale as keyof typeof aboutData.directorName]}
+                      width={56} height={56}
+                      className="object-cover object-top w-full h-full"
+                    />
+                  </div>
+                  <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-[#2E7D32] border-2 border-white shadow-sm" />
+                </div>
+                <div>
+                  <p className="font-bold text-[#1A202C] text-sm">
+                    {aboutData.directorName[locale as keyof typeof aboutData.directorName]}
+                  </p>
+                  <p className="text-[#4A5568] text-xs leading-snug max-w-[230px]">
+                    {aboutData.directorRole[locale as keyof typeof aboutData.directorRole]}
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

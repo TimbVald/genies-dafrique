@@ -54,20 +54,11 @@
     "seeDetails": "Voir les détails",
     "eventCategories": {
       "all": "Toutes les catégories",
-      "rentree": "Rentrée scolaire",
-      "reunions_parents": "Réunion parents",
-      "examens": "Examens",
-      "vacances": "Vacances scolaires",
-      "sorties_pedagogiques": "Sorties pédagogiques",
-      "activites_sportives": "Activités sportives",
-      "activites_culturelles": "Activités culturelles",
-      "club": "Clubs",
-      "ceremonie": "Cérémonies",
-      "journee_speciale": "Journées spéciales",
-      "actualite": "Actualités",
-      "celebrations": "Célébrations",
-      "concours": "Concours",
-      "evenements_administratifs": "Événements administratifs"
+      "vie_scolaire": "Vie scolaire",
+      "culturel": "Culturel",
+      "pedagogique": "Pédagogique",
+      "sensibilisation": "Sensibilisation",
+      "jour_ferie": "Jour férié"
     }
   },
   "excellenceSection": {

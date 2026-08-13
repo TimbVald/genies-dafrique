@@ -54,20 +54,11 @@
     "seeDetails": "Yiba mvoé",
     "eventCategories": {
       "all": "Bikɔ́l nyonso",
-      "rentree": "Bengane ya sukul",
-      "reunions_parents": "Mvan ya bana ba fam",
-      "examens": "Examens",
-      "vacances": "Vacances ya sukul",
-      "sorties_pedagogiques": "Mvan ya akom",
-      "activites_sportives": "Bisala ya sport",
-      "activites_culturelles": "Bisala ya mvan",
-      "club": "Clubs",
-      "ceremonie": "Ceremonies",
-      "journee_speciale": "Mbɔ́s ya mvoé",
-      "actualite": "Mbia",
-      "celebrations": "Celebrations",
-      "concours": "Concours",
-      "evenements_administratifs": "Mbia ya administration"
+      "vie_scolaire": "Vie scolaire",
+      "culturel": "Culturel",
+      "pedagogique": "Pédagogique",
+      "sensibilisation": "Sensibilisation",
+      "jour_ferie": "Jour férié"
     }
   },
   "excellenceSection": {

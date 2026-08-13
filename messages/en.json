@@ -54,20 +54,11 @@
     "seeDetails": "View details",
     "eventCategories": {
       "all": "All categories",
-      "rentree": "Back to school",
-      "reunions_parents": "Parent meetings",
-      "examens": "Exams",
-      "vacances": "School holidays",
-      "sorties_pedagogiques": "Educational outings",
-      "activites_sportives": "Sports activities",
-      "activites_culturelles": "Cultural activities",
-      "club": "Clubs",
-      "ceremonie": "Ceremonies",
-      "journee_speciale": "Special days",
-      "actualite": "News",
-      "celebrations": "Celebrations",
-      "concours": "Competitions",
-      "evenements_administratifs": "Administrative events"
+      "vie_scolaire": "School Life",
+      "culturel": "Cultural",
+      "pedagogique": "Educational",
+      "sensibilisation": "Awareness",
+      "jour_ferie": "Public Holiday"
     }
   },
   "announcement": "📢 Enrollment is now open — Monday to Friday 8AM–1PM",
