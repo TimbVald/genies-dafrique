@@ -1,6 +1,7 @@
 import HeroSection          from "@/components/sections/HeroSection";
 import TrustBar             from "@/components/sections/TrustBar";
 import AboutSection         from "@/components/sections/AboutSection";
+import AproposSection       from "@/components/sections/AproposSection";
 import ProgramsSection      from "@/components/sections/ProgramsSection";
 import ExcellenceSection    from "@/components/sections/ExcellenceSection";
 import StatsSection         from "@/components/sections/StatsSection";
@@ -28,6 +29,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <TrustBar />
+      <AproposSection />
       <AboutSection />
       <ProgramsSection />
       <ExcellenceSection />
