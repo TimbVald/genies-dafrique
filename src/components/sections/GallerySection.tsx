@@ -7,14 +7,14 @@ import { useTranslations, useLocale } from "next-intl";
 import { motion, useInView, type Variants, AnimatePresence } from "framer-motion";
 import { ZoomIn, X, ArrowRight, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import SectionBadge from "@/components/ui/SectionBadge";
+import { getVisibleGallery } from "@/lib/data/gallery";
 
-const PHOTOS = [
-  { src: "/images/IMG-20260723-WA0024.jpg",          altFr: "Élèves en activité pédagogique",    altEn: "Students in learning activity",     span: "lg:col-span-2 lg:row-span-2" },
-  { src: "/images/Generated_Image.png",              altFr: "Atelier créatif à l'école",          altEn: "Creative workshop at school",       span: "" },
-  { src: "/images/pexels-ai25studioai-7342628.jpg",  altFr: "Vie scolaire au quotidien",          altEn: "Daily school life",                 span: "" },
-  { src: "/images/pexels-karola-g-7269671.jpg",      altFr: "Activités extérieures",              altEn: "Outdoor activities",                span: "" },
-  { src: "/images/pexels-ani-ani.jpg",               altFr: "Groupe d'élèves épanouis",           altEn: "Group of happy students",           span: "" },
-];
+/**
+ * GallerySection — mosaïque photo sur la homepage.
+ * Photos lues depuis src/data/gallery/index.ts via getVisibleGallery().
+ * Pour ajouter/modifier une photo (src, alt, span), éditer uniquement
+ * GALLERY_DATA dans le fichier de données — pas ce composant.
+ */
 
 const hdrAnim: Variants  = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } } };
 const gridAnim: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } };
@@ -23,13 +23,14 @@ const photoAnim: Variants= { hidden: { opacity: 0, scale: 0.97 }, show: { opacit
 export default function GallerySection() {
   const t      = useTranslations("gallery");
   const locale = useLocale();
+  const photos = getVisibleGallery();            // ← données
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  const prev = () => setLightbox(l => l !== null ? (l - 1 + PHOTOS.length) % PHOTOS.length : null);
-  const next = () => setLightbox(l => l !== null ? (l + 1) % PHOTOS.length : null);
+  const prev = () => setLightbox(l => l !== null ? (l - 1 + photos.length) % photos.length : null);
+  const next = () => setLightbox(l => l !== null ? (l + 1) % photos.length : null);
 
   return (
     <>
@@ -51,7 +52,7 @@ export default function GallerySection() {
             {/* Compteur photos */}
             <div className="flex items-center gap-2 text-[#4A5568] flex-shrink-0">
               <Camera size={18} className="text-[#1A3A8F]" />
-              <span className="font-bold text-[#1A202C]">{PHOTOS.length}</span>
+              <span className="font-bold text-[#1A202C]">{photos.length}</span>
               <span className="text-sm">{locale === "fr" ? "photos" : "photos"}</span>
             </div>
           </motion.div>
@@ -61,16 +62,17 @@ export default function GallerySection() {
             className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mb-10"
             style={{ gridAutoRows: "210px" }}
             variants={gridAnim} initial="hidden" animate={inView ? "show" : "hidden"}>
-            {PHOTOS.map((photo, i) => {
-              const alt = locale === "fr" ? photo.altFr : photo.altEn;
+            {photos.map((photo, i) => {
+              const alt  = photo.title[locale as "fr" | "en" | "ew"] || photo.title.fr;
+              const span = photo.gridSpan ?? "";
               return (
-                <motion.div key={i} variants={photoAnim}
+                <motion.div key={photo.id} variants={photoAnim}
                   className={`relative overflow-hidden rounded-2xl group cursor-pointer
                     ring-2 ring-transparent hover:ring-[#1A3A8F]/40 focus-within:ring-[#1A3A8F]
-                    transition-all duration-300 ${photo.span}`}>
-                  <Image src={photo.src} alt={alt} fill
+                    transition-all duration-300 ${span}`}>
+                  <Image src={photo.imageUrl} alt={alt} fill
                     className="object-cover group-hover:scale-[1.06] transition-transform duration-700 ease-in-out"
-                    sizes={photo.span ? "(max-width: 640px) 50vw, 66vw" : "(max-width: 640px) 50vw, 33vw"} />
+                    sizes={span ? "(max-width: 640px) 50vw, 66vw" : "(max-width: 640px) 50vw, 33vw"} />
 
                   {/* Overlay hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A3A8F]/72 via-[#1A3A8F]/18
@@ -87,7 +89,7 @@ export default function GallerySection() {
                   </button>
 
                   {/* Légende grande photo */}
-                  {photo.span && (
+                  {span && (
                     <div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <p className="text-white text-sm font-semibold drop-shadow">{alt}</p>
                     </div>
@@ -145,8 +147,9 @@ export default function GallerySection() {
               initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }} transition={{ duration: 0.28, ease: "easeOut" }}
               onClick={e => e.stopPropagation()}>
-              <Image src={PHOTOS[lightbox].src}
-                alt={locale === "fr" ? PHOTOS[lightbox].altFr : PHOTOS[lightbox].altEn}
+              <Image
+                src={photos[lightbox].imageUrl}
+                alt={photos[lightbox].title[locale as "fr" | "en" | "ew"] || photos[lightbox].title.fr}
                 fill className="object-contain rounded-xl" sizes="100vw" priority />
             </motion.div>
 
@@ -160,7 +163,7 @@ export default function GallerySection() {
 
             <p aria-live="polite"
               className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums">
-              {lightbox + 1} / {PHOTOS.length}
+              {lightbox + 1} / {photos.length}
             </p>
           </motion.div>
         )}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   motion, useInView, type Variants, type Transition,
 } from "framer-motion";
@@ -35,8 +35,8 @@ const ACCENTS = [
 
 export default function WhyUsSection() {
   const t      = useTranslations("whyUs");
-  const locale = useLocale();
-  const items  = t.raw("items") as { icon: string; title: string; body: string }[];
+  const items       = t.raw("items")       as { icon: string; title: string; body: string }[];
+  const bottomStats = t.raw("bottomStats") as { value: string; label: string }[];
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -122,19 +122,13 @@ export default function WhyUsSection() {
           transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
           className="mt-14 rounded-2xl bg-white/8 border border-white/15 backdrop-blur-sm overflow-hidden">
           <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-            {[
-              { value: "FR + EN", labelFr: "Bilinguisme intégral",        labelEn: "Full bilingualism"          },
-              { value: "2025",    labelFr: "Agrément MINEDUB",            labelEn: "MINEDUB Accreditation"      },
-              { value: "0 – 12",  labelFr: "Ans · De la crèche au CM2",   labelEn: "Years · Day Care to Grade 6"},
-            ].map((stat, i) => (
+            {bottomStats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center py-7 px-4 text-center">
                 <span className="font-display font-bold text-[#F5A623] mb-1"
                   style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
                   {stat.value}
                 </span>
-                <span className="text-white/75 text-sm">
-                  {locale === "en" ? stat.labelEn : stat.labelFr}
-                </span>
+                <span className="text-white/75 text-sm">{stat.label}</span>
               </div>
             ))}
           </div>

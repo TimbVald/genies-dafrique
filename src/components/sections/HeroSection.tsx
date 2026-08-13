@@ -12,82 +12,16 @@ import {
   Play, X, ArrowRight, ChevronDown,
   ChevronLeft, ChevronRight, Settings,
 } from "lucide-react";
-import { getHeroConfig } from "@/lib/data/home";
+import { getHeroCycles, getHeroConfig } from "@/lib/data/home";
+import type { HeroCycle } from "@/data/home/hero-cycles";
 
-/* ─── Config ──────────────────────────────────────────────────────── */
+/* ─── Config + Données ────────────────────────────────────────────── */
+const CYCLES   = getHeroCycles();          // données depuis src/data/home/hero-cycles.ts
 const CFG      = getHeroConfig();
 const SLIDE_MS = CFG.slideDuration;
 const TRANS_S  = CFG.transitionDuration;
 
-/* ─── Slides définies ici (1 par cycle pédagogique) ──────────────── */
-// Images réelles du dossier /public/images
-const CYCLES = [
-  {
-    id: "creche",
-    image: "/images/pexels-ani-ani.jpg",
-    position: "center 20%",
-    kenFrom: "scale(1.08) translateY(-2%)",
-    kenTo:   "scale(1.0)  translateY(2%)",
-    ctaHref: "/formations#creche",
-    label: { fr: "Les Génies d'Afrique",           en: "Les Génies d'Afrique",          ew: "Les Génies d'Afrique" },
-    title: { fr: "La Crèche",                      en: "Day Care",                       ew: "Crèche" },
-    accroche: {
-      fr: "Un univers d'éveil, de découvertes et de tendresse où chaque enfant grandit en confiance.",
-      en: "A world of awakening and discovery where every child grows in confidence and warmth.",
-      ew: "Ase ya mfañ, ya dzam na ya mvoé amu mwana nyonso a nga kɔ́l na mbɔ́g.",
-    },
-    cta: { fr: "Découvrir la crèche", en: "Discover Day Care", ew: "Yiba Crèche" },
-  },
-  {
-    id: "maternelle",
-    image: "/images/IMG-20260723-WA0024.jpg",
-    position: "center 15%",
-    kenFrom: "scale(1.06) translateX(-1%)",
-    kenTo:   "scale(1.0)  translateX(1%)",
-    ctaHref: "/formations#maternelle",
-    label: { fr: "Les Génies d'Afrique",           en: "Les Génies d'Afrique",          ew: "Les Génies d'Afrique" },
-    title: { fr: "La Maternelle",                  en: "Nursery School",                 ew: "Maternelle" },
-    accroche: {
-      fr: "L'âge des grandes découvertes : éveil bilingue, curiosité et épanouissement de 2 à 5 ans.",
-      en: "The age of great discoveries: bilingual awakening, curiosity and fulfilment from 2 to 5 years.",
-      ew: "Osu ya a yen dzam minene : a yeme bilingue na mfañ kobi na 2 tii 5 osu.",
-    },
-    cta: { fr: "Découvrir la maternelle", en: "Discover Nursery", ew: "Yiba Maternelle" },
-  },
-  {
-    id: "primaire-fr",
-    image: "/images/IMG-20260723-WA0007.jpg",
-    position: "center 30%",
-    kenFrom: "scale(1.07) translateY(0%)",
-    kenTo:   "scale(1.0)  translateY(3%)",
-    ctaHref: "/formations#primaire-francophone",
-    label: { fr: "Les Génies d'Afrique",           en: "Les Génies d'Afrique",          ew: "Les Génies d'Afrique" },
-    title: { fr: "Primaire Francophone",            en: "French Primary",                 ew: "Primaire Francophone" },
-    accroche: {
-      fr: "Programme officiel MINEDUB enrichi, anglais intensif et projets pédagogiques innovants.",
-      en: "Enhanced official MINEDUB curriculum, intensive English and innovative educational projects.",
-      ew: "Programme MINEDUB na a yɔ́k, English ya mvoé na bikɔ́l bya akom bya minsili.",
-    },
-    cta: { fr: "Découvrir le primaire FR", en: "Discover French Primary", ew: "Yiba Primaire FR" },
-  },
-  {
-    id: "primaire-en",
-    image: "/images/pexels-ai25studioai-7342628.jpg",
-    position: "center 25%",
-    kenFrom: "scale(1.06) translateX(1%)",
-    kenTo:   "scale(1.0)  translateX(-1%)",
-    ctaHref: "/formations#primaire-anglophone",
-    label: { fr: "Les Génies d'Afrique",           en: "Les Génies d'Afrique",          ew: "Les Génies d'Afrique" },
-    title: { fr: "Primaire Anglophone",             en: "English Primary",                ew: "Primaire Anglophone" },
-    accroche: {
-      fr: "Curriculum anglophone MINEDUB rigoureux, français langue seconde renforcée.",
-      en: "Rigorous MINEDUB anglophone curriculum, strong French as a second language.",
-      ew: "Curriculum anglophone ya MINEDUB, français a ne mfañ ya iba ya mvoé.",
-    },
-    cta: { fr: "Découvrir le primaire EN", en: "Discover English Primary", ew: "Yiba Primaire EN" },
-  },
-] as const;
-
+/* ── Types ────────────────────────────────────────────────────────── */
 type L = "fr" | "en" | "ew";
 
 /* ─── Animations ──────────────────────────────────────────────────── */

@@ -70,6 +70,12 @@
       "evenements_administratifs": "Événements administratifs"
     }
   },
+  "excellenceSection": {
+    "badge": "Nos Pôles d'Excellence",
+    "title": "Un environnement propice à l'excellence",
+    "subtitle": "De nos salles informatiques à notre ferme pédagogique, chaque espace contribue à une formation complète adaptée au monde d'aujourd'hui.",
+    "learnMore": "En savoir plus"
+  },
   "programmesPage": {
     "hero": {
       "title": "Nos Programmes",
@@ -979,6 +985,11 @@
     "badge": "Nos Atouts",
     "title": "Pourquoi choisir les Génies d'Afrique ?",
     "subtitle": "Des valeurs fortes, un cadre exceptionnel et un engagement sans faille pour l'épanouissement de chaque enfant.",
+    "bottomStats": [
+      { "value": "FR + EN", "label": "Bilinguisme intégral"       },
+      { "value": "2025",    "label": "Agrément MINEDUB"           },
+      { "value": "0 – 12",  "label": "Ans · Crèche au CM2"        }
+    ],
     "items": [
       {
         "icon": "Globe",
@@ -1031,6 +1042,11 @@
   "testimonials": {
     "badge": "Témoignages",
     "title": "Ce que disent les parents",
+    "subtitle": "Découvrez ce que les familles disent de nous.",
+    "featured": "Coup de cœur",
+    "statsLabel1": "Satisfaction",
+    "statsLabel2": "Familles",
+    "statsLabel3": "Note moyenne",
     "items": [
       {
         "name": "Mme Ngo Biyong",

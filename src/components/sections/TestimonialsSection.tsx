@@ -57,11 +57,7 @@ export default function TestimonialsSection() {
             {t("title")}
           </h2>
           <p className="text-white/55 mt-3 max-w-md mx-auto text-sm">
-            {locale === "fr"
-              ? "Découvrez ce que les familles disent de nous."
-              : locale === "en"
-              ? "Discover what our families say about us."
-              : "Dzam ba balɛ́g ba sukul ba kɔ́bɔ́."}
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -80,7 +76,7 @@ export default function TestimonialsSection() {
               {i === 1 && (
                 <div className="absolute top-5 right-5 bg-white/20 text-white text-[10px] font-bold
                   uppercase tracking-widest px-2.5 py-1 rounded-full">
-                  {locale === "fr" ? "Coup de cœur" : "Featured"}
+                  {t("featured")}
                 </div>
               )}
 
@@ -125,18 +121,18 @@ export default function TestimonialsSection() {
           ))}
         </motion.div>
 
-        {/* Strip stats bas */}
+        {/* Strip stats bas — valeurs et labels depuis les messages */}
         <motion.div className="mt-14 grid grid-cols-3 gap-4 max-w-lg mx-auto text-center"
           initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.7, duration: 0.5 }}>
           {[
-            { value: "100%", fr: "Satisfaction",  en: "Satisfaction"  },
-            { value: "120+", fr: "Familles",       en: "Families"      },
-            { value: "5 ★",  fr: "Note moyenne",   en: "Avg. rating"   },
+            { value: "100%", labelKey: "statsLabel1" as const },
+            { value: "120+", labelKey: "statsLabel2" as const },
+            { value: "5 ★",  labelKey: "statsLabel3" as const },
           ].map((s, i) => (
             <div key={i}>
               <p className="font-display font-bold text-[#F5A623] text-2xl">{s.value}</p>
-              <p className="text-white/50 text-xs mt-0.5">{locale === "en" ? s.en : s.fr}</p>
+              <p className="text-white/50 text-xs mt-0.5">{t(s.labelKey)}</p>
             </div>
           ))}
         </motion.div>

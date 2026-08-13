@@ -17,4 +17,10 @@ export type GalleryItem = {
   tags?: string[];
   photographer?: string;
   date?: string;
+  /**
+   * Classes Tailwind pour le span dans la grille CSS de la mosaïque.
+   * Exemples : "lg:col-span-2 lg:row-span-2" (grande photo), "" (normale).
+   * Permet de contrôler la mise en page de la galerie homepage depuis les données.
+   */
+  gridSpan?: string;
 };

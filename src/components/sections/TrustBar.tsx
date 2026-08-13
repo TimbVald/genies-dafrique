@@ -3,90 +3,28 @@
 import { useRef } from "react";
 import { useLocale } from "next-intl";
 import { motion, useInView } from "framer-motion";
-import { Trophy, Globe, BookOpen, ShieldCheck } from "lucide-react";
+import {
+  Trophy, Globe, BookOpen, ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
+import { getTrustBarPillars } from "@/lib/data/home";
+
+/* ── Map icône : nom (string dans les données) → composant Lucide ── */
+const ICON_MAP: Record<string, LucideIcon> = {
+  Trophy, Globe, BookOpen, ShieldCheck,
+};
 
 /**
- * TrustBar — 4 piliers iconographiques sur fond blanc.
- * Reproduit la bande de confiance du CSI La Gaieté :
- * icône + titre + description courte, 4 colonnes desktop.
+ * TrustBar — 4 piliers de confiance sur fond blanc.
+ * Données lues depuis src/data/home/trustbar.ts via getTrustBarPillars().
+ * Pour modifier un pilier (titre, description, icône, couleur),
+ * éditer uniquement le fichier de données — pas ce composant.
  */
-
-const PILLARS = [
-  {
-    icon: Trophy,
-    color: "#1A3A8F",
-    bg:    "#EEF2FF",
-    fr: {
-      title: "Excellence Académique",
-      desc:  "Enseignement rigoureux fondé sur l'innovation pédagogique et la réussite de chaque élève.",
-    },
-    en: {
-      title: "Academic Excellence",
-      desc:  "Rigorous teaching built on pedagogical innovation and the success of every student.",
-    },
-    ew: {
-      title: "Nyɔ́ñ ya Akom",
-      desc:  "Akom ya mbɔ́g na minlɔ́m ya mvoé amu nyɔ́ñ ya mwana nyonso.",
-    },
-  },
-  {
-    icon: Globe,
-    color: "#2D5BE3",
-    bg:    "#EEF7FF",
-    fr: {
-      title: "Bilinguisme FR / EN",
-      desc:  "Immersion totale français–anglais dès la crèche, une ouverture sur deux cultures et le monde.",
-    },
-    en: {
-      title: "FR / EN Bilingualism",
-      desc:  "Full French–English immersion from day care, an opening to two cultures and the world.",
-    },
-    ew: {
-      title: "Bilingue FR / EN",
-      desc:  "A yɔ́k français na anglais a tɔ́l crèche, yiban na mvan mibuma na si nyonso.",
-    },
-  },
-  {
-    icon: BookOpen,
-    color: "#F5A623",
-    bg:    "#FFF8EE",
-    fr: {
-      title: "Innovation & Pédagogie",
-      desc:  "Agriculture scolaire, entrepreneuriat junior et outils numériques intégrés au quotidien.",
-    },
-    en: {
-      title: "Innovation & Pedagogy",
-      desc:  "School farming, junior entrepreneurship and digital tools integrated into daily learning.",
-    },
-    ew: {
-      title: "Minlɔ́m & Akom",
-      desc:  "Agriculture ya sukul, entrepreneuriat junior na technologies na akom ya ngon nyonso.",
-    },
-  },
-  {
-    icon: ShieldCheck,
-    color: "#2E7D32",
-    bg:    "#F0FFF4",
-    fr: {
-      title: "Encadrement & Valeurs",
-      desc:  "Bienveillance, discipline et responsabilité pour l'épanouissement intégral de chaque enfant.",
-    },
-    en: {
-      title: "Care & Values",
-      desc:  "Well-being, discipline and responsibility for the holistic development of every child.",
-    },
-    ew: {
-      title: "A yen mwana & Mimbɔ́g",
-      desc:  "Mvoé, mbɔ́g na mbɔ́g ya fam amu mfañ nyonso ya mwana nyonso.",
-    },
-  },
-] as const;
-
-type L = "fr" | "en" | "ew";
-
 export default function TrustBar() {
-  const locale = useLocale();
-  const L      = locale as L;
+  const locale  = useLocale();
+  const pillars = getTrustBarPillars();          // ← données
+  const L       = locale as "fr" | "en" | "ew";
+
   const ref    = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20px" });
 
@@ -98,11 +36,14 @@ export default function TrustBar() {
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-[#E2E8F0]">
-          {PILLARS.map(({ icon: Icon, color, bg, ...p }, i) => {
-            const d = p[L];
+          {pillars.map((pillar, i) => {
+            const Icon  = ICON_MAP[pillar.icon] ?? Trophy;
+            const title = pillar.title[L] || pillar.title.fr;
+            const desc  = pillar.desc[L]  || pillar.desc.fr;
+
             return (
               <motion.div
-                key={i}
+                key={pillar.id}
                 initial={{ opacity: 0, y: 18 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.09, duration: 0.5, ease: "easeOut" }}
@@ -113,9 +54,9 @@ export default function TrustBar() {
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center
                     flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: bg }}
+                  style={{ backgroundColor: pillar.bg }}
                 >
-                  <Icon size={22} style={{ color }} strokeWidth={1.8} />
+                  <Icon size={22} style={{ color: pillar.color }} strokeWidth={1.8} />
                 </div>
 
                 {/* Texte */}
@@ -123,13 +64,10 @@ export default function TrustBar() {
                   <p
                     className="font-display font-bold text-[#1A202C] text-[0.93rem] leading-snug mb-1
                       group-hover:text-[#1A3A8F] transition-colors duration-200"
-                    style={{ color: undefined }}
                   >
-                    {d.title}
+                    {title}
                   </p>
-                  <p className="text-[#4A5568] text-xs leading-relaxed">
-                    {d.desc}
-                  </p>
+                  <p className="text-[#4A5568] text-xs leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
             );
@@ -137,11 +75,12 @@ export default function TrustBar() {
         </div>
       </div>
 
-      {/* Ligne accent bleu bas */}
+      {/* Ligne accent multicolore bas */}
       <div
         className="h-[3px]"
         style={{
-          background: "linear-gradient(90deg, #1A3A8F 0%, #2D5BE3 25%, #F5A623 50%, #D32F2F 75%, #1A3A8F 100%)",
+          background:
+            "linear-gradient(90deg, #1A3A8F 0%, #2D5BE3 25%, #F5A623 50%, #D32F2F 75%, #1A3A8F 100%)",
         }}
         aria-hidden="true"
       />

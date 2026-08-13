@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { getAboutSectionData } from "@/lib/data/home";
+import { getAboutSectionData, getStatistics } from "@/lib/data/home";
 import {
   motion, useInView, AnimatePresence,
   type Variants, type Transition,
@@ -17,27 +17,14 @@ const fadeUp: Variants   = { hidden: { opacity: 0, y: 36 }, show: { opacity: 1, 
 const fadeLeft: Variants = { hidden: { opacity: 0, x: -44 }, show: { opacity: 1, x: 0, transition: { duration: 0.75, ease: "easeOut" } } };
 const stagger: Variants  = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } } };
 
+/* ── Onglets piliers (UI uniquement — le contenu vient des données) ── */
 const PILLARS = [
-  { icon: Target,  keyFr: "mission",    labelFr: "Mission",     labelEn: "Mission"     },
-  { icon: Eye,     keyFr: "vision",     labelFr: "Vision",      labelEn: "Vision"      },
-  { icon: Heart,   keyFr: "values",     labelFr: "Valeurs",     labelEn: "Values"      },
-  { icon: Globe,   keyFr: "bilingual",  labelFr: "Bilinguisme", labelEn: "Bilingualism" },
-  { icon: Trophy,  keyFr: "excellence", labelFr: "Excellence",  labelEn: "Excellence"  },
+  { icon: Target,  labelFr: "Mission",     labelEn: "Mission"     },
+  { icon: Eye,     labelFr: "Vision",      labelEn: "Vision"      },
+  { icon: Heart,   labelFr: "Valeurs",     labelEn: "Values"      },
+  { icon: Globe,   labelFr: "Bilinguisme", labelEn: "Bilingualism" },
+  { icon: Trophy,  labelFr: "Excellence",  labelEn: "Excellence"  },
 ] as const;
-
-/* 3 photos empilées/décalées — style La Gaieté */
-const STACK_IMAGES = [
-  { src: "/images/IMG-20260723-WA0024.jpg",         alt: "Élèves en activité" },
-  { src: "/images/IMG-20260723-WA0039.jpg",         alt: "Vie scolaire"       },
-  { src: "/images/pexels-ai25studioai-7342628.jpg", alt: "École bilingue"     },
-];
-
-/* Bloc stats flottant */
-const FLOATING_STATS = [
-  { value: "120+", labelFr: "Élèves inscrits",         labelEn: "Students enrolled" },
-  { value: "2",    labelFr: "Ans d'expérience",         labelEn: "Years of experience" },
-  { value: "2",    labelFr: "Sections bilingues",       labelEn: "Bilingual sections"  },
-];
 
 export default function AboutSection() {
   const t         = useTranslations("about");
@@ -50,6 +37,17 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-80px" });
   const videoSrc   = locale === "en" ? "/videos/VID-EN.mp4" : "/videos/VID-FR.mp4";
+
+  /* Images empilées depuis les données */
+  const stackImages = aboutData.decorativeImages;   // src/data/home/about.ts
+
+  /* Stats flottantes : students, experience + sections bilingues */
+  const allStats = getStatistics();
+  const floatStats = [
+    allStats.find(s => s.id === "stat-students")    ?? { id: "stat-students",   value: "120", suffix: "+", label: { fr: "Élèves inscrits",   en: "Students enrolled",    ew: "Bana ba tɔ́l"     }, sublabel: { fr: "", en: "", ew: "" } },
+    allStats.find(s => s.id === "stat-experience")  ?? { id: "stat-experience", value: "2",   suffix: "",  label: { fr: "Ans d'expérience",  en: "Years of experience",  ew: "Osu ya akom"     }, sublabel: { fr: "", en: "", ew: "" } },
+    {                                                   id: "stat-sections",    value: "2",   suffix: "",  label: { fr: "Sections bilingues",en: "Bilingual sections",   ew: "Nzɔ́g mibuma"    }, sublabel: { fr: "", en: "", ew: "" } },
+  ];
 
   const contentMap = [
     aboutData.mission, aboutData.vision, aboutData.values,
@@ -85,8 +83,8 @@ export default function AboutSection() {
               <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5"
                 style={{ aspectRatio: "4/3" }}>
                 <Image
-                  src={STACK_IMAGES[0].src}
-                  alt={STACK_IMAGES[0].alt}
+                  src={stackImages[0]}
+                  alt={locale === "fr" ? "Élèves en activité" : "Students in activity"}
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -102,8 +100,8 @@ export default function AboutSection() {
                 transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
               >
                 <Image
-                  src={STACK_IMAGES[1].src}
-                  alt={STACK_IMAGES[1].alt}
+                  src={stackImages[1]}
+                  alt={locale === "fr" ? "Vie scolaire" : "School life"}
                   fill
                   className="object-cover object-top"
                   sizes="30vw"
@@ -119,8 +117,8 @@ export default function AboutSection() {
                 transition={{ delay: 0.6, duration: 0.55, ease: "easeOut" }}
               >
                 <Image
-                  src={STACK_IMAGES[2].src}
-                  alt={STACK_IMAGES[2].alt}
+                  src={stackImages[2]}
+                  alt={locale === "fr" ? "École bilingue" : "Bilingual school"}
                   fill
                   className="object-cover object-center"
                   sizes="20vw"
@@ -136,13 +134,13 @@ export default function AboutSection() {
                 transition={{ delay: 0.7, duration: 0.55, ease: "easeOut" }}
               >
                 <div className="flex items-center divide-x divide-[#E2E8F0] gap-0">
-                  {FLOATING_STATS.map((s, i) => (
+                  {floatStats.map((s, i) => (
                     <div key={i} className={`text-center ${i > 0 ? "pl-4 ml-4" : ""}`}>
                       <p className="font-display font-bold text-[#1A3A8F] text-lg leading-none mb-0.5">
-                        {s.value}
+                        {s.value}{s.suffix}
                       </p>
                       <p className="text-[#4A5568] text-[0.68rem] leading-tight whitespace-nowrap">
-                        {locale === "en" ? s.labelEn : s.labelFr}
+                        {s.label[locale as keyof typeof s.label] || s.label.fr}
                       </p>
                     </div>
                   ))}

@@ -198,6 +198,11 @@
     "badge": "Our Strengths",
     "title": "Why Choose Les Génies d'Afrique?",
     "subtitle": "Strong values, an exceptional environment and an unwavering commitment to the development of every child.",
+    "bottomStats": [
+      { "value": "FR + EN", "label": "Full bilingualism"         },
+      { "value": "2025",    "label": "MINEDUB Accreditation"     },
+      { "value": "0 – 12",  "label": "Years · Day Care to CM2"   }
+    ],
     "items": [
       {
         "icon": "Globe",
@@ -250,6 +255,11 @@
   "testimonials": {
     "badge": "Testimonials",
     "title": "What Parents Say",
+    "subtitle": "Discover what our families say about us.",
+    "featured": "Featured",
+    "statsLabel1": "Satisfaction",
+    "statsLabel2": "Families",
+    "statsLabel3": "Avg. rating",
     "items": [
       {
         "name": "Mrs. Ngo Biyong",
@@ -1063,6 +1073,12 @@
       "button": "Enroll Now",
       "link": "Discover Our Programs"
     }
+  },
+  "excellenceSection": {
+    "badge": "Our Poles of Excellence",
+    "title": "An environment conducive to excellence",
+    "subtitle": "From our computer labs to our school farm, every space contributes to a complete education adapted to today's world.",
+    "learnMore": "Learn more"
   },
   "programmesPage": {
     "hero": {

@@ -70,6 +70,12 @@
       "evenements_administratifs": "Mbia ya administration"
     }
   },
+  "excellenceSection": {
+    "badge": "Bikɔ́l bya Nyɔ́ñ",
+    "title": "Ase ya mvoé amu nyɔ́ñ",
+    "subtitle": "Kobi na bisɔ́m bya informatique tii ferme ya sukul, ase nyonso a ne akom ya nyonso ya mbɔ́g.",
+    "learnMore": "A yeme mfañ"
+  },
   "programmesPage": {
     "hero": {
       "title": "Bikɔ́l bya biso",
@@ -871,6 +877,11 @@
   "badge": "Bikɔ́l bya biso",
   "title": "A yeme amu dzam a Génies d'Afrique ?",
   "subtitle": "Mimbɔ́g minene, ase ya mvoé na mfañ nyonso a yɔ́k mwana nyonso.",
+  "bottomStats": [
+    { "value": "FR + EN", "label": "Bilinguisme intégral"     },
+    { "value": "2025",    "label": "Agrément MINEDUB"         },
+    { "value": "0 – 12",  "label": "Osu · Crèche na CM2"     }
+  ],
   "items": [
     {
       "icon": "Globe",
@@ -923,6 +934,11 @@
 "testimonials": {
   "badge": "Mfañ ya balɛ́g",
   "title": "Dzam ba balɛ́g ba sukul ba kɔ́bɔ́",
+  "subtitle": "Dzam ba balɛ́g ba sukul ba kɔ́bɔ́ na biso.",
+  "featured": "Mvoé ya mfañ",
+  "statsLabel1": "Satisfaction",
+  "statsLabel2": "Balɛ́g ba sukul",
+  "statsLabel3": "Note ya mvoé",
   "items": [
     {
       "name": "Mme Ngo Biyong",

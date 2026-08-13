@@ -17,6 +17,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     featured: true,
     visible: true,
     order: 1,
+    gridSpan: "lg:col-span-2 lg:row-span-2",  // grande photo en mosaïque homepage
   },
   {
     id: "gallery-2",
