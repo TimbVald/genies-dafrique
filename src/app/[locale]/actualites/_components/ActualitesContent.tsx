@@ -23,6 +23,7 @@ import {
   CATEGORY_LABELS_FR, 
   CATEGORY_LABELS_EN 
 } from "@/lib/data/news";
+import { getUpcomingEvents, EVENT_CATEGORIES } from "@/lib/data/events";
 import type { NewsArticle } from "@/types";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
@@ -50,6 +51,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
 
   // Use data service
   const newsData = getNews();
+  const eventsData = getUpcomingEvents(6);
   const catLabels = isFr ? CATEGORY_LABELS_FR : CATEGORY_LABELS_EN;
 
   const searchPlaceholder = isFr
@@ -57,6 +59,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
     : "Search an article, an event…";
 
   const recentTitle = isFr ? "Articles récents" : "Recent Articles";
+  const eventsTitle = isFr ? "Événements à venir" : "Upcoming Events";
   const featuredLabel = isFr ? "À la une" : "Featured";
   const pageLabel = isFr ? "Page" : "Page";
   const prevLabel = isFr ? "Précédent" : "Previous";
@@ -84,6 +87,23 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
       return matchesCategory && matchesSearch;
     });
   }, [searchQuery, selectedCategory, newsData]);
+
+  const filteredEvents = useMemo(() => {
+    return eventsData.filter((event) => {
+      const search = searchQuery.toLowerCase();
+      const titleFr = event.title.fr.toLowerCase();
+      const titleEn = event.title.en.toLowerCase();
+      const description = event.description.fr.toLowerCase();
+      const category = event.category.fr.toLowerCase();
+      const matchesSearch =
+        search === "" ||
+        titleFr.includes(search) ||
+        titleEn.includes(search) ||
+        description.includes(search) ||
+        category.includes(search);
+      return matchesSearch;
+    });
+  }, [searchQuery, eventsData]);
 
   const featured = newsData[0];
   const restAll = filteredNews.filter((a) => a.id !== featured.id);
@@ -277,6 +297,71 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
               </Link>
             </motion.div>
 
+            {/* Upcoming Events Section */}
+            {filteredEvents.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <SectionBadge>{eventsTitle}</SectionBadge>
+                <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredEvents.map((event, index) => {
+                    const category = EVENT_CATEGORIES.find(cat => cat.key === event.categoryKey) || EVENT_CATEGORIES[0];
+                    const eventDate = new Date(event.startDate);
+                    const formattedDate = eventDate.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+                    
+                    return (
+                      <motion.div
+                        key={event.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                      >
+                        <Link
+                          href={`/actualites/${event.slug}`}
+                          className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E2E8F0]
+                            hover:shadow-[0_8px_32px_rgba(26,58,143,0.10)] hover:-translate-y-1 transition-all duration-300 h-full"
+                        >
+                          <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#1A3A8F] to-[#0D2A6F] flex items-center justify-center">
+                            <div className="text-center text-white">
+                              <div className="text-3xl font-bold">{eventDate.getDate()}</div>
+                              <div className="text-sm font-medium">{eventDate.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'long' })}</div>
+                            </div>
+                          </div>
+                          <div className="p-6 flex flex-col flex-1">
+                            <div className="flex items-center gap-2 mb-3 flex-wrap">
+                              <span
+                                className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                                style={{ 
+                                  backgroundColor: category.bgColor, 
+                                  color: category.textColor 
+                                }}
+                              >
+                                {category.label[locale as "fr" | "en" | "ew"] || category.label.fr}
+                              </span>
+                            </div>
+                            <h3 className="font-display font-bold text-[#1A202C] text-lg mb-2 line-clamp-2">
+                              {event.title[locale as "fr" | "en" | "ew"] || event.title.fr}
+                            </h3>
+                            <p className="text-[#4A5568] text-sm leading-relaxed line-clamp-3 flex-1">
+                              {event.description[locale as "fr" | "en" | "ew"] || event.description.fr}
+                            </p>
+                            <span className="mt-4 inline-flex items-center gap-1.5 text-[#1A3A8F] font-semibold text-xs
+                              group-hover:gap-2.5 transition-all duration-200">
+                              {readMoreLabel} <ArrowRight size={12} />
+                            </span>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+
             {/* Articles Grid */}
             <div className="grid sm:grid-cols-2 gap-8">
               {paginatedNews.map((article, index) => (
@@ -441,6 +526,63 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
           {/* Right: Sidebar (desktop only) */}
           <aside className="hidden lg:block">
             <div className="sticky top-8 space-y-8">
+              {/* Upcoming Events */}
+              {eventsData.length > 0 && (
+                <div className="rounded-2xl border border-[#E2E8F0] bg-white p-6">
+                  <h3 className="font-display font-bold text-[#1A202C] text-lg mb-5 flex items-center gap-2">
+                    <span className="w-1 h-5 bg-[#1A3A8F] rounded-full" />
+                    {eventsTitle}
+                  </h3>
+                  <div className="space-y-4">
+                    {eventsData.map((event, i) => {
+                      const category = EVENT_CATEGORIES.find(cat => cat.key === event.categoryKey) || EVENT_CATEGORIES[0];
+                      const eventDate = new Date(event.startDate);
+                      const formattedDate = eventDate.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short' });
+                      
+                      return (
+                        <motion.div
+                          key={event.id}
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Link
+                            href={`/actualites/${event.slug}`}
+                            className="group flex gap-4 items-start"
+                          >
+                            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#1A3A8F] to-[#0D2A6F] flex flex-col items-center justify-center text-white">
+                              <span className="text-xs font-medium">{eventDate.toLocaleDateString(isFr ? 'fr-FR' : 'en-US', { month: 'short' })}</span>
+                              <span className="text-lg font-bold">{eventDate.getDate()}</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span
+                                  className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide"
+                                  style={{ 
+                                    backgroundColor: category.bgColor, 
+                                    color: category.textColor 
+                                  }}
+                                >
+                                  {category.label[locale as "fr" | "en" | "ew"] || category.label.fr}
+                                </span>
+                              </div>
+                              <h4 className="font-semibold text-[#1A202C] text-sm leading-snug line-clamp-2 group-hover:text-[#1A3A8F] transition-colors">
+                                {event.title[locale as "fr" | "en" | "ew"] || event.title.fr}
+                              </h4>
+                            </div>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                  <Link 
+                    href="/calendrier"
+                    className="mt-4 block text-center text-sm text-[#1A3A8F] font-semibold hover:underline"
+                  >
+                    {isFr ? "Voir tout le calendrier" : "View full calendar"} →
+                  </Link>
+                </div>
+              )}
+
               <div className="rounded-2xl border border-[#E2E8F0] bg-white p-6">
                 <h3 className="font-display font-bold text-[#1A202C] text-lg mb-5 flex items-center gap-2">
                   <span className="w-1 h-5 bg-[#1A3A8F] rounded-full" />

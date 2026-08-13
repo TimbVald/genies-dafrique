@@ -186,7 +186,7 @@ export default function SchoolCalendar() {
 
   const handleNavigateToDetails = useCallback((eventSlug: string) => {
     handleCloseModal();
-    router.push(`/calendrier/${eventSlug}`);
+    router.push(`/actualites/${eventSlug}`);
   }, [router, handleCloseModal]);
 
   const eventStyleGetter = useCallback((event: CalendarEvent) => {
