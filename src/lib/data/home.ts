@@ -3,9 +3,9 @@ import { HERO_SLIDES, HERO_CONTENT, HERO_CONFIG } from "@/data/home/hero";
 import { getHeroCycles }                           from "@/data/home/hero-cycles";
 import { STATISTICS_DATA, STATISTICS_CONFIG }      from "@/data/home/statistics";
 import { ABOUT_SECTION_DATA }                      from "@/data/home/about";
-import { APROPOS_SECTION_DATA, getAproposSectionData } from "@/data/home/apropos";
 import { getTrustBarPillars }                      from "@/data/home/trustbar";
 import { getExcellencePoles }                      from "@/data/home/excellence";
+import { getDirectriceSectionData as getDirectriceData } from "@/data/home/directrice";
 
 /* ── Hero Data Functions ─────────────────────────────────────────────── */
 /** Slides legacy (image + ken burns uniquement) */
@@ -51,7 +51,7 @@ export function getAboutSectionData() {
   return ABOUT_SECTION_DATA;
 }
 
-/* ── Apropos Section Data Functions ───────────────────────────────────── */
-export { getAproposSectionData };
-export { APROPOS_SECTION_DATA };
-export type { AproposSectionData, StatCardData } from "@/data/home/apropos";
+/* ── Directrice Section Data Functions ─────────────────────────────────── */
+export function getDirectriceSectionData() {
+  return getDirectriceData();
+}
