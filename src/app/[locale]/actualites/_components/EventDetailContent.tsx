@@ -1,3 +1,5 @@
+'use client';
+
 import { format } from 'date-fns';
 import { fr, enGB } from 'date-fns/locale';
 import { Calendar as CalendarIcon, Clock, MapPin, Share2, ArrowLeft } from 'lucide-react';
