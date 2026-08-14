@@ -196,6 +196,27 @@
       "description": "Sominez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
     }
   },
+  "equipePage": {
+    "meta": {
+      "title": "Banyɛ ba Akom | Les Génies d'Afrique",
+      "description": "Yiba banyɛ ba akom ya Complexe Scolaire Bilingue Les Génies d'Afrique : banyɛ ba English, ya Français na banyɛ ba bikɔ́l mibuma."
+    },
+    "breadcrumb": "Ekipa ya biso",
+    "hero": {
+      "title": "Banyɛ ba Akom bya biso",
+      "subtitle": "Banyɛ ba yeme na mfañ, ba yeme mvoé na mfañ ya mwana nyonso."
+    },
+    "intro": {
+      "badge": "Ekipa ya Akom",
+      "title": "Ekipa ya minsili mibuma amu mwana wua",
+      "body": "Na Les Génies d'Afrique, ekipa ya akom a ne motema ya sukul. Munya nyonso a ye mfañ ya mvoé — English, Français aloŋ akom mibuma — na ase ya bilingue ya mvoé. Mvon imwe ya bango nyonso : a yen génie ya mwana nyonso."
+    },
+    "cta": {
+      "title": "A yeme mfañ mingi na sukul ya biso",
+      "subtitle": "Yiba ntan, ntii na mekat ya biso na page À propos.",
+      "back": "Kɔ́l na page À propos"
+    }
+  },
   "aboutPage": {
   "hero": {
     "title": "Mvon mvo bisu",

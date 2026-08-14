@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Trophy, Shield, Globe, Lightbulb, Heart,
   Users, ShieldCheck, Star, CheckCircle2,
@@ -324,10 +325,34 @@ export default function AboutPageContent() {
               </motion.div>
             ))}
           </div>
+          {/* ── Section équipe : lien vers la page dédiée ── */}
+          <motion.div
+            className="text-center mt-10"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            <Link href="/a-propos/equipe">
+              <motion.span
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl
+                  bg-[#1A3A8F] text-white font-bold text-sm cursor-pointer"
+                style={{ boxShadow: "0 4px 20px rgba(26,58,143,0.30)" }}
+                whileHover={{ scale: 1.03, y: -2, boxShadow: "0 8px 28px rgba(26,58,143,0.40)" }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 380, damping: 26 }}
+              >
+                <Users size={16} />
+                {locale === "fr"
+                  ? "Découvrir notre équipe pédagogique"
+                  : locale === "en"
+                  ? "Meet our teaching team"
+                  : "Yiba ekipa ya biso"}
+              </motion.span>
+            </Link>
+          </motion.div>
         </div>
       </section>
-
-      {/* ── AGRÉMENT ── */}
       <section
         className="py-20"
         style={{ background: "linear-gradient(135deg, #1A3A8F 0%, #0D1F6B 100%)" }}

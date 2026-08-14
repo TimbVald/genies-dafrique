@@ -316,6 +316,27 @@
     "backToTop": "Back to top",
     "close": "Close"
   },
+  "equipePage": {
+    "meta": {
+      "title": "Our Teaching Team | Les Génies d'Afrique",
+      "description": "Meet the teaching team of the Bilingual School Complex Les Génies d'Afrique: dedicated English, French and multidisciplinary teachers committed to every student's success."
+    },
+    "breadcrumb": "Our team",
+    "hero": {
+      "title": "Our Teaching Team",
+      "subtitle": "Passionate, qualified teachers devoted to the bilingual excellence of every student."
+    },
+    "intro": {
+      "badge": "The Teaching Team",
+      "title": "A multilingual team at the service of your children",
+      "body": "At Les Génies d'Afrique, our teaching team is the heart of the school. Each teacher brings specific expertise — English, French, or multidisciplinary teaching — in a stimulating bilingual environment. Their shared commitment: revealing the potential of every child."
+    },
+    "cta": {
+      "title": "Learn more about our school",
+      "subtitle": "Discover our history, mission and values on the About page.",
+      "back": "Back to About page"
+    }
+  },
   "aboutPage": {
     "hero": {
       "title": "About Les Génies d'Afrique",

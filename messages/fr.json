@@ -196,6 +196,27 @@
       "description": "Contactez le Complexe Scolaire Bilingue Les Génies d'Afrique. Coordonnées, horaires, formulaire de contact et accès à l'établissement de Nkozoa, Yaoundé."
     }
   },
+  "equipePage": {
+    "meta": {
+      "title": "Notre Équipe Pédagogique | Les Génies d'Afrique",
+      "description": "Découvrez l'équipe enseignante du Complexe Scolaire Bilingue Les Génies d'Afrique : enseignants d'anglais, de français et pluridisciplinaires dévoués à la réussite de chaque élève."
+    },
+    "breadcrumb": "Notre équipe",
+    "hero": {
+      "title": "Notre Équipe Pédagogique",
+      "subtitle": "Des enseignants passionnés, qualifiés et dévoués à l'excellence bilingue de chaque élève."
+    },
+    "intro": {
+      "badge": "L'Équipe Enseignante",
+      "title": "Une équipe plurilingue au service de vos enfants",
+      "body": "Chez Les Génies d'Afrique, notre équipe pédagogique est le cœur de l'établissement. Chaque enseignant apporte une expertise spécifique — anglais, français, ou enseignement pluridisciplinaire — dans un environnement bilingue stimulant. Leur engagement commun : révéler le potentiel de chaque enfant."
+    },
+    "cta": {
+      "title": "En savoir plus sur notre établissement",
+      "subtitle": "Découvrez notre histoire, notre mission et nos valeurs sur la page À propos.",
+      "back": "Retour à la page À propos"
+    }
+  },
   "aboutPage": {
     "hero": {
       "title": "À propos de nous",

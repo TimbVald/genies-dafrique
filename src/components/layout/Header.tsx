@@ -25,11 +25,11 @@ const NAV_ITEMS: NavItem[] = [
 
 /* ── Mega-menu definitions ──────────────────────────────────── */
 const ABOUT_MENU = [
-  { key: "subHistory",  href: "/a-propos#histoire", icon: Users },
-  { key: "subMission",  href: "/a-propos#mission",  icon: BookOpen },
-  { key: "subValues",   href: "/a-propos#valeurs",  icon: Globe },
-  { key: "subTeam",     href: "/a-propos#equipe",   icon: Users },
-  { key: "contact",    href: "/contact", icon: Mail},
+  { key: "subHistory",  href: "/a-propos#histoire",  icon: Users },
+  { key: "subMission",  href: "/a-propos#mission",   icon: BookOpen },
+  { key: "subValues",   href: "/a-propos#valeurs",   icon: Globe },
+  { key: "subTeam",     href: "/a-propos/equipe",    icon: Users },   // ← page dédiée
+  { key: "contact",     href: "/contact",            icon: Mail },
 ];
 const FORMATIONS_MENU = [
   { key: "formations",  href: "/formations",  icon: BookOpen },
