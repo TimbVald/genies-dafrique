@@ -28,7 +28,7 @@ export const DIRECTOR_MESSAGE: DirectorMessage = {
     en: "President – Founder",
     ew: "Présidente – Fondatrice",
   },
-  photo: "/images/IMG-20260723-WA0075.jpg",
+  photo: "https://res.cloudinary.com/dyetkan86/image/upload/v1786697123/ChatGPT_Image_13_ao%C3%BBt_2026_13_10_54_vxd68p.png",
   quote: {
     fr: "Chaque enfant porte en lui un génie unique. Notre rôle est de créer les conditions pour qu'il s'éveille et s'épanouisse.",
     en: "Every child carries a unique genius within them. Our role is to create the conditions for it to awaken and flourish.",

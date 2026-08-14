@@ -48,7 +48,7 @@ export interface TeachingStaff {
 export const TEACHING_STAFF: TeachingStaff[] = [
   {
     id:             "mbaku-jemina",
-    name:           "Mbaku Jemina",           // ← fourni : MBAKU JEMINA
+    name:           "Mrs. Jemina MBAKU",           // ← fourni : MBAKU JEMINA
     role: {
       fr: "Enseignant d'anglais",
       en: "English Teacher",
@@ -61,20 +61,20 @@ export const TEACHING_STAFF: TeachingStaff[] = [
   },
   {
     id:             "mofa",
-    name:           "Mofa",                   // ← fourni : MOFA (prénom manquant — à clarifier)
+    name:           "M. MOFA",                   // ← fourni : MOFA (prénom manquant — à clarifier)
     role: {
       fr: "Enseignant d'anglais",
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611378/IMG-20260810-WA0079_hoixjk.jpg",         // ⚠️ À remplacer
     photoConfirmed: false,
     order:          2,
     visible:        true,
   },
   {
     id:             "ongueng-elanga",
-    name:           "Ongueng Elanga",          // ← fourni : ONGUENG ELANGA (prénom manquant — à clarifier)
+    name:           "Mrs. ONGUENG ELANGA",          // ← fourni : ONGUENG ELANGA (prénom manquant — à clarifier)
     role: {
       fr: "Enseignant d'anglais",
       en: "English Teacher",
