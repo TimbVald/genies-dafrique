@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import ContactForm from "@/components/sections/ContactForm";
+import SocialIcons from "@/components/ui/SocialIcons";
+import { getSocialLink } from "@/lib/data/global";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -23,6 +25,9 @@ export default function ContactPage() {
   const t      = useTranslations("contactPage");
   const tn     = useTranslations("nav");
   const tc     = useTranslations("contact");
+
+  /* URL WhatsApp depuis la source de données centralisée */
+  const waLink = getSocialLink("whatsapp");
 
   const infoCards = t.raw("infoCards") as { icon: string; title: string; lines: string[] }[];
 
@@ -124,8 +129,8 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* WhatsApp CTA */}
-            <a href="https://wa.me/237651111506" target="_blank" rel="noopener noreferrer"
+            {/* WhatsApp CTA — URL depuis la source centralisée */}
+            <a href={waLink?.url ?? "https://wa.me/237651111506"} target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-4 p-5 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30
                 hover:bg-[#25D366]/20 transition-colors duration-200 group">
               <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-200">
@@ -142,30 +147,18 @@ export default function ContactPage() {
               </div>
             </a>
 
-            {/* Social media */}
+            {/* Section Suivez-nous — icônes depuis la source de données centralisée */}
             <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0]">
               <p className="font-semibold text-[#1A202C] text-sm mb-4 flex items-center gap-2">
                 <MessageCircle size={16} className="text-[#1A3A8F]" />
                 {t("followUs")}
               </p>
-              <div className="flex gap-3">
-                <a href="https://www.facebook.com/lesgeniesdafrique" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1877F2]/10 text-[#1877F2]
-                    font-semibold text-sm hover:bg-[#1877F2] hover:text-white transition-all duration-200">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-                  </svg>
-                  {tc("facebookLabel")}
-                </a>
-                <a href="https://www.tiktok.com/@lesgeniesdafrique" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#010101]/10 text-[#1A202C]
-                    font-semibold text-sm hover:bg-[#010101] hover:text-white transition-all duration-200">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.35 6.35 0 00-.79-.05A6.34 6.34 0 003.15 15.3a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.18 8.18 0 004.79 1.52V6.76a4.84 4.84 0 01-1.03-.07z"/>
-                  </svg>
-                  {tc("tiktokLabel")}
-                </a>
-              </div>
+              {/* SocialIcons en variant "large" avec étiquettes, thème clair */}
+              <SocialIcons
+                variant="large"
+                theme="light"
+                only={["facebook", "tiktok", "whatsapp"]}
+              />
             </div>
           </motion.div>
         </div>
