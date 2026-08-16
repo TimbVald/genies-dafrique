@@ -396,14 +396,22 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            {/* Mobile search */}
-            <button onClick={() => setSearchOpen(true)} aria-label="Search" className={`lg:hidden p-2 rounded-lg transition-colors ${isOpaque ? "text-[#1A202C] hover:bg-[#F7F9FC]" : "text-white hover:bg-white/10"}`}>
+            {/* Mobile search — toujours visible */}
+            <button onClick={() => setSearchOpen(true)} aria-label="Search" className={`lg:hidden p-2 rounded-xl transition-all duration-200 ${
+              isOpaque
+                ? "text-[#1A202C] hover:bg-[#F7F9FC]"
+                : "text-white bg-black/25 hover:bg-black/40 backdrop-blur-sm"
+            }`}>
               <Search size={22} />
             </button>
 
-            {/* Hamburger */}
+            {/* Hamburger — toujours visible dès l'entrée */}
             <button onClick={() => setDrawerOpen(true)} aria-label={t("openMenu")} aria-expanded={drawerOpen} aria-controls="mobile-drawer"
-              className={`lg:hidden p-2 rounded-lg transition-colors hover:bg-black/10 ${isOpaque ? "text-[#1A202C]" : "text-white"}`}>
+              className={`lg:hidden p-2 rounded-xl transition-all duration-200 ${
+                isOpaque
+                  ? "text-[#1A202C] hover:bg-[#F7F9FC]"
+                  : "text-white bg-black/30 hover:bg-black/45 backdrop-blur-sm"
+              }`}>
               <Menu size={24} />
             </button>
           </div>

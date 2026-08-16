@@ -8,6 +8,7 @@ import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFab from "@/components/ui/WhatsAppFab";
+import { Analytics } from "@vercel/analytics/next";
 
 /* ── Polices ────────────────────────────────────────────────── */
 /*
@@ -136,6 +137,8 @@ export default async function LocaleLayout({
           <main id="main-content" tabIndex={-1} className="outline-none">
             {children}
           </main>
+
+          <Analytics/>
 
           <Footer />
           <WhatsAppFab />

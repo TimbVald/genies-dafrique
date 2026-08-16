@@ -230,7 +230,7 @@ export const PROGRAMS_DATA: Program[] = [
     ],
     level: "primaire",
     section: "anglophone",
-    image: "/images/Generated_Image.png",
+    image: "https://res.cloudinary.com/dyetkan86/image/upload/v1786848131/file_00000000c594820ebdb2f66a1dcefc88_yhbdgd.png",
     order: 4,
     featured: false,
   },

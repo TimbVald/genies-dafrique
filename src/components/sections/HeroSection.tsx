@@ -125,23 +125,22 @@ export default function HeroSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* ── OVERLAYS légers — image visible à ~60% ── */}
-        {/* Vignette bords */}
+        {/* ── OVERLAYS ── */}
         <div className="absolute inset-0 z-10 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 120% 110% at 50% 50%, transparent 42%, rgba(0,0,0,0.25) 100%)" }}
           aria-hidden="true" />
-        {/* Dégradé bas (zone texte) */}
         <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none"
           style={{ height: "58%", background: "linear-gradient(to top, rgba(13,31,107,0.85) 0%, rgba(13,31,107,0.48) 42%, transparent 100%)" }}
           aria-hidden="true" />
-        {/* Dégradé haut (zone header) */}
+        {/* Dégradé haut renforcé — garantit lisibilité hamburger sur toute image */}
         <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none"
-          style={{ height: "32%", background: "linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 100%)" }}
+          style={{ height: "38%", background: "linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 60%, transparent 100%)" }}
           aria-hidden="true" />
 
-        {/* ── CONTENU ÉDITORIAL — bas gauche ── */}
+        {/* ── CONTENU éditorial — bas gauche ── */}
         <div className="absolute inset-0 z-20 flex flex-col justify-end">
-          <div className="max-w-[1280px] mx-auto w-full px-8 lg:px-14 pb-20 lg:pb-28">
+          <div className="max-w-[1280px] mx-auto w-full px-6 sm:px-8 lg:px-14
+            pb-16 sm:pb-20 lg:pb-28">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`caption-${current}`}
@@ -151,65 +150,67 @@ export default function HeroSection() {
                 exit="exit"
                 className="max-w-xl"
               >
-                {/* Pré-titre — nom du cycle en bleu clair / doré */}
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="h-px w-8 bg-[#F5A623]" aria-hidden="true" />
-                  <span className="text-[#F5A623] text-[0.68rem] font-bold uppercase tracking-[0.26em]">
+                {/* Pré-titre */}
+                <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+                  <div className="h-px w-6 sm:w-8 bg-[#F5A623]" aria-hidden="true" />
+                  <span className="text-[#F5A623] text-[0.62rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.22em] sm:tracking-[0.26em]">
                     {slide.label[L]}
                   </span>
                 </div>
 
-                {/* Titre du cycle — grand et gras */}
+                {/* Titre — clamp réduit sur mobile */}
                 <h1
-                  className="font-display font-bold text-white leading-[1.05] mb-3
+                  className="font-display font-bold text-white leading-[1.05] mb-2 sm:mb-3
                     drop-shadow-[0_3px_24px_rgba(0,0,0,0.55)]"
-                  style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.4rem)" }}
+                  style={{ fontSize: "clamp(1.7rem, 5.5vw, 4.4rem)" }}
                 >
                   {slide.title[L]}
                 </h1>
 
-                {/* Accroche courte */}
+                {/* Accroche — masquée sur très petits écrans */}
                 <p
-                  className="text-white/80 leading-relaxed mb-7"
-                  style={{ fontSize: "clamp(0.88rem, 1.4vw, 1.02rem)" }}
+                  className="hidden xs:block text-white/80 leading-relaxed mb-5 sm:mb-7"
+                  style={{ fontSize: "clamp(0.82rem, 1.4vw, 1.02rem)" }}
                 >
                   {slide.accroche[L]}
                 </p>
 
-                {/* CTA bouton — bleu, spécifique au cycle */}
-                <div className="flex flex-col sm:flex-row items-start gap-3">
+                {/* CTA */}
+                <div className="flex flex-row items-center gap-2 sm:gap-3">
                   <Link href={slide.ctaHref}>
                     <motion.span
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg
-                        bg-[#1A3A8F] text-white font-bold text-sm tracking-wide
+                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-lg
+                        bg-[#1A3A8F] text-white font-bold text-xs sm:text-sm tracking-wide
                         cursor-pointer whitespace-nowrap
                         shadow-[0_4px_22px_rgba(26,58,143,0.55)]"
-                      whileHover={{ scale: 1.03, y: -2, boxShadow: "0 8px_28px rgba(26,58,143,0.65)" }}
+                      whileHover={{ scale: 1.03, y: -2 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ type: "spring", stiffness: 380, damping: 24 }}
                     >
-                      <Settings size={14} className="opacity-80" />
+                      <Settings size={13} className="opacity-80 hidden sm:inline" />
                       {slide.cta[L]}
                     </motion.span>
                   </Link>
 
-                  {/* Bouton vidéo */}
+                  {/* Bouton vidéo — icône seulement sur mobile */}
                   <motion.button
                     onClick={() => setVideoOpen(true)}
-                    className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-lg
+                    className="inline-flex items-center gap-2 px-3 sm:px-5 py-3 sm:py-3.5 rounded-lg
                       bg-white/12 hover:bg-white/22 backdrop-blur-sm
                       border border-white/28 hover:border-white/50
-                      text-white font-medium text-sm cursor-pointer whitespace-nowrap
+                      text-white font-medium text-xs sm:text-sm cursor-pointer
                       transition-all duration-200"
                     whileHover={{ scale: 1.03, y: -2 }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 380, damping: 24 }}
-                    aria-label={locale === "fr" ? "Voir la vidéo de présentation" : "Watch presentation video"}
+                    aria-label={locale === "fr" ? "Voir la vidéo" : "Watch Video"}
                   >
                     <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Play size={11} fill="#D32F2F" className="text-[#D32F2F] ml-0.5" />
                     </span>
-                    {locale === "fr" ? "Voir la vidéo" : locale === "en" ? "Watch Video" : "Yiba video"}
+                    <span className="hidden sm:inline">
+                      {locale === "fr" ? "Voir la vidéo" : locale === "en" ? "Watch Video" : "Yiba video"}
+                    </span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -217,30 +218,36 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── FLÈCHES — bas droite ── */}
-        <div className="absolute z-30 flex items-center gap-0" style={{ right: "2rem", bottom: "2rem" }}>
+        {/* ── FLÈCHES — bas droite, remontées sur mobile pour ne pas chevaucher les dots ── */}
+        <div
+          className="absolute z-30 flex items-center gap-0"
+          style={{ right: "1rem", bottom: "1rem" }}
+        >
           <button
             onClick={prev}
             aria-label={locale === "fr" ? "Slide précédent" : "Previous slide"}
-            className="w-11 h-11 flex items-center justify-center rounded-l-lg
+            className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-l-lg
               bg-white/15 hover:bg-white/28 backdrop-blur-sm
               border border-white/20 text-white transition-all duration-200"
           >
-            <ChevronLeft size={19} />
+            <ChevronLeft size={16} />
           </button>
           <button
             onClick={next}
             aria-label={locale === "fr" ? "Slide suivant" : "Next slide"}
-            className="w-11 h-11 flex items-center justify-center rounded-r-lg
+            className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-r-lg
               bg-white/25 hover:bg-white/40 backdrop-blur-sm
               border border-white/20 text-white transition-all duration-200"
           >
-            <ChevronRight size={19} />
+            <ChevronRight size={16} />
           </button>
         </div>
 
-        {/* ── DOTS + compteur — bas centre ── */}
-        <div className="absolute z-30 bottom-[2.2rem] left-1/2 -translate-x-1/2 flex items-center gap-2.5">
+        {/* ── DOTS — bas gauche sur mobile, centré sur desktop ── */}
+        <div
+          className="absolute z-30 flex items-center gap-2
+            left-4 bottom-[1.1rem] sm:left-1/2 sm:-translate-x-1/2 sm:bottom-[2.2rem]"
+        >
           {CYCLES.map((_, i) => (
             <button
               key={i}
@@ -248,11 +255,11 @@ export default function HeroSection() {
               aria-label={`Slide ${i + 1}`}
               aria-current={i === current}
               className={`rounded-full transition-all duration-400 ${
-                i === current ? "w-7 h-[3px] bg-white" : "w-[4px] h-[4px] bg-white/40 hover:bg-white/70"
+                i === current ? "w-6 sm:w-7 h-[3px] bg-white" : "w-[4px] h-[4px] bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
-          <span className="text-white/35 text-[10px] font-bold tabular-nums ml-1">
+          <span className="text-white/35 text-[10px] font-bold tabular-nums ml-1 hidden sm:inline">
             {String(current + 1).padStart(2, "0")}/{String(CYCLES.length).padStart(2, "0")}
           </span>
         </div>

@@ -283,7 +283,7 @@ export default function AboutSection() {
                 <div className="relative flex-shrink-0">
                   <div className="w-14 h-14 rounded-full overflow-hidden ring-4 ring-[#F5A623]/35 shadow-md">
                     <Image
-                      src="/images/IMG-20260723-WA0075.jpg"
+                      src="https://res.cloudinary.com/dyetkan86/image/upload/v1786848130/file_0000000043b4820eb1db0b515c09febb_2_chkjj4.jpg"
                       alt={aboutData.directorName[locale as keyof typeof aboutData.directorName]}
                       width={56} height={56}
                       className="object-cover object-top w-full h-full"

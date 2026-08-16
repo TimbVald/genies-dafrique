@@ -174,13 +174,19 @@ export default function FormationsContent() {
           </motion.div>
 
           <Tabs defaultValue="0" className="gap-6">
-            {/* Tab triggers */}
-            <TabsList className="flex-wrap h-auto gap-2 bg-white border border-[#E2E8F0] rounded-2xl p-2 w-full justify-start shadow-sm">
+            {/* Tab triggers — scrollable horizontalement sur mobile */}
+            <TabsList className="
+              h-auto gap-2 bg-white border border-[#E2E8F0] rounded-2xl p-2
+              w-full shadow-sm
+              flex overflow-x-auto
+              [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+            ">
               {levels.map((level, i) => (
                 <TabsTrigger
                   key={i}
                   value={String(i)}
-                  className="rounded-xl px-5 py-2.5 text-sm font-semibold text-[#4A5568]
+                  className="rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#4A5568]
+                    whitespace-nowrap flex-shrink-0
                     data-[state=active]:bg-[#1A3A8F] data-[state=active]:text-white
                     data-[state=active]:shadow-md transition-all duration-200"
                 >
@@ -197,15 +203,16 @@ export default function FormationsContent() {
                   transition={{ duration: 0.35 }}
                 >
                   <Card className="overflow-hidden border-[#E2E8F0] shadow-lg">
-                    <div className="grid lg:grid-cols-[420px_1fr]">
+                    {/* Sur mobile : empilé vertical. Sur desktop : côte à côte */}
+                    <div className="grid lg:grid-cols-[380px_1fr]">
                       {/* Image */}
-                      <div className="relative aspect-video lg:aspect-auto min-h-[260px]">
+                      <div className="relative aspect-video lg:aspect-auto min-h-[220px] lg:min-h-[280px]">
                         <Image
                           src={LEVEL_IMAGES[i] ?? "/images/IMG-20260723-WA0024.jpg"}
                           alt={level.title}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 420px"
+                          sizes="(max-width: 1024px) 100vw, 380px"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F6B]/60 to-transparent" />
                         <div className="absolute bottom-4 left-4">
@@ -216,15 +223,16 @@ export default function FormationsContent() {
                       </div>
 
                       {/* Content */}
-                      <CardContent className="p-8">
-                        <CardTitle className="text-2xl font-bold text-[#1A202C] mb-3">
+                      <CardContent className="p-5 sm:p-8">
+                        <CardTitle className="text-xl sm:text-2xl font-bold text-[#1A202C] mb-3">
                           {level.title}
                         </CardTitle>
-                        <p className="text-[#4A5568] leading-relaxed mb-6">
+                        <p className="text-[#4A5568] leading-relaxed mb-5 text-sm sm:text-base">
                           {level.presentation}
                         </p>
 
-                        <div className="grid sm:grid-cols-2 gap-4">
+                        {/* Accordions — toujours ouverts sur desktop, cliquables sur mobile */}
+                        <div className="grid sm:grid-cols-2 gap-3">
                           <AccordionItem
                             title={locale === "fr" ? "Programme" : "Curriculum"}
                             items={level.programme}

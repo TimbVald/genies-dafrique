@@ -24,11 +24,11 @@ export const DIRECTOR_MESSAGE: DirectorMessage = {
     ew: "Mme Mbarga",
   },
   role: {
-    fr: "Présidente – Fondatrice",
-    en: "President – Founder",
-    ew: "Présidente – Fondatrice",
+    fr: "Directrice",
+    en: "Founder",
+    ew: "Directrice",
   },
-  photo: "https://res.cloudinary.com/dyetkan86/image/upload/v1786697123/ChatGPT_Image_13_ao%C3%BBt_2026_13_10_54_vxd68p.png",
+  photo: "https://res.cloudinary.com/dyetkan86/image/upload/v1786848130/file_0000000043b4820eb1db0b515c09febb_2_chkjj4.jpg",
   quote: {
     fr: "Chaque enfant porte en lui un génie unique. Notre rôle est de créer les conditions pour qu'il s'éveille et s'épanouisse.",
     en: "Every child carries a unique genius within them. Our role is to create the conditions for it to awaken and flourish.",
@@ -45,9 +45,9 @@ export const DIRECTOR_MESSAGE: DirectorMessage = {
     ew: "Mme Mbarga",
   },
   signatureTitle: {
-    fr: "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique",
-    en: "President – Founder of the Bilingual School Complex Les Génies d'Afrique",
-    ew: "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique",
+    fr: "Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique",
+    en: "Director of the Bilingual School Complex Les Génies d'Afrique",
+    ew: "Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique",
   },
   visible: true,
 };

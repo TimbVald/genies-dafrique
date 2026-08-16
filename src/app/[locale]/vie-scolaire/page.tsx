@@ -118,17 +118,23 @@ export default function VieScolairePage() {
 
           {/* Tabs — one per club */}
           <Tabs defaultValue="0" className="gap-4">
-            {/* Tab triggers */}
-            <TabsList className="flex-wrap h-auto gap-2 bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-2 w-full justify-start shadow-sm">
+            {/* Tab triggers — scrollable sur mobile */}
+            <TabsList className="
+              h-auto gap-2 bg-[#F7F9FC] border border-[#E2E8F0]
+              rounded-2xl p-2 w-full shadow-sm
+              flex overflow-x-auto
+              [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+            ">
               {clubs.map((club, i) => (
                 <TabsTrigger
                   key={i}
                   value={String(i)}
-                  className="rounded-xl px-4 py-2.5 text-sm font-semibold text-[#4A5568]
+                  className="rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-[#4A5568]
+                    whitespace-nowrap flex-shrink-0
                     data-[state=active]:bg-[#1A3A8F] data-[state=active]:text-white
                     data-[state=active]:shadow-md transition-all duration-200"
                 >
-                  <span className="mr-1.5">{club.emoji}</span>
+                  <span className="mr-1">{club.emoji}</span>
                   {club.title}
                 </TabsTrigger>
               ))}

@@ -92,7 +92,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "primaire-fr",
-    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786841762/IMG-20260816-WA0090_2_xyaaki.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786848131/file_00000000c594820ebdb2f66a1dcefc88_yhbdgd.png",
     position: "center 30%",
     kenFrom:  "scale(1.07) translateY(0%)",
     kenTo:    "scale(1.0)  translateY(3%)",
@@ -122,7 +122,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "primaire-en",
-    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786841762/IMG-20260816-WA0090_2_xyaaki.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786848131/file_00000000c594820ebdb2f66a1dcefc88_yhbdgd.png",
     position: "center 25%",
     kenFrom:  "scale(1.06) translateX(1%)",
     kenTo:    "scale(1.0)  translateX(-1%)",
