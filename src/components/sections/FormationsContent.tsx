@@ -47,7 +47,119 @@ const fadeUp = {
   }),
 };
 
-/* ─── Accordion Item ─────────────────────────────────────────────── */
+/* ─── Programme/Objectifs — liste directe sur mobile, accordion sur desktop ── */
+function ProgramSection({
+  title,
+  items,
+  accent,
+}: {
+  title: string;
+  items: string[];
+  accent: string;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border border-[#E2E8F0] rounded-xl overflow-hidden">
+      {/* Header — toujours visible */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-3.5
+          bg-[#F7F9FC] hover:bg-[#EEF2FF] transition-colors text-left
+          sm:cursor-pointer"
+        aria-expanded={open}
+      >
+        <div className="flex items-center gap-2">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+            style={{ backgroundColor: accent }}
+            aria-hidden="true"
+          />
+          <span className="font-semibold text-[#1A202C] text-sm">{title}</span>
+          <span className="text-[#A0AEC0] text-xs font-normal ml-1">
+            ({items.length})
+          </span>
+        </div>
+        <ChevronDown
+          size={16}
+          className={`text-[#4A5568] flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {/* Sur mobile : toujours ouvert (pas d'accordion) */}
+      {/* Sur sm+ : piloté par l'état open */}
+      <div
+        className={`
+          block sm:block
+          ${open ? "block" : "hidden sm:hidden"}
+        `}
+      >
+        <ul className="px-4 py-3 space-y-2 bg-white">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2.5">
+              <CheckCircle2
+                size={15}
+                className="flex-shrink-0 mt-0.5"
+                style={{ color: accent }}
+                aria-hidden="true"
+              />
+              <span className="text-[#4A5568] text-sm leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Version mobile — liste directe sans bouton toggle.
+ * Toujours visible, pas de clic nécessaire.
+ */
+function ProgramList({
+  title,
+  items,
+  accent,
+}: {
+  title: string;
+  items: string[];
+  accent: string;
+}) {
+  return (
+    <div className="rounded-xl overflow-hidden border border-[#E2E8F0]">
+      {/* Titre */}
+      <div
+        className="flex items-center gap-2 px-4 py-3 font-semibold text-sm"
+        style={{ backgroundColor: `${accent}10`, borderBottom: `2px solid ${accent}30` }}
+      >
+        <span
+          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+          style={{ backgroundColor: accent }}
+          aria-hidden="true"
+        />
+        <span style={{ color: accent }}>{title}</span>
+        <span className="text-[#A0AEC0] text-xs font-normal ml-0.5">({items.length})</span>
+      </div>
+      {/* Liste */}
+      <ul className="px-4 py-3 space-y-2 bg-white">
+        {items.map((item, i) => (
+          <li key={i} className="flex items-start gap-2.5">
+            <CheckCircle2
+              size={15}
+              className="flex-shrink-0 mt-0.5"
+              style={{ color: accent }}
+              aria-hidden="true"
+            />
+            <span className="text-[#4A5568] text-sm leading-relaxed">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ─── AccordionItem (kept for compatibility) ─────────────────────── */
 function AccordionItem({
   title,
   items,
@@ -231,18 +343,38 @@ export default function FormationsContent() {
                           {level.presentation}
                         </p>
 
-                        {/* Accordions — toujours ouverts sur desktop, cliquables sur mobile */}
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          <AccordionItem
-                            title={locale === "fr" ? "Programme" : "Curriculum"}
-                            items={level.programme}
-                            accent="#1A3A8F"
-                          />
-                          <AccordionItem
-                            title={locale === "fr" ? "Objectifs" : "Objectives"}
-                            items={level.objectifs}
-                            accent="#D32F2F"
-                          />
+                        {/* Programme & Objectifs — adaptatifs selon l'écran */}
+                        <div className="space-y-3">
+                          {/*
+                            Mobile : listes directement visibles (ProgramList)
+                            Desktop sm+ : accordions pliables (AccordionItem)
+                          */}
+                          {/* Mobile uniquement */}
+                          <div className="grid gap-3 sm:hidden">
+                            <ProgramList
+                              title={locale === "fr" ? "Programme" : "Curriculum"}
+                              items={level.programme}
+                              accent="#1A3A8F"
+                            />
+                            <ProgramList
+                              title={locale === "fr" ? "Objectifs" : "Objectives"}
+                              items={level.objectifs}
+                              accent="#D32F2F"
+                            />
+                          </div>
+                          {/* Desktop sm+ uniquement */}
+                          <div className="hidden sm:grid sm:grid-cols-2 gap-3">
+                            <AccordionItem
+                              title={locale === "fr" ? "Programme" : "Curriculum"}
+                              items={level.programme}
+                              accent="#1A3A8F"
+                            />
+                            <AccordionItem
+                              title={locale === "fr" ? "Objectifs" : "Objectives"}
+                              items={level.objectifs}
+                              accent="#D32F2F"
+                            />
+                          </div>
                         </div>
                       </CardContent>
                     </div>
