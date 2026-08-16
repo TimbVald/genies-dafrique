@@ -13,7 +13,7 @@ import SectionBadge from "@/components/ui/SectionBadge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   getSchoolInfo, getHistory, getMission, getVision,
-  getValues, getDirectorMessage, getTeam,
+  getValues, getDirectorMessage,
 } from "@/lib/data/about";
 
 const ICON_MAP: Record<string, React.ReactNode> = {
@@ -46,7 +46,7 @@ export default function AboutPageContent() {
   const vision          = getVision();
   const values          = getValues();
   const directorMessage = getDirectorMessage();
-  const team            = getTeam();
+  // const team            = getTeam();
 
   return (
     <>
@@ -293,7 +293,7 @@ export default function AboutPageContent() {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/*<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map((member, i) => (
               <motion.div
                 key={member.id}
@@ -324,7 +324,7 @@ export default function AboutPageContent() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </div>*/}
           {/* ── Section équipe : lien vers la page dédiée ── */}
           <motion.div
             className="text-center mt-10"

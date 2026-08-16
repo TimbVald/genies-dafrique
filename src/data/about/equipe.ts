@@ -54,9 +54,9 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          1,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836019/IMG-20260815-WA0035_jphzta.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          7,
     visible:        true,
   },
   {
@@ -68,8 +68,8 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       ew: "Munya ya English",
     },
     photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611378/IMG-20260810-WA0079_hoixjk.jpg",         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          2,
+    photoConfirmed: true,
+    order:          8,
     visible:        true,
   },
   {
@@ -80,74 +80,74 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611365/IMG-20260810-WA0067_mb7kg0.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
     order:          3,
     visible:        true,
   },
   {
     id:             "tcheutchoua-gladis",
-    name:           "Tcheutchoua Gladis",      // ← fourni tel quel
+    name:           "Mrs. Gladis TCHEUTCHOUA",      // ← fourni tel quel
     role: {
       fr: "Enseignante d'anglais",
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          4,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836020/IMG-20260815-WA0039_hdmc9i.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          2,
     visible:        true,
   },
   {
     id:             "onana-reine",
-    name:           "Onana Reine",             // ← fourni : ONANA Reine
+    name:           "Mrs. Reine ONANA",             // ← fourni : ONANA Reine
     role: {
       fr: "Enseignante de français",
       en: "French Teacher",
       ew: "Munya ya Français",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          5,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836019/IMG-20260815-WA0037_hvrn7u.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          1,
     visible:        true,
   },
   {
     id:             "mengoua-jeanne",
-    name:           "Mengoua Jeanne",          // ← fourni : MENGOUA JEANNE
+    name:           "Mrs. Jeanne MENGOUA",          // ← fourni : MENGOUA JEANNE
     role: {
       fr: "Enseignante",
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          6,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611384/IMG-20260810-WA0083_oy9f6a.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          4,
     visible:        true,
   },
   {
     id:             "ebessi-marie",
-    name:           "Ebessi Marie",            // ← fourni : EBESSI MARIE
+    name:           "Mrs. Marie EBESSI",            // ← fourni : EBESSI MARIE
     role: {
       fr: "Enseignante",
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          7,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836018/IMG-20260810-WA0081_alukii.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          5,
     visible:        true,
   },
   {
     id:             "nga-agnes",
-    name:           "Nga Agnès",               // ← fourni : NGA AGNES (accent ajouté)
+    name:           "Mrs.NGA Agnès",               // ← fourni : NGA AGNES (accent ajouté)
     role: {
       fr: "Enseignante",
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          PHOTO_PLACEHOLDER,         // ⚠️ À remplacer
-    photoConfirmed: false,
-    order:          8,
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611386/IMG-20260810-WA0087_g3uaus.jpg",         // ⚠️ À remplacer
+    photoConfirmed: true,
+    order:          6,
     visible:        true,
   },
 ];

@@ -38,9 +38,9 @@ export function getDirectorMessage() {
 }
 
 /* ── Team Functions ────────────────────────────────────────────── */
-export function getTeam() {
-  return getVisibleTeamMembers();
-}
+// export function getTeam() {
+//   return getVisibleTeamMembers();
+// }
 
 /* ── Teaching Staff Functions ─────────────────────────────────────── */
 export { getTeachingStaff, getTeachingStaffById } from "@/data/about/equipe";

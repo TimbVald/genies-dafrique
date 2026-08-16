@@ -6,6 +6,12 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   /* ── Images ─────────────────────────────────────────────── */
   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname:"res.cloudinary.com"
+      },
+    ],
     qualities: [25, 50, 75, 85, 100],
     formats: ["image/webp"],
     // Tailles de breakpoints optimisées (évite le téléchargement d'images trop grandes)
