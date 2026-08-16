@@ -108,7 +108,7 @@ export const STATISTICS_DATA: StatisticItem[] = [
 
 /* ── Statistics Section Configuration ───────────────────────────────── */
 export const STATISTICS_CONFIG = {
-  backgroundImage: "/images/pexels-ai25studioai-7342628.jpg",
+  backgroundImage: "https://res.cloudinary.com/dyetkan86/image/upload/v1786839369/file_000000004cfc820e87343ca75a6e0ce2_kulqmd.png",
   badge: {
     fr: "Les Génies d'Afrique par les chiffres",
     en: "Les Génies d'Afrique by the Numbers",

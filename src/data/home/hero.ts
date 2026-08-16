@@ -32,7 +32,7 @@ export interface HeroContent {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: "hero-slide-1",
-    image: "/images/IMG-20260723-WA0024.jpg",
+    image: "https://res.cloudinary.com/dyetkan86/image/upload/v1786839370/file_00000000a5f8820e977f8da167214a77_prfmwi.png",
     position: "center 20%",
     kenFrom: "scale(1.08) translateY(-2%)",
     kenTo: "scale(1.0)  translateY(2%)",

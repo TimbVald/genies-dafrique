@@ -52,7 +52,7 @@ export default function AboutPageContent() {
     <>
       {/* ── HERO ── */}
       <PageHero
-        image="/images/IMG-20260723-WA0024.jpg"
+        image="https://res.cloudinary.com/dyetkan86/image/upload/v1786839369/file_000000008938820ebf8c99f7e916339c_qkbiae.png"
         breadcrumbs={[
           { label: tn("home"), href: "/" },
           { label: tn("about") },

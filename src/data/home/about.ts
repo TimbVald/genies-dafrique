@@ -94,12 +94,12 @@ export const ABOUT_SECTION_DATA: AboutSectionData = {
     en: "Founded in 2024",
     ew: "A tɔ́l na 2024",
   },
-  videoThumbnail: "/images/IMG-20260723-WA0024.jpg",
+  videoThumbnail: "https://res.cloudinary.com/dyetkan86/image/upload/v1786841184/IMG-20260816-WA9732_da9wrx.jpg",
   videoFr: "/videos/VID-FR.mp4",
   videoEn: "/videos/VID-EN.mp4",
   decorativeImages: [
-    "/images/pexels-ani-ani.jpg",
-    "/images/IMG-20260723-WA0039.jpg",
-    "/images/pexels-ai25studioai-7342628.jpg",
+    "https://res.cloudinary.com/dyetkan86/image/upload/v1786839369/file_000000004cfc820e87343ca75a6e0ce2_kulqmd.png",
+    "https://res.cloudinary.com/dyetkan86/image/upload/v1786839370/file_00000000fee0820e961ac4b070de78d6_id9boj.png",
+    "https://res.cloudinary.com/dyetkan86/image/upload/v1786839369/file_000000008938820ebf8c99f7e916339c_qkbiae.png",
   ],
 };

@@ -32,7 +32,7 @@ export interface HeroCycle {
 export const HERO_CYCLES: HeroCycle[] = [
   {
     id:       "creche",
-    image:    "/images/pexels-ani-ani.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786842107/c174637a2281ede3ef2401f4e45add0ff7624ba58e7ec82a048183e53cb95ff2_zu6whr.png",
     position: "center 20%",
     kenFrom:  "scale(1.08) translateY(-2%)",
     kenTo:    "scale(1.0)  translateY(2%)",
@@ -62,7 +62,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "maternelle",
-    image:    "/images/IMG-20260723-WA0024.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786841184/IMG-20260816-WA9732_da9wrx.jpg",
     position: "center 15%",
     kenFrom:  "scale(1.06) translateX(-1%)",
     kenTo:    "scale(1.0)  translateX(1%)",
@@ -92,7 +92,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "primaire-fr",
-    image:    "/images/IMG-20260723-WA0007.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786841762/IMG-20260816-WA0090_2_xyaaki.jpg",
     position: "center 30%",
     kenFrom:  "scale(1.07) translateY(0%)",
     kenTo:    "scale(1.0)  translateY(3%)",
@@ -122,7 +122,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "primaire-en",
-    image:    "/images/pexels-ai25studioai-7342628.jpg",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786841762/IMG-20260816-WA0090_2_xyaaki.jpg",
     position: "center 25%",
     kenFrom:  "scale(1.06) translateX(1%)",
     kenTo:    "scale(1.0)  translateX(-1%)",
