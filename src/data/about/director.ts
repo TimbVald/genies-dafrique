@@ -19,12 +19,12 @@ export const DIRECTOR_MESSAGE: DirectorMessage = {
   status: "published",
   createdAt: "2024-01-01T00:00:00Z",
   name: {
-    fr: "Mme Mbarga",
-    en: "Mrs. Mbarga",
-    ew: "Mme Mbarga",
+    fr: "Mme Yvette ATEBA",
+    en: "Mrs. Yvette ATEBA",
+    ew: "Mme Yvette ATEBA",
   },
   role: {
-    fr: "Directrice",
+    fr: "La Directrice",
     en: "Founder",
     ew: "Directrice",
   },
@@ -40,9 +40,9 @@ export const DIRECTOR_MESSAGE: DirectorMessage = {
     ew: "Bana ba fam, bana ba sukul, na bɔ́ngɔ́ ba yen biso. Complexe Scolaire Bilingue Les Génies d'Afrique a nga bɔ́g na mvon ya minene: Afrika ya ndɔ́ma a bɔ́g lelo na bisɔ́m bya sukul, na a lɛ́g bana ba ayi. Biso bi nga kɔ́bɔ́talane na bikɔ́l bya misala, bika bya mvoé na projet ya akom ya libɔ́g amu a yɔ́k mwana nyonso a nga tɔ́l na biso. Minsili mibuma ya biso, a kɔ́l si ya minsili na a lɛ́g mwana nyonso bi ne bikɔ́l bia tɔ́l na bana. Ke ne mbog, a tɔ́l a ndɔ́ma.",
   },
   signature: {
-    fr: "Mme Mbarga",
-    en: "Mrs. Mbarga",
-    ew: "Mme Mbarga",
+    fr: "Mme Yvette ATEBA",
+    en: "Mrs. Yvette ATEBA",
+    ew: "Mme Yvette ATEBA",
   },
   signatureTitle: {
     fr: "Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique",

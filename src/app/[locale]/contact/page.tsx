@@ -1,13 +1,14 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import ContactForm from "@/components/sections/ContactForm";
 import SocialIcons from "@/components/ui/SocialIcons";
-import { getSocialLink } from "@/lib/data/global";
+import GoogleMap from "@/components/ui/GoogleMap";
+import { getWhatsAppUrl } from "@/lib/data/global";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -22,12 +23,15 @@ const CARD_COLORS = [
 ];
 
 export default function ContactPage() {
-  const t      = useTranslations("contactPage");
-  const tn     = useTranslations("nav");
-  const tc     = useTranslations("contact");
+  const locale = useLocale();
+  const L      = locale as "fr" | "en" | "ew";
 
-  /* URL WhatsApp depuis la source de données centralisée */
-  const waLink = getSocialLink("whatsapp");
+  const t  = useTranslations("contactPage");
+  const tn = useTranslations("nav");
+  const tc = useTranslations("contact");
+
+  /* URL WhatsApp avec message pré-défini selon la langue active */
+  const waHref = getWhatsAppUrl(L);
 
   const infoCards = t.raw("infoCards") as { icon: string; title: string; lines: string[] }[];
 
@@ -39,10 +43,10 @@ export default function ContactPage() {
   };
 
   const HREF_MAP: Record<string, (line: string) => string | null> = {
-    Phone: (l) => `tel:+237${l.replace(/\s/g, "")}`,
-    Mail:  (l) => `mailto:${l}`,
-    MapPin: () => null,
-    Clock:  () => null,
+    Phone:  (l) => `tel:+237${l.replace(/\s/g, "")}`,
+    Mail:   (l) => `mailto:${l}`,
+    MapPin: ()  => null,
+    Clock:  ()  => null,
   };
 
   return (
@@ -66,7 +70,7 @@ export default function ContactPage() {
             transition={{ staggerChildren: 0.1 }}
           >
             {infoCards.map((card, i) => {
-              const colors = CARD_COLORS[i % CARD_COLORS.length];
+              const colors  = CARD_COLORS[i % CARD_COLORS.length];
               const getHref = HREF_MAP[card.icon] ?? (() => null);
               return (
                 <motion.div
@@ -75,9 +79,11 @@ export default function ContactPage() {
                   className="group bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm
                     hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
                 >
-                  <div className="w-13 h-13 w-12 h-12 rounded-2xl flex items-center justify-center mb-4
-                    group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: colors.bg, color: colors.icon }}>
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4
+                      group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: colors.bg, color: colors.icon }}
+                  >
                     {ICON_MAP[card.icon]}
                   </div>
                   <h3 className="font-display font-bold text-[#1A202C] text-sm mb-3">{card.title}</h3>
@@ -104,37 +110,42 @@ export default function ContactPage() {
       <section className="py-8 pb-24 bg-[#F7F9FC]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-start">
 
-          {/* Form */}
+          {/* Formulaire de contact */}
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
             <SectionBadge>{t("writeBadge")}</SectionBadge>
-            <h2 className="font-display font-bold text-[#1A202C] mb-2 mt-2"
-              style={{ fontSize: "clamp(1.4rem, 2vw, 2rem)" }}>
+            <h2
+              className="font-display font-bold text-[#1A202C] mb-2 mt-2"
+              style={{ fontSize: "clamp(1.4rem, 2vw, 2rem)" }}
+            >
               {t("form.title")}
             </h2>
             <p className="text-[#4A5568] text-sm mb-8 leading-relaxed">{t("form.subtitle")}</p>
             <ContactForm />
           </motion.div>
 
-          {/* Map + WhatsApp + Social */}
-          <motion.div className="space-y-5 pt-2 lg:pt-16"
-            initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+          {/* Carte + WhatsApp + Réseaux sociaux */}
+          <motion.div
+            className="space-y-5 pt-2 lg:pt-16"
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
+          >
+            {/* ── Google Maps embed avec bouton Itinéraire ── */}
+            <GoogleMap
+              title={t("map.title")}
+              directionsLabel={t("map.directionsLabel")}
+              height={280}
+            />
 
-            {/* Google Maps */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#E2E8F0]">
-              <iframe
-                title={t("mapTitle")}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.8020!2d11.5020!3d3.8480!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTAnNTMuMCJOIDExwrAzMCcwNy4yIkU!5e0!3m2!1sfr!2scm!4v1720000000000"
-                width="100%" height="260" style={{ border: 0 }}
-                allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-
-            {/* WhatsApp CTA — URL depuis la source centralisée */}
-            <a href={waLink?.url ?? "https://wa.me/237651111506"} target="_blank" rel="noopener noreferrer"
+            {/* ── WhatsApp CTA — message pré-défini selon la langue ── */}
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 p-5 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30
-                hover:bg-[#25D366]/20 transition-colors duration-200 group">
-              <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-200">
-                <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7">
+                hover:bg-[#25D366]/20 transition-colors duration-200 group"
+            >
+              <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center
+                flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-200">
+                <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7" aria-hidden="true">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                   <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.555 4.112 1.522 5.837L.057 23.882l6.26-1.44A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.373l-.36-.213-3.716.855.885-3.618-.233-.371A9.818 9.818 0 1112 21.818z"/>
                 </svg>
@@ -147,13 +158,12 @@ export default function ContactPage() {
               </div>
             </a>
 
-            {/* Section Suivez-nous — icônes depuis la source de données centralisée */}
+            {/* ── Réseaux sociaux ── */}
             <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0]">
               <p className="font-semibold text-[#1A202C] text-sm mb-4 flex items-center gap-2">
                 <MessageCircle size={16} className="text-[#1A3A8F]" />
                 {t("followUs")}
               </p>
-              {/* SocialIcons en variant "large" avec étiquettes, thème clair */}
               <SocialIcons
                 variant="large"
                 theme="light"

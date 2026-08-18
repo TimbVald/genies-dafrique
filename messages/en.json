@@ -414,13 +414,13 @@
       ]
     },
     "founderMessage": {
-      "badge": "Founder's Message",
-      "title": "A Word from the Founder",
-      "photo": "/images/founder.jpg",
+      "badge": "Director's Message",
+      "title": "A Word from the Director",
+      "photo": "/images/Director.jpg",
       "quoteOpen": "Every child is born a genius waiting to be revealed.",
       "message": "The dream that led to the creation of Les Génies d'Afrique is above all a dream of hope. Having worked for years in education, I have seen too many children whose talents go unnoticed, confined by rigid systems that do not always take the time to see each child as an individual with unique potential.",
       "body": "At Les Génies d'Afrique, we have built an environment where every child can blossom — an environment where excellence rhymes with well-being, where rigour goes hand in hand with joy of learning, where French and English open doors to two cultures and two futures. This is our promise to you.",
-      "signature": "The Founder"
+      "signature": "The Director"
     },
     "team": {
       "badge": "Our Team",
@@ -1174,7 +1174,10 @@
       "subtitle": "Our team is here to answer all your questions."
     },
     "writeBadge": "Write to Us",
-    "mapTitle": "Our Location",
+    "map": {
+      "title": "Our Location",
+      "directionsLabel": "Get Directions"
+    },
     "followUs": "Follow Us",
     "infoCards": [
       { "icon": "MapPin", "title": "Our Address",   "lines": ["Nkozoa, behind Boulangerie Massa", "Yaoundé, Cameroon"] },

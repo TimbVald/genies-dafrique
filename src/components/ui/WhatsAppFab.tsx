@@ -1,11 +1,12 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { getSocialLink } from "@/lib/data/global";
+import { getSocialLink, getWhatsAppUrl } from "@/lib/data/global";
 
 /**
  * WhatsApp FAB — bouton flottant bas-droite, visible sur toutes les pages.
- * URL lue depuis src/data/global/reseaux-sociaux.ts — jamais hardcodée ici.
+ * URL construite avec message pré-défini localisé via getWhatsAppUrl(locale).
+ * Source unique : src/data/global/reseaux-sociaux.ts
  */
 export default function WhatsAppFab() {
   const locale = useLocale();
@@ -14,9 +15,12 @@ export default function WhatsAppFab() {
 
   if (!wa) return null;
 
+  // URL avec ?text= encodé selon la langue active
+  const href = getWhatsAppUrl(L);
+
   return (
     <a
-      href={wa.url}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={wa.label[L]}

@@ -149,7 +149,10 @@
       "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions."
     },
     "writeBadge": "Nous écrire",
-    "mapTitle": "Notre localisation",
+    "map": {
+      "title": "Notre localisation",
+      "directionsLabel": "Obtenir l'itinéraire"
+    },
     "followUs": "Suivez-nous",
     "infoCards": [
       { "icon": "MapPin", "title": "Notre adresse",   "lines": ["Nkozoa, derrière la Boulangerie Massa", "Yaoundé, Cameroun"] },
@@ -288,13 +291,13 @@
       ]
     },
     "founderMessage": {
-      "badge": "Mot de la Fondatrice",
+      "badge": "Mot de la Directrice",
       "title": "Une école née d'une conviction",
       "photo": "/images/IMG-20260723-WA0075.jpg",
       "messageQuote": "\"Chaque enfant porte en lui un génie unique. Notre rôle est de créer les conditions pour qu'il s'éveille et s'épanouisse.\"",
       "messageBody": "Chers parents, chers élèves, chers visiteurs. Le Complexe Scolaire Bilingue Les Génies d'Afrique est né d'une conviction profonde : l'Afrique de demain se construit aujourd'hui dans les salles de classe, à travers l'éducation de ses enfants. Nous avons réuni une équipe passionnée, des infrastructures de qualité et un projet éducatif ambitieux pour offrir à chaque enfant qui nous est confié un environnement propice à la réussite et à l'épanouissement. Notre approche bilingue intégrale, notre ouverture sur les autres cultures et notre engagement en faveur d'un développement global sont autant d'atouts que nous mettons au service de vos enfants. Je vous invite à nous rendre visite, à découvrir notre établissement et à partager avec nous l'aventure extraordinaire de faire éclore les génies de demain.",
       "signature": "Mme Mbarga",
-      "signatureTitle": "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
+      "signatureTitle": "La Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
     },
     "team": {
       "badge": "Notre Équipe",

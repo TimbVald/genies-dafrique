@@ -149,7 +149,10 @@
       "subtitle": "Bikɔ́l bya biso bi ne a yen a jɔ́l biabé nyonso na a yeme a yɔ́k bia."
     },
     "writeBadge": "Tɔ́l mfañ",
-    "mapTitle": "Ase ya biso",
+    "map": {
+      "title": "A yen biso na carte",
+      "directionsLabel": "A kɔ́l ase ya biso"
+    },
     "followUs": "Bika bya minsili",
     "infoCards": [
       { "icon": "MapPin", "title": "Ase",                   "lines": ["Nkozoa, nyuma ya Boulangerie Massa", "Yaoundé, Kamerun"] },
@@ -288,13 +291,13 @@
     ]
   },
   "founderMessage": {
-    "badge": "Mfañ ya Fondatrice",
+    "badge": "Mfañ ya Directrice",
     "title": "Sukul a nga bɔ́g na mvon",
     "photo": "/images/IMG-20260723-WA0075.jpg",
     "messageQuote": "\"Mwana nyonso a ne génie ya mvoé. Misala ya biso a ne a tɔ́l ase ayi a yen a yɔ́k.\"",
     "messageBody": "Bana ba fam, bana ba sukul, na bɔ́ngɔ́ ba yen biso. Complexe Scolaire Bilingue Les Génies d'Afrique a nga bɔ́g na mvon ya minene: Afrika ya ndɔ́ma a bɔ́g lelo na bisɔ́m bya sukul, na a lɛ́g bana ba ayi. Biso bi nga kɔ́bɔ́talane na bikɔ́l bya misala, bika bya mvoé na projet ya akom ya libɔ́g amu a yɔ́k mwana nyonso a nga tɔ́l na biso. Minsili mibuma ya biso, a kɔ́l si ya minsili na a lɛ́g mwana nyonso bi ne bikɔ́l bya mvoé bia tɔ́l na bana. Ma jɔ́l bino a yen sukul ya biso, a yeme bikɔ́l bia biso na a kɔ́bɔ́talane na biso na nzame ya a fɔ́l génies ba ndɔ́ma.",
     "signature": "Mme Mbarga",
-    "signatureTitle": "Présidente – Fondatrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
+    "signatureTitle": "Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
   },
     "team": {
       "badge": "Notre Équipe",

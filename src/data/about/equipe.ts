@@ -54,7 +54,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836019/IMG-20260815-WA0035_jphzta.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026217/file_000000009108820ebb0eeaacdb109785_wx5dew.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          7,
     visible:        true,
@@ -67,7 +67,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611378/IMG-20260810-WA0079_hoixjk.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026215/file_000000009660820e8e351cb3e8e96e89_vtbtgx.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          8,
     visible:        true,
@@ -80,7 +80,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611365/IMG-20260810-WA0067_mb7kg0.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026286/file_0000000086e8820e8602ab99d4240928_s3ed9c.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          3,
     visible:        true,
@@ -93,7 +93,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "English Teacher",
       ew: "Munya ya English",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836020/IMG-20260815-WA0039_hdmc9i.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026216/file_00000000a1bc820eb6cc1e30f2819c8a_ziojio.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          2,
     visible:        true,
@@ -106,7 +106,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "French Teacher",
       ew: "Munya ya Français",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836019/IMG-20260815-WA0037_hvrn7u.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026215/file_00000000222881f4bda4190ba5b996df_a0xbsc.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          1,
     visible:        true,
@@ -119,7 +119,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611384/IMG-20260810-WA0083_oy9f6a.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026215/file_00000000a178820ebd0f4b29ce0c9c7f_cguzjb.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          4,
     visible:        true,
@@ -132,7 +132,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786836018/IMG-20260810-WA0081_alukii.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026217/file_00000000e21c820e9dc5fbf66af177ee_yfhqun.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          5,
     visible:        true,
@@ -145,7 +145,7 @@ export const TEACHING_STAFF: TeachingStaff[] = [
       en: "Teacher",
       ew: "Munya ya sukul",
     },
-    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1786611386/IMG-20260810-WA0087_g3uaus.jpg",         // ⚠️ À remplacer
+    photo:          "https://res.cloudinary.com/dyetkan86/image/upload/v1787026216/file_00000000c780820ea8be84154e5d7e0a_vz2sry.png",         // ⚠️ À remplacer
     photoConfirmed: true,
     order:          6,
     visible:        true,
