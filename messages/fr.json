@@ -146,7 +146,8 @@
   "contactPage": {
     "hero": {
       "title": "Contactez-nous",
-      "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions."
+      "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accueillir.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
     },
     "writeBadge": "Nous écrire",
     "map": {
@@ -162,7 +163,23 @@
     ],
     "form": {
       "title": "Envoyez-nous un message",
-      "subtitle": "Notre équipe vous répondra dans les 24 à 48 heures."
+      "subtitle": "Remplissez le formulaire ci-dessous. Notre équipe revient vers vous dans les plus brefs délais.",
+      "name": "Nom et prénom",
+      "namePlaceholder": "Votre nom complet",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "exemple@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "6XX XX XX XX",
+      "subject": "Sujet du message",
+      "subjectPlaceholder": "Inscription, renseignement, réclamation…",
+      "message": "Votre message",
+      "messagePlaceholder": "Écrivez ici votre message en détail…",
+      "submit": "Envoyer le message",
+      "success": "Merci ! Votre message a bien été envoyé. Nous vous répondrons très vite."
+    },
+    "whatsapp": {
+      "title": "Discussion directe sur WhatsApp",
+      "subtitle": "Pour une réponse immédiate, écrivez-nous directement sur WhatsApp. Nous sommes disponibles pendant les heures d'ouverture."
     }
   },
   "pageTitles": {
@@ -814,62 +831,6 @@
       "ceremonies": "Cérémonies",
       "salles": "Salles de classe",
       "excursions": "Excursions & sorties"
-    }
-  },
-  "contactPage": {
-    "hero": {
-      "title": "Contactez-nous",
-      "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accueillir.",
-      "image": "/images/IMG-20260723-WA0024.jpg"
-    },
-    "infoCards": [
-      {
-        "icon": "MapPin",
-        "title": "Adresse",
-        "content": "Nkozoa, derrière la Boulangerie Massa",
-        "sublabel": "Yaoundé, Cameroun"
-      },
-      {
-        "icon": "Phone",
-        "title": "Téléphones",
-        "content": "651 11 15 06",
-        "sublabel": "656 66 38 48"
-      },
-      {
-        "icon": "Mail",
-        "title": "Adresse e-mail",
-        "content": "lesgeniesdafrique836@gmail.com",
-        "sublabel": "Réponse sous 24h"
-      },
-      {
-        "icon": "Clock",
-        "title": "Horaires",
-        "content": "Lun – Ven : 8h00 – 13h00",
-        "sublabel": "Secrétariat ouvert"
-      }
-    ],
-    "form": {
-      "title": "Envoyez-nous un message",
-      "subtitle": "Remplissez le formulaire ci-dessous. Notre équipe revient vers vous dans les plus brefs délais.",
-      "name": "Nom et prénom",
-      "namePlaceholder": "Votre nom complet",
-      "email": "Adresse e-mail",
-      "emailPlaceholder": "exemple@email.com",
-      "phone": "Téléphone",
-      "phonePlaceholder": "6XX XX XX XX",
-      "subject": "Sujet du message",
-      "subjectPlaceholder": "Inscription, renseignement, réclamation…",
-      "message": "Votre message",
-      "messagePlaceholder": "Écrivez ici votre message en détail…",
-      "submit": "Envoyer le message",
-      "success": "Merci ! Votre message a bien été envoyé. Nous vous répondrons très vite."
-    },
-    "map": {
-      "title": "Nous situer sur la carte"
-    },
-    "whatsapp": {
-      "title": "Discussion directe sur WhatsApp",
-      "subtitle": "Pour une réponse immédiate, écrivez-nous directement sur WhatsApp. Nous sommes disponibles pendant les heures d'ouverture."
     }
   },
   "announcement": "📢 Les inscriptions sont ouvertes — Du lundi au vendredi 8h–13h",

@@ -686,62 +686,6 @@
     "excursions": "Bikɔ́l bya mimbɔ́g na minsili"
   }
 },
-"contactPage": {
-  "hero": {
-    "title": "Kɔ́bɔ́talane na biso",
-    "subtitle": "Bikɔ́l bya biso bi ne a yen a jɔ́l biabé nyonso na a yeme a yɔ́k bia.",
-    "image": "/images/IMG-20260723-WA0024.jpg"
-  },
-  "infoCards": [
-    {
-      "icon": "MapPin",
-      "title": "Ase",
-      "content": "Nkozoa, nyuma ya Boulangerie Massa",
-      "sublabel": "Yaoundé, Kamerun"
-    },
-    {
-      "icon": "Phone",
-      "title": "Minkɔ́bɔ́ ya téléphone",
-      "content": "651 11 15 06",
-      "sublabel": "656 66 38 48"
-    },
-    {
-      "icon": "Mail",
-      "title": "Adresse e-mail",
-      "content": "lesgeniesdafrique836@gmail.com",
-      "sublabel": "A jɔ́l a ne ngɔn 24h"
-    },
-    {
-      "icon": "Clock",
-      "title": "Minsan ya misala",
-      "content": "Mvul – Mvul : 8h00 – 13h00",
-      "sublabel": "Secrétariat a ne nnam"
-    }
-  ],
-  "form": {
-    "title": "Tɔ́l a yɔ́k mfañ",
-    "subtitle": "Tɔ́l formulaire ayi. Bikɔ́l bya biso bi nga jɔ́l na mvoé mfañ.",
-    "name": "Ayon na dzam",
-    "namePlaceholder": "Ayon na dzam nyonso",
-    "email": "Adresse e-mail",
-    "emailPlaceholder": "exemple@email.com",
-    "phone": "Téléphone",
-    "phonePlaceholder": "6XX XX XX XX",
-    "subject": "Dzam ya mfañ",
-    "subjectPlaceholder": "A lɔ́g mwana, a yen nsili, a kɔ́bɔ́ mfañ…",
-    "message": "Mfañ wua",
-    "messagePlaceholder": "Tɔ́l mfañ wua a si ayi…",
-    "submit": "Tɔ́l mfañ",
-    "success": "Kolé ! Mfañ wua a nga tɔ́l mvoé. Biso bi nga jɔ́l wua na mvoé."
-  },
-  "map": {
-    "title": "A yen biso na carte"
-  },
-  "whatsapp": {
-    "title": "Kɔ́bɔ́talane ya mbɔ́k na WhatsApp",
-    "subtitle": "A yen jɔ́l mvoé, tɔ́l mfañ wua na WhatsApp. Biso bi ne a nnam na minsan ya misala."
-  }
-},
 "announcement": "📢 A lɔ́g bana a nga zɔ́k — Mvul a mvul 8h–13h",
 "hero": {
   "badge": "Sukul ya Bilingue ya Excellence · Nkozoa, Yaoundé",
