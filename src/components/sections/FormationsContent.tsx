@@ -10,7 +10,6 @@ import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 /* ─── Types ─────────────────────────────────────────────────────── */
 interface LevelData {
@@ -328,9 +327,9 @@ export default function FormationsContent() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F6B]/60 to-transparent" />
                         <div className="absolute bottom-4 left-4">
-                          <Badge className="bg-[#F5A623] text-white border-0 text-sm font-bold px-3 py-1">
+                          <span className="inline-flex items-center bg-[#F5A623] text-white text-sm font-bold px-3 py-1.5 rounded-full">
                             {level.subtitle}
-                          </Badge>
+                          </span>
                         </div>
                       </div>
 
@@ -397,9 +396,9 @@ export default function FormationsContent() {
               >
                 <Card className="h-full border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
                   <CardHeader className="pb-2">
-                    <Badge className="bg-[#EEF2FF] text-[#1A3A8F] border-0 w-fit mb-2">
+                    <span className="inline-flex items-center bg-[#EEF2FF] text-[#1A3A8F] text-xs font-semibold px-2.5 py-1 rounded-full w-fit mb-2">
                       {level.subtitle}
-                    </Badge>
+                    </span>
                     <CardTitle className="text-base font-bold text-[#1A202C]">
                       {level.title}
                     </CardTitle>

@@ -378,8 +378,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 text-[11px] font-bold
-                              bg-[#1A3A8F] text-white rounded-full px-3 py-1.5
-                              hover:bg-[#2D5BE3] transition-colors shadow-xs"
+                              bg-[#1A3A8F] !text-white rounded-full px-3 py-1.5
+                              hover:bg-[#2D5BE3] transition-colors shadow-sm"
                           >
                             {link.label[locale]}
                             <ExternalLink size={11} />
@@ -390,8 +390,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                             href={`/${locale}${link.href}`}
                             onClick={handleClose}
                             className="inline-flex items-center gap-1 text-[11px] font-bold
-                              bg-[#1A3A8F] text-white rounded-full px-3 py-1.5
-                              hover:bg-[#2D5BE3] transition-colors shadow-xs"
+                              bg-[#1A3A8F] !text-white rounded-full px-3 py-1.5
+                              hover:bg-[#2D5BE3] transition-colors shadow-sm"
                           >
                             {link.label[locale]}
                           </Link>
@@ -406,7 +406,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                       <Link
                         href={`/${locale}/contact`}
                         onClick={handleClose}
-                        className="text-[11px] font-bold bg-[#1A3A8F] text-white
+                        className="text-[11px] font-bold bg-[#1A3A8F] !text-white
                           rounded-full px-3.5 py-2 text-center hover:bg-[#2D5BE3] transition-colors"
                       >
                         {ui.contactBtn}
@@ -415,7 +415,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                         href={waHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[11px] font-bold bg-[#25D366] text-white
+                        className="text-[11px] font-bold bg-[#25D366] !text-white
                           rounded-full px-3.5 py-2 text-center hover:bg-[#1fb859] transition-colors flex items-center justify-center gap-1.5"
                       >
                         <Phone size={12} />
