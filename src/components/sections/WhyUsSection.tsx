@@ -72,42 +72,53 @@ export default function WhyUsSection() {
           <p className="text-white/65 leading-relaxed text-[1rem]">{t("subtitle")}</p>
         </motion.div>
 
-        {/* Grille 8 cartes — fond semi-transparent, style "pôles d'excellence" */}
-        <motion.div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 overflow-x-auto pb-4 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory"
+        {/* Grille 8 cartes — disposition Bento-Grid asymétrique */}
+        <motion.div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto pb-4 sm:pb-0 -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory"
           variants={grdV} initial="hidden" animate={inView ? "show" : "hidden"} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {items.map((item, i) => {
             const Icon   = ICON_MAP[item.icon] ?? Globe;
             const accent = ACCENTS[i % ACCENTS.length];
+            const isFeatured = i === 0 || i === 3; // Mise en valeur Bento pour les cartes 1 & 4
+
             return (
               <motion.div key={i} variants={crdV}
-                whileHover={{ y: -8, scale: 1.025, transition: { type: "spring", stiffness: 320, damping: 22 } }}
-                className="group relative bg-white/8 backdrop-blur-sm rounded-2xl p-6 cursor-default
-                  border border-white/12 hover:bg-white/15 hover:border-white/25
-                  transition-all duration-300 flex flex-col gap-4 overflow-hidden min-w-[280px] sm:min-w-0">
+                whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 320, damping: 22 } }}
+                className={`group relative bg-white/8 backdrop-blur-md rounded-3xl p-7 cursor-default
+                  border border-white/12 hover:bg-white/15 hover:border-white/30
+                  transition-all duration-300 flex flex-col justify-between overflow-hidden min-w-[280px] sm:min-w-0 ${
+                    isFeatured ? "lg:col-span-2 bg-gradient-to-br from-white/12 to-white/5" : ""
+                  }`}>
 
                 {/* Numéro décoratif */}
-                <div className="absolute top-3 right-4 font-display font-bold text-4xl leading-none
-                  select-none opacity-[0.07] group-hover:opacity-[0.15] transition-opacity duration-300 text-white">
+                <div className="absolute top-4 right-5 font-display font-bold text-5xl leading-none
+                  select-none opacity-[0.08] group-hover:opacity-[0.18] transition-opacity duration-300 text-white">
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
-                {/* Icône colorée sur fond clair */}
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0
-                  group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
-                  style={{ backgroundColor: accent.light }}>
-                  <Icon size={24} style={{ color: accent.icon }} strokeWidth={1.8} />
+                {/* En-tête carte */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0
+                    group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-md"
+                    style={{ backgroundColor: accent.light }}>
+                    <Icon size={26} style={{ color: accent.icon }} strokeWidth={2} />
+                  </div>
+                  {isFeatured && (
+                    <span className="px-3 py-1 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 text-[#F5A623] text-xs font-bold uppercase tracking-wider">
+                      Atout majeur
+                    </span>
+                  )}
                 </div>
 
                 {/* Contenu */}
                 <div>
-                  <h3 className="font-display font-bold text-white text-[1rem] mb-2 leading-snug">
+                  <h3 className={`font-display font-bold text-white mb-2 leading-snug ${isFeatured ? "text-xl sm:text-2xl" : "text-lg"}`}>
                     {item.title}
                   </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{item.body}</p>
+                  <p className="text-white/70 text-sm leading-relaxed">{item.body}</p>
                 </div>
 
                 {/* Barre bas colorée */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] opacity-0
                   group-hover:opacity-100 transition-opacity duration-300"
                   style={{ backgroundColor: accent.icon }} />
               </motion.div>

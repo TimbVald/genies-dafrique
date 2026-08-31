@@ -150,8 +150,16 @@ export default function HeroSection() {
                 exit="exit"
                 className="max-w-xl"
               >
-                {/* Pré-titre */}
-                <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+                {/* Badge Status Inscriptions & Pré-titre */}
+                <div className="flex flex-wrap items-center gap-2.5 mb-3 sm:mb-4">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/12 border border-white/20 backdrop-blur-md text-white text-[0.72rem] font-medium tracking-wide">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    {locale === "fr"
+                      ? "Inscriptions 2025-2026 Ouvertes"
+                      : locale === "en"
+                      ? "Admissions 2025-2026 Open"
+                      : "Minyan me tɔ́l 2025-2026"}
+                  </span>
                   <div className="h-px w-6 sm:w-8 bg-[#F5A623]" aria-hidden="true" />
                   <span className="text-[#F5A623] text-[0.62rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.22em] sm:tracking-[0.26em]">
                     {slide.label[L]}
@@ -169,25 +177,25 @@ export default function HeroSection() {
 
                 {/* Accroche — masquée sur très petits écrans */}
                 <p
-                  className="hidden xs:block text-white/80 leading-relaxed mb-5 sm:mb-7"
-                  style={{ fontSize: "clamp(0.82rem, 1.4vw, 1.02rem)" }}
+                  className="hidden xs:block text-white/90 leading-relaxed mb-5 sm:mb-7 font-normal"
+                  style={{ fontSize: "clamp(0.85rem, 1.4vw, 1.05rem)" }}
                 >
                   {slide.accroche[L]}
                 </p>
 
                 {/* CTA */}
-                <div className="flex flex-row items-center gap-2 sm:gap-3">
+                <div className="flex flex-row items-center gap-2.5 sm:gap-3.5">
                   <Link href={slide.ctaHref}>
                     <motion.span
-                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-lg
-                        bg-[#1A3A8F] text-white font-bold text-xs sm:text-sm tracking-wide
+                      className="inline-flex items-center gap-2.5 px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl
+                        bg-gradient-to-r from-[#1A3A8F] via-[#2D5BE3] to-[#1A3A8F] text-white font-bold text-xs sm:text-sm tracking-wide
                         cursor-pointer whitespace-nowrap
-                        shadow-[0_4px_22px_rgba(26,58,143,0.55)]"
-                      whileHover={{ scale: 1.03, y: -2 }}
+                        shadow-[0_4px_25px_rgba(45,91,227,0.55)] hover:shadow-[0_6px_30px_rgba(45,91,227,0.75)]"
+                      whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ type: "spring", stiffness: 380, damping: 24 }}
                     >
-                      <Settings size={13} className="opacity-80 hidden sm:inline" />
+                      <Settings size={14} className="opacity-90 hidden sm:inline" />
                       {slide.cta[L]}
                     </motion.span>
                   </Link>

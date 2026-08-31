@@ -109,11 +109,12 @@ export default function TestimonialsSection() {
                   {item.name.charAt(0)}
                 </div>
                 <div>
-                  <cite className={`not-italic font-bold text-sm block ${i === 1 ? "text-white" : "text-white"}`}>
+                  <cite className={`not-italic font-bold text-sm flex items-center gap-1.5 ${i === 1 ? "text-white" : "text-white"}`}>
                     {item.name}
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   </cite>
                   <span className={`text-xs ${i === 1 ? "text-white/75" : "text-white/55"}`}>
-                    {item.role[locale as "fr" | "en" | "ew"] || item.role.fr}
+                    {item.role[locale as "fr" | "en" | "ew"] || item.role.fr} · {locale === "fr" ? "Parent vérifié" : "Verified parent"}
                   </span>
                 </div>
               </footer>

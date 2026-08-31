@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
@@ -142,19 +142,22 @@ function CycleCard({
 
 /* ═══════════════════════════════════════════════════════════════════ */
 export default function ProgramsSection() {
-  const t       = useTranslations("programs");
-  const locale  = useLocale();
+  const t        = useTranslations("programs");
+  const locale   = useLocale();
   const allProgs = getPrograms();
+  const [filter, setFilter] = useState<"all" | "francophone" | "anglophone">("all");
 
   const sectionRef = useRef<HTMLElement>(null);
   const inView     = useInView(sectionRef, { once: true, margin: "-60px" });
 
   /* Tous les programmes avec couleur d'accent */
-  const cycleCards: CycleCard[] = allProgs.map(p => ({
-    ...p,
-    flag:    p.section === "anglophone" ? "🇬🇧" : "🇫🇷",
-    accent:  p.section === "anglophone" ? "#D32F2F" : "#1A3A8F",
-  }));
+  const cycleCards: CycleCard[] = allProgs
+    .filter(p => filter === "all" || p.section === filter || (filter === "francophone" && p.section !== "anglophone"))
+    .map(p => ({
+      ...p,
+      flag:    p.section === "anglophone" ? "🇬🇧" : "🇫🇷",
+      accent:  p.section === "anglophone" ? "#D32F2F" : "#1A3A8F",
+    }));
 
   return (
     <section
@@ -175,7 +178,7 @@ export default function ProgramsSection() {
 
         {/* ── En-tête ── */}
         <motion.div
-          className="text-center mb-14 max-w-2xl mx-auto"
+          className="text-center mb-10 max-w-2xl mx-auto"
           variants={hdrAnim}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
@@ -188,6 +191,40 @@ export default function ProgramsSection() {
             {t("title")}
           </h2>
           <p className="text-[#4A5568] leading-relaxed">{t("subtitle")}</p>
+
+          {/* Boutons Filtres */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            <button
+              onClick={() => setFilter("all")}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+                filter === "all"
+                  ? "bg-[#0D1F6B] text-white shadow-md"
+                  : "bg-[#F7F9FC] text-[#4A5568] hover:bg-[#EEF2FF] hover:text-[#0D1F6B]"
+              }`}
+            >
+              {locale === "fr" ? "Tous les cycles" : locale === "en" ? "All Cycles" : "Nyɔ́ŋ mibuma"}
+            </button>
+            <button
+              onClick={() => setFilter("francophone")}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 flex items-center gap-1.5 ${
+                filter === "francophone"
+                  ? "bg-[#1A3A8F] text-white shadow-md"
+                  : "bg-[#F7F9FC] text-[#4A5568] hover:bg-[#EEF2FF] hover:text-[#1A3A8F]"
+              }`}
+            >
+              <span>🇫🇷</span> {locale === "fr" ? "Section Francophone" : "French Section"}
+            </button>
+            <button
+              onClick={() => setFilter("anglophone")}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 flex items-center gap-1.5 ${
+                filter === "anglophone"
+                  ? "bg-[#D32F2F] text-white shadow-md"
+                  : "bg-[#F7F9FC] text-[#4A5568] hover:bg-[#FEE2E2] hover:text-[#D32F2F]"
+              }`}
+            >
+              <span>🇬🇧</span> {locale === "fr" ? "Section Anglophone" : "English Section"}
+            </button>
+          </div>
         </motion.div>
 
         {/* ── Grille de cycles — style "Nos institutions" La Gaieté ── */}

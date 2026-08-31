@@ -214,7 +214,7 @@ export default function AboutSection() {
 
               {/* Onglets piliers */}
               <motion.div variants={fadeUp} className="mb-6">
-                <div className="flex flex-wrap gap-2 mb-5">
+                <div className="flex flex-wrap gap-2 mb-5 p-1.5 bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0]">
                   {PILLARS.map((p, i) => {
                     const Icon  = p.icon;
                     const label = locale === "fr" ? p.labelFr : p.labelEn;
@@ -222,14 +222,14 @@ export default function AboutSection() {
                       <button
                         key={i}
                         onClick={() => setActiveTab(i)}
-                        className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full
-                          text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+                        className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl
+                          text-xs font-bold tracking-wide transition-all duration-200 ${
                           activeTab === i
-                            ? "bg-[#1A3A8F] text-white shadow-md"
-                            : "bg-[#F7F9FC] text-[#4A5568] hover:bg-[#EEF2FF] hover:text-[#1A3A8F]"
+                            ? "bg-[#1A3A8F] text-white shadow-sm"
+                            : "text-[#4A5568] hover:bg-white hover:text-[#1A3A8F]"
                         }`}
                       >
-                        <Icon size={12} />
+                        <Icon size={13} />
                         {label}
                       </button>
                     );
@@ -243,7 +243,7 @@ export default function AboutSection() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="relative pl-5 border-l-4 border-[#1A3A8F] py-1"
+                    className="relative pl-5 border-l-4 border-[#1A3A8F] py-2 bg-[#F8FAFC]/50 rounded-r-xl pr-4"
                   >
                     <p className="text-[#4A5568] leading-relaxed text-[0.96rem]">
                       {(() => {
@@ -278,10 +278,10 @@ export default function AboutSection() {
               {/* Signature directeur */}
               <motion.div
                 variants={fadeUp}
-                className="mt-9 pt-7 border-t border-[#E2E8F0] flex items-center gap-4"
+                className="mt-9 pt-7 border-t border-[#E2E8F0] flex items-center gap-4 bg-[#F8FAFC]/60 p-4 rounded-2xl border"
               >
                 <div className="relative flex-shrink-0">
-                  <div className="w-14 h-14 rounded-full overflow-hidden ring-4 ring-[#F5A623]/35 shadow-md">
+                  <div className="w-14 h-14 rounded-full overflow-hidden ring-4 ring-[#F5A623]/40 shadow-md">
                     <Image
                       src="https://res.cloudinary.com/dyetkan86/image/upload/v1786848130/file_0000000043b4820eb1db0b515c09febb_2_chkjj4.jpg"
                       alt={aboutData.directorName[locale as keyof typeof aboutData.directorName]}
@@ -295,7 +295,7 @@ export default function AboutSection() {
                   <p className="font-bold text-[#1A202C] text-sm">
                     {aboutData.directorName[locale as keyof typeof aboutData.directorName]}
                   </p>
-                  <p className="text-[#4A5568] text-xs leading-snug max-w-[230px]">
+                  <p className="text-[#4A5568] text-xs leading-snug max-w-[260px]">
                     {aboutData.directorRole[locale as keyof typeof aboutData.directorRole]}
                   </p>
                 </div>

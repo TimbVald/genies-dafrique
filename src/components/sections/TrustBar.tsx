@@ -34,6 +34,18 @@ export default function TrustBar() {
       aria-label={locale === "fr" ? "Nos piliers d'excellence" : "Our pillars of excellence"}
       className="relative bg-white border-b border-[#E2E8F0]"
     >
+      {/* Bandeau d'Agrément Officiel MINEDUB */}
+      <div className="bg-[#0D1F6B] text-white/95 text-xs py-2 px-4 text-center border-b border-white/10 flex items-center justify-center gap-2 flex-wrap font-medium">
+        <ShieldCheck size={15} className="text-[#F5A623] flex-shrink-0" />
+        <span>
+          {locale === "fr"
+            ? "Établissement Agréé par le MINEDUB — Arrêté N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP du 14 février 2025"
+            : locale === "en"
+            ? "MINEDUB Accredited Institution — Decree N°103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP of Feb 14, 2025"
+            : "Sukul mfián ne MINEDUB — N°103/j1/7/A/MINEDUB 14 Mfú 2025"}
+        </span>
+      </div>
+
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-0 overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {pillars.map((pillar, i) => {
@@ -48,21 +60,21 @@ export default function TrustBar() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.09, duration: 0.5, ease: "easeOut" }}
                 className="flex items-start gap-4 py-7 px-6 lg:px-8 group
-                  hover:bg-[#F7F9FC] transition-colors duration-200 min-w-[280px] sm:min-w-0 sm:border-r sm:border-[#E2E8F0]"
+                  hover:bg-[#F8FAFC] transition-all duration-300 min-w-[280px] sm:min-w-0 sm:border-r sm:border-[#E2E8F0] last:border-r-0 hover:-translate-y-0.5"
               >
-                {/* Icône ronde colorée */}
+                {/* Icône ronde colorée avec ombre douce */}
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center
-                    flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300"
+                    flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:shadow-md transition-all duration-300 ring-1 ring-black/5"
                   style={{ backgroundColor: pillar.bg }}
                 >
-                  <Icon size={22} style={{ color: pillar.color }} strokeWidth={1.8} />
+                  <Icon size={22} style={{ color: pillar.color }} strokeWidth={2} />
                 </div>
 
                 {/* Texte */}
                 <div className="min-w-0">
                   <p
-                    className="font-display font-bold text-[#1A202C] text-[0.93rem] leading-snug mb-1
+                    className="font-display font-bold text-[#1A202C] text-[0.95rem] leading-snug mb-1
                       group-hover:text-[#1A3A8F] transition-colors duration-200"
                   >
                     {title}
