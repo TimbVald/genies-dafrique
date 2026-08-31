@@ -7,8 +7,7 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppFab from "@/components/ui/WhatsAppFab";
-import ChatbotFab from "@/components/ui/ChatbotFab";
+import FloatingHub from "@/components/ui/FloatingHub";
 import { Analytics } from "@vercel/analytics/next";
 
 /* ── Polices ────────────────────────────────────────────────── */
@@ -142,8 +141,7 @@ export default async function LocaleLayout({
           <Analytics/>
 
           <Footer />
-          <WhatsAppFab />
-          <ChatbotFab />
+          <FloatingHub />
         </NextIntlClientProvider>
       </body>
     </html>
