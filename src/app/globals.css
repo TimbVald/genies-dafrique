@@ -875,5 +875,98 @@ body {
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM DESIGN & UX UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Scrollbar sur-mesure */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+  border: 2px solid #F1F5F9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1A3A8F;
+}
+
+/* Sélection de texte aux couleurs de la marque */
+::selection {
+  background: rgba(26, 58, 143, 0.18);
+  color: #0D1F6B;
+}
+
+/* Classes Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(26, 58, 143, 0.08);
+}
+
+.glass-dark {
+  background: rgba(13, 31, 107, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Texte en dégradé */
+.gradient-text-blue {
+  background: linear-gradient(135deg, #1A3A8F 0%, #2D5BE3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #F5A623 0%, #D32F2F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Boutons avec effet de lueur interactive */
+.glow-button-blue {
+  box-shadow: 0 4px 14px 0 rgba(26, 58, 143, 0.35);
+  transition: all 0.3s ease;
+}
+.glow-button-blue:hover {
+  box-shadow: 0 6px 20px 0 rgba(26, 58, 143, 0.5);
+  transform: translateY(-2px);
+}
+
+.glow-button-red {
+  box-shadow: 0 4px 14px 0 rgba(211, 47, 47, 0.35);
+  transition: all 0.3s ease;
+}
+.glow-button-red:hover {
+  box-shadow: 0 6px 20px 0 rgba(211, 47, 47, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Animation d'impulsion subtile pour les badges */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 3s infinite ease-in-out;
 }

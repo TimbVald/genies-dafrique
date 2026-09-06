@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ALL_PHOTOS = [
@@ -30,14 +31,15 @@ const ALL_PHOTOS = [
 ];
 
 const TABS = [
-  { id: "all",     labelFr: "Tout",      labelEn: "All" },
-  { id: "classes", labelFr: "Classes",   labelEn: "Classrooms" },
-  { id: "events",  labelFr: "Événements",labelEn: "Events" },
-  { id: "sports",  labelFr: "Sports",    labelEn: "Sports" },
-  { id: "school",  labelFr: "École",     labelEn: "School" },
+  { id: "all",     labelFr: "Toutes les photos", labelEn: "All Photos", labelEw: "Minkɔ́lɔ́ nyonso" },
+  { id: "classes", labelFr: "Salles de classe",  labelEn: "Classrooms", labelEw: "Bisɔ́m bya sukul" },
+  { id: "events",  labelFr: "Événements",       labelEn: "Events",     labelEw: "Biyem bya nnam" },
+  { id: "sports",  labelFr: "Sports",           labelEn: "Sports",     labelEw: "Nyam" },
+  { id: "school",  labelFr: "École & Cadre",    labelEn: "School",     labelEw: "Sukul na Bika" },
 ];
 
 export default function FullGallery() {
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState("all");
   const [lightbox, setLightbox] = useState<number | null>(null);
 
@@ -50,6 +52,12 @@ export default function FullGallery() {
   const prevPhoto = () => setLightbox((l) => l !== null ? (l - 1 + filtered.length) % filtered.length : null);
   const nextPhoto = () => setLightbox((l) => l !== null ? (l + 1) % filtered.length : null);
 
+  const getTabLabel = (tab: typeof TABS[0]) => {
+    if (locale === "en") return tab.labelEn;
+    if (locale === "ew") return tab.labelEw;
+    return tab.labelFr;
+  };
+
   return (
     <>
       {/* Filtres */}
@@ -58,13 +66,13 @@ export default function FullGallery() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+            className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               activeTab === tab.id
-                ? "bg-[#1A3A8F] text-white shadow-md"
-                : "bg-white text-[#4A5568] border border-[#E2E8F0] hover:border-[#1A3A8F] hover:text-[#1A3A8F]"
+                ? "bg-[#1A3A8F] text-white shadow-lg shadow-[#1A3A8F]/20 scale-105"
+                : "bg-white text-[#4A5568] border border-[#E2E8F0] hover:border-[#1A3A8F] hover:text-[#1A3A8F] hover:shadow-sm"
             }`}
           >
-            {tab.labelFr} / {tab.labelEn}
+            {getTabLabel(tab)}
           </button>
         ))}
       </div>
