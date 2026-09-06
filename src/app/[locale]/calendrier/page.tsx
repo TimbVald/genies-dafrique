@@ -25,42 +25,48 @@ export default function CalendrierPage() {
       />
 
       {/* ── Infos rapides ── */}
-      <section className="bg-white border-b border-[#E2E8F0]">
+      <section className="bg-white border-b border-[#E2E8F0] shadow-sm">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-3 divide-x divide-[#E2E8F0]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#E2E8F0]">
             {[
               {
                 icon: CalendarIcon,
                 fr: "Événements scolaires",
                 en: "School events",
+                ew: "Biyem ya sukul",
                 descFr: "Activités, examens, sorties",
                 descEn: "Activities, exams, outings",
+                descEw: "Bikɔ́l, examens, minsili",
               },
               {
                 icon: Filter,
                 fr: "Filtrage par catégorie",
                 en: "Filter by category",
+                ew: "Lɔ́g dzam na mfañ",
                 descFr: "Vie scolaire, pédagogie, culture…",
                 descEn: "School life, pedagogy, culture…",
+                descEw: "Mvog sukul, akom, minlɔ́m…",
               },
               {
                 icon: Grid3X3,
                 fr: "Vues multiples",
                 en: "Multiple views",
+                ew: "A yen mvoé mvoé",
                 descFr: "Mois, semaine, jour, agenda",
                 descEn: "Month, week, day, agenda",
+                descEw: "Ngon, sonde, mɔ́s, agenda",
               },
-            ].map(({ icon: Icon, fr, en, descFr, descEn }, i) => (
-              <div key={i} className="flex items-start gap-3 py-5 px-5 lg:px-8">
-                <div className="w-9 h-9 rounded-xl bg-[#EEF2FF] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon size={17} className="text-[#1A3A8F]" />
+            ].map(({ icon: Icon, fr, en, ew, descFr, descEn, descEw }, i) => (
+              <div key={i} className="flex items-start gap-4 py-6 px-4 lg:px-8 group hover:bg-[#F8FAFC] transition-colors">
+                <div className="w-11 h-11 rounded-2xl bg-[#EEF2FF] group-hover:bg-[#1A3A8F] flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors duration-300">
+                  <Icon size={19} className="text-[#1A3A8F] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <p className="font-bold text-[#1A202C] text-sm">
-                    {locale === "en" ? en : fr}
+                  <p className="font-bold text-[#1A202C] text-sm group-hover:text-[#1A3A8F] transition-colors">
+                    {locale === "en" ? en : locale === "ew" ? ew : fr}
                   </p>
-                  <p className="text-[#4A5568] text-xs mt-0.5">
-                    {locale === "en" ? descEn : descFr}
+                  <p className="text-[#4A5568] text-xs mt-0.5 leading-relaxed">
+                    {locale === "en" ? descEn : locale === "ew" ? descEw : descFr}
                   </p>
                 </div>
               </div>

@@ -95,20 +95,18 @@ export default function AboutPageContent() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-14 h-14 rounded-full bg-[#1A3A8F] flex items-center justify-center shadow-md z-10 relative">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1A3A8F] to-[#0D2A6F] flex items-center justify-center shadow-lg z-10 relative">
                       <span className="text-white text-[11px] font-bold text-center leading-tight px-1">{item.year}</span>
                     </div>
                   </div>
-                  <Card className="flex-1 mt-2 border-[#E2E8F0] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                    <CardContent className="p-5">
-                      <p className="text-[#1A3A8F] font-bold text-sm mb-1.5">
-                        {item.title[locale as keyof typeof item.title] || item.title.fr}
-                      </p>
-                      <p className="text-[#4A5568] text-sm leading-relaxed">
-                        {item.description[locale as keyof typeof item.description] || item.description.fr}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="flex-1 mt-2 p-6 glass-card rounded-2xl hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+                    <p className="gradient-text-blue font-bold text-sm mb-2">
+                      {item.title[locale as keyof typeof item.title] || item.title.fr}
+                    </p>
+                    <p className="text-[#4A5568] text-sm leading-relaxed">
+                      {item.description[locale as keyof typeof item.description] || item.description.fr}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -157,9 +155,9 @@ export default function AboutPageContent() {
             <motion.div
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-3xl p-8 bg-[#F7F9FC] border border-[#E2E8F0] shadow-sm"
+              className="rounded-3xl p-8 glass-card"
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#EEF2FF] flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#EEF2FF] to-[#DCE3FE] flex items-center justify-center mb-5 shadow-sm">
                 <Globe size={22} className="text-[#1A3A8F]" />
               </div>
               <h3 className="font-display font-bold text-[#1A202C] text-xl mb-3">
@@ -185,21 +183,21 @@ export default function AboutPageContent() {
               {values.map((v, i) => (
                 <motion.div
                   key={v.id}
-                  className="group p-6 rounded-2xl border border-[#E2E8F0] bg-white
-                    hover:border-[#1A3A8F]/30 hover:shadow-lg hover:-translate-y-1
-                    transition-all duration-300 cursor-default"
+                  className="group p-8 rounded-2xl glass-card
+                    hover:shadow-2xl hover:-translate-y-2
+                    transition-all duration-500 cursor-default"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.07 }}
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4
-                    group-hover:bg-[#1A3A8F] group-hover:scale-110 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#EEF2FF] to-[#DCE3FE] flex items-center justify-center mb-5
+                    group-hover:from-[#1A3A8F] group-hover:to-[#0D2A6F] group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(26,58,143,0.4)] transition-all duration-300">
                     <span className="group-hover:[&>svg]:!text-white transition-colors duration-300">
                       {getIcon(v.icon)}
                     </span>
                   </div>
-                  <h4 className="font-display font-bold text-[#1A202C] text-base mb-2">
+                  <h4 className="font-display font-bold text-[#1A202C] text-lg mb-3">
                     {v.title[locale as keyof typeof v.title] || v.title.fr}
                   </h4>
                   <p className="text-[#4A5568] text-sm leading-relaxed">

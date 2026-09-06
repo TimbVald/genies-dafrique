@@ -18,13 +18,13 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, image, breadcrumbs, accentColor = "#D32F2F" }: PageHeroProps) {
   return (
-    <section className="relative h-[300px] md:h-[400px] lg:h-[440px] flex items-end overflow-hidden">
+    <section className="relative h-[40vh] min-h-[350px] md:h-[50vh] md:min-h-[450px] lg:h-[55vh] lg:min-h-[500px] flex items-end overflow-hidden">
       {/* Background image */}
       <Image src={image} alt="" fill className="object-cover object-center" sizes="100vw" priority aria-hidden="true" />
 
-      {/* Layered overlays for depth */}
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,107,0.85) 0%, rgba(13,31,107,0.60) 50%, rgba(13,31,107,0.30) 100%)" }} />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,107,0.95) 0%, transparent 55%)" }} />
+      {/* Layered overlays for depth (adjusted for better image visibility) */}
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,107,0.75) 0%, rgba(13,31,107,0.4) 40%, rgba(13,31,107,0.1) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,107,0.8) 0%, transparent 60%)" }} />
 
       {/* Decorative geometric accent */}
       <div className="absolute top-0 right-0 w-[40%] h-full opacity-10 pointer-events-none"

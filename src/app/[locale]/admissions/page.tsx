@@ -172,38 +172,42 @@ export default function AdmissionsPage() {
 
           <motion.div className="max-w-3xl mx-auto" initial="hidden" whileInView="show"
             viewport={{ once: true }} variants={fadeUp}>
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-[#E2E8F0]">
-              <table className="w-full text-left">
-                <thead>
-                  <tr style={{ background: "linear-gradient(135deg, #1A3A8F 0%, #0D1F6B 100%)" }}>
-                    <th className="px-6 py-4 text-white font-bold text-sm">{t("fees.level")}</th>
-                    <th className="px-6 py-4 text-white font-bold text-sm">{t("fees.age")}</th>
-                    <th className="px-6 py-4 text-white font-bold text-sm">{t("fees.tuition")}</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white">
-                  {fees.map((fee, i) => (
-                    <tr key={fee.id} className={`border-b border-[#E2E8F0] last:border-0 ${i % 2 === 0 ? "" : "bg-[#F7F9FC]"}`}>
-                      <td className="px-6 py-4 font-semibold text-[#1A202C] text-sm">
-                        {fee.level[locale as keyof typeof fee.level] || fee.level.fr}
-                      </td>
-                      <td className="px-6 py-4 text-[#4A5568] text-sm">
-                        {fee.ageRange[locale as keyof typeof fee.ageRange] || fee.ageRange.fr}
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-[#EEF2FF] text-[#1A3A8F]">
-                          {fee.tuition[locale as keyof typeof fee.tuition] || fee.tuition.fr}
-                        </span>
-                      </td>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#E2E8F0] bg-white">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left min-w-[500px]">
+                  <thead>
+                    <tr style={{ background: "linear-gradient(135deg, #1A3A8F 0%, #0D1F6B 100%)" }}>
+                      <th className="px-6 py-4 text-white font-bold text-sm tracking-wide">{t("fees.level")}</th>
+                      <th className="px-6 py-4 text-white font-bold text-sm tracking-wide">{t("fees.age")}</th>
+                      <th className="px-6 py-4 text-white font-bold text-sm tracking-wide">{t("fees.tuition")}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-[#E2E8F0]">
+                    {fees.map((fee, i) => (
+                      <tr key={fee.id} className="hover:bg-[#EEF2FF]/60 transition-colors">
+                        <td className="px-6 py-4 font-bold text-[#1A202C] text-sm">
+                          {fee.level[locale as keyof typeof fee.level] || fee.level.fr}
+                        </td>
+                        <td className="px-6 py-4 text-[#4A5568] text-sm font-medium">
+                          {fee.ageRange[locale as keyof typeof fee.ageRange] || fee.ageRange.fr}
+                        </td>
+                        <td className="px-6 py-4">
+                          <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#EEF2FF] text-[#1A3A8F] border border-[#1A3A8F]/15">
+                            {fee.tuition[locale as keyof typeof fee.tuition] || fee.tuition.fr}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
             <p className="text-center text-[#4A5568] text-xs mt-4 italic">
               {locale === "fr"
                 ? "* Grille tarifaire détaillée remise lors de la visite de l'établissement."
-                : "* Full fee schedule provided during your school visit."}
+                : locale === "en"
+                ? "* Full fee schedule provided during your school visit."
+                : "* Biyem ya prix bi nga yen na fam nyonso."}
             </p>
           </motion.div>
         </div>

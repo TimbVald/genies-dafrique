@@ -154,7 +154,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                 placeholder={searchPlaceholder}
                 className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-[#E2E8F0]
                   focus:outline-none focus:ring-2 focus:ring-[#1A3A8F]/30 focus:border-[#1A3A8F]
-                  bg-white text-[#1A202C] placeholder-[#94A3B8] text-sm transition-all"
+                  bg-white/70 backdrop-blur-md text-[#1A202C] placeholder-[#94A3B8] text-sm transition-all shadow-sm hover:shadow-md"
               />
             </div>
           </div>
@@ -171,11 +171,11 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                     setSelectedCategory(catKey);
                     setCurrentPage(1);
                   }}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wide transition-all duration-200
+                  className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide transition-all duration-300
                     ${
                       isActive
-                        ? "bg-[#1A3A8F] text-white shadow-md shadow-[#1A3A8F]/20"
-                        : "bg-white text-[#4A5568] border border-[#E2E8F0] hover:border-[#1A3A8F]/30 hover:text-[#1A3A8F]"
+                        ? "bg-gradient-to-r from-[#1A3A8F] to-[#0D2A6F] text-white shadow-lg shadow-[#1A3A8F]/30 scale-105"
+                        : "bg-white/80 backdrop-blur-sm text-[#4A5568] border border-[#E2E8F0] hover:border-[#1A3A8F]/40 hover:text-[#1A3A8F] hover:shadow-sm"
                     }`}
                 >
                   {catLabels[catKey]}
@@ -212,7 +212,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   {featured.gallery.length > 0 && (
-                    <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                    <div className="absolute bottom-3 left-3 glass-dark text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
                       📷 {galleryLabel} {featured.gallery.length} photos
                     </div>
                   )}
@@ -322,8 +322,8 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                       >
                         <Link
                           href={`/actualites/${event.slug}`}
-                          className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E2E8F0]
-                            hover:shadow-[0_8px_32px_rgba(26,58,143,0.10)] hover:-translate-y-1 transition-all duration-300 h-full"
+                          className="group flex flex-col glass-card rounded-2xl overflow-hidden
+                            hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full"
                         >
                           <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#1A3A8F] to-[#0D2A6F] flex items-center justify-center">
                             <div className="text-center text-white">
@@ -374,8 +374,8 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                 >
                   <Link
                     href={`/actualites/${article.id}`}
-                    className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E2E8F0]
-                      hover:shadow-[0_8px_32px_rgba(26,58,143,0.10)] hover:-translate-y-1 transition-all duration-300 h-full"
+                    className="group flex flex-col glass-card rounded-2xl overflow-hidden
+                      hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full"
                   >
                     <div className="relative aspect-video overflow-hidden">
                       <Image
@@ -386,7 +386,7 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {article.gallery.length > 0 && (
-                        <div className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <div className="absolute bottom-2 left-2 glass-dark text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
                           📷 +{article.gallery.length} photos
                         </div>
                       )}
@@ -633,14 +633,13 @@ export default function ActualitesContent({ locale }: ActualitesContentProps) {
 
               {/* Newsletter / CTA card */}
               <div
-                className="rounded-2xl p-6 text-white relative overflow-hidden"
+                className="rounded-2xl p-6 text-white relative overflow-hidden glass-panel"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #1A3A8F 0%, #2a5bd7 100%)",
+                  background: "linear-gradient(135deg, rgba(26,58,143,0.95) 0%, rgba(13,31,107,0.95) 100%)",
                 }}
               >
-                <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10" />
-                <div className="absolute -right-4 bottom-0 w-24 h-24 rounded-full bg-[#F5A623]/20" />
+                <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10 blur-xl" />
+                <div className="absolute -right-4 bottom-0 w-24 h-24 rounded-full bg-[#F5A623]/30 blur-xl" />
                 <div className="relative z-10">
                   <div className="text-3xl mb-3">📢</div>
                   <h4 className="font-display font-bold text-xl mb-2">

@@ -296,10 +296,10 @@ export default function FormationsContent() {
                 <TabsTrigger
                   key={i}
                   value={String(i)}
-                  className="rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#4A5568]
+                  className="rounded-xl px-5 py-3 text-sm font-bold text-[#4A5568]
                     whitespace-nowrap flex-shrink-0
-                    data-[state=active]:bg-[#1A3A8F] data-[state=active]:text-white
-                    data-[state=active]:shadow-md transition-all duration-200"
+                    data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#1A3A8F] data-[state=active]:to-[#0D2A6F] data-[state=active]:text-white
+                    data-[state=active]:shadow-lg data-[state=active]:shadow-[#1A3A8F]/30 transition-all duration-300"
                 >
                   {level.title}
                 </TabsTrigger>
@@ -313,7 +313,7 @@ export default function FormationsContent() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35 }}
                 >
-                  <Card className="overflow-hidden border-[#E2E8F0] shadow-lg">
+                  <Card className="overflow-hidden glass-card border-none shadow-xl">
                     {/* Sur mobile : empilé vertical. Sur desktop : côte à côte */}
                     <div className="grid lg:grid-cols-[380px_1fr]">
                       {/* Image */}
@@ -394,7 +394,7 @@ export default function FormationsContent() {
                 viewport={{ once: true, amount: 0.2 }}
                 variants={fadeUp}
               >
-                <Card className="h-full border-[#E2E8F0] shadow-sm hover:shadow-md transition-shadow duration-300 hover:-translate-y-1">
+                <Card className="h-full glass-card border-none shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                   <CardHeader className="pb-2">
                     <span className="inline-flex items-center bg-[#EEF2FF] text-[#1A3A8F] text-xs font-semibold px-2.5 py-1 rounded-full w-fit mb-2">
                       {level.subtitle}
@@ -451,8 +451,8 @@ export default function FormationsContent() {
                   variants={fadeUp}
                 >
                   <Card
-                    className="h-full border-[#E2E8F0] shadow-sm hover:shadow-lg
-                      hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                    className="h-full glass-card border-none shadow-sm hover:shadow-2xl
+                      hover:-translate-y-2 transition-all duration-500 overflow-hidden"
                   >
                     {/* Colored top bar */}
                     <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
@@ -535,8 +535,8 @@ export default function FormationsContent() {
                 >
                   {/* Circle */}
                   <div className="relative flex-shrink-0 w-14 h-14 sm:mb-5">
-                    <div className="absolute inset-0 rounded-full bg-[#1A3A8F]/10" />
-                    <div className="absolute inset-1 rounded-full bg-[#1A3A8F] flex items-center justify-center shadow-md z-10">
+                    <div className="absolute inset-0 rounded-full bg-[#1A3A8F]/10 blur-md group-hover:bg-[#F5A623]/30 transition-colors duration-500" />
+                    <div className="absolute inset-1 rounded-full bg-gradient-to-br from-[#1A3A8F] to-[#0D2A6F] flex items-center justify-center shadow-lg z-10">
                       <span className="text-white font-bold text-sm">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                   </div>
