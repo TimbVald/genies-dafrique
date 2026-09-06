@@ -72,10 +72,22 @@
   },
   "trustBar": {
     "items": [
-      { "icon": "School",    "label": "MINEDUB Accredited 2025" },
-      { "icon": "BookOpen",  "label": "4 School Levels" },
-      { "icon": "Globe",     "label": "Bilingual FR / EN" },
-      { "icon": "Phone",     "label": "651 11 15 06" }
+      {
+        "icon": "School",
+        "label": "MINEDUB Accredited 2025"
+      },
+      {
+        "icon": "BookOpen",
+        "label": "4 School Levels"
+      },
+      {
+        "icon": "Globe",
+        "label": "Bilingual FR / EN"
+      },
+      {
+        "icon": "Phone",
+        "label": "651 11 15 06"
+      }
     ]
   },
   "about": {
@@ -154,7 +166,12 @@
         "subtitle": "From Day Care to CM2",
         "description": "Our French section follows the official MINEDUB curriculum, enriched with complementary content and progressive English immersion. A rigorous, caring and stimulating environment for every student.",
         "image": "/images/IMG-20260723-WA0007.jpg",
-        "levels": ["Day Care (0–2 yrs)", "Nursery (2–5 yrs)", "CP · CE1 · CE2", "CM1 · CM2"],
+        "levels": [
+          "Day Care (0–2 yrs)",
+          "Nursery (2–5 yrs)",
+          "CP · CE1 · CE2",
+          "CM1 · CM2"
+        ],
         "strengths": [
           "Enhanced official MINEDUB curriculum",
           "Intensive English from Grade 1",
@@ -173,7 +190,12 @@
         "subtitle": "From Nursery to Class 6",
         "description": "Our anglophone section offers a rigorous curriculum fully aligned with MINEDUB guidelines. Teaching is conducted primarily in English, with French as a strong second language. Students are prepared for the best secondary schools.",
         "image": "/images/IMG-20260723-WA0012.jpg",
-        "levels": ["Nursery (2–5 yrs)", "Class 1 · Class 2", "Class 3 · Class 4", "Class 5 · Class 6"],
+        "levels": [
+          "Nursery (2–5 yrs)",
+          "Class 1 · Class 2",
+          "Class 3 · Class 4",
+          "Class 5 · Class 6"
+        ],
         "strengths": [
           "Rigorous MINEDUB anglophone curriculum",
           "French as a strong second language",
@@ -190,9 +212,18 @@
     "title": "Why Choose Les Génies d'Afrique?",
     "subtitle": "Strong values, an exceptional environment and an unwavering commitment to the development of every child.",
     "bottomStats": [
-      { "value": "FR + EN", "label": "Full bilingualism"         },
-      { "value": "2025",    "label": "MINEDUB Accreditation"     },
-      { "value": "0 – 12",  "label": "Years · Day Care to CM2"   }
+      {
+        "value": "FR + EN",
+        "label": "Full bilingualism"
+      },
+      {
+        "value": "2025",
+        "label": "MINEDUB Accreditation"
+      },
+      {
+        "value": "0 – 12",
+        "label": "Years · Day Care to CM2"
+      }
     ],
     "items": [
       {
@@ -420,7 +451,10 @@
       "quoteOpen": "Every child is born a genius waiting to be revealed.",
       "message": "The dream that led to the creation of Les Génies d'Afrique is above all a dream of hope. Having worked for years in education, I have seen too many children whose talents go unnoticed, confined by rigid systems that do not always take the time to see each child as an individual with unique potential.",
       "body": "At Les Génies d'Afrique, we have built an environment where every child can blossom — an environment where excellence rhymes with well-being, where rigour goes hand in hand with joy of learning, where French and English open doors to two cultures and two futures. This is our promise to you.",
-      "signature": "The Director"
+      "signature": "The Director",
+      "messageQuote": "\"Chaque enfant porte en lui un génie unique. Notre rôle est de créer les conditions pour qu'il s'éveille et s'épanouisse.\"",
+      "messageBody": "Chers parents, chers élèves, chers visiteurs. Le Complexe Scolaire Bilingue Les Génies d'Afrique est né d'une conviction profonde : l'Afrique de demain se construit aujourd'hui dans les salles de classe, à travers l'éducation de ses enfants. Nous avons réuni une équipe passionnée, des infrastructures de qualité et un projet éducatif ambitieux pour offrir à chaque enfant qui nous est confié un environnement propice à la réussite et à l'épanouissement. Notre approche bilingue intégrale, notre ouverture sur les autres cultures et notre engagement en faveur d'un développement global sont autant d'atouts que nous mettons au service de vos enfants. Je vous invite à nous rendre visite, à découvrir notre établissement et à partager avec nous l'aventure extraordinaire de faire éclore les génies de demain.",
+      "signatureTitle": "La Directrice du Complexe Scolaire Bilingue Les Génies d'Afrique"
     },
     "team": {
       "badge": "Our Team",
@@ -488,7 +522,8 @@
     "hero": {
       "badge": "Our Programs",
       "title": "Two Linguistic Paths, One Shared Excellence",
-      "subtitle": "From Day Care to Primary, our French and English sections offer a complete bilingual education aligned with MINEDUB standards, enriched by innovative pedagogical projects."
+      "subtitle": "From Day Care to Primary, our French and English sections offer a complete bilingual education aligned with MINEDUB standards, enriched by innovative pedagogical projects.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
     },
     "intro": {
       "badge": "Overview",
@@ -695,21 +730,19 @@
             "Family motivation interview"
           ]
         }
+      ],
+      "badge": "Conditions d'inscription",
+      "list": [
+        "Âge minimum : 2 ans révolus pour l'entrée en maternelle ; 0–2 ans pour la crèche",
+        "Fournir un extrait de naissance de l'enfant (ou acte de naissance)",
+        "Certificat médical de non contre-indication à la vie en collectivité",
+        "Bulletins scolaires de l'année précédente pour les élèves de la maternelle supérieure au primaire",
+        "Engagement écrit des parents à respecter le règlement intérieur de l'établissement"
       ]
     },
     "documents": {
-      "title": "Required Documents",
-      "subtitle": "Prepare these documents to complete your registration file.",
-      "list": [
-        { "icon": "FileText", "text": "Copy of birth certificate (original + copy)" },
-        { "icon": "Camera", "text": "4 recent ID photos (passport size)" },
-        { "icon": "Stethoscope", "text": "Medical certificate of aptitude for schooling" },
-        { "icon": "Syringe", "text": "Up-to-date vaccination record" },
-        { "icon": "FileCheck", "text": "Previous school reports (for transfers)" },
-        { "icon": "ClipboardCheck", "text": "Registration form (provided by the school)" },
-        { "icon": "User", "text": "Copy of parent or guardian's ID" },
-        { "icon": "Landmark", "text": "Proof of address (residence certificate)" }
-      ]
+      "badge": "Required Documents",
+      "title": "Documents to Provide"
     },
     "steps": {
       "title": "Registration Steps",
@@ -740,7 +773,8 @@
           "title": "Registration Confirmation",
           "description": "Pay registration fees and tuition to confirm your child's place. Welcome to Les Génies d'Afrique!"
         }
-      ]
+      ],
+      "badge": "Procédure"
     },
     "faq": {
       "badge": "Frequently Asked Questions",
@@ -784,10 +818,6 @@
       "title": "How Enrollment Works",
       "subtitle": "A simple, transparent and welcoming process in 4 steps."
     },
-    "documents": {
-      "badge": "Required Documents",
-      "title": "Documents to Provide"
-    },
     "fees": {
       "badge": "Tuition Fees",
       "title": "Fee Schedule",
@@ -820,13 +850,36 @@
       "title": "Categories",
       "all": "All",
       "items": [
-        { "slug": "events", "name": "Events" },
-        { "slug": "academic", "name": "Academic" },
-        { "slug": "projects", "name": "Projects" },
-        { "slug": "sports", "name": "Sports" },
-        { "slug": "arts", "name": "Arts & Culture" },
-        { "slug": "community", "name": "Community" }
-      ]
+        {
+          "slug": "events",
+          "name": "Events"
+        },
+        {
+          "slug": "academic",
+          "name": "Academic"
+        },
+        {
+          "slug": "projects",
+          "name": "Projects"
+        },
+        {
+          "slug": "sports",
+          "name": "Sports"
+        },
+        {
+          "slug": "arts",
+          "name": "Arts & Culture"
+        },
+        {
+          "slug": "community",
+          "name": "Community"
+        }
+      ],
+      "evenements": "Événements",
+      "institutionnel": "Institutionnel",
+      "pedagogie": "Pédagogie",
+      "admissions": "Admissions",
+      "sports": "Sports & Vie scolaire"
     },
     "featured": {
       "badge": "Featured",
@@ -840,7 +893,8 @@
       "previous": "Previous",
       "next": "Next",
       "page": "Page",
-      "of": "of"
+      "of": "of",
+      "prev": "Précédent"
     },
     "article": {
       "readTime": "min read",
@@ -849,15 +903,20 @@
       "share": "Share",
       "related": "Related Articles",
       "back": "Back to all news",
-      "notFound": "Article not found."
-    }
+      "notFound": "Article not found.",
+      "authorLabel": "Rédigé par",
+      "galleryLabel": "Galerie photos",
+      "shareLabel": "Partager l'article",
+      "backToList": "← Retour à la liste des actualités"
+    },
+    "searchPlaceholder": "Rechercher un article, un événement…"
   },
-
   "galleryPage": {
     "hero": {
       "badge": "Gallery",
       "title": "Our School in Images",
-      "subtitle": "Dive into the daily life of Les Génies d'Afrique through our photo and video gallery."
+      "subtitle": "Dive into the daily life of Les Génies d'Afrique through our photo and video gallery.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
     },
     "tabs": {
       "photos": "Photos",
@@ -870,7 +929,10 @@
       "infrastructure": "Infrastructure",
       "ceremonies": "Ceremonies",
       "classrooms": "Classrooms",
-      "excursions": "Excursions"
+      "excursions": "Excursions",
+      "activites": "Activités scolaires",
+      "infrastructures": "Infrastructures",
+      "salles": "Salles de classe"
     }
   },
   "vieScolairePage": {
@@ -1027,12 +1089,36 @@
       "title": "Learning by Doing",
       "subtitle": "Unique projects that set Les Génies d'Afrique apart from every other school.",
       "items": [
-        { "emoji": "🌱", "title": "School Farming",          "description": "Students grow their own garden, learning the basics of agronomy." },
-        { "emoji": "🐄", "title": "Livestock",               "description": "Introduction to responsible livestock rearing (chickens, rabbits) on campus." },
-        { "emoji": "🐟", "title": "Aquaculture",             "description": "Introduction to aquaculture and fish pond management." },
-        { "emoji": "💡", "title": "Junior Entrepreneurship", "description": "Supervised entrepreneurial projects to develop initiative and creativity." },
-        { "emoji": "🎭", "title": "Arts & Culture",          "description": "Theatre, dance, African and international music throughout the year." },
-        { "emoji": "⚽", "title": "Sports",                  "description": "Football, athletics, team games for physical development and team spirit." }
+        {
+          "emoji": "🌱",
+          "title": "School Farming",
+          "description": "Students grow their own garden, learning the basics of agronomy."
+        },
+        {
+          "emoji": "🐄",
+          "title": "Livestock",
+          "description": "Introduction to responsible livestock rearing (chickens, rabbits) on campus."
+        },
+        {
+          "emoji": "🐟",
+          "title": "Aquaculture",
+          "description": "Introduction to aquaculture and fish pond management."
+        },
+        {
+          "emoji": "💡",
+          "title": "Junior Entrepreneurship",
+          "description": "Supervised entrepreneurial projects to develop initiative and creativity."
+        },
+        {
+          "emoji": "🎭",
+          "title": "Arts & Culture",
+          "description": "Theatre, dance, African and international music throughout the year."
+        },
+        {
+          "emoji": "⚽",
+          "title": "Sports",
+          "description": "Football, athletics, team games for physical development and team spirit."
+        }
       ]
     },
     "cta": {
@@ -1052,29 +1138,65 @@
       "title": "Welcome to Our Family",
       "altPhoto": "The Principal",
       "roleLabel": "General Director",
-      "quote": "\u201cOur institution was born from a deep conviction: every child carries a unique genius within them, and it is the school\u2019s role to reveal and nurture it. Here, we do not merely instruct \u2014 we educate, we support, we inspire.\u201d",
+      "quote": "“Our institution was born from a deep conviction: every child carries a unique genius within them, and it is the school’s role to reveal and nurture it. Here, we do not merely instruct — we educate, we support, we inspire.”",
       "body": "Our team is committed every day to providing your child with the best bilingual learning environment, respecting their rhythm and personality."
     },
     "history": {
       "badge": "Our History",
       "title": "A School Born from a Vision",
       "items": [
-        { "year": "2024",      "text": "Foundation of the school and construction of premises in Nkozoa, Yaoundé." },
-        { "year": "Feb. 2025", "text": "Official MINEDUB accreditation obtained — Order No. 103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP." },
-        { "year": "Sept. 2025","text": "Official opening and welcome of first students from day care to primary school." },
-        { "year": "2026",      "text": "Extension of educational programmes, website launch and development of the school community." }
+        {
+          "year": "2024",
+          "text": "Foundation of the school and construction of premises in Nkozoa, Yaoundé."
+        },
+        {
+          "year": "Feb. 2025",
+          "text": "Official MINEDUB accreditation obtained — Order No. 103/j1/7/A/MINEDUB/SG/DSEPB/SDAAP."
+        },
+        {
+          "year": "Sept. 2025",
+          "text": "Official opening and welcome of first students from day care to primary school."
+        },
+        {
+          "year": "2026",
+          "text": "Extension of educational programmes, website launch and development of the school community."
+        }
       ]
     },
     "values": {
       "badge": "Our Values",
       "title": "What We Believe In",
       "items": [
-        { "icon": "Star",      "title": "Excellence",          "body": "We believe every child is capable of great things. We cultivate a culture of effort, measured ambition and self-surpassing." },
-        { "icon": "Shield",    "title": "Integrity",           "body": "Honesty, responsibility and respect are the pillars of the behaviour we instil from the earliest age." },
-        { "icon": "Globe",     "title": "Bilingualism",        "body": "Mastering French and English means opening up to two cultural worlds and giving yourself the means to succeed anywhere in the world." },
-        { "icon": "Lightbulb", "title": "Innovation",          "body": "From school farming to junior entrepreneurship, we prepare our students for tomorrow's world." },
-        { "icon": "Heart",     "title": "Care",                "body": "A happy child learns better. Our school is a space of trust, mutual respect and emotional support." },
-        { "icon": "Sprout",    "title": "Holistic Development","body": "We develop the child in all their dimensions: intellectual, physical, creative and moral." }
+        {
+          "icon": "Star",
+          "title": "Excellence",
+          "body": "We believe every child is capable of great things. We cultivate a culture of effort, measured ambition and self-surpassing."
+        },
+        {
+          "icon": "Shield",
+          "title": "Integrity",
+          "body": "Honesty, responsibility and respect are the pillars of the behaviour we instil from the earliest age."
+        },
+        {
+          "icon": "Globe",
+          "title": "Bilingualism",
+          "body": "Mastering French and English means opening up to two cultural worlds and giving yourself the means to succeed anywhere in the world."
+        },
+        {
+          "icon": "Lightbulb",
+          "title": "Innovation",
+          "body": "From school farming to junior entrepreneurship, we prepare our students for tomorrow's world."
+        },
+        {
+          "icon": "Heart",
+          "title": "Care",
+          "body": "A happy child learns better. Our school is a space of trust, mutual respect and emotional support."
+        },
+        {
+          "icon": "Sprout",
+          "title": "Holistic Development",
+          "body": "We develop the child in all their dimensions: intellectual, physical, creative and moral."
+        }
       ]
     },
     "accreditation": {
@@ -1087,7 +1209,8 @@
   "contactPage": {
     "hero": {
       "title": "Contact Us",
-      "subtitle": "Our team is here to answer all your questions."
+      "subtitle": "Our team is here to answer all your questions.",
+      "image": "/images/IMG-20260723-WA0024.jpg"
     },
     "writeBadge": "Write to Us",
     "map": {
@@ -1096,14 +1219,57 @@
     },
     "followUs": "Follow Us",
     "infoCards": [
-      { "icon": "MapPin", "title": "Our Address",   "lines": ["Nkozoa, behind Boulangerie Massa", "Yaoundé, Cameroon"] },
-      { "icon": "Phone",  "title": "Phone Numbers", "lines": ["651 11 15 06", "656 66 38 48"] },
-      { "icon": "Mail",   "title": "Email",          "lines": ["lesgeniesdafrique836@gmail.com"] },
-      { "icon": "Clock",  "title": "Office Hours",   "lines": ["Monday – Friday", "8:00 AM – 1:00 PM"] }
+      {
+        "icon": "MapPin",
+        "title": "Our Address",
+        "lines": [
+          "Nkozoa, behind Boulangerie Massa",
+          "Yaoundé, Cameroon"
+        ]
+      },
+      {
+        "icon": "Phone",
+        "title": "Phone Numbers",
+        "lines": [
+          "651 11 15 06",
+          "656 66 38 48"
+        ]
+      },
+      {
+        "icon": "Mail",
+        "title": "Email",
+        "lines": [
+          "lesgeniesdafrique836@gmail.com"
+        ]
+      },
+      {
+        "icon": "Clock",
+        "title": "Office Hours",
+        "lines": [
+          "Monday – Friday",
+          "8:00 AM – 1:00 PM"
+        ]
+      }
     ],
     "form": {
       "title": "Send Us a Message",
-      "subtitle": "Our team will reply within 24 to 48 hours."
+      "subtitle": "Our team will reply within 24 to 48 hours.",
+      "name": "Nom et prénom",
+      "namePlaceholder": "Votre nom complet",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "exemple@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "6XX XX XX XX",
+      "subject": "Sujet du message",
+      "subjectPlaceholder": "Inscription, renseignement, réclamation…",
+      "message": "Votre message",
+      "messagePlaceholder": "Écrivez ici votre message en détail…",
+      "submit": "Envoyer le message",
+      "success": "Merci ! Votre message a bien été envoyé. Nous vous répondrons très vite."
+    },
+    "whatsapp": {
+      "title": "Discussion directe sur WhatsApp",
+      "subtitle": "Pour une réponse immédiate, écrivez-nous directement sur WhatsApp. Nous sommes disponibles pendant les heures d'ouverture."
     }
   },
   "pageTitles": {
@@ -1138,6 +1304,34 @@
     "contact": {
       "title": "Contact | Les Génies d'Afrique",
       "description": "Contact the Bilingual School Complex Les Génies d'Afrique. Contact details, hours, contact form and access to the Nkozoa, Yaoundé establishment."
+    }
+  },
+  "directorWelcome": {
+    "badge": "Founder's Welcome Message",
+    "title": "Welcome to Les Génies d'Afrique Bilingual School Complex",
+    "quote": "Every child carries a unique genius within them. Our role is to create the conditions for it to awaken and flourish.",
+    "messageParagraph1": "Dear parents, students, and visitors, it is a great pleasure to welcome you to the official platform of Les Génies d'Afrique Bilingual School Complex. Our institution was born from a deep conviction: providing an outstanding educational environment fostering bilingualism, discipline, and personal growth from early childhood.",
+    "messageParagraph2": "By combining modern teaching methodologies with attentive care for every child, our passionate team of educators works every day to unlock the potential of tomorrow's leaders and build strong foundations for their future.",
+    "signatureName": "Mrs. Yvette PELLA",
+    "signatureRole": "Founder & Directress",
+    "signatureTitle": "Directress of Les Génies d'Afrique Bilingual School Complex",
+    "ctaAbout": "Discover Our Institution",
+    "ctaContact": "Get in Touch / Admissions",
+    "experienceYears": "2+ Years of Experience",
+    "excellenceTitle": "Excellence & Bilingualism",
+    "tagline": "Educational Excellence & Fulfillment"
+  },
+  "_meta": {
+    "language": "Ewondo",
+    "fallback": "fr",
+    "translatedAt": "2026-08-05T11:55:22.519Z",
+    "translationMethod": "glossary + openai",
+    "statistics": {
+      "total": 565,
+      "translated": 32,
+      "glossary": 32,
+      "ai": 0,
+      "fallback": 533
     }
   }
 }

@@ -10,10 +10,11 @@ import {
 import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import SectionBadge from "@/components/ui/SectionBadge";
+import WhyUsSection from "@/components/sections/WhyUsSection";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   getSchoolInfo, getHistory, getMission, getVision,
-  getValues, getDirectorMessage,
+  getValues,
 } from "@/lib/data/about";
 
 const ICON_MAP: Record<string, React.ReactNode> = {
@@ -40,13 +41,12 @@ export default function AboutPageContent() {
   const tn     = useTranslations("nav");
   const locale = useLocale();
 
-  const schoolInfo      = getSchoolInfo();
-  const history         = getHistory();
-  const mission         = getMission();
-  const vision          = getVision();
-  const values          = getValues();
-  const directorMessage = getDirectorMessage();
-  // const team            = getTeam();
+  const schoolInfo = getSchoolInfo();
+  const history    = getHistory();
+  const mission    = getMission();
+  const vision     = getVision();
+  const values     = getValues();
+  // const team       = getTeam();
 
   return (
     <>
@@ -61,72 +61,8 @@ export default function AboutPageContent() {
         subtitle={t("hero.subtitle")}
       />
 
-      {/* ── MOT DE LA FONDATRICE ── */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-            {/* Image */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
-              <div className="relative aspect-[3/4] max-w-[380px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-[#E2E8F0]">
-                <Image
-                  src={directorMessage.photo}
-                  alt={directorMessage.name[locale as keyof typeof directorMessage.name] || t("founderMessage.signature")}
-                  fill className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1F6B]/50 to-transparent" />
-              </div>
-              <div className="absolute -bottom-4 -right-2 lg:right-4 bg-[#D32F2F] text-white rounded-2xl px-5 py-3 shadow-xl">
-                <p className="font-bold text-sm">{directorMessage.name[locale as keyof typeof directorMessage.name] || t("founderMessage.signature")}</p>
-                <p className="text-white/75 text-xs">{directorMessage.role[locale as keyof typeof directorMessage.role] || t("founderMessage.signatureTitle")}</p>
-              </div>
-            </motion.div>
-
-            {/* Text */}
-            <motion.div
-              initial="hidden" whileInView="show" viewport={{ once: true }}
-              transition={{ staggerChildren: 0.12 }}
-            >
-              <motion.div variants={fadeUp}>
-                <SectionBadge>{t("founderMessage.badge")}</SectionBadge>
-              </motion.div>
-              <motion.h2
-                variants={fadeUp}
-                className="font-display font-bold text-[#1A202C] mb-6 leading-tight"
-                style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)" }}
-              >
-                {t("founderMessage.title")}
-              </motion.h2>
-              <motion.blockquote
-                variants={fadeUp}
-                className="border-l-4 border-[#F5A623] pl-6 mb-6 bg-[#FFF8EE]/50 py-3 rounded-r-xl"
-              >
-                <p className="font-display italic text-[#4A5568] text-lg leading-relaxed">
-                  {directorMessage.quote[locale as keyof typeof directorMessage.quote] || t("founderMessage.messageQuote")}
-                </p>
-              </motion.blockquote>
-              <motion.p variants={fadeUp} className="text-[#4A5568] leading-relaxed mb-6">
-                {directorMessage.message[locale as keyof typeof directorMessage.message] || t("founderMessage.messageBody")}
-              </motion.p>
-              <motion.div variants={fadeUp} className="pt-5 border-t border-[#E2E8F0]">
-                <p className="font-display font-bold text-[#1A3A8F] text-lg mb-0.5">
-                  {directorMessage.signature[locale as keyof typeof directorMessage.signature] || t("founderMessage.signature")}
-                </p>
-                <p className="text-[#4A5568] text-sm italic">
-                  {directorMessage.signatureTitle[locale as keyof typeof directorMessage.signatureTitle] || t("founderMessage.signatureTitle")}
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* ── NOS ATOUTS ── */}
+      <WhyUsSection />
 
       {/* ── HISTOIRE ── */}
       <section id="histoire" className="py-24 bg-[#F7F9FC]">
