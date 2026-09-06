@@ -235,7 +235,7 @@ export default function FormationsContent() {
       <PageHero
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
-        image="/images/IMG-20260723-WA0024.jpg"
+        image="https://res.cloudinary.com/dyetkan86/image/upload/v1786839370/file_00000000fee0820e961ac4b070de78d6_id9boj.png"
         breadcrumbs={[
           { label: tn("home"), href: "/" },
           { label: tn("formations") },
