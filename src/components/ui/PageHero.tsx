@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
+import { getBreadcrumbJsonLd, cleanJsonLd } from "@/lib/schema";
+
 interface Crumb { label: string; href?: string; }
 
 interface PageHeroProps {
@@ -17,8 +19,18 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ title, subtitle, image, breadcrumbs, accentColor = "#D32F2F" }: PageHeroProps) {
+  const breadcrumbJsonLd = breadcrumbs?.length > 0 ? cleanJsonLd(getBreadcrumbJsonLd(breadcrumbs)) : null;
+
   return (
     <section className="relative h-[40vh] min-h-[350px] md:h-[50vh] md:min-h-[450px] lg:h-[55vh] lg:min-h-[500px] flex items-end overflow-hidden bg-[#0D1F6B]">
+      {/* Schema.org BreadcrumbList */}
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      )}
+
       {/* Background image */}
       {image && (
         <Image src={image} alt="" fill className="object-cover object-center" sizes="100vw" priority aria-hidden="true" />

@@ -5,9 +5,9 @@ import PageHero from "@/components/ui/PageHero";
 import ArticleDetailContent from "../_components/ArticleDetailContent";
 import { getNewsBySlug } from "@/lib/data/news";
 import { getEventBySlug } from "@/lib/data/events";
-import type { NewsArticle } from "@/types";
 import EventDetailContent from "../_components/EventDetailContent";
-import { getSeoAlternates, type Locale } from "@/lib/seo";
+import { getSeoAlternates, getLocalizedUrl, type Locale } from "@/lib/seo";
+import { getNewsArticleJsonLd, getEventJsonLd, cleanJsonLd, type ValidLocale } from "@/lib/schema";
 
 export async function generateMetadata({
   params,
@@ -48,7 +48,6 @@ export async function generateMetadata({
   };
 }
 
-
 export default async function ArticlePage({
   params,
 }: {
@@ -62,11 +61,20 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const t = await getTranslations({ locale, namespace: "newsPage" });
+  const validLocale = (locale || "fr") as ValidLocale;
+  const pageUrl = getLocalizedUrl(`/actualites/${slug}`, validLocale);
 
   if (event) {
+    const eventJsonLd = cleanJsonLd(getEventJsonLd(event, validLocale, pageUrl));
+
     return (
       <>
+        {eventJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+          />
+        )}
         <PageHero
           title={event.title[locale as keyof typeof event.title] || event.title.fr}
           subtitle={new Date(event.startDate).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', { month: 'long', year: 'numeric' })}
@@ -83,8 +91,16 @@ export default async function ArticlePage({
   }
 
   if (article) {
+    const articleJsonLd = cleanJsonLd(getNewsArticleJsonLd(article, validLocale, pageUrl));
+
     return (
       <>
+        {articleJsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+          />
+        )}
         <PageHero
           title={article.title[locale as keyof typeof article.title] || article.title.fr}
           subtitle={new Date(article.publishedAt).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', { month: 'long', year: 'numeric' })}

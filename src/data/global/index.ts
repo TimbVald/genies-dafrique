@@ -18,7 +18,7 @@ export const SITE_INFO: SiteInfo = {
     en: "The Bilingual School Complex Les Génies d'Afrique offers quality bilingual French-English education to children aged 0 to 11.",
     ew: "Complexe Scolaire Bilingue Les Génies d'Afrique a offer education bilingue FR-EN.",
   },
-  logo: "/images/logo.png",
+  logo: "/logo/logo.png",
   favicon: "/favicon.ico",
   address: {
     fr: "Nkozoa, derrière la Boulangerie Massa\nYaoundé, Cameroun",

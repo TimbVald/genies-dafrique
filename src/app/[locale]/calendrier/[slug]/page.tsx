@@ -3,7 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { getEventBySlug } from '@/lib/data/events';
 import EventContent from './EventContent';
-import { getSeoAlternates, type Locale } from '@/lib/seo';
+import { getSeoAlternates, getLocalizedUrl, type Locale } from '@/lib/seo';
+import { getEventJsonLd, getBreadcrumbJsonLd, cleanJsonLd, type ValidLocale } from '@/lib/schema';
 
 interface EventPageProps {
   params: Promise<{
@@ -47,5 +48,34 @@ export default async function EventPage({ params }: EventPageProps) {
     notFound();
   }
 
-  return <EventContent locale={locale} slug={slug} event={event} />;
+  const validLocale = (locale || "fr") as ValidLocale;
+  const pageUrl = getLocalizedUrl(`/calendrier/${slug}`, validLocale);
+  const eventTitle = event.title[validLocale] || event.title.fr;
+
+  const eventJsonLd = cleanJsonLd(getEventJsonLd(event, validLocale, pageUrl));
+  const breadcrumbJsonLd = cleanJsonLd(
+    getBreadcrumbJsonLd([
+      { label: locale === "en" ? "Home" : "Accueil", href: "/" },
+      { label: locale === "en" ? "Calendar" : "Calendrier", href: "/calendrier" },
+      { label: eventTitle },
+    ], pageUrl)
+  );
+
+  return (
+    <>
+      {eventJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+        />
+      )}
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      )}
+      <EventContent locale={locale} slug={slug} event={event} />
+    </>
+  );
 }
