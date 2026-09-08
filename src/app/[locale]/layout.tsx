@@ -50,7 +50,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
-  const baseUrl = "https://lesgeniesdafrique.cm";
+  const baseUrl = "https://www.csbgeniesdafrique.com";
 
   return {
     metadataBase: new URL(baseUrl),

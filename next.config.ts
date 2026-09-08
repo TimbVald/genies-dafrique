@@ -89,11 +89,11 @@ const nextConfig: NextConfig = {
   /* ── Redirects canoniques ───────────────────────────────── */
   async redirects() {
     return [
-      // Rediriger www → non-www (à activer si domaine configuré)
+      // Rediriger non-www → www (à activer si domaine configuré)
       // {
       //   source: "/(.*)",
-      //   has: [{ type: "host", value: "www.lesgeniesdafrique.cm" }],
-      //   destination: "https://lesgeniesdafrique.cm/:path*",
+      //   has: [{ type: "host", value: "csbgeniesdafrique.com" }],
+      //   destination: "https://www.csbgeniesdafrique.com/:path*",
       //   permanent: true,
       // },
     ];

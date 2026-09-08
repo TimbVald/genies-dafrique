@@ -1,6 +1,5 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import AdmissionsContent from "./AdmissionsContent";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -14,14 +13,4 @@ export async function generateMetadata({
     title: t("admissions.title"),
     description: t("admissions.description"),
   };
-}
-
-export default async function AdmissionsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  return <AdmissionsContent locale={locale} />;
 }

@@ -1,3 +1,5 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
 import HeroSection          from "@/components/sections/HeroSection";
 import TrustBar             from "@/components/sections/TrustBar";
 import DirectorWelcomeSection from "@/components/sections/DirectorWelcomeSection";
@@ -9,21 +11,51 @@ import GallerySection       from "@/components/sections/GallerySection";
 import TestimonialsSection  from "@/components/sections/TestimonialsSection";
 import AdmissionsCtaSection from "@/components/sections/AdmissionsCtaSection";
 
-/**
- * Homepage — Structure calquée sur CSI La Gaieté :
- *
- * 1. Hero        — slider 4 cycles, CTA par slide, fusion header desktop
- * 2. TrustBar    — 4 piliers iconographiques fond blanc
- * 3. Mot Directrice — Section pro dédiée au mot de bienvenue de Mme Yvette PELLA
- * 4. À Propos    — 3 photos empilées + stats flottant + onglets mission/vision
- * 5. Nos Cycles  — grille 4 cartes image plein-fond
- * 6. Pôles       — 6 infrastructures/pôles d'excellence
- * 7. Stats       — compteurs animés sur fond image
- * 8. Galerie     — mosaïque photos
- * 9. Témoignages — 3 cartes parents
- * 10. CTA        — section rouge immersive
- */
-export default function HomePage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const baseUrl = "https://www.csbgeniesdafrique.com";
+
+  return {
+    title: t("siteName"),
+    description: t("description"),
+    openGraph: {
+      title: t("siteName"),
+      description: t("description"),
+      url: baseUrl,
+      siteName: t("siteName"),
+      locale: locale === "fr" ? "fr_FR" : locale === "en" ? "en_US" : "ew_CM",
+      type: "website",
+      images: [
+        {
+          url: "/images/IMG-20260723-WA0006.jpg",
+          width: 1200,
+          height: 630,
+          alt: t("siteName"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("siteName"),
+      description: t("description"),
+      images: ["/images/IMG-20260723-WA0006.jpg"],
+    },
+  };
+}
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <HeroSection />

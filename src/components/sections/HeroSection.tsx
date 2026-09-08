@@ -112,7 +112,7 @@ export default function HeroSection() {
               >
                 <Image
                   src={slide.image}
-                  alt=""
+                  alt={`Slide ${slide.title || 'Complexe Scolaire Bilingue Les Génies d\'Afrique'}`}
                   fill
                   className="object-cover"
                   style={{ objectPosition: slide.position }}

@@ -312,7 +312,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group" aria-label="Les Génies d'Afrique — Accueil">
             <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-[#F5A623]/50 transition-all duration-300 shadow-md">
-              <Image src="/logo/logo.png" alt="" fill className="object-cover" sizes="44px" priority />
+              <Image src="/logo/logo.png" alt="Logo Complexe Scolaire Bilingue Les Génies d'Afrique" fill className="object-cover" sizes="44px" priority />
             </div>
             <div className="hidden sm:block leading-tight">
               <p className={`font-bold text-sm tracking-tight transition-colors duration-300 ${isOpaque ? "text-[#1A3A8F]" : "text-white"}`}>Les Génies d&apos;Afrique</p>
@@ -439,7 +439,7 @@ export default function Header() {
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#E2E8F0] flex-shrink-0">
               <Link href="/" onClick={() => setDrawerOpen(false)} className="flex items-center gap-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm">
-                  <Image src="/logo/logo.jpg" alt="" fill className="object-cover" sizes="40px" />
+                  <Image src="/logo/logo.jpg" alt="Logo Complexe Scolaire Bilingue Les Génies d'Afrique" fill className="object-cover" sizes="40px" />
                 </div>
                 <div className="leading-tight">
                   <p className="font-bold text-[#1A3A8F] text-sm">Les Génies d&apos;Afrique</p>
