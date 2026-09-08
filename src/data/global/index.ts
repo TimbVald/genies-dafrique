@@ -7,6 +7,7 @@ export const SITE_INFO: SiteInfo = {
     en: "Bilingual School Complex Les Génies d'Afrique",
     ew: "Complexe Scolaire Bilingue Les Génies d'Afrique",
   },
+  nameShort: "CSB Génies d'Afrique",
   tagline: {
     fr: "L'excellence bilingue pour un avenir brillant",
     en: "Bilingual excellence for a bright future",
@@ -20,12 +21,12 @@ export const SITE_INFO: SiteInfo = {
   logo: "/images/logo.png",
   favicon: "/favicon.ico",
   address: {
-    fr: "Yaoundé, Cameroun",
-    en: "Yaoundé, Cameroon",
-    ew: "Yaoundé, Cameroon",
+    fr: "Nkozoa, derrière la Boulangerie Massa\nYaoundé, Cameroun",
+    en: "Nkozoa, behind Boulangerie Massa\nYaoundé, Cameroon",
+    ew: "Nkozoa, nyuma ya Boulangerie Massa\nYaoundé, Kamerun",
   },
   phone: ["651 11 15 06", "656 66 38 48"],
-  email: "contact@geniesdafrique.com",
+  email: "lesgeniesdafrique836@gmail.com",
   whatsapp: "651 11 15 06",
   socialNetworks: [
     {
@@ -55,6 +56,14 @@ export const SITE_INFO: SiteInfo = {
   foundedYear: 2024,
   studentCount: 150,
   teacherCount: 12,
+  // Geographic coordinates for Schema.org and local SEO
+  // Source: Google Maps Place ID 0x4890fbced24575f9:0xfb2c146b077eaf99
+  coordinates: {
+    latitude: 3.8520,
+    longitude: 11.5090,
+  },
+  googleMapsPlaceId: "0x4890fbced24575f9:0xfb2c146b077eaf99",
+  googleMapsDirectionsUrl: "https://maps.app.goo.gl/b6r6PyYzXz8Meeoh6",
 };
 
 /* ── Get Site Info Function ─────────────────────────────────────── */

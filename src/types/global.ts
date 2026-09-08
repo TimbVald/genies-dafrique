@@ -3,6 +3,7 @@ import type { LocalizedText, LocalizedContent } from "./index";
 /* ── Site Information Type ─────────────────────────────────────── */
 export type SiteInfo = {
   name: LocalizedText;
+  nameShort: string;
   tagline: LocalizedText;
   description: LocalizedContent;
   logo: string;
@@ -16,6 +17,12 @@ export type SiteInfo = {
   foundedYear: number;
   studentCount: number;
   teacherCount: number;
+  coordinates?: {
+    latitude: number;
+    longitude: number;
+  };
+  googleMapsPlaceId?: string;
+  googleMapsDirectionsUrl?: string;
 };
 
 /* ── Social Network Type ────────────────────────────────────────── */

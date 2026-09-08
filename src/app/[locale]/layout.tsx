@@ -8,6 +8,7 @@ import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingHub from "@/components/ui/FloatingHub";
+import StructuredData from "@/components/seo/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
 
 /* ── Polices ────────────────────────────────────────────────── */
@@ -125,6 +126,9 @@ export default async function LocaleLayout({
       className={montserrat.variable}
       suppressHydrationWarning
     >
+      <head>
+        <StructuredData locale={locale as "fr" | "en" | "ew"} />
+      </head>
       <body className="antialiased bg-white text-[#1A202C] overflow-x-hidden">
         {/* ── Skip link accessibilité ── */}
         <a href="#main-content" className="skip-link">
