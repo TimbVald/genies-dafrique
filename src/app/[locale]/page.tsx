@@ -11,22 +11,25 @@ import GallerySection       from "@/components/sections/GallerySection";
 import TestimonialsSection  from "@/components/sections/TestimonialsSection";
 import AdmissionsCtaSection from "@/components/sections/AdmissionsCtaSection";
 
+import { getSeoAlternates, getLocalizedUrl, type Locale } from "@/lib/seo";
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const currentLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "meta" });
-  const baseUrl = "https://www.csbgeniesdafrique.com";
 
   return {
     title: t("siteName"),
     description: t("description"),
+    alternates: getSeoAlternates("/", currentLocale),
     openGraph: {
       title: t("siteName"),
       description: t("description"),
-      url: baseUrl,
+      url: getLocalizedUrl("/", currentLocale),
       siteName: t("siteName"),
       locale: locale === "fr" ? "fr_FR" : locale === "en" ? "en_US" : "ew_CM",
       type: "website",

@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import ActualitesContent from "./_components/ActualitesContent";
+import { getSeoAlternates, type Locale } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,11 +10,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const currentLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "pageTitles.news" });
 
   return {
     title: t("title"),
     description: t("description"),
+    alternates: getSeoAlternates("/actualites", currentLocale),
   };
 }
 

@@ -7,6 +7,7 @@ import { getNewsBySlug } from "@/lib/data/news";
 import { getEventBySlug } from "@/lib/data/events";
 import type { NewsArticle } from "@/types";
 import EventDetailContent from "../_components/EventDetailContent";
+import { getSeoAlternates, type Locale } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -14,9 +15,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
+  const currentLocale = locale as Locale;
   const article = getNewsBySlug(slug);
   const event = getEventBySlug(slug);
-  
+
   if (article) {
     const title = article.title[locale as keyof typeof article.title] || article.title.fr;
     const description = article.excerpt[locale as keyof typeof article.excerpt] || article.excerpt.fr;
@@ -24,6 +26,7 @@ export async function generateMetadata({
     return {
       title,
       description,
+      alternates: getSeoAlternates(`/actualites/${slug}`, currentLocale),
     };
   }
 
@@ -34,14 +37,17 @@ export async function generateMetadata({
     return {
       title,
       description,
+      alternates: getSeoAlternates(`/actualites/${slug}`, currentLocale),
     };
   }
-  
+
   return {
     title: "Article non trouvé",
     description: "Article not found",
+    robots: { index: false },
   };
 }
+
 
 export default async function ArticlePage({
   params,

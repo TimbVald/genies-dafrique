@@ -10,7 +10,7 @@ interface Crumb { label: string; href?: string; }
 interface PageHeroProps {
   title: string;
   subtitle?: string;
-  image: string;
+  image?: string;
   breadcrumbs: Crumb[];
   /** Optional accent color for the bottom bar (defaults to brand red) */
   accentColor?: string;
@@ -18,9 +18,11 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, image, breadcrumbs, accentColor = "#D32F2F" }: PageHeroProps) {
   return (
-    <section className="relative h-[40vh] min-h-[350px] md:h-[50vh] md:min-h-[450px] lg:h-[55vh] lg:min-h-[500px] flex items-end overflow-hidden">
+    <section className="relative h-[40vh] min-h-[350px] md:h-[50vh] md:min-h-[450px] lg:h-[55vh] lg:min-h-[500px] flex items-end overflow-hidden bg-[#0D1F6B]">
       {/* Background image */}
-      <Image src={image} alt="" fill className="object-cover object-center" sizes="100vw" priority aria-hidden="true" />
+      {image && (
+        <Image src={image} alt="" fill className="object-cover object-center" sizes="100vw" priority aria-hidden="true" />
+      )}
 
       {/* Layered overlays for depth (adjusted for better image visibility) */}
       <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,107,0.75) 0%, rgba(13,31,107,0.4) 40%, rgba(13,31,107,0.1) 100%)" }} />

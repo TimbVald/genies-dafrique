@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { getEventBySlug } from '@/lib/data/events';
 import EventContent from './EventContent';
+import { getSeoAlternates, type Locale } from '@/lib/seo';
 
 interface EventPageProps {
   params: Promise<{
@@ -15,11 +16,13 @@ export async function generateMetadata({
   params,
 }: EventPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  const currentLocale = locale as Locale;
   const event = getEventBySlug(slug);
-  
+
   if (!event) {
     return {
       title: 'Événement non trouvé',
+      robots: { index: false },
     };
   }
 
@@ -30,6 +33,7 @@ export async function generateMetadata({
   return {
     title: `${eventTitle} - ${t('title')}`,
     description: eventDescription.substring(0, 160),
+    alternates: getSeoAlternates(`/calendrier/${slug}`, currentLocale),
   };
 }
 

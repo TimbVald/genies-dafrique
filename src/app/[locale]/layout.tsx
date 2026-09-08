@@ -10,6 +10,7 @@ import Footer from "@/components/layout/Footer";
 import FloatingHub from "@/components/ui/FloatingHub";
 import StructuredData from "@/components/seo/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL, getSeoAlternates, type Locale } from "@/lib/seo";
 
 /* ── Polices ────────────────────────────────────────────────── */
 /*
@@ -49,12 +50,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const currentLocale = locale as Locale;
   const t = await getTranslations({ locale, namespace: "meta" });
 
-  const baseUrl = "https://www.csbgeniesdafrique.com";
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION;
 
   return {
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("siteName"),
       template: `%s | ${t("siteNameShort")}`,
@@ -93,14 +95,12 @@ export async function generateMetadata({
       title: t("siteName"),
       description: t("description"),
     },
-    alternates: {
-      canonical: locale === "fr" ? baseUrl : `${baseUrl}/${locale}`,
-      languages: {
-        "fr": baseUrl,
-        "en": `${baseUrl}/en`,
-        "ew": `${baseUrl}/ew`,
-      } as Record<string, string>,
-    },
+    alternates: getSeoAlternates("/", currentLocale),
+    verification: googleVerification
+      ? {
+          google: googleVerification,
+        }
+      : undefined,
   };
 }
 
