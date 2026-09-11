@@ -1321,6 +1321,23 @@
     "excellenceTitle": "Excellence & Bilingualism",
     "tagline": "Educational Excellence & Fulfillment"
   },
+  "offline": {
+    "title": "You are offline",
+    "description": "It seems that you have lost your Internet connection. Pages you previously visited remain available.",
+    "retry": "Retry connection",
+    "backHome": "Back to Home",
+    "cachedPagesTip": "Tip: Once reconnected, all information and forms will automatically become available."
+  },
+  "pwa": {
+    "installTitle": "Install the App",
+    "installDescription": "Install Les Génies d'Afrique app on your device for quick access and offline availability.",
+    "installButton": "Install Application",
+    "installLater": "Later",
+    "updateAvailable": "A new version of the website is available.",
+    "updateButton": "Update Now",
+    "offlineNotice": "Offline mode enabled",
+    "onlineNotice": "Internet connection restored"
+  },
   "_meta": {
     "language": "Ewondo",
     "fallback": "fr",

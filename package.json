@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "translate-ewondo": "node scripts/translate-ewondo.js",
-    "validate-translations": "start scripts/validate-translations.html"
+    "validate-translations": "start scripts/validate-translations.html",
+    "generate-pwa-icons": "node scripts/generate-pwa-icons.js"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -1307,6 +1307,23 @@
     "excellenceTitle": "Excellence & Bilinguisme",
     "tagline": "Éducation d'Excellence & Épanouissement"
   },
+  "offline": {
+    "title": "Vous êtes hors ligne",
+    "description": "Il semble que vous ayez perdu votre connexion Internet. Les pages que vous avez déjà consultées restent accessibles.",
+    "retry": "Réessayer la connexion",
+    "backHome": "Retour à l'accueil",
+    "cachedPagesTip": "Conseil : Une fois reconnecté, l'ensemble des informations et formulaires redeviendront automatiquement disponibles."
+  },
+  "pwa": {
+    "installTitle": "Installer l'application",
+    "installDescription": "Installez l'application Les Génies d'Afrique sur votre appareil pour un accès rapide et hors-ligne.",
+    "installButton": "Installer l'application",
+    "installLater": "Plus tard",
+    "updateAvailable": "Une nouvelle version du site est disponible.",
+    "updateButton": "Mettre à jour",
+    "offlineNotice": "Mode hors ligne activé",
+    "onlineNotice": "Connexion Internet rétablie"
+  },
   "_meta": {
     "language": "Ewondo",
     "fallback": "fr",

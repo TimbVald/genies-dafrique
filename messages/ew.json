@@ -1319,5 +1319,22 @@
       "button": "S'inscrire maintenant",
       "link": "Voir nos programmes"
     }
+  },
+  "offline": {
+    "title": "One ne fele intanèt",
+    "description": "Engongol, intanèt yong ya man. O ne ngen fe yen bipasi bi ngogele.",
+    "retry": "Kele fe intanèt",
+    "backHome": "Bulan a mbia",
+    "cachedPagesTip": "Engongol : Éyoñ intanèt ya so, mam mese ma ye beta bulane fo'o."
+  },
+  "pwa": {
+    "installTitle": "Kope aplikasion",
+    "installDescription": "Kope aplikasion Les Génies d'Afrique a telefon oyenga asu na o nyoñe mam avéle.",
+    "installButton": "Kope Aplikasion",
+    "installLater": "Melu ma zu",
+    "updateAvailable": "Mfefe sit wep a ne.",
+    "updateButton": "Bulan mfefe",
+    "offlineNotice": "Teké intanèt",
+    "onlineNotice": "Intanèt ya bulane"
   }
 }

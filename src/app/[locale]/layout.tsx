@@ -11,6 +11,7 @@ import FloatingHub from "@/components/ui/FloatingHub";
 import StructuredData from "@/components/seo/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL, getSeoAlternates, type Locale } from "@/lib/seo";
+import { PwaProvider } from "@/components/pwa/PwaProvider";
 
 /* ── Polices ────────────────────────────────────────────────── */
 /*
@@ -57,6 +58,27 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
+    applicationName: t("siteNameShort"),
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: t("siteNameShort"),
+    },
+    formatDetection: {
+      telephone: false,
+    },
+    icons: {
+      icon: [
+        { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: [
+        { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
+      shortcut: ["/icons/favicon-32x32.png"],
+    },
     title: {
       default: t("siteName"),
       template: `%s | ${t("siteNameShort")}`,
@@ -136,16 +158,18 @@ export default async function LocaleLayout({
         </a>
 
         <NextIntlClientProvider messages={messages}>
-          <Header />
+          <PwaProvider>
+            <Header />
 
-          <main id="main-content" tabIndex={-1} className="outline-none">
-            {children}
-          </main>
+            <main id="main-content" tabIndex={-1} className="outline-none">
+              {children}
+            </main>
 
-          <Analytics/>
+            <Analytics />
 
-          <Footer />
-          <FloatingHub />
+            <Footer />
+            <FloatingHub />
+          </PwaProvider>
         </NextIntlClientProvider>
       </body>
     </html>

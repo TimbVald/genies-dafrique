@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Users, Calendar, Image as ImageIcon, Mail, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { globalSearch, type SearchResult } from "@/lib/data/search";
+import InstallButton from "@/components/pwa/InstallButton";
 
 /* ── Types ─────────────────────────────────────────────────── */
 type NavItem = { key: string; href: string; hasSubmenu?: boolean };
@@ -507,6 +508,9 @@ export default function Header() {
 
             {/* Drawer footer */}
             <div className="flex-shrink-0 p-4 border-t border-[#E2E8F0] space-y-3">
+              <div className="w-full">
+                <InstallButton variant="primary" className="w-full justify-center" />
+              </div>
               <div className="flex items-center gap-3">
                 <a href="tel:+237651111506" className="flex-1 text-center py-2.5 rounded-xl bg-[#F7F9FC] text-sm font-semibold text-[#1A202C] hover:bg-[#EEF2FF] hover:text-[#1A3A8F] transition-colors">651 11 15 06</a>
                 <a href="tel:+237656663848" className="flex-1 text-center py-2.5 rounded-xl bg-[#F7F9FC] text-sm text-[#4A5568] hover:bg-[#EEF2FF] transition-colors">656 66 38 48</a>

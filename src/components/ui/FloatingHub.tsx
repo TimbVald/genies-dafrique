@@ -10,13 +10,16 @@ import {
   Plus,
   Bot,
   HelpCircle,
+  Download,
 } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/data/global";
 import ChatbotFab from "./ChatbotFab";
+import { usePwa } from "@/components/pwa/PwaProvider";
 
 export default function FloatingHub() {
   const locale = useLocale() as "fr" | "en" | "ew";
   const waHref = getWhatsAppUrl(locale);
+  const { canInstall, isInstalled, promptInstall } = usePwa();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
@@ -152,6 +155,28 @@ export default function FloatingHub() {
                 <Sparkles size={14} className="animate-pulse" />
               </div>
             </button>
+
+            {/* 4. Bouton Installer l'Application (PWA) */}
+            {canInstall && !isInstalled && (
+              <button
+                onClick={() => {
+                  promptInstall();
+                  setMenuOpen(false);
+                }}
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
+                  bg-gradient-to-r from-[#F5A623] to-[#D98E16] text-[#1A202C] text-xs font-bold
+                  shadow-[0_4px_20px_rgba(245,166,35,0.40)] hover:scale-105
+                  transition-all duration-200 group"
+                aria-label="Installer l'application"
+              >
+                <span className="text-[11px] tracking-wide">
+                  Installer l&apos;App
+                </span>
+                <div className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center text-[#1A202C]">
+                  <Download size={14} />
+                </div>
+              </button>
+            )}
           </div>
         )}
 
