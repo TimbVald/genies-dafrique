@@ -1272,7 +1272,19 @@
     "hoursValue": "Lun–Ven : 8h00–13h00",
     "copyright": "Tous droits réservés.",
     "legal": "Mentions légales",
-    "privacy": "Confidentialité"
+    "privacy": "Confidentialité",
+    "newsletter": {
+      "title": "Restez informé",
+      "description": "Recevez nos actualités et informations importantes par e-mail.",
+      "placeholder": "Votre adresse e-mail",
+      "button": "S'inscrire",
+      "buttonLoading": "Inscription...",
+      "success": "Merci ! Votre inscription à notre newsletter a bien été prise en compte.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+      "required": "Ce champ est requis.",
+      "consent": "J'accepte de recevoir la newsletter de Les Génies d'Afrique."
+    }
   },
   "contact": {
     "address": "Nkozoa, derrière la Boulangerie Massa\nYaoundé, Cameroun",

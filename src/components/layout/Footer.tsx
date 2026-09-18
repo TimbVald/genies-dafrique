@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import SocialIcons from "@/components/ui/SocialIcons";
+import NewsletterForm from "@/components/sections/NewsletterForm";
 
 export default function Footer() {
   const t  = useTranslations("footer");
@@ -115,6 +116,25 @@ export default function Footer() {
               <span className="font-medium text-white block mb-0.5">{t("hours")}</span>
               {t("hoursValue")}
             </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="border-t border-white/10">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-white">
+                {t("newsletter.title")}
+              </h3>
+              <p className="text-white/70 text-sm">
+                {t("newsletter.description")}
+              </p>
+            </div>
+            <div className="max-w-md">
+              <NewsletterForm />
+            </div>
           </div>
         </div>
       </div>

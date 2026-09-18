@@ -327,7 +327,19 @@
     "hoursValue": "Mon–Fri: 8AM–1PM",
     "copyright": "All rights reserved.",
     "legal": "Legal Notice",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "newsletter": {
+      "title": "Stay Informed",
+      "description": "Receive our news and important information by email.",
+      "placeholder": "Your email address",
+      "button": "Subscribe",
+      "buttonLoading": "Subscribing...",
+      "success": "Thank you! Your subscription to our newsletter has been confirmed.",
+      "error": "An error occurred. Please try again.",
+      "invalidEmail": "Please enter a valid email address.",
+      "required": "This field is required.",
+      "consent": "I agree to receive the Les Génies d'Afrique newsletter."
+    }
   },
   "contact": {
     "address": "Nkozoa, behind Boulangerie Massa\nYaoundé, Cameroon",
