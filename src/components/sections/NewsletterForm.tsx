@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -15,6 +15,7 @@ const labelClass = "block text-sm font-semibold text-white mb-1.5";
 
 export default function NewsletterForm() {
   const t = useTranslations("footer.newsletter");
+  const locale = useLocale();
   const [status, setStatus] = useState<Status>("idle");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
@@ -53,7 +54,10 @@ export default function NewsletterForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ 
+          email,
+          language: locale 
+        }),
       });
 
       const data = await response.json();
