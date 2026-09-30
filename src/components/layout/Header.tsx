@@ -38,7 +38,8 @@ const FORMATIONS_MENU = [
   { key: "admissions",  href: "/admissions",  icon: ArrowRight },
 ];
 const NEWS_MENU = [
-  // { key: "news",      href: "/actualites", icon: BookOpen },
+  { key: "news",      href: "/actualites", icon: BookOpen },
+  { key: "events",    href: "/actualites/evenements", icon: Calendar },
   { key: "calendar",  href: "/calendrier", icon: Calendar },
 ];
 const LIFE_MENU = [

@@ -11,6 +11,7 @@
     "formations": "Mekol",
     "admissions": "Mebengane",
     "news": "Mbia",
+    "events": "Mbia",
     "calendar": "Kalandriya",
     "life": "Mvog Sukul",
     "gallery": "Galerie",
@@ -289,6 +290,10 @@
     "news": {
       "title": "Mbia ya sukul Yaoundé | Les Génies d'Afrique",
       "description": "Toutes les actualités, événements, manifestations et nouveautés du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
+    },
+    "events": {
+      "title": "Mbia ya sukul Yaoundé | Les Génies d'Afrique",
+      "description": "Découvrez les événements à venir, manifestations et activités du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
     },
     "life": {
       "title": "Vie scolaire na bisala extrascolaires | Yaoundé",
@@ -851,6 +856,13 @@
     "search": {
       "placeholder": "Search an article...",
       "label": "Search"
+    }
+  },
+  "eventsPage": {
+    "hero": {
+      "title": "Biyem bya nnam",
+      "subtitle": "Yiba biyem bya nnam, mimbɔ́g na bisala bya sukul ya biso.",
+      "image": "https://res.cloudinary.com/dyetkan86/image/upload/v1788659416/file_000000000acc820ea4970da89e95ad06_mxwr3a.png"
     }
   },
   "galleryPage": {

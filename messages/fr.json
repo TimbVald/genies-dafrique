@@ -11,6 +11,7 @@
     "formations": "Formations",
     "admissions": "Admissions",
     "news": "Actualités",
+    "events": "Événements",
     "calendar": "Calendrier",
     "life": "Vie scolaire",
     "gallery": "Galerie",
@@ -289,6 +290,10 @@
     "news": {
       "title": "Actualités scolaires Yaoundé | Les Génies d'Afrique",
       "description": "Toutes les actualités, événements, manifestations et nouveautés du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
+    },
+    "events": {
+      "title": "Événements scolaires Yaoundé | Les Génies d'Afrique",
+      "description": "Découvrez les événements à venir, manifestations et activités du Complexe Scolaire Bilingue Les Génies d'Afrique à Nkozoa, Yaoundé."
     },
     "life": {
       "title": "Vie scolaire et activités extrascolaires | Yaoundé",
@@ -980,6 +985,13 @@
     "search": {
       "placeholder": "Search an article...",
       "label": "Search"
+    }
+  },
+  "eventsPage": {
+    "hero": {
+      "title": "Événements à venir",
+      "subtitle": "Découvrez les prochains événements, manifestations et activités de notre établissement.",
+      "image": "https://res.cloudinary.com/dyetkan86/image/upload/v1788659416/file_000000000acc820ea4970da89e95ad06_mxwr3a.png"
     }
   },
   "galleryPage": {
