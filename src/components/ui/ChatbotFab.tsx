@@ -279,6 +279,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
           links: data.links,
           suggestedFollowUps: data.suggestedFollowUps,
           isLocalFallback: data.isFallback,
+          provider: data.provider || (data.isFallback ? "Local" : "Groq"),
+          model: data.model,
         };
 
         setMessages((prev) => [...prev, botMsg]);
@@ -367,8 +369,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                 <p className="text-white text-xs sm:text-sm font-bold leading-tight tracking-wide">
                   {ui.title}
                 </p>
-                <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[9px] font-bold tracking-wider text-[#F5A623] uppercase">
-                  IA
+                <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[9px] font-bold tracking-wider text-[#F5A623] uppercase flex items-center gap-0.5">
+                  ⚡ Groq IA
                 </span>
               </div>
               <p className="text-white/80 text-[11px] leading-tight">
@@ -473,9 +475,13 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                       </div>
                     )}
 
-                    {/* Boutons d'action rapides en bas de message bot */}
+                    {/* Boutons d'action rapides et badge IA en bas de message bot */}
                     {!isUser && (
-                      <div className="flex items-center justify-end gap-1 mt-2 pt-1 border-t border-slate-100 text-[10px] text-slate-400">
+                      <div className="flex items-center justify-between gap-1 mt-2 pt-1 border-t border-slate-100 text-[10px] text-slate-400">
+                        <span className="flex items-center gap-1 text-[9.5px] font-medium text-slate-400">
+                          <Sparkles size={10} className="text-[#F5A623]" />
+                          <span>{msg.provider === "Local" ? "Moteur Local" : "IA Groq"}</span>
+                        </span>
                         <button
                           onClick={() => handleCopy(msg.id, msg.text)}
                           title="Copier la réponse"

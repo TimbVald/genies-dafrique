@@ -208,6 +208,8 @@ export async function POST(req: NextRequest): Promise<NextResponse<ChatApiRespon
         links: links.length > 0 ? links : undefined,
         suggestedFollowUps: defaultFollowUps,
         isFallback: false,
+        provider: "Groq",
+        model: activeModel,
       });
     } catch (fetchErr: unknown) {
       clearTimeout(timeoutId);

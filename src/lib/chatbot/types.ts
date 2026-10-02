@@ -40,6 +40,8 @@ export interface ChatMessage {
   suggestedFollowUps?: string[];
   error?: boolean;
   isLocalFallback?: boolean;
+  provider?: string;
+  model?: string;
 }
 
 export interface ChatbotKnowledgeItem {
@@ -59,5 +61,7 @@ export interface ChatApiResponse {
   links?: ChatActionLink[];
   suggestedFollowUps?: string[];
   isFallback?: boolean;
+  provider?: string;
+  model?: string;
   error?: string;
 }
