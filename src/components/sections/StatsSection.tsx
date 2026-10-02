@@ -154,7 +154,7 @@ export default function StatsSection() {
       {/* Image fond parallaxe */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale: 1.1 }}>
         <Image
-          src="https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0002_i7bkq6.jpg"
+          src="https://res.cloudinary.com/dyetkan86/image/upload/v1790938164/IMG-20260922-WA0002_i7bkq6.png"
           alt=""
           fill
           className="object-cover object-center"

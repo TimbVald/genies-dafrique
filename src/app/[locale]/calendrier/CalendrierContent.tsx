@@ -10,7 +10,7 @@ interface CalendrierContentProps {
 }
 
 export default function CalendrierContent({ locale }: CalendrierContentProps) {
-  const t  = useTranslations("calendar");
+  const t = useTranslations("calendar");
   const tn = useTranslations("nav");
   const currentLocale = useLocale();
 

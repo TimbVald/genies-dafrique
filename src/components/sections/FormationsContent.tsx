@@ -213,7 +213,7 @@ function AccordionItem({
 const LEVEL_IMAGES = [
   "https://res.cloudinary.com/dyetkan86/image/upload/v1786842107/c174637a2281ede3ef2401f4e45add0ff7624ba58e7ec82a048183e53cb95ff2_zu6whr.png",
   "https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0012_dsgxe9.jpg",
-  "https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0002_i7bkq6.jpg",
+  "https://res.cloudinary.com/dyetkan86/image/upload/v1790938164/IMG-20260922-WA0002_i7bkq6.png",
 ];
 
 const SECTION_ACCENT = ["#1A3A8F", "#D32F2F"];
@@ -235,7 +235,7 @@ export default function FormationsContent() {
       <PageHero
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
-        image="https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0018_ckudk3.jpg"
+        image="https://res.cloudinary.com/dyetkan86/image/upload/v1790938164/IMG-20260922-WA0002_i7bkq6.png"
         breadcrumbs={[
           { label: tn("home"), href: "/" },
           { label: tn("formations") },
