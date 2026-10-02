@@ -1155,7 +1155,20 @@
     "hoursValue": "Mvul–Mvul : 8h00–13h00",
     "copyright": "Bika nyonso bi ne na biso.",
     "legal": "Mfañ ya mimbɔ́g",
-    "privacy": "Mfañ ya nzɔ́g"
+    "privacy": "Mfañ ya nzɔ́g",
+    "newsletter": {
+      "title": "Yeme mfañ",
+      "description": "Nɔk biyem bia na mam m'akɔ́bɔ́ mfañ.",
+      "placeholder": "Adres email dɔ́",
+      "button": "A zɔ́l",
+      "buttonLoading": "A zɔ́l...",
+      "success": "Akiba ! Zɔ́l dɔ́ a nɔk newsletter a ngenya.",
+      "alreadySubscribed": "O ngenya o tele a newsletter.",
+      "error": "Nzɔ́g a kuya. Za o bégeli.",
+      "invalidEmail": "Yegeli adres email ya telege.",
+      "required": "Ekam di le mfañ.",
+      "consent": "Ma kɔbɔ a nɔk newsletter ya Les Génies d'Afrique."
+    }
   },
   "contact": {
     "address": "Nkozoa, nyuma ya Boulangerie Massa\nYaoundé, Kamerun",

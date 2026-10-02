@@ -339,7 +339,8 @@
       "error": "An error occurred. Please try again.",
       "invalidEmail": "Please enter a valid email address.",
       "required": "This field is required.",
-      "consent": "I agree to receive the Les Génies d'Afrique newsletter."
+      "consent": "I agree to receive the Les Génies d'Afrique newsletter.",
+      "alreadySubscribed": "You are already subscribed to our newsletter."
     }
   },
   "contact": {

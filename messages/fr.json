@@ -1295,7 +1295,8 @@
       "error": "Une erreur est survenue. Veuillez réessayer.",
       "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
       "required": "Ce champ est requis.",
-      "consent": "J'accepte de recevoir la newsletter de Les Génies d'Afrique."
+      "consent": "J'accepte de recevoir la newsletter de Les Génies d'Afrique.",
+      "alreadySubscribed": "Vous êtes déjà inscrit(e) à notre newsletter."
     }
   },
   "contact": {
