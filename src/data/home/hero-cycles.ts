@@ -122,7 +122,7 @@ export const HERO_CYCLES: HeroCycle[] = [
   },
   {
     id:       "primaire-en",
-    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1786848131/file_00000000c594820ebdb2f66a1dcefc88_yhbdgd.png",
+    image:    "https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0002_i7bkq6.jpg",
     position: "center 25%",
     kenFrom:  "scale(1.06) translateX(1%)",
     kenTo:    "scale(1.0)  translateX(-1%)",

@@ -172,7 +172,7 @@ export const PROGRAMS_DATA: Program[] = [
     ],
     level: "primaire",
     section: "francophone",
-    image: "https://res.cloudinary.com/dyetkan86/image/upload/v1786841762/IMG-20260816-WA0090_2_xyaaki.jpg",
+    image: "https://res.cloudinary.com/dyetkan86/image/upload/v1790935487/IMG-20260922-WA0002_i7bkq6.jpg",
     order: 3,
     featured: false,
   },

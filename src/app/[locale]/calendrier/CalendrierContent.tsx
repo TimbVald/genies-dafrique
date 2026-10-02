@@ -18,7 +18,7 @@ export default function CalendrierContent({ locale }: CalendrierContentProps) {
     <>
       {/* ── PageHero standard du site ── */}
       <PageHero
-        image="/images/IMG-20260723-WA0012.jpg"
+        image="https://res.cloudinary.com/dyetkan86/image/upload/v1790937582/pexels-freestockpro-12932686_voht9d.jpg"
         title={t("title")}
         subtitle={t("description")}
         breadcrumbs={[
