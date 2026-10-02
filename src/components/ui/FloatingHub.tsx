@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocale } from "next-intl";
+import Image from "next/image";
 import {
   Sparkles,
   MessageCircle,
@@ -140,19 +141,25 @@ export default function FloatingHub() {
             <button
               onClick={handleOpenChat}
               className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
-                bg-gradient-to-r from-[#0D1F6B] via-[#1A3A8F] to-[#2D5BE3] text-white text-xs font-bold
+                bg-gradient-to-r from-[#0B1538] via-[#102A71] to-[#1A3A8F] text-white text-xs font-bold
                 shadow-[0_4px_22px_rgba(26,58,143,0.45)] hover:shadow-[0_6px_28px_rgba(26,58,143,0.60)]
                 hover:scale-105 transition-all duration-200 group"
               aria-label="Chatbot IA Génies d'Afrique"
             >
               <span className="text-[11px] tracking-wide flex items-center gap-1.5">
                 Assistant IA
-                <span className="px-1.5 py-0.2 rounded-full bg-white/20 text-[9px] text-[#F5A623] uppercase">
-                  IA
+                <span className="px-1.5 py-0.2 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 text-[9px] text-[#F5A623] uppercase font-bold">
+                  Groq
                 </span>
               </span>
-              <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-[#F5A623]">
-                <Sparkles size={14} className="animate-pulse" />
+              <div className="w-7 h-7 rounded-full bg-white p-0.5 shadow-xs flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/logo/logo.png"
+                  alt="Logo CSB"
+                  width={22}
+                  height={22}
+                  className="object-contain"
+                />
               </div>
             </button>
 

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback, useId } from "react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Sparkles,
   RotateCcw,
@@ -14,8 +15,8 @@ import {
   Copy,
   Check,
   ArrowRight,
-  Bot,
   HelpCircle,
+  Zap,
 } from "lucide-react";
 import {
   CHATBOT_UI,
@@ -35,14 +36,14 @@ interface ChatbotFabProps {
 /* ── Thinking Messages ─────────────────────────────────────────────── */
 const THINKING_MESSAGES: Record<Locale, string[]> = {
   fr: [
-    "Consultation des informations de l'école...",
+    "Recherche dans les informations officielles...",
     "Vérification des programmes et admissions...",
     "Formulation d'une réponse claire...",
   ],
   en: [
     "Checking official school records...",
     "Reviewing programmes and admissions...",
-    "Formulating a helpful response...",
+    "Formulating a clear response...",
   ],
   ew: [
     "Génies AI á yená mfián...",
@@ -51,22 +52,22 @@ const THINKING_MESSAGES: Record<Locale, string[]> = {
   ],
 };
 
-/* ── Formatage Markdown Simple ─────────────────────────────────────── */
+/* ── Formatage Markdown Épuré ──────────────────────────────────────── */
 function renderFormattedMessage(text: string) {
   const lines = text.split("\n");
   return (
-    <div className="space-y-1.5 text-[13px] sm:text-[13.5px] leading-relaxed">
+    <div className="space-y-1.5 text-[13px] sm:text-[13.5px] leading-relaxed text-[#1E293B]">
       {lines.map((line, idx) => {
         const trimmed = line.trim();
         if (!trimmed) {
-          return <div key={idx} className="h-1.5" />;
+          return <div key={idx} className="h-1" />;
         }
 
         // Listes à puces
         const isBullet = trimmed.startsWith("•") || trimmed.startsWith("-") || trimmed.startsWith("* ");
         const content = isBullet ? trimmed.replace(/^[\s•*-]+/, "") : line;
 
-        // Mise en gras **texte**
+        // Titres ou lignes clés en gras
         const formattedParts = content.split(/(\*\*[^*]+\*\*)/g).map((part, pIdx) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
@@ -80,8 +81,8 @@ function renderFormattedMessage(text: string) {
 
         if (isBullet) {
           return (
-            <div key={idx} className="flex items-start gap-2 pl-1">
-              <span className="text-[#1A3A8F] font-bold text-xs mt-0.5">•</span>
+            <div key={idx} className="flex items-start gap-2 pl-0.5 my-0.5">
+              <span className="text-[#1A3A8F] font-bold text-xs mt-0.5 select-none">•</span>
               <span className="flex-1">{formattedParts}</span>
             </div>
           );
@@ -130,6 +131,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
       role: "bot",
       text: ui.welcome,
       timestamp: Date.now(),
+      provider: "Groq",
       suggestedFollowUps: QUICK_SUGGESTIONS[locale] || QUICK_SUGGESTIONS.fr,
     };
     setMessages([welcomeMsg]);
@@ -245,10 +247,9 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
 
       const thinkInterval = setInterval(() => {
         setThinkIndex((prev) => (prev + 1) % (THINKING_MESSAGES[locale]?.length || 3));
-      }, 500);
+      }, 450);
 
       try {
-        // Appel de la route API Next.js /api/chat
         const response = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -287,9 +288,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
       } catch (err) {
         clearInterval(thinkInterval);
         setIsThinking(false);
-        console.warn("[Chatbot] API request failed, generating intelligent local fallback:", err);
+        console.warn("[Chatbot] Fallback local déterministe:", err);
 
-        // Fallback local instantané
         const local = generateLocalFallbackResponse(trimmed, locale);
         const fallbackMsg: ChatMessage = {
           id: `bot-fallback-${Date.now()}`,
@@ -300,6 +300,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
           links: local.links,
           suggestedFollowUps: local.followUps,
           isLocalFallback: true,
+          provider: "Local",
         };
 
         setMessages((prev) => [...prev, fallbackMsg]);
@@ -319,30 +320,31 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
     <>
       {/* ── Overlay mobile ── */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 sm:hidden animate-in fade-in duration-200"
+        className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 sm:hidden animate-in fade-in duration-200"
         onClick={handleClose}
         aria-hidden="true"
       />
 
-      {/* ── Fenêtre de chat ── */}
+      {/* ── Fenêtre du Chatbot ── */}
       <div
         ref={windowRef}
         className="fixed z-50 inset-0 sm:inset-auto sm:bottom-22 sm:right-6
-          w-full h-[100dvh] sm:w-[410px] sm:h-[600px] sm:max-h-[85vh]
-          flex flex-col bg-[#F8FAFC] sm:rounded-3xl sm:shadow-[0_20px_60px_rgba(13,31,107,0.28)]
+          w-full h-[100dvh] sm:w-[420px] sm:h-[620px] sm:max-h-[86vh]
+          flex flex-col bg-[#F8FAFC] sm:rounded-3xl sm:shadow-[0_25px_70px_rgba(13,31,107,0.30)]
           sm:border sm:border-[#CBD5E1] overflow-hidden
           animate-in fade-in slide-in-from-bottom-5 duration-250 font-sans"
         role="dialog"
         aria-label={ui.title}
         aria-modal="true"
       >
-        {/* ── En-tête avec gradient premium ── */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 bg-gradient-to-r from-[#0D1F6B] via-[#1A3A8F] to-[#2D5BE3] text-white flex-shrink-0 relative overflow-hidden shadow-md">
+        {/* ── En-tête Premium avec le Logo Officiel ── */}
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 bg-gradient-to-r from-[#0B1538] via-[#102A71] to-[#1A3A8F] text-white flex-shrink-0 relative overflow-hidden shadow-md">
+          {/* Motif discret de fond */}
           <div
             className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
               backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-              backgroundSize: "16px 16px",
+              backgroundSize: "14px 14px",
             }}
           />
 
@@ -350,35 +352,43 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
             {/* Bouton retour sur mobile */}
             <button
               onClick={handleClose}
-              className="sm:hidden -ml-1 p-1.5 rounded-full hover:bg-white/20 text-white transition-colors active:scale-95"
+              className="sm:hidden -ml-1.5 p-1.5 rounded-full hover:bg-white/15 text-white transition-colors active:scale-95"
               aria-label="Fermer"
             >
               <ChevronLeft size={22} />
             </button>
 
-            {/* Avatar Bot avec halo vert */}
-            <div className="relative">
-              <div className="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-inner">
-                <Sparkles size={19} className="text-[#F5A623] animate-pulse" />
+            {/* Avatar Officiel avec le Logo de l'École */}
+            <div className="relative flex-shrink-0">
+              <div className="w-10 h-10 rounded-2xl bg-white p-0.5 shadow-md ring-2 ring-white/30 flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/logo/logo.png"
+                  alt="Logo CSB Les Génies d'Afrique"
+                  width={38}
+                  height={38}
+                  className="object-contain w-full h-full rounded-xl"
+                  priority
+                />
               </div>
-              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-[#0D1F6B]" />
+              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-[#0B1538]" />
             </div>
 
             <div>
               <div className="flex items-center gap-1.5">
-                <p className="text-white text-xs sm:text-sm font-bold leading-tight tracking-wide">
+                <p className="text-white text-xs sm:text-sm font-bold leading-tight tracking-tight">
                   {ui.title}
                 </p>
-                <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[9px] font-bold tracking-wider text-[#F5A623] uppercase flex items-center gap-0.5">
-                  ⚡ Groq IA
+                <span className="px-1.5 py-0.5 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 text-[9px] font-extrabold tracking-wider text-[#F5A623] uppercase flex items-center gap-0.5 shadow-xs">
+                  <Zap size={9} className="fill-[#F5A623]" />
+                  Groq IA
                 </span>
               </div>
-              <p className="text-white/80 text-[11px] leading-tight">
+              <p className="text-white/75 text-[10.5px] leading-tight font-medium">
                 {locale === "fr"
-                  ? "Assistant Officiel CSB-LGA"
+                  ? "Assistant Officiel • En ligne"
                   : locale === "en"
-                  ? "Official CSB-LGA Assistant"
-                  : "Mbián CSB-LGA"}
+                  ? "Official Assistant • Online"
+                  : "Mbián Sukul • A ne mbɔ́g"}
               </p>
             </div>
           </div>
@@ -389,23 +399,23 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
               onClick={handleReset}
               title={locale === "fr" ? "Nouvelle conversation" : "New conversation"}
               aria-label={locale === "fr" ? "Réinitialiser la discussion" : "Reset conversation"}
-              className="w-8 h-8 rounded-xl hover:bg-white/20 flex items-center justify-center text-white/85 hover:text-white transition-all active:scale-90"
+              className="w-8 h-8 rounded-xl hover:bg-white/15 flex items-center justify-center text-white/80 hover:text-white transition-all active:scale-90"
             >
-              <RotateCcw size={16} />
+              <RotateCcw size={15} />
             </button>
             <button
               onClick={handleClose}
               aria-label={ui.ariaClose}
-              className="hidden sm:flex w-8 h-8 rounded-xl hover:bg-white/20 items-center justify-center text-white/85 hover:text-white transition-all active:scale-90"
+              className="hidden sm:flex w-8 h-8 rounded-xl hover:bg-white/15 items-center justify-center text-white/80 hover:text-white transition-all active:scale-90"
             >
-              <X size={19} />
+              <X size={18} />
             </button>
           </div>
         </div>
 
         {/* ── Zone des messages ── */}
         <div
-          className="flex-1 overflow-y-auto p-4 space-y-3.5 scrollbar-thin bg-gradient-to-b from-[#F8FAFC] to-[#F1F5F9]"
+          className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin bg-gradient-to-b from-[#F8FAFC] via-[#F8FAFC] to-[#F1F5F9]"
           aria-live="polite"
         >
           {messages.map((msg) => {
@@ -416,9 +426,16 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                 key={msg.id}
                 className={`flex ${isUser ? "justify-end" : "justify-start"} items-end gap-2 group animate-in fade-in duration-200`}
               >
+                {/* Logo Miniature à gauche du message du Bot */}
                 {!isUser && (
-                  <div className="w-7 h-7 rounded-full bg-[#1A3A8F] text-white flex items-center justify-center flex-shrink-0 text-[10px] font-bold shadow-xs mb-1">
-                    <Bot size={14} className="text-[#F5A623]" />
+                  <div className="w-7 h-7 rounded-xl bg-white p-0.5 shadow-xs border border-[#E2E8F0] flex items-center justify-center flex-shrink-0 mb-1 overflow-hidden">
+                    <Image
+                      src="/logo/logo.png"
+                      alt="Avatar Bot"
+                      width={24}
+                      height={24}
+                      className="object-contain w-full h-full rounded-lg"
+                    />
                   </div>
                 )}
 
@@ -426,12 +443,16 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                   <div
                     className={`rounded-2xl p-3.5 text-xs sm:text-[13.5px] shadow-xs relative transition-all duration-200 ${
                       isUser
-                        ? "bg-gradient-to-r from-[#1A3A8F] to-[#2D5BE3] text-white rounded-br-xs"
-                        : "bg-white text-[#1E293B] rounded-bl-xs border border-[#E2E8F0]"
+                        ? "bg-gradient-to-r from-[#1A3A8F] to-[#2D5BE3] text-white rounded-br-xs shadow-[0_4px_14px_rgba(26,58,143,0.25)]"
+                        : "bg-white text-[#1E293B] rounded-bl-xs border border-[#E2E8F0] shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
                     }`}
                   >
                     {/* Contenu textuel enrichi */}
-                    {renderFormattedMessage(msg.text)}
+                    {isUser ? (
+                      <p className="leading-snug">{msg.text}</p>
+                    ) : (
+                      renderFormattedMessage(msg.text)
+                    )}
 
                     {/* Liens d'action attachés à la réponse */}
                     {!isUser && msg.links && msg.links.length > 0 && (
@@ -447,7 +468,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`inline-flex items-center gap-1.5 text-[11px] font-bold rounded-full px-3 py-1.5 transition-all shadow-2xs hover:scale-[1.02] ${
+                                className={`inline-flex items-center gap-1.5 text-[11px] font-bold rounded-full px-3.5 py-1.5 transition-all shadow-2xs hover:scale-[1.02] active:scale-95 ${
                                   isWhatsApp
                                     ? "bg-[#25D366] text-white hover:bg-[#1fb859]"
                                     : "bg-[#1A3A8F] text-white hover:bg-[#2D5BE3]"
@@ -465,7 +486,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                               key={i}
                               href={`/${locale}${link.href}`}
                               onClick={handleClose}
-                              className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-[#1A3A8F] text-white rounded-full px-3 py-1.5 hover:bg-[#2D5BE3] transition-all shadow-2xs hover:scale-[1.02]"
+                              className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-[#1A3A8F] text-white rounded-full px-3.5 py-1.5 hover:bg-[#2D5BE3] transition-all shadow-2xs hover:scale-[1.02] active:scale-95"
                             >
                               <span>{labelText}</span>
                               <ArrowRight size={11} />
@@ -475,21 +496,21 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
                       </div>
                     )}
 
-                    {/* Boutons d'action rapides et badge IA en bas de message bot */}
+                    {/* Pied de bulle : provenance Groq IA & Bouton Copier */}
                     {!isUser && (
-                      <div className="flex items-center justify-between gap-1 mt-2 pt-1 border-t border-slate-100 text-[10px] text-slate-400">
-                        <span className="flex items-center gap-1 text-[9.5px] font-medium text-slate-400">
+                      <div className="flex items-center justify-between gap-1 mt-2.5 pt-1.5 border-t border-slate-100 text-[10px] text-slate-400">
+                        <span className="flex items-center gap-1 text-[9.5px] font-semibold text-slate-400">
                           <Sparkles size={10} className="text-[#F5A623]" />
-                          <span>{msg.provider === "Local" ? "Moteur Local" : "IA Groq"}</span>
+                          <span>{msg.provider === "Local" ? "Moteur Local" : "IA Groq (Ultra-rapide)"}</span>
                         </span>
                         <button
                           onClick={() => handleCopy(msg.id, msg.text)}
                           title="Copier la réponse"
-                          className="p-1 hover:text-slate-600 rounded transition-colors flex items-center gap-1"
+                          className="p-1 hover:text-slate-700 rounded transition-colors flex items-center gap-1"
                         >
                           {copiedId === msg.id ? (
                             <>
-                              <Check size={11} className="text-emerald-500" />
+                              <Check size={11} className="text-emerald-600 font-bold" />
                               <span className="text-emerald-600 font-medium">Copié</span>
                             </>
                           ) : (
@@ -505,7 +526,7 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
 
                   {/* Suggestions dynamiques (Follow-up chips) */}
                   {!isUser && msg.suggestedFollowUps && msg.suggestedFollowUps.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-2.5 pl-1 animate-in fade-in duration-300">
+                    <div className="flex flex-wrap gap-1.5 mt-2.5 pl-0.5 animate-in fade-in duration-300">
                       {msg.suggestedFollowUps.slice(0, 3).map((suggestion, sIdx) => (
                         <button
                           key={sIdx}
@@ -523,11 +544,17 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
             );
           })}
 
-          {/* ── Indicateur de réflexion (Thinking Indicator) ── */}
+          {/* ── Indicateur de réflexion (Thinking Indicator) avec Logo ── */}
           {isThinking && (
             <div className="flex items-end gap-2 justify-start animate-in fade-in duration-200">
-              <div className="w-7 h-7 rounded-full bg-[#1A3A8F] text-white flex items-center justify-center flex-shrink-0 shadow-xs mb-1">
-                <Sparkles size={13} className="text-[#F5A623] animate-spin" style={{ animationDuration: "2.5s" }} />
+              <div className="w-7 h-7 rounded-xl bg-white p-0.5 shadow-xs border border-[#E2E8F0] flex items-center justify-center flex-shrink-0 mb-1 overflow-hidden animate-pulse">
+                <Image
+                  src="/logo/logo.png"
+                  alt="Bot Thinking"
+                  width={24}
+                  height={24}
+                  className="object-contain w-full h-full rounded-lg"
+                />
               </div>
               <div className="bg-white border border-[#CBD5E1] rounded-2xl rounded-bl-xs px-4 py-3 shadow-xs text-xs text-[#334155] flex items-center gap-2.5">
                 <span className="flex gap-1">
@@ -569,10 +596,10 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
           <div ref={bottomRef} />
         </div>
 
-        {/* ── Formulaire de saisie (fixé en bas) ── */}
+        {/* ── Formulaire de saisie ultra ergonomique ── */}
         <form
           onSubmit={handleSubmit}
-          className="flex items-center gap-2 px-3.5 py-3 bg-white border-t border-[#CBD5E1] flex-shrink-0"
+          className="flex items-center gap-2 px-3.5 py-3 bg-white border-t border-[#CBD5E1] flex-shrink-0 shadow-lg"
         >
           <input
             id={inputAriaId}
@@ -595,8 +622,8 @@ export default function ChatbotFab({ open: externalOpen, onClose }: ChatbotFabPr
             disabled={!input.trim() || isThinking}
             aria-label={ui.send}
             className="w-11 h-11 rounded-2xl bg-gradient-to-r from-[#1A3A8F] to-[#2D5BE3] hover:opacity-95
-              disabled:opacity-40 disabled:cursor-not-allowed
-              flex items-center justify-center flex-shrink-0 text-white shadow-sm
+              disabled:opacity-35 disabled:cursor-not-allowed
+              flex items-center justify-center flex-shrink-0 text-white shadow-md
               transition-all duration-150 active:scale-95"
           >
             <Send size={16} />
