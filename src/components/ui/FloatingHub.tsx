@@ -87,15 +87,15 @@ export default function FloatingHub() {
       >
         {/* ── Menu Tiroir Dépliable (Speed-Dial) ── */}
         {menuOpen && (
-          <div className="flex flex-col items-end gap-2.5 mb-1 animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <div className="flex flex-col items-end gap-2.5 mb-1 animate-in fade-in slide-in-from-bottom-4 duration-300">
             {/* 1. Bouton Retour en haut (si scrollé) */}
             {showScrollTop && (
               <button
                 onClick={scrollToTop}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
-                  bg-white text-[#1A202C] text-xs font-bold shadow-[0_4px_20px_rgba(0,0,0,0.15)]
-                  border border-[#E2E8F0] hover:bg-[#F8FAFC] hover:scale-105
-                  transition-all duration-200 group"
+                  bg-white text-[#1A202C] text-xs font-bold shadow-[0_4px_20px_rgba(0,0,0,0.12)]
+                  border border-[#E2E8F0] hover:bg-[#F7F9FC] hover:scale-105
+                  transition-all duration-300 group"
                 aria-label={
                   locale === "fr"
                     ? "Haut de page"
@@ -104,14 +104,14 @@ export default function FloatingHub() {
                     : "Haut"
                 }
               >
-                <span className="text-[11px] text-[#4A5568] group-hover:text-[#1A3A8F] transition-colors">
+                <span className="text-[11px] text-[#4A5568] group-hover:text-[#1A3A8F] transition-colors duration-300">
                   {locale === "fr"
                     ? "Haut de page"
                     : locale === "en"
                     ? "Back to top"
                     : "Panya"}
                 </span>
-                <div className="w-7 h-7 rounded-full bg-[#1A3A8F]/10 flex items-center justify-center text-[#1A3A8F] group-hover:bg-[#1A3A8F] group-hover:text-white transition-all duration-200">
+                <div className="w-7 h-7 rounded-full bg-[#1A3A8F]/10 flex items-center justify-center text-[#1A3A8F] group-hover:bg-[#1A3A8F] group-hover:text-white transition-all duration-300">
                   <ArrowUp size={14} />
                 </div>
               </button>
@@ -125,8 +125,8 @@ export default function FloatingHub() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
                 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs font-bold
-                shadow-[0_4px_22px_rgba(37,211,102,0.40)] hover:shadow-[0_6px_28px_rgba(37,211,102,0.55)]
-                hover:scale-105 transition-all duration-200 group"
+                shadow-[0_4px_18px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_24px_rgba(37,211,102,0.50)]
+                hover:scale-105 transition-all duration-300 group"
               aria-label="WhatsApp CSB-LGA"
             >
               <span className="text-[11px] tracking-wide">
@@ -141,18 +141,15 @@ export default function FloatingHub() {
             <button
               onClick={handleOpenChat}
               className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
-                bg-gradient-to-r from-[#0B1538] via-[#102A71] to-[#1A3A8F] text-white text-xs font-bold
-                shadow-[0_4px_22px_rgba(26,58,143,0.45)] hover:shadow-[0_6px_28px_rgba(26,58,143,0.60)]
-                hover:scale-105 transition-all duration-200 group"
+                bg-gradient-to-r from-[#0D1F6B] via-[#1A3A8F] to-[#2D5BE3] text-white text-xs font-bold
+                shadow-[0_4px_18px_rgba(26,58,143,0.35)] hover:shadow-[0_6px_24px_rgba(26,58,143,0.50)]
+                hover:scale-105 transition-all duration-300 group"
               aria-label="Chatbot IA Génies d'Afrique"
             >
-              <span className="text-[11px] tracking-wide flex items-center gap-1.5">
+              <span className="text-[11px] tracking-wide">
                 Assistant IA
-                <span className="px-1.5 py-0.2 rounded-full bg-[#F5A623]/20 border border-[#F5A623]/40 text-[9px] text-[#F5A623] uppercase font-bold">
-                  Groq
-                </span>
               </span>
-              <div className="w-7 h-7 rounded-full bg-white p-0.5 shadow-xs flex items-center justify-center overflow-hidden">
+              <div className="w-7 h-7 rounded-full bg-white p-0.5 shadow-sm flex items-center justify-center overflow-hidden">
                 <Image
                   src="/logo/logo.png"
                   alt="Logo CSB"
@@ -172,8 +169,8 @@ export default function FloatingHub() {
                 }}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-full
                   bg-gradient-to-r from-[#F5A623] to-[#D98E16] text-[#1A202C] text-xs font-bold
-                  shadow-[0_4px_20px_rgba(245,166,35,0.40)] hover:scale-105
-                  transition-all duration-200 group"
+                  shadow-[0_4px_18px_rgba(245,166,35,0.35)] hover:scale-105
+                  transition-all duration-300 group"
                 aria-label="Installer l'application"
               >
                 <span className="text-[11px] tracking-wide">
@@ -197,7 +194,7 @@ export default function FloatingHub() {
               aria-label={locale === "fr" ? "Haut de page" : "Scroll to top"}
               className="w-11 h-11 rounded-full bg-white/90 backdrop-blur-md text-[#1A3A8F]
                 border border-[#E2E8F0] shadow-md flex items-center justify-center
-                hover:bg-white hover:scale-110 transition-all duration-200 animate-in fade-in duration-200"
+                hover:bg-white hover:scale-110 transition-all duration-300 animate-in fade-in duration-300"
             >
               <ArrowUp size={18} />
             </button>
@@ -217,14 +214,14 @@ export default function FloatingHub() {
             aria-expanded={menuOpen}
             className={`relative w-14 h-14 rounded-full bg-gradient-to-r from-[#0D1F6B] via-[#1A3A8F] to-[#2D5BE3] text-white
               flex items-center justify-center
-              shadow-[0_6px_25px_rgba(26,58,143,0.45)]
-              hover:scale-108 hover:shadow-[0_8px_32px_rgba(26,58,143,0.60)]
-              transition-all duration-250
+              shadow-[0_6px_24px_rgba(26,58,143,0.35)]
+              hover:scale-108 hover:shadow-[0_8px_32px_rgba(26,58,143,0.50)]
+              transition-all duration-300
               ${pulse && !menuOpen ? "animate-bounce" : ""}
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A3A8F] focus-visible:ring-offset-2`}
           >
             {menuOpen ? (
-              <X size={24} className="transition-transform duration-200 rotate-90" />
+              <X size={24} className="transition-transform duration-300 rotate-90" />
             ) : (
               <div className="flex items-center justify-center relative">
                 <Sparkles size={24} className="text-white" />
