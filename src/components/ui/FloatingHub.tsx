@@ -13,9 +13,13 @@ import {
   HelpCircle,
   Download,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import { getWhatsAppUrl } from "@/lib/data/global";
-import ChatbotFab from "./ChatbotFab";
 import { usePwa } from "@/components/pwa/PwaProvider";
+
+const ChatbotFab = dynamic(() => import("./ChatbotFab"), {
+  ssr: false,
+});
 
 export default function FloatingHub() {
   const locale = useLocale() as "fr" | "en" | "ew";
@@ -77,8 +81,8 @@ export default function FloatingHub() {
 
   return (
     <>
-      {/* ── Fenêtre du Chatbot IA (Mobile & Desktop) ── */}
-      <ChatbotFab open={chatOpen} onClose={() => setChatOpen(false)} />
+      {/* ── Fenêtre du Chatbot IA (Mobile & Desktop) chargé à la demande ── */}
+      {chatOpen && <ChatbotFab open={chatOpen} onClose={() => setChatOpen(false)} />}
 
       {/* ── Conteneur Flottant Bas Droite (Hub d'actions) ── */}
       <div

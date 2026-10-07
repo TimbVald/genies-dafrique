@@ -3,7 +3,7 @@
    PWA & Stratégie de Cache Intelligente
 ══════════════════════════════════════════════════════════════════ */
 
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.1.0';
 const STATIC_CACHE = `genies-static-${CACHE_VERSION}`;
 const PAGES_CACHE = `genies-pages-${CACHE_VERSION}`;
 const IMAGES_CACHE = `genies-images-${CACHE_VERSION}`;
@@ -135,7 +135,8 @@ self.addEventListener('fetch', (event) => {
     url.pathname.startsWith('/images/') ||
     url.pathname.startsWith('/logo/') ||
     url.pathname.startsWith('/icons/') ||
-    url.pathname.match(/\.(png|jpg|jpeg|svg|webp|ico)$/i)
+    url.pathname.startsWith('/_next/image') ||
+    url.pathname.match(/\.(png|jpg|jpeg|svg|webp|avif|ico)$/i)
   ) {
     event.respondWith(
       caches.open(IMAGES_CACHE).then((cache) => {

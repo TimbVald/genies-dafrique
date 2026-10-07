@@ -1,9 +1,19 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import SchoolCalendar from "@/components/calendar/SchoolCalendar";
+import dynamic from "next/dynamic";
 import PageHero from "@/components/ui/PageHero";
-import { Calendar as CalendarIcon, Filter, Grid3X3 } from "lucide-react";
+import { Calendar as CalendarIcon, Filter, Grid3X3, Loader2 } from "lucide-react";
+
+const SchoolCalendar = dynamic(() => import("@/components/calendar/SchoolCalendar"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full min-h-[600px] bg-white rounded-2xl border border-[#E2E8F0] p-8 flex flex-col items-center justify-center gap-3 text-[#4A5568] shadow-sm animate-pulse">
+      <Loader2 className="w-8 h-8 animate-spin text-[#1A3A8F]" />
+      <p className="text-sm font-medium">Chargement du calendrier scolaire...</p>
+    </div>
+  ),
+});
 
 interface CalendrierContentProps {
   locale: string;

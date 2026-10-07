@@ -77,9 +77,9 @@ export default function DirectorWelcomeSection() {
                   src={photoUrl}
                   alt={directorName}
                   fill
+                  loading="lazy"
                   className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
                   sizes="(max-width: 1024px) 90vw, 400px"
-                  priority
                 />
                 
                 {/* Dégradé bas d'image */}

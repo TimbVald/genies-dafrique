@@ -466,7 +466,6 @@ body {
 /* ═══════════════════════════════════════════════════════════════
    REACT BIG CALENDAR STYLES
 ══════════════════════════════════════════════════════════════════ */
-@import "react-big-calendar/lib/css/react-big-calendar.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 

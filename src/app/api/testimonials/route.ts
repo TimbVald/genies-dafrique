@@ -23,7 +23,13 @@ export async function GET(request: NextRequest): Promise<NextResponse<Testimonia
         success: true,
         testimonials: sortedTestimonials,
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          // Cache CDN/navigateur 60 s, revalidation silencieuse jusqu'à 5 min
+          "Cache-Control": "public, max-age=60, stale-while-revalidate=300",
+        },
+      }
     );
   } catch (error) {
     console.error("[Testimonials API] Error:", error);

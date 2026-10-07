@@ -28,6 +28,23 @@ const montserrat = Montserrat({
   preload: true,
 });
 
+/* ── Metadata statique HEAD ─────────────────────────────────── */
+const RESOURCE_HINTS = (
+  <>
+    {/* Preconnect CDN images Cloudinary */}
+    <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    {/* Preload police Satoshi Bold critique (titres LCP) */}
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />
+  </>
+);
+
 /* ── Params statiques ───────────────────────────────────────── */
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -149,6 +166,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
+        {RESOURCE_HINTS}
         <StructuredData locale={locale as "fr" | "en" | "ew"} />
       </head>
       <body className="antialiased bg-white text-[#1A202C] overflow-x-hidden">

@@ -9,11 +9,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname:"res.cloudinary.com"
+        hostname: "res.cloudinary.com",
       },
     ],
     qualities: [25, 50, 75, 85, 100],
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400, // 31 jours de cache Edge Vercel pour les images optimisées
     // Tailles de breakpoints optimisées (évite le téléchargement d'images trop grandes)
     deviceSizes: [375, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -55,13 +56,23 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Cache polices locales statiques (Satoshi, etc.)
+      {
+        source: "/fonts/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       // Cache images publiques
       {
         source: "/images/(.*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=604800",
+            value: "public, max-age=2592000, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -70,7 +81,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=86400, stale-while-revalidate=604800",
+            value: "public, max-age=2592000, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -79,7 +90,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=2592000",
+            value: "public, max-age=2592000, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -89,7 +100,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=2592000",
+            value: "public, max-age=2592000, stale-while-revalidate=31536000",
           },
         ],
       },
@@ -133,10 +144,12 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  /* ── Experimental ───────────────────────────────────────── */
+  /* ── Experimental & Optimisations ───────────────────────── */
   experimental: {
-    // Optimise le chargement du CSS critique
-    optimizeCss: false, // requiert critters — désactivé par défaut
+    // Tree-shaking granulaire automatique pour les bibliothèques riches
+    optimizePackageImports: ["lucide-react", "date-fns", "framer-motion"],
+    // Optimise le chargement du CSS critique (inline above-the-fold CSS)
+    optimizeCss: true,
   },
 };
 

@@ -71,6 +71,7 @@ export default function GallerySection() {
                     ring-2 ring-transparent hover:ring-[#1A3A8F]/40 focus-within:ring-[#1A3A8F]
                     transition-all duration-300 ${span}`}>
                   <Image src={photo.imageUrl} alt={alt} fill
+                    loading={i === 0 ? "eager" : "lazy"}
                     className="object-cover group-hover:scale-[1.06] transition-transform duration-700 ease-in-out"
                     sizes={span ? "(max-width: 640px) 50vw, 66vw" : "(max-width: 640px) 50vw, 33vw"} />
 
