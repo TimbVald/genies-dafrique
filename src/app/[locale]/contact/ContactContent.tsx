@@ -8,6 +8,7 @@ import SectionBadge from "@/components/ui/SectionBadge";
 import ContactForm from "@/components/sections/ContactForm";
 import SocialIcons from "@/components/ui/SocialIcons";
 import GoogleMap from "@/components/ui/GoogleMap";
+import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
 import { getWhatsAppUrl } from "@/lib/data/global";
 
 const fadeUp = {
@@ -170,6 +171,13 @@ export default function ContactContent({ locale }: { locale: string }) {
               />
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS SECTION ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+          <TestimonialsSection layout="side-by-side" showForm={true} />
         </div>
       </section>
     </>
